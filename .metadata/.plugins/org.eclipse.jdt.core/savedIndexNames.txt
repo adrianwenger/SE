@@ -1,0 +1,2 @@
+INDEX VERSION 1.126+/home/adi/Arbeitsfläche/Eclipse SE/.metadata/.plugins/org.eclipse.jdt.core
+1320373085.index

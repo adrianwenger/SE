@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="true" key="CommitDialog.showUntracked"/>
+	<list key="CommitDialog.authorValues">
+		<item value="Adrian Wenger &lt;adwenger@htwg-konstanz.de&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="Adrian Wenger &lt;adwenger@htwg-konstanz.de&gt;"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/adrianwenger/SE.git"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.dialogs.ResetTargetSelectionDialog.dialogBounds">
+		<item value="593" key="DIALOG_WIDTH"/>
+		<item value="13" key="DIALOG_Y_ORIGIN"/>
+		<item value="738" key="DIALOG_HEIGHT"/>
+		<item value="511" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="/home/adi/se_ws1415/TEST/.git">
+			<item value="empty"/>
+		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.COMMIT_DIALOG_SECTION">
+		<item value="626" key="DIALOG_WIDTH"/>
+		<item value="89" key="DIALOG_Y_ORIGIN"/>
+		<item value="657" key="DIALOG_HEIGHT"/>
+		<item value="494" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.push.PushResultDialog.dialogBounds">
+		<item value="650" key="DIALOG_WIDTH"/>
+		<item value="229" key="DIALOG_Y_ORIGIN"/>
+		<item value="427" key="DIALOG_HEIGHT"/>
+		<item value="482" key="DIALOG_X_ORIGIN"/>
+		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
+	</section>
+</section>
