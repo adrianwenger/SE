@@ -6,6 +6,7 @@ public class Card {
     Random rmd = new Random();
     //create a new CardDeck
     public Card() {
+        //abfangen des Falls Ass! Ass hat den Wert 11 oder 1, je nach dem was für den Player nütlicher ist
         int[] card = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
     }
     
@@ -21,4 +22,6 @@ public class Card {
         }
         return card;
     }
+    
+    
 }
