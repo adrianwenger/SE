@@ -2,8 +2,11 @@ package de.htwg.model;
 
 public class Player {
 	
+        private int playerVal = 0;
 	private final String name;
-	private final String budget;
-	//private final String 
+        
+        public Player(String name){
+            this.name = name;
+        }
 
 }

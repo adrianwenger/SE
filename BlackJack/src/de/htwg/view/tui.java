@@ -1,10 +1,13 @@
 package de.htwg.view;
 
+import de.htwg.model.Card;
+
 public class tui {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+public static void main(String[] args) {
+      Card test = new Card();
+      test.shuffleCards(test);
+      
+    }
 
 }
