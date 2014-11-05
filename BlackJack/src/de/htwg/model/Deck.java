@@ -9,18 +9,12 @@ import java.util.Random;
 public class Deck {
 
     private Card[] myCards;
-
+    
+    //Getter for
     public Card[] getMyCards() {
         return myCards;
     }
 
-    public int getNumCards() {
-        return numCards;
-    }
-
-    public int getNumDeck() {
-        return numDeck;
-    }
     //Number of cards currently in the deck
     private int numCards;
     private int numDeck;
@@ -29,15 +23,18 @@ public class Deck {
     public static Random rmd = new Random();
 
     //Constructor which defines the number of decks and shuffle 
-    public Deck(int numDeck, boolean shuffle) {
+    public Deck(int numDeck) {
         //Initialise size of myCards
         this.numDeck = numDeck;
         this.numCards = numDeck * 52;
-        this.myCards = new Card[this.numCards]; 
-     }
-    
+        this.myCards = new Card[this.numCards];
+        //Creates Deck myCards
+        createDeck();
+        //shuffles myCards
+        shuffleCards(myCards);
+    }
 
-    public void createDeck() {
+    private void createDeck() {
         //create Deck
         //for each deck
         for (int i = 0; i < numDeck; i++) {
@@ -54,7 +51,7 @@ public class Deck {
     }
     
     //this method shuffles the cards and returns a mixed deck
-    public static void shuffleCards(Card[] myCards) {
+    private void shuffleCards(Card[] myCards) {
         Card tmp;
         int rand;
         for (int i = 0; i < myCards.length; i++) {
