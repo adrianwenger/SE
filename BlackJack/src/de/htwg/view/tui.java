@@ -8,7 +8,9 @@ public class tui {
 
 public static void main(String[] args) {
       Deck test = new Deck(2);
-      System.out.println(test.getMyCards());
+          test.getMyCards();
+
+      //System.out.println(test.getMyCards());
       
     }
 

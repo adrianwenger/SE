@@ -9,7 +9,7 @@ import java.util.Random;
 public class Deck {
 
     private Card[] myCards;
-    
+
     //Getter for
     public Card[] getMyCards() {
         return myCards;
@@ -22,7 +22,7 @@ public class Deck {
     private int index = 0;
     public static Random rmd = new Random();
 
-    //Constructor which defines the number of decks and shuffle 
+    //Constructor which defines the number of decks and shuffle
     public Deck(int numDeck) {
         //Initialise size of myCards
         this.numDeck = numDeck;
@@ -49,7 +49,7 @@ public class Deck {
             }
         }
     }
-    
+
     //this method shuffles the cards and returns a mixed deck
     private void shuffleCards(Card[] myCards) {
         Card tmp;
