@@ -8,12 +8,14 @@ import static org.junit.Assert.*;
 /**
  *
  * @author Adrian Wenger
+ * 22222
  */
 public class CardTest {
     
     @Before
     public void setUp() {
         Card card = new Card(Suit.Clubs, 10);
+        
     }
     
     @After
