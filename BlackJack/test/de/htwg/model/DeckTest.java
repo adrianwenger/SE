@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package de.htwg.model;
 
+import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,22 +18,18 @@ import static org.junit.Assert.*;
  * @author Adi
  */
 public class DeckTest {
-    
-    public DeckTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
+    Deck deck;
+    Deck deckDefault;
+
     @Before
     public void setUp() {
+        //Testing Construktor
+        Deck expResult;
+        expResult = new Deck(2);
+
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -43,11 +39,14 @@ public class DeckTest {
      */
     @Test
     public void testGetNumCards() {
-        Deck instance = null;
-        int expResult = 0;
-        int result = instance.getNumCards();
+
+        int expResult = 104;
+        int result = deck.getNumCards();
         assertEquals(expResult, result);
-       
+
+        expResult = 52;
+        result = deckDefault.getNumCards();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -55,12 +54,12 @@ public class DeckTest {
      */
     @Test
     public void testGetNumDeck() {
-        Deck instance = null;
-        int expResult = 0;
-        int result = instance.getNumDeck();
+        int expResult = 2;
+        int result = deck.getNumDeck();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
 
+        expResult = 1;
+        result = deckDefault.getNumDeck();
+        assertEquals(expResult, result);
     }
-    
 }

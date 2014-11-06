@@ -8,6 +8,7 @@ import java.util.Random;
  */
 public class Deck {
     private static final int sizeOfDeck = 52;
+    private static final int defNumDeck = 1; 
     //Deck
     private final Card[] deck;
     //Number of cards currently in the deck
@@ -18,6 +19,12 @@ public class Deck {
     private int index = 0;
     public static Random rmd = new Random();
 
+    public Deck() {
+        this.numDeck = defNumDeck;
+        this.numCards = sizeOfDeck;
+        this.deck = new Card[this.numCards];
+    }
+    
     //Constructor which defines the number of decks and shuffle
     public Deck(int numDeck) {
         //Initialise size of deck

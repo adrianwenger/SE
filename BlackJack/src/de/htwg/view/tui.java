@@ -16,7 +16,7 @@ public class tui {
         System.out.printf("-->: ");
         Player player1 = new Player(scanner.next());
         
-        System.out.println("Player: " + player1);
+        System.out.println("Player: " + player1.getName());
     }
 
 }
