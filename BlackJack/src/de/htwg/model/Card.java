@@ -1,12 +1,9 @@
 package de.htwg.model;
 
-import java.util.Random;
-
 public class Card {
 
     //One of the four valid suits for this card
     private Suit mySuit;
-
     //The number of this card
     private int myNumber;
 

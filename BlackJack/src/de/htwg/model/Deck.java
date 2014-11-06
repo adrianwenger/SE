@@ -7,31 +7,28 @@ import java.util.Random;
  * @author philippschultheiss
  */
 public class Deck {
-
-    private Card[] myCards;
-
-    //Getter for
-    public Card[] getMyCards() {
-        return myCards;
-    }
-
+    private static final int sizeOfDeck = 52;
+    //Deck
+    private final Card[] deck;
     //Number of cards currently in the deck
-    private int numCards;
-    private int numDeck;
+    private final int numCards;
+    //Number of Decks
+    private final int numDeck;
     //Card index
     private int index = 0;
     public static Random rmd = new Random();
 
     //Constructor which defines the number of decks and shuffle
     public Deck(int numDeck) {
-        //Initialise size of myCards
+        //Initialise size of deck
         this.numDeck = numDeck;
-        this.numCards = numDeck * 52;
-        this.myCards = new Card[this.numCards];
-        //Creates Deck myCards
+        this.numCards = numDeck * sizeOfDeck;
+        //create new Deck Array
+        this.deck = new Card[this.numCards];
+        //Creates Deck deck
         createDeck();
-        //shuffles myCards
-        shuffleCards(myCards);
+        //shuffles deck
+        shuffleCards(deck);
     }
 
     private void createDeck() {
@@ -43,7 +40,7 @@ public class Deck {
                 //for each number
                 for (int z = 1; z <= 13; z++) {
                     //add new card to deck
-                    this.myCards[index] = new Card(Suit.values()[j], z);
+                    this.deck[index] = new Card(Suit.values()[j], z);
                     index++;
                 }
             }
@@ -60,5 +57,15 @@ public class Deck {
             myCards[i] = myCards[rand];
             myCards[rand] = tmp;
         }
+    }
+    
+    //reutn Cards left on deck
+    public int getNumCards() {
+        return numCards;
+    }
+    
+    //return 
+    public int getNumDeck() {
+        return numDeck;
     }
 }
