@@ -19,6 +19,10 @@ public class Deck {
     private int index = 0;
     public static Random rmd = new Random();
 
+    public Card[] getDeck() {
+        return deck;
+    }
+
     public Deck() {
         this.numDeck = defNumDeck;
         this.numCards = sizeOfDeck;

@@ -24,16 +24,34 @@ public class DeckTest {
 
     @Before
     public void setUp() {
-        //Testing Construktor
-        Deck expResult;
-        expResult = new Deck(2);
+        deck = new Deck(2);
+        deckDefault = new Deck();
 
     }
-
+    
     @After
     public void tearDown() {
     }
 
+    /**
+     * Test of getNumCards method, of class Deck.
+     */
+    @Test
+    public void testContDeck() {
+        
+        int expResult  = 104; 
+        int result = deck.getDeck().length;
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testDefConstDeck() {
+        int expResult = 52; 
+        int result = deckDefault.getDeck().length;
+        assertEquals(expResult, result);
+    }
+    
+    
     /**
      * Test of getNumCards method, of class Deck.
      */
