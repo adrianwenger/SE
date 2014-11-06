@@ -7,7 +7,7 @@ public class Card {
     //The number of this card
     private int number;
 
-    /*Card constructor
+    /*Card constructorr
     
     */
     public Card(Suit aSuit, int aNumber) {
