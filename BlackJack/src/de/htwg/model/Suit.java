@@ -6,11 +6,11 @@ package de.htwg.model;
  */
 public enum Suit {
     //Kreuz
-    Clubs,
+    CLUBS,
     //Raute
-    Diamonds,
+    DIAMONDS,
     //Pik
-    Spades,
+    SPADES,
     //Herz
-    Hearts,    
+    HEARTS,    
 }

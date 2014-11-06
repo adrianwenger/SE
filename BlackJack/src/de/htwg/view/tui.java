@@ -21,7 +21,7 @@ public class tui {
         Deck deck = new Deck(5);
         deck.getDeck();
         
-        String result = new Card(Suit.Diamonds, 2).toString();
+        String result = new Card(Suit.DIAMONDS, 2).toString();
         System.out.println(result);
     }
 

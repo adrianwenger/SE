@@ -14,7 +14,7 @@ public class CardTest {
     
     @Before
     public void setUp() {
-        Card card = new Card(Suit.Clubs, 10);
+        Card card = new Card(Suit.CLUBS, 10);
         
     }
     
@@ -28,14 +28,14 @@ public class CardTest {
     @Test
     public void testGetNumber() {
         int expResult = 2;
-        int result = new Card(Suit.Hearts, 2).getNumber();
+        int result = new Card(Suit.HEARTS, 2).getNumber();
         assertEquals(expResult, result);
     }
     
     @Test
     public void testGetSuit() {
-        Suit expResult = Suit.Hearts;
-        Suit result = new Card(Suit.Hearts, 2).getSuit();
+        Suit expResult = Suit.HEARTS;
+        Suit result = new Card(Suit.HEARTS, 2).getSuit();
         assertEquals(expResult, result);
     }
 
@@ -45,10 +45,10 @@ public class CardTest {
     @Test
     public void testToString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("TwoOfDiamonds");
+        sb.append("TwoOfDIAMONDS");
         
         StringBuilder sbResult = new StringBuilder();
-        sbResult.append(new Card(Suit.Diamonds, 2).toString());
+        sbResult.append(new Card(Suit.DIAMONDS, 2).toString());
                 
         assertEquals(sbResult.toString(), sb.toString());
     }
