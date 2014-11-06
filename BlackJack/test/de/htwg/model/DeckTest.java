@@ -32,31 +32,35 @@ public class DeckTest {
     
     @Before
     public void setUp() {
-        Deck myCard = new Deck(2);
     }
     
     @After
     public void tearDown() {
     }
 
+    /**
+     * Test of getNumCards method, of class Deck.
+     */
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testGetNumCards() {
+        Deck instance = null;
+        int expResult = 0;
+        int result = instance.getNumCards();
+        assertEquals(expResult, result);
+       
     }
 
     /**
-     * Test of getMyCards method, of class Deck.
+     * Test of getNumDeck method, of class Deck.
      */
     @Test
-    public void testGetMyCards() {
-        System.out.println("getMyCards");
+    public void testGetNumDeck() {
         Deck instance = null;
-        Card[] expResult = null;
-        Card[] result = instance.getMyCards();
-        assertArrayEquals(expResult, result);
+        int expResult = 0;
+        int result = instance.getNumDeck();
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
     
 }
