@@ -17,6 +17,12 @@ public class tui {
         Player player1 = new Player(scanner.next());
         
         System.out.println("Player: " + player1.getName());
+        
+        Deck deck = new Deck(5);
+        deck.getDeck();
+        
+        String result = new Card(Suit.Diamonds, 2).toString();
+        System.out.println(result);
     }
 
 }

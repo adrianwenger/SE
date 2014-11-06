@@ -3,25 +3,39 @@ package de.htwg.model;
 public class Card {
 
     //One of the four valid suits for this card
-    private Suit mySuit;
+    private Suit suit;
     //The number of this card
-    private int myNumber;
+    private int number;
 
-    //Card constructor
+    /*Card constructor
+    
+    */
     public Card(Suit aSuit, int aNumber) {
-        this.mySuit = aSuit;
-        this.myNumber = aNumber;
+        this.suit = aSuit;
+        this.number = aNumber;
+    }
+    
+    /*
+    
+    */
+    public Suit getSuit() {
+        return suit;
     }
 
-    //return the Number of the Card
+    /*return the Number of the Card
+    
+    */
     public int getNumber() {
-        return myNumber;
+        return number;
     }
 
+    /*
+    
+    */
     public String toString() {
         String numStr = null;
 
-        switch (this.myNumber) {
+        switch (this.number) {
             case 2:
                 numStr = "Two";
                 break;
@@ -62,7 +76,7 @@ public class Card {
                 numStr = "Ace";
                 break;
         }
-        return numStr + "of" + mySuit.toString();
+        return numStr + "Of" + suit.toString();
     }
 
 }

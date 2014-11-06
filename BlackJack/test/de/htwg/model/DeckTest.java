@@ -5,11 +5,8 @@
  */
 package de.htwg.model;
 
-import java.util.Random;
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -34,7 +31,7 @@ public class DeckTest {
     }
 
     /**
-     * Test of getNumCards method, of class Deck.
+     * Test if a Deck[] with size of 104 was getting created
      */
     @Test
     public void testContDeck() {
@@ -44,6 +41,9 @@ public class DeckTest {
         assertEquals(expResult, result);
     }
     
+    /**
+     * Test if a Deck[] with size of 52 was getting created
+     */
     @Test
     public void testDefConstDeck() {
         int expResult = 52; 

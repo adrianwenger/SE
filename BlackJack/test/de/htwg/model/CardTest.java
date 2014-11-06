@@ -1,31 +1,19 @@
 package de.htwg.model;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author Adi
+ * @author Adrian Wenger
  */
 public class CardTest {
     
-    public CardTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
     @Before
     public void setUp() {
+        Card card = new Card(Suit.Clubs, 10);
     }
     
     @After
@@ -37,13 +25,16 @@ public class CardTest {
      */
     @Test
     public void testGetNumber() {
-        System.out.println("getNumber");
-        Card instance = null;
-        int expResult = 0;
-        int result = instance.getNumber();
+        int expResult = 2;
+        int result = new Card(Suit.Hearts, 2).getNumber();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    }
+    
+    @Test
+    public void testGetSuit() {
+        Suit expResult = Suit.Hearts;
+        Suit result = new Card(Suit.Hearts, 2).getSuit();
+        assertEquals(expResult, result);
     }
 
     /**
@@ -51,13 +42,13 @@ public class CardTest {
      */
     @Test
     public void testToString() {
-        System.out.println("toString");
-        Card instance = null;
-        String expResult = "";
-        String result = instance.toString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        StringBuilder sb = new StringBuilder();
+        sb.append("TwoOfDiamonds");
+        
+        StringBuilder sbResult = new StringBuilder();
+        sbResult.append(new Card(Suit.Diamonds, 2).toString());
+                
+        assertEquals(sbResult.toString(), sb.toString());
     }
     
 }
