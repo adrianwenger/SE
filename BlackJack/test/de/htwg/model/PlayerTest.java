@@ -31,23 +31,25 @@ public class PlayerTest {
         assertEquals(expResult, result);
     }
     
-    public void testPlayerVal() {
+    @Test
+    public void testgetPlayerVal() {
         player.setPlayerVal(50);
         int expResult =  50;
         int result = player.getPlayerVal();
         assertEquals(expResult, result);
     }
     
-    public void testUserCards() {
+    @Test
+    public void testgetUserCards() {
         List<Card> userCards = new LinkedList<>();
         userCards.add(new Card(Suit.CLUBS,5));
         
-        player.setUsersCards(userCards);
+        player.setUserCards(userCards);
         
         Suit resultSuit = null;
         int resultNumber = 0;
         
-        for(Card l : player.getUsersCards()) {
+        for(Card l : player.getUserCards()) {
             resultSuit = l.getSuit();
             resultNumber = l.getNumber();
         }

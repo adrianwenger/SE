@@ -8,7 +8,7 @@ public class Player {
     private int playerVal = 0;
     private final String name;
 
-    List<Card> usersCards = new ArrayList();
+    List<Card> userCards = new ArrayList();
 
     public Player(String name) {
         this.name = name;
@@ -26,12 +26,12 @@ public class Player {
         this.playerVal = playerVal;
     }
 
-    public List<Card> getUsersCards() {
-        return usersCards;
+    public List<Card> getUserCards() {
+        return userCards;
     }
 
-    public void setUsersCards(List<Card> usersCards) {
-        this.usersCards = usersCards;
+    public void setUserCards(List<Card> usersCards) {
+        this.userCards = usersCards;
     }
 
 }
