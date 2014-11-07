@@ -41,7 +41,7 @@ public class PlayerTest {
     
     @Test
     public void testgetUserCards() {
-        List<Card> userCards = new LinkedList<>();
+        List<Card> userCards = new LinkedList<Card>();
         userCards.add(new Card(Suit.CLUBS,5));
         
         player.setUserCards(userCards);

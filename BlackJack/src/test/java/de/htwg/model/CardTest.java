@@ -5,10 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 /**
  *
  * @author Adrian Wenger
- * 22222
+ * 
  */
 public class CardTest {
     
