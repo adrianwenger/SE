@@ -6,6 +6,6 @@ import java.util.List;
 public class Dealer {
     
     private int dealersVal = 0;
-    List dealerCards = new ArrayList();
+    private List dealerCards = new ArrayList();
 
 }

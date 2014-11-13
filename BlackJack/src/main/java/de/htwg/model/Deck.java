@@ -17,7 +17,7 @@ public class Deck {
     private final int numDeck;
     //Card index
     private int index = 0;
-    public static Random rmd = new Random();
+    private static Random rmd = new Random();
 
     public Card[] getDeck() {
         return deck;
