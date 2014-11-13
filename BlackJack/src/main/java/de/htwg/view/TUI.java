@@ -6,7 +6,7 @@ import de.htwg.model.Player;
 import de.htwg.model.Suit;
 import java.util.Scanner;
 
-public class tui {
+public class TUI {
     //define Scanner
     public static Scanner scanner = new Scanner(System.in);
 
