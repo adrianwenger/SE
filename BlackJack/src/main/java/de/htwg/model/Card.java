@@ -5,14 +5,13 @@ import java.util.TreeMap;
 
 public class Card {
 
-    public static final int CARDNUMBERS = 14;
     //One of the four valid suits for this card
     private final Suit suit;
     //The number of this card
     private final int number;
     // TreeMap card saves cards
     private final Map<Integer, String> cards = new TreeMap<Integer, String>();
-    private int i = 1;
+    private int i;
 
 
     /*
@@ -22,6 +21,7 @@ public class Card {
         this.suit = aSuit;
         this.number = aNumber;
         createCards();
+        i = 1;
     }
 
     /*
