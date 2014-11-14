@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Deck.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BlackJack</a> &gt; <a href="index.source.html" class="el_package">de.htwg.model</a> &gt; <span class="el_source">Deck.java</span></div><h1>Deck.java</h1><pre class="source lang-java linenums">package de.htwg.model;
+
+import java.util.Random;
+
+/**
+ *
+ * @author philippschultheiss
+ */
+public class Deck {
+
+    private static final int FIFTYTWO = 52;
+    private static final int ONE = 1;
+    private static final int FOUR = 4;
+    private static final int ZERO = 0;
+    private static final int THIRTEEN = 13;
+    //Deck
+    private final Card[] deckVals;
+    //Number of cards currently in the deck
+    private final int numCards;
+    //Number of Decks
+    private final int numDeck;
+    //Card index
+<span class="fc" id="L23">    private int index = ZERO;</span>
+<span class="fc" id="L24">    private static Random rmd = new Random();</span>
+
+<span class="fc" id="L26">    public Deck() {</span>
+<span class="fc" id="L27">        this.numDeck = ONE;</span>
+<span class="fc" id="L28">        this.numCards = FIFTYTWO;</span>
+<span class="fc" id="L29">        this.deckVals = new Card[this.numCards];</span>
+<span class="fc" id="L30">    }</span>
+
+    //Constructor which defines the number of decks and shuffle
+<span class="fc" id="L33">    public Deck(int numDeck) {</span>
+        //Initialise size of deck
+<span class="fc" id="L35">        this.numDeck = numDeck;</span>
+<span class="fc" id="L36">        this.numCards = numDeck * FIFTYTWO;</span>
+        //create new Deck Array
+<span class="fc" id="L38">        this.deckVals = new Card[this.numCards];</span>
+        //Creates Deck deck
+<span class="fc" id="L40">        createDeck();</span>
+        //shuffles deck
+<span class="fc" id="L42">        shuffleCards(deckVals);</span>
+<span class="fc" id="L43">    }</span>
+
+    public Card[] getDeck() {
+<span class="fc" id="L46">        return deckVals;</span>
+    }
+
+    private void createDeck() {
+        //create Deck
+        //for each deck
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        for (int i = ZERO; i &lt; numDeck; i++) {</span>
+            //for each suit
+<span class="fc bfc" id="L54" title="All 2 branches covered.">            for (int j = ZERO; j &lt; FOUR; j++) {</span>
+                //for each number
+<span class="fc bfc" id="L56" title="All 2 branches covered.">                for (int z = ONE; z &lt;= THIRTEEN; z++) {</span>
+                    //add new card to deck
+<span class="fc" id="L58">                    this.deckVals[index] = new Card(Suit.values()[j], z);</span>
+<span class="fc" id="L59">                    index++;</span>
+                }
+            }
+        }
+<span class="fc" id="L63">    }</span>
+
+    //this method shuffles the cards and returns a mixed deck
+    private void shuffleCards(Card[] myCards) {
+        Card tmp;
+        int rand;
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        for (int i = ZERO; i &lt; myCards.length; i++) {</span>
+<span class="fc" id="L70">            rand = rmd.nextInt(myCards.length);</span>
+<span class="fc" id="L71">            tmp = myCards[i];</span>
+<span class="fc" id="L72">            myCards[i] = myCards[rand];</span>
+<span class="fc" id="L73">            myCards[rand] = tmp;</span>
+        }
+<span class="fc" id="L75">    }</span>
+
+    //reutn Cards left on deck
+    public int getNumCards() {
+<span class="fc" id="L79">        return numCards;</span>
+    }
+
+    //return 
+    public int getNumDeck() {
+<span class="fc" id="L84">        return numDeck;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

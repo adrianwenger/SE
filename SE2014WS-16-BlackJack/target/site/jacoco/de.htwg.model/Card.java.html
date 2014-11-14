@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Card.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">BlackJack</a> &gt; <a href="index.source.html" class="el_package">de.htwg.model</a> &gt; <span class="el_source">Card.java</span></div><h1>Card.java</h1><pre class="source lang-java linenums">package de.htwg.model;
+
+import java.util.Map;
+import java.util.TreeMap;
+
+public class Card {
+
+    private static final int ONE = 1;
+    //One of the four valid suits for this card
+    private final Suit suit;
+    //The number of this card
+    private final int number;
+    // TreeMap card saves cards
+<span class="fc" id="L14">    private final Map&lt;Integer, String&gt; cards = new TreeMap&lt;Integer, String&gt;();</span>
+<span class="fc" id="L15">    private int i = ONE;</span>
+
+
+    /*
+     Card constructor
+     */
+<span class="fc" id="L21">    public Card(Suit aSuit, int aNumber) {</span>
+<span class="fc" id="L22">        this.suit = aSuit;</span>
+<span class="fc" id="L23">        this.number = aNumber;</span>
+<span class="fc" id="L24">        createCards();</span>
+<span class="fc" id="L25">    }</span>
+
+    /*
+     return Suit
+     */
+    public Suit getSuit() {
+<span class="fc" id="L31">        return suit;</span>
+    }
+
+    /*
+     return the Number of the Card
+     */
+    public int getNumber() {
+<span class="fc" id="L38">        return number;</span>
+    }
+
+    /*
+     return Card as String 
+     */
+    public String toString() {
+<span class="fc" id="L45">        return cards.get(number) + &quot;Of&quot; + suit.toString();</span>
+    }
+
+    /*
+     creates the Cards the game contains
+     */
+    private void createCards() {
+<span class="fc" id="L52">        insertCardValues(&quot;Ace&quot;);</span>
+<span class="fc" id="L53">        insertCardValues(&quot;Two&quot;);</span>
+<span class="fc" id="L54">        insertCardValues(&quot;Three&quot;);</span>
+<span class="fc" id="L55">        insertCardValues(&quot;Four&quot;);</span>
+<span class="fc" id="L56">        insertCardValues(&quot;Five&quot;);</span>
+<span class="fc" id="L57">        insertCardValues(&quot;Six&quot;);</span>
+<span class="fc" id="L58">        insertCardValues(&quot;Seven&quot;);</span>
+<span class="fc" id="L59">        insertCardValues(&quot;Eight&quot;);</span>
+<span class="fc" id="L60">        insertCardValues(&quot;Nine&quot;);</span>
+<span class="fc" id="L61">        insertCardValues(&quot;Ten&quot;);</span>
+<span class="fc" id="L62">        insertCardValues(&quot;Jack&quot;);</span>
+<span class="fc" id="L63">        insertCardValues(&quot;Queen&quot;);</span>
+<span class="fc" id="L64">        insertCardValues(&quot;King&quot;);</span>
+<span class="fc" id="L65">        insertCardValues(&quot;Ace&quot;);</span>
+<span class="fc" id="L66">    }</span>
+
+    /*
+     fills the TreeMap cards with keys and values
+     */
+    private void insertCardValues(String num) {
+<span class="fc" id="L72">        cards.put(i, num);</span>
+<span class="fc" id="L73">        i++;</span>
+<span class="fc" id="L74">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>
