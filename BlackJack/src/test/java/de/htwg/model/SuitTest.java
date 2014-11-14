@@ -1,6 +1,5 @@
 package de.htwg.model;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -15,19 +14,7 @@ public class SuitTest {
     
     @Before
     public void setUp() {
-        Suit enumTest = Suit.CLUBS;
-    }
-    
-    @After
-    public void tearDown() {
-    }
-
-    /**
-     * Test of values method, of class Suit.
-     */
-    @Test
-    public void testValues() {
-       
+        enumTest = Suit.CLUBS;
     }
 
     /**

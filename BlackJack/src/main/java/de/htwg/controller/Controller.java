@@ -1,4 +1,4 @@
-package de.htwg.Controller;
+package de.htwg.controller;
 
 public interface Controller {
 

@@ -7,7 +7,10 @@ import de.htwg.model.Suit;
 import java.util.Scanner;
 
 class TUI {
-    //define Scanner
+    // private Contructor
+    private TUI() {}
+    
+//define Scanner
     private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -21,8 +24,10 @@ class TUI {
         Deck deck = new Deck(5);
         deck.getDeck();
         
-        String result = new Card(Suit.DIAMONDS, 2).toString();
+        String result = new Card(Suit.CLUBS, 10).toString();
         System.out.println(result);
+        
+        
     }
 
 }

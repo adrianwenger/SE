@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Dealer {
     
-    private int dealersVal = 0;
-    private List dealerCards = new ArrayList();
+   //private int dealersVal = 0;
+    //private List dealerCards = new ArrayList();
 
 }
