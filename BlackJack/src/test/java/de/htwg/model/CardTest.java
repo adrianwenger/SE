@@ -18,8 +18,7 @@ public class CardTest {
     
     @Before
     public void setUp() {
-        card = new Card(Suit.CLUBS, TEN);
-        
+        card = new Card(Suit.CLUBS, TEN);    
     }
 
     /**
@@ -44,13 +43,13 @@ public class CardTest {
      */
     @Test
     public void testToString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("TwoOfDIAMONDS");
+        StringBuilder sbExpResult = new StringBuilder();
+        sbExpResult.append("TwoOfDIAMONDS");
         
         StringBuilder sbResult = new StringBuilder();
         sbResult.append(new Card(Suit.DIAMONDS, TWO).toString());
                 
-        assertEquals(sbResult.toString(), sb.toString());
+        assertEquals(sbResult.toString(), sbExpResult.toString());
     }
     
 }

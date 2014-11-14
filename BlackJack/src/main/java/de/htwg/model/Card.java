@@ -5,13 +5,14 @@ import java.util.TreeMap;
 
 public class Card {
 
+    private static final int ONE = 1;
     //One of the four valid suits for this card
     private final Suit suit;
     //The number of this card
     private final int number;
     // TreeMap card saves cards
     private final Map<Integer, String> cards = new TreeMap<Integer, String>();
-    private int i;
+    private int i = ONE;
 
 
     /*
@@ -21,7 +22,6 @@ public class Card {
         this.suit = aSuit;
         this.number = aNumber;
         createCards();
-        i = 1;
     }
 
     /*
@@ -46,8 +46,8 @@ public class Card {
     }
 
     /*
-    creates the Cards the game contains
-    */
+     creates the Cards the game contains
+     */
     private void createCards() {
         insertCardValues("Ace");
         insertCardValues("Two");
@@ -66,8 +66,8 @@ public class Card {
     }
 
     /*
-    fills the TreeMap cards with keys and values
-    */
+     fills the TreeMap cards with keys and values
+     */
     private void insertCardValues(String num) {
         cards.put(i, num);
         i++;
