@@ -52,11 +52,11 @@ public class DeckTest {
     public void testGetNumCards() {
 
         int expResult = SIZEOF2DECKS;
-        int result = deck.getNumCards();
+        int result = deck.getNumOfCards();
         assertEquals(expResult, result);
 
         expResult = SIZEOF1DECK;
-        result = deckDefault.getNumCards();
+        result = deckDefault.getNumOfCards();
         assertEquals(expResult, result);
     }
 

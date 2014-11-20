@@ -7,16 +7,25 @@ import java.util.Random;
  * @author philippschultheiss
  */
 public class Deck {
-    private static final int sizeOfDeck = 52;
-    private static final int defNumDeck = 1; 
+    
+    private static final int FIFTYTWO = 52;
+    private static final int ONE = 1;
+    private static final int FOUR = 4;
+    private static final int ZERO = 0;
+    private static final int THIRTEEN = 13;
+
     //Deck
     private final Card[] deck;
     //Number of cards currently in the deck
-    private int numCards;
+    private int numOfCards;
     //Number of Decks
     private final int numDeck;
+
+    public int getNumDeck() {
+        return numDeck;
+    }
     //Card index
-    private int index = 0;
+    private int index = ZERO;
     private static Random rmd = new Random();
     
     //An array filled with the cards from top of the Deck --> Hand
@@ -28,18 +37,18 @@ public class Deck {
     }
 
     public Deck() {
-        this.numDeck = defNumDeck;
-        this.numCards = sizeOfDeck;
-        this.deck = new Card[this.numCards];
+        this.numDeck = ONE;
+        this.numOfCards = FIFTYTWO;
+        this.deck = new Card[this.numOfCards];
     }
     
     //Constructor which defines the number of decks and shuffle
     public Deck(int numDeck) {
         //Initialise size of deck and number of cards
         this.numDeck = numDeck;
-        this.numCards = numDeck * sizeOfDeck;
+        this.numOfCards = numDeck * FIFTYTWO;
         //create new Deck Array
-        this.deck = new Card[this.numCards];
+        this.deck = new Card[this.numOfCards];
         //Creates Deck deck
         createDeck();
         //shuffles deck
@@ -49,11 +58,11 @@ public class Deck {
     private void createDeck() {
         //create Deck
         //for each deck
-        for (int i = 0; i < numDeck; i++) {
+        for (int i = ZERO; i < numDeck; i++) {
             //for each suit
-            for (int j = 0; j < 4; j++) {
+            for (int j = ZERO; j < FOUR; j++) {
                 //for each number
-                for (int z = 1; z <= 13; z++) {
+                for (int z = ONE; z <= THIRTEEN; z++) {
                     //add new card to deck
                     this.deck[index] = new Card(Suit.values()[j], z);
                     index++;
@@ -66,7 +75,7 @@ public class Deck {
     private void shuffleCards(Card[] myCards) {
         Card tmp;
         int rand;
-        for (int i = 0; i < myCards.length; i++) {
+        for (int i = ZERO; i < myCards.length; i++) {
             rand = rmd.nextInt(myCards.length);
             tmp = myCards[i];
             myCards[i] = myCards[rand];
@@ -75,21 +84,21 @@ public class Deck {
     }
     
     //returns Cards left on deck
-    public int getNumCards() {
-        return numCards;
+    public int getNumOfCards() {
+        return numOfCards;
     }
         
     //Deal next card from the top of the deck
     public Card dealCard(){
         //get the first card form top of the deck
-        Card top = this.deck[0];
+        Card top = this.deck[ZERO];
         //shift cards to the left, because we get the first one
-        for(int i = 1; i < this.numCards; i++){
-            this.deck[i-1] = this.deck[i];
+        for(int i = ONE; i < this.numOfCards; i++){
+            this.deck[i-ONE] = this.deck[i];
         }
-        this.deck[this.numCards-1] = null;
+        this.deck[this.numOfCards-ONE] = null;
         //decrement the number of cards currently in the deck
-        this.numCards--;
+        this.numOfCards--;
         
         return top; 
     }

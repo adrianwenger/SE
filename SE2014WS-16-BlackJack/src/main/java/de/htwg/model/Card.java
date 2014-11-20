@@ -1,82 +1,75 @@
 package de.htwg.model;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Card {
 
+    private static final int ONE = 1;
     //One of the four valid suits for this card
-    private Suit suit;
+    private final Suit suit;
     //The number of this card
-    private int number;
+    private final int number;
+    // TreeMap card saves cards
+    private final Map<Integer, String> cards = new TreeMap<Integer, String>();
+    private int i = ONE;
 
-    /*Card constructorr
-    
-    */
+
+    /*
+     Card constructor
+     */
     public Card(Suit aSuit, int aNumber) {
         this.suit = aSuit;
         this.number = aNumber;
+        createCards();
     }
-    
+
     /*
-    
-    */
+     return Suit
+     */
     public Suit getSuit() {
         return suit;
     }
 
-    /*return the Number of the Card
-    
-    */
+    /*
+     return the Number of the Card
+     */
     public int getNumber() {
         return number;
     }
 
     /*
-    
-    */
+     return Card as String 
+     */
     public String toString() {
-        String numStr = null;
-
-        switch (this.number) {
-            case 2:
-                numStr = "Two";
-                break;
-            case 3:
-                numStr = "Three";
-                break;
-            case 4:
-                numStr = "Four";
-                break;
-            case 5:
-                numStr = "Five";
-                break;
-            case 6:
-                numStr = "Six";
-                break;
-            case 7:
-                numStr = "Seven";
-                break;
-            case 8:
-                numStr = "Eight";
-                break;
-            case 9:
-                numStr = "Nine";
-                break;
-            case 10:
-                numStr = "Ten";
-                break;
-            case 11:
-                numStr = "Jack";
-                break;
-            case 12:
-                numStr = "Queen";
-                break;
-            case 13:
-                numStr = "King";
-                break;
-            case 1:
-                numStr = "Ace";
-                break;
-        }
-        return numStr + "Of" + suit.toString();
+        return cards.get(number) + "Of" + suit.toString();
     }
 
+    /*
+     creates the Cards the game contains
+     */
+    private void createCards() {
+        insertCardValues("Ace");
+        insertCardValues("Two");
+        insertCardValues("Three");
+        insertCardValues("Four");
+        insertCardValues("Five");
+        insertCardValues("Six");
+        insertCardValues("Seven");
+        insertCardValues("Eight");
+        insertCardValues("Nine");
+        insertCardValues("Ten");
+        insertCardValues("Jack");
+        insertCardValues("Queen");
+        insertCardValues("King");
+        insertCardValues("Ace");
+    }
+
+    /*
+     fills the TreeMap cards with keys and values
+     */
+    private void insertCardValues(String num) {
+        cards.put(i, num);
+        i++;
+    }
 }

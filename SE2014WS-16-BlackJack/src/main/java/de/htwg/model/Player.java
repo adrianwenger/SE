@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
+    
+    private static final int ZERO = 0;
+    private static final int ELEVEN = 11;
+    private static final int TEN = 10;
+    private static final int ONE = 1;
     private final int MAXCARDS = 10;
     private final int BLACKJACK = 21;
     //Value of players hand
     private int playerVal;
     //Value of a card
-    private int numCards;
+    private int numOfCards;
     //name from player
     private final String name;
     //players hand
@@ -30,45 +35,45 @@ public class Player {
 
     //Reset players hand
     private void clearHand() {
-        for(int i = 0; i < MAXCARDS; i++){
+        for(int i = ZERO; i < MAXCARDS; i++){
             this.playerHand[i] = null;
         }  
     }
     
     //add card to users hand
     public boolean add(Card card){
-        if(this.numCards == MAXCARDS){
+        if(this.numOfCards == MAXCARDS){
             System.err.printf("%s's hand already has 10 cards!\n", this.name);
-            System.exit(1);
+            System.exit(ZERO);
         }
-        this.playerHand[this.numCards] = card;
-        this.numCards++;
+        this.playerHand[this.numOfCards] = card;
+        this.numOfCards++;
         
-        return(this.getValue() <= 21);
+        return(this.getValue() <= BLACKJACK);
     }
     
     //Returns the value of players hand
     private int getValue(){
-        this.playerVal = 0;
+        this.playerVal = ZERO;
         int cardNum;
-        int numAces = 0;
-        for(int i = 0; i < this.numCards; i++){
+        int numAces = ZERO;
+        for(int i = ZERO; i < this.numOfCards; i++){
             cardNum = this.playerHand[i].getNumber();
             //ACES
-            if(cardNum == 1){
+            if(cardNum == ONE){
                 numAces++;
-                playerVal += 11;
+                playerVal += ELEVEN;
             //FACE CARD    
-            }else if(cardNum > 10){
-                playerVal += 10;
+            }else if(cardNum > TEN){
+                playerVal += TEN;
             //NUMBERS
             }else{
                 playerVal += cardNum;
             }
         }
         //ABFRAGE Ob >21 dann ACES = 1 sonst ACES = 11
-        while(playerVal > 21 && numAces > 0){
-            playerVal -= 10;
+        while(playerVal > BLACKJACK && numAces > ZERO){
+            playerVal -= TEN;
             numAces--;
         }
         return playerVal;
@@ -89,10 +94,6 @@ public class Player {
     
     //Checks BlackJack
     public boolean blackJack(){
-        if(playerVal == BLACKJACK){
-            //System.out.println("You got BlackJack! You win!");
-            return true;
-        } 
-        return false;
+        return playerVal == BLACKJACK;
     }
 }
