@@ -66,11 +66,11 @@ public class DeckTest {
     @Test
     public void testGetNumDeck() {
         int expResult = TWO;
-        int result = deck.getNumDeck();
+        int result = deck.getNumOfDecks();
         assertEquals(expResult, result);
 
         expResult = ONE;
-        result = deckDefault.getNumDeck();
+        result = deckDefault.getNumOfDecks();
         assertEquals(expResult, result);
     }
 }

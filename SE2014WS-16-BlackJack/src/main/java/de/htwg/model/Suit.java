@@ -5,12 +5,20 @@ package de.htwg.model;
  * @author philippschultheiss
  */
 public enum Suit {
-    //Kreuz
+    /**
+     * Kreuz.
+     */
     CLUBS,
-    //Raute
+    /**
+     * Raute.
+     */
     DIAMONDS,
-    //Pik
+    /**
+     * Pik.
+     */
     SPADES,
-    //Herz
-    HEARTS,    
+    /**
+     * Herz.
+     */
+    HEARTS
 }
