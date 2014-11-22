@@ -124,8 +124,9 @@ public final class Player {
     /**
      * Returns the hand from the player.
      *
+     *@return String Value
      */
-    public void printPlayersHand() {
+    public String printPlayersHand() {
         StringBuilder sb = new StringBuilder();
         sb.append("Cards: ");
         for (Card card : playerHand) {
@@ -134,8 +135,7 @@ public final class Player {
             }
             sb.append(card).append(" ");
         }
-        System.out.println(sb.toString());
-        System.out.printf("Value: %d \n", playerVal);
+        return sb.append("Value: ").append(playerVal).toString();
     }
 
     /**

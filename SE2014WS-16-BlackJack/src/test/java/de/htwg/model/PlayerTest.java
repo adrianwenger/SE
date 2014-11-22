@@ -3,7 +3,6 @@ package de.htwg.model;
 import java.util.LinkedList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -80,7 +79,12 @@ public final class PlayerTest {
      */
     @Test
     public void testPrintPlayersHand() {
-   
+        Player test = new Player("test");
+        test.add(new Card(Suit.CLUBS, FIVE));
+        String expResult = "Cards: FiveOfCLUBS Value: 5";
+        String result = test.printPlayersHand();
+        assertEquals(expResult, result);
+        
     }
 
 
