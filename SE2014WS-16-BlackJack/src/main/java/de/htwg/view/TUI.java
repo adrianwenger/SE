@@ -48,7 +48,7 @@ final class TUI {
 
         System.out.println("-----------------------MENUE--"
                 + "---------------------");
-        System.out.print("1 -- HILFE\n2 -- Play\n3 -- "
+        System.out.print("1 -- HELP\n2 -- Play\n3 -- "
                 + "Deal next card\n4 -- Quit Game\n");
         System.out.print("-->: ");
         int eingabe = SCANNER.nextInt();
@@ -86,15 +86,23 @@ final class TUI {
                         System.out.print("Dealer --> ");
                         System.out.println(dealer.printPlayersHand());
                     } else if (eingabe2.equals("n")) {
-//                       if(player.blackJack()){
-//                           System.out.println("You got BlackJack! You win!");
-                        System.out.print("Player --> ");
-                        System.out.println(player.printPlayersHand());
-                        System.out.print("Dealer --> ");
-                        System.out.println(dealer.printPlayersHand());
-//                            }else{
-//                                System.out.println("You loose!");
-//                            }
+                        if(dealer.getValue() > 21){
+                            System.out.print("Player --> ");
+                            System.out.println(player.printPlayersHand());
+                            System.out.print("Dealer --> ");
+                            System.out.println(dealer.printPlayersHand());
+                            System.out.println("You Win!");
+                            System.exit(0);
+                        }else if (dealer.blackJack()){
+                            System.out.println("You Loose! Dealer got BlackJack! GAME OVER!");
+                            System.exit(0);
+                        } else{
+                            dealer.add(deck.dealCard());
+                            System.out.print("Player --> ");
+                            System.out.println(player.printPlayersHand());
+                            System.out.print("Dealer --> ");
+                            System.out.println(dealer.printPlayersHand());
+                        }
                     }
                     break;
                 case FOUR:
