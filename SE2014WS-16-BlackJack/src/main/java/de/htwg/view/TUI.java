@@ -9,13 +9,10 @@ import java.util.Scanner;
  * @author Adrian Wenger
  */
 final class TUI {
-    private TUI() {
-    }
     /**
      * define Scanner.
      */
     private static final Scanner SCANNER = new Scanner(System.in);
-
     /**
      *
      */
@@ -37,7 +34,7 @@ final class TUI {
     /**
      *
      */
-    public static void main() {
+    public static void main(final String[] args) {
         //Initialize player and dealer
         System.out.println("Bitte geben Sie ihren Namen ein: ");
         System.out.printf("-->: ");
