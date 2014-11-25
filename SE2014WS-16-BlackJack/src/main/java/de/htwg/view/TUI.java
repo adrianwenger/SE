@@ -69,9 +69,9 @@ final class TUI {
 
                     System.out.println("First two cards are dealt!");
                     System.out.print("Player --> ");
-                    player.printPlayersHand();
+                    System.out.println(player.printPlayersHand());
                     System.out.print("Dealer --> ");
-                    dealer.printPlayersHand();
+                    System.out.println(dealer.printPlayersHand());
                     System.out.println();
                     break;
                 case THREE:
@@ -82,16 +82,16 @@ final class TUI {
                         dealer.add(deck.dealCard());
                         //print value
                         System.out.print("Player --> ");
-                        player.printPlayersHand();
+                        System.out.println(player.printPlayersHand());
                         System.out.print("Dealer --> ");
-                        dealer.printPlayersHand();
+                        System.out.println(dealer.printPlayersHand());
                     } else if (eingabe2.equals("n")) {
 //                       if(player.blackJack()){
 //                           System.out.println("You got BlackJack! You win!");
                         System.out.print("Player --> ");
-                        player.printPlayersHand();
+                        System.out.println(player.printPlayersHand());
                         System.out.print("Dealer --> ");
-                        dealer.printPlayersHand();
+                        System.out.println(dealer.printPlayersHand());
 //                            }else{
 //                                System.out.println("You loose!");
 //                            }
@@ -99,7 +99,7 @@ final class TUI {
                     break;
                 case FOUR:
                     System.out.println("END!");
-                    System.exit(1);
+                    System.exit(0);
                     break;
                 default:
             }
