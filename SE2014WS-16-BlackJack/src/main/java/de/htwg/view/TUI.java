@@ -1,5 +1,6 @@
 package de.htwg.view;
 
+import de.htwg.controller.BlackJackController;
 import de.htwg.model.Deck;
 import de.htwg.model.Player;
 import java.util.Scanner;
@@ -9,6 +10,7 @@ import java.util.Scanner;
  * @author Adrian Wenger, Philipp Schultheiß
  */
 final class TUI {
+    
     /**
      * define Scanner.
      */
@@ -52,6 +54,10 @@ final class TUI {
                 + "Deal next card\n4 -- Quit Game\n");
         System.out.print("-->: ");
         int eingabe = SCANNER.nextInt();
+
+        //Auf controller umbauen
+        BlackJackController controller = new BlackJackController(deck, player, dealer);
+        
 
         //Game Runner
         while (eingabe <= FOUR) {
