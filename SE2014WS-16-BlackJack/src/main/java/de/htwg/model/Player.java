@@ -2,7 +2,7 @@ package de.htwg.model;
 
 /**
  *
- * @author Adi
+ * @author Adrian Wenger, Philipp Schultheiß
  */
 public final class Player {
 

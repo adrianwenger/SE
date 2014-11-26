@@ -5,7 +5,7 @@ import java.util.TreeMap;
 
 /**
  *
- * @author Adrian Wenger
+ * @author Adrian Wenger, Philipp Schutltheiß
  */
 public final class Card {
 

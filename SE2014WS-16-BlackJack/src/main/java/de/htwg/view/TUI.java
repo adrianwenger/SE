@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Adrian Wenger
+ * @author Adrian Wenger, Philipp Schultheiß
  */
 final class TUI {
     /**

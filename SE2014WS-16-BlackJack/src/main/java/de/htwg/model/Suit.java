@@ -2,7 +2,7 @@ package de.htwg.model;
 
 /**
  *
- * @author philippschultheiss
+ * @author Adrian Wenger, Philipp Schultheiß
  */
 public enum Suit {
     /**

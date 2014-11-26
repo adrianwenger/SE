@@ -4,7 +4,7 @@ import java.util.Random;
 
 /**
  *
- * @author philippschultheiss
+ * @author Adrian Wenger, Philipp Schultheiß
  */
 public final class Deck {
 
