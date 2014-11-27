@@ -137,12 +137,4 @@ public final class Player {
         }
         return sb.append("Value: ").append(playerVal).toString();
     }
-
-    /**
-     * Checks BlackJack.
-     * @return blackjack?
-    */
-    public boolean blackJack() {
-        return playerVal == BLACKJACK;
-    }
 }

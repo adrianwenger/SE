@@ -109,17 +109,4 @@ public final class PlayerTest {
         Suit expResultSuit = Suit.CLUBS;
         assertEquals(expResultSuit, resultSuit);
     }
-
-    /**
-     * Test of blackJack method, of class Player.
-     */
-    @Test
-    public void testBlackJack() {
-        player.add(new Card(Suit.CLUBS, ACE));
-        player.add(new Card(Suit.CLUBS, ACE));
-        boolean expResult = false;
-        boolean result =  player.blackJack();
-        assertEquals(expResult, result);
-    }
-
 }
