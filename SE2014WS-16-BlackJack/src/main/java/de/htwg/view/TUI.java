@@ -1,15 +1,31 @@
 package de.htwg.view;
 
 import de.htwg.controller.BlackJackController;
-import de.htwg.model.Deck;
-import de.htwg.model.Player;
+import de.htwg.controller.IBlackJackController;
+import de.htwg.util.observer.Event;
+import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
 
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
  */
-final class TUI {
+public final class TUI implements IObserver {
+
+    private final IBlackJackController controller;
+
+    public TUI(IBlackJackController controller) {
+        this.controller = controller;
+        controller.addObserver(this);
+    }
+
+    public void printTui() {
+        System.out.println(controller.output());
+    }
+
+    public void update() {
+        printTui();
+    }
 
     /**
      * define Scanner.
@@ -35,10 +51,12 @@ final class TUI {
 
     /**
      *
+     * @param input String
+     * @return boolean
      */
-    public static void main(final String[] args) {
+    public boolean processInputLine(String input) {
+        boolean continu = true;
         //Auf controller umbauen
-        BlackJackController controller = new BlackJackController();
         //Initialize player and dealer
         System.out.println("Bitte geben Sie ihren Namen ein: ");
         System.out.printf("-->: ");
@@ -107,6 +125,7 @@ final class TUI {
             System.out.print("-->: ");
             eingabe = SCANNER.nextInt();
         }
+        return continu;
     }
 
 }
