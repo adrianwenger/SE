@@ -54,6 +54,10 @@ public class BlackJackController extends Observable implements IBlackJackControl
         this.statusLine = statusLine;
         notifyObservers();
     }
+    
+    public void setCurrentState(IGameState currentState) {
+        this.currentState = currentState;
+    }
 
     public Deck getDeck() {
         return deck;
