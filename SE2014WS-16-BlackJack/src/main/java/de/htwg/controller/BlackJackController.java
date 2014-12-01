@@ -2,10 +2,7 @@ package de.htwg.controller;
 
 import de.htwg.model.Deck;
 import de.htwg.model.Player;
-import de.htwg.util.observer.Event;
-import de.htwg.util.observer.IObserver;
 import de.htwg.util.observer.Observable;
-import de.htwg.view.TUI;
 
 /**
  *
@@ -21,15 +18,19 @@ public class BlackJackController extends Observable implements IBlackJackControl
     private Player player;
     private Player dealer;
     private final static int BLACKJACK = 21;
-    //view schicht fehlt, da kein Konstruktor
     private String statusLine;
-
-
+    /**
+     * saves current Game state of BlackJack.
+     */
+    private IGameState currentState;
+    
     /**
      * Um den Controller bekannt zu machen müssen hier die Model,View Objekte
      * erzeugt werden
      */
     public BlackJackController() {
+        // create a start state
+        currentState = new StateInGame();
     }
 
     public boolean setDeck(int numOfDeck) {
@@ -111,6 +112,13 @@ public class BlackJackController extends Observable implements IBlackJackControl
      */
     public boolean hasBlackJack(Player subject) {
         return subject.getValue() == BLACKJACK;
+    }
+    
+    /**
+     * Changes the IGameState Object
+     */
+    public void changeGameState() {
+        currentState.change(this);
     }
 
     public void checkGameStatus() {
