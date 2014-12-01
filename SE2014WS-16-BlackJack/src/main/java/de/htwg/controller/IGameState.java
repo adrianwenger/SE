@@ -7,7 +7,6 @@ package de.htwg.controller;
 public interface IGameState {
     /**
      *
-     * @param controller controller
      */
-    void change(BlackJackController controller);
+    void change();
 }
