@@ -44,11 +44,10 @@ public final class BlackJack {
      *
      */
     private BlackJack() {
-
         controller = new BlackJackController();
-        controller.create();
         tui = new TUI(controller);
         tui.printTui();
+        controller.create();
     }
 
     /**

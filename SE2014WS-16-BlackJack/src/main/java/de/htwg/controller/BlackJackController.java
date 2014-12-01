@@ -3,6 +3,7 @@ package de.htwg.controller;
 import de.htwg.model.Deck;
 import de.htwg.model.Player;
 import de.htwg.util.observer.Observable;
+import java.util.Scanner;
 
 /**
  *
@@ -154,7 +155,18 @@ public class BlackJackController extends Observable implements IBlackJackControl
     }
 
     public void create() {
-        statusLine = "";
+        Scanner SCANNER = new Scanner(System.in);
+         //Initialize player and dealer
+        setStatusLine("Bitte geben Sie ihren Namen ein: ");
+        setStatusLine("-->: ");
+        setPlayer(SCANNER.next());
+        setDealer();
+        //Initialize the number of decks
+        setStatusLine("Player: " + getPlayer().getName());
+        setStatusLine("How many decks you want for playing BlackJack?");
+        setStatusLine("-->: ");
+
+        setDeck(SCANNER.nextInt());
         notifyObservers();
     }
 

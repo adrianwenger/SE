@@ -54,19 +54,7 @@ public final class TUI implements IObserver {
      */
     public boolean processInputLine(String input) {
         boolean continu = true;
-        //Auf controller umbauen
-        //Initialize player and dealer
-        controller.setStatusLine("Bitte geben Sie ihren Namen ein: ");
-        controller.setStatusLine("-->: ");
-        controller.setPlayer(SCANNER.next());
-        controller.setDealer();
-        //Initialize the number of decks
-        controller.setStatusLine("Player: " + controller.getPlayer().getName());
-        controller.setStatusLine("How many decks you want for playing BlackJack?");
-        controller.setStatusLine("-->: ");
-
-        controller.setDeck(SCANNER.nextInt());
-        
+        //Auf controller umbauen        
         controller.setStatusLine("-----------------------MENUE--"
                 + "---------------------");
         controller.setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
