@@ -24,6 +24,7 @@ public class BlackJackController extends Observable implements IBlackJackControl
     //view schicht fehlt, da kein Konstruktor
     private String statusLine;
 
+
     /**
      * Um den Controller bekannt zu machen müssen hier die Model,View Objekte
      * erzeugt werden
@@ -46,6 +47,11 @@ public class BlackJackController extends Observable implements IBlackJackControl
         this.dealer = new Player("Dealer");
         notifyObservers();
 
+    }
+    
+    public void setStatusLine(String statusLine) {
+        this.statusLine = statusLine;
+        notifyObservers();
     }
 
     public Deck getDeck() {
@@ -109,23 +115,28 @@ public class BlackJackController extends Observable implements IBlackJackControl
 
     public void checkGameStatus() {
         if (hasBlackJack(getDealer())) {
-            System.out.println("You Loose! Dealer got BlackJack! GAME OVER!");
+            statusLine = "You Loose! Dealer got BlackJack! GAME OVER!";
+            notifyObservers();
             System.exit(0);
         }
         if (hasBlackJack(getPlayer())) {
-            System.out.print("BLACKJACK!!!!! You win!");
+            statusLine = "BLACKJACK!!!!! You win!";
+            notifyObservers();
             System.exit(0);
         }
         if (player.getValue() > BLACKJACK) {
-            System.out.println("You loose! Value bigger than 21!");
+            statusLine = "You loose! Value bigger than 21!";
+            notifyObservers();
             System.exit(0);
         }
         if (dealer.getValue() > BLACKJACK) {
-            System.out.println("You win! Dealer get bigger value than 21!");
+            statusLine = "You win! Dealer get bigger value than 21!";
+            notifyObservers();
             System.exit(0);
         }
         if (player.getValue() < BLACKJACK && dealer.getValue() < BLACKJACK) {
-            System.out.println("Take another card!");
+            statusLine = "Take another card!";
+            notifyObservers();
         }
 
     }

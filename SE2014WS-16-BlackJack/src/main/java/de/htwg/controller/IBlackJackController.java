@@ -22,6 +22,8 @@ public interface IBlackJackController extends IObservable {
     public Player getPlayer();
 
     public Player getDealer();
+    
+    public void setStatusLine(String text);
 
     public String getFirstTwoCardsPlayer();
 

@@ -1,8 +1,6 @@
 package de.htwg.view;
 
-import de.htwg.controller.BlackJackController;
 import de.htwg.controller.IBlackJackController;
-import de.htwg.util.observer.Event;
 import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
 
@@ -58,58 +56,58 @@ public final class TUI implements IObserver {
         boolean continu = true;
         //Auf controller umbauen
         //Initialize player and dealer
-        System.out.println("Bitte geben Sie ihren Namen ein: ");
-        System.out.printf("-->: ");
+        controller.setStatusLine("Bitte geben Sie ihren Namen ein: ");
+        controller.setStatusLine("-->: ");
         controller.setPlayer(SCANNER.next());
         controller.setDealer();
         //Initialize the number of decks
-        System.out.println("Player: " + controller.getPlayer().getName());
-        System.out.println("How many decks you want for playing BlackJack?");
-        System.out.printf("-->: ");
+        controller.setStatusLine("Player: " + controller.getPlayer().getName());
+        controller.setStatusLine("How many decks you want for playing BlackJack?");
+        controller.setStatusLine("-->: ");
 
         controller.setDeck(SCANNER.nextInt());
-
-        System.out.println("-----------------------MENUE--"
+        
+        controller.setStatusLine("-----------------------MENUE--"
                 + "---------------------");
-        System.out.print("1 -- HELP\n2 -- Play\n3 -- "
+        controller.setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
                 + "Deal next card\n4 -- Quit Game\n");
-        System.out.print("-->: ");
+        controller.setStatusLine("-->: ");
         int eingabe = SCANNER.nextInt();
 
         //Game Runner
         while (eingabe <= FOUR) {
             switch (eingabe) {
                 case ONE:
-                    System.out.print("1 -- HELP\n2 -- Play\n3 -- Deal "
-                            + "next card\n4 -- Quit Game\n");
+                    controller.setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
+                + "Deal next card\n4 -- Quit Game\n");
                     break;
                 case TWO:
-                    System.out.println("First two cards are dealt!");
-                    System.out.print("Player --> ");
-                    System.out.println(controller.getFirstTwoCardsPlayer());
-                    System.out.print("Dealer --> ");
-                    System.out.println(controller.getFirstTwoCardsDealer());
-                    System.out.println();
+                    controller.setStatusLine("First two cards are dealt!");
+                    controller.setStatusLine("Player --> ");
+                    controller.setStatusLine(controller.getFirstTwoCardsPlayer());
+                    controller.setStatusLine("Dealer --> ");
+                    controller.setStatusLine(controller.getFirstTwoCardsDealer());
+                    controller.setStatusLine("\n");
                     controller.checkGameStatus();
                     break;
                 case THREE:
-                    System.out.println("Do you want one more card? [y/n]");
-                    System.out.print("-->: ");
+                    controller.setStatusLine("Do you want one more card? [y/n]");
+                    controller.setStatusLine("-->: ");
                     String eingabe2 = SCANNER.next();
 
                     if (eingabe2.equals("y")) {
-                        System.out.print("Player --> ");
-                        System.out.println(controller.getCardPlayer());
+                        controller.setStatusLine("Player --> ");
+                        controller.setStatusLine(controller.getCardPlayer());
                         controller.checkIfDealerNeedsCard();
-                        System.out.print("Dealer --> ");
-                        System.out.println(controller.getDealer().printPlayersHand());
+                        controller.setStatusLine("Dealer --> ");
+                        controller.setStatusLine(controller.getDealer().printPlayersHand());
                         controller.checkGameStatus();
                     } else if (eingabe2.equals("n")) {
                         controller.checkIfDealerNeedsCard();
                         controller.checkGameStatus();
-                        System.out.println(controller.getPlayer().printPlayersHand());
-                        System.out.print("Dealer --> ");
-                        System.out.println(controller.getDealer().printPlayersHand());
+                        controller.setStatusLine(controller.getPlayer().printPlayersHand());
+                        controller.setStatusLine("Dealer --> ");
+                        controller.setStatusLine(controller.getDealer().printPlayersHand());
                         System.exit(0);
                     } else if (controller.hasBlackJack(controller.getDealer())) {
                         controller.checkGameStatus();
@@ -117,12 +115,13 @@ public final class TUI implements IObserver {
 
                     break;
                 case FOUR:
-                    System.out.println("END!");
+                    controller.setStatusLine("END!");
                     System.exit(0);
+                    continu = false;
                     break;
                 default:
             }
-            System.out.print("-->: ");
+            controller.setStatusLine("-->: ");
             eingabe = SCANNER.nextInt();
         }
         return continu;
