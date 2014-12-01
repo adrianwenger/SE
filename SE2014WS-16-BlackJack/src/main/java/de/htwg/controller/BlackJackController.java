@@ -36,18 +36,18 @@ public class BlackJackController extends Observable implements IBlackJackControl
 
     public boolean setDeck(int numOfDeck) {
         this.deck = new Deck(numOfDeck);
-        notifyObservers();
+        //notifyObservers();
         return true;
     }
 
     public void setPlayer(String player) {
         this.player = new Player(player);
-        notifyObservers();
+        //notifyObservers();
     }
 
     public void setDealer() {
         this.dealer = new Player("Dealer");
-        notifyObservers();
+        //notifyObservers();
 
     }
     
@@ -75,7 +75,6 @@ public class BlackJackController extends Observable implements IBlackJackControl
     public String getFirstTwoCardsPlayer() {
         player.add(deck.dealCard());
         player.add(deck.dealCard());
-        notifyObservers();
 
         return (player.printPlayersHand());
     }
@@ -83,21 +82,18 @@ public class BlackJackController extends Observable implements IBlackJackControl
     public String getFirstTwoCardsDealer() {
         dealer.add(deck.dealCard());
         dealer.add(deck.dealCard());
-        notifyObservers();
 
         return (dealer.printPlayersHand());
     }
 
     public String getCardPlayer() {
         player.add(deck.dealCard());
-        notifyObservers();
 
         return (player.printPlayersHand());
     }
 
     public String getCardDealer() {
         dealer.add(deck.dealCard());
-        notifyObservers();
 
         return (dealer.printPlayersHand());
     }
@@ -167,7 +163,11 @@ public class BlackJackController extends Observable implements IBlackJackControl
         setStatusLine("-->: ");
 
         setDeck(SCANNER.nextInt());
-        notifyObservers();
+        
+        setStatusLine("-----------------------MENUE--"
+                + "---------------------");
+        setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
+                + "Deal next card\n4 -- Quit Game\n");
     }
 
     public String output() {

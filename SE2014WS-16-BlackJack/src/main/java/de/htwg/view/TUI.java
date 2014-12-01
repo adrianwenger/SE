@@ -52,13 +52,7 @@ public final class TUI implements IObserver {
      * @param input String
      * @return boolean
      */
-    public boolean processInputLine(String input) {
-        boolean continu = true;
-        //Auf controller umbauen        
-        controller.setStatusLine("-----------------------MENUE--"
-                + "---------------------");
-        controller.setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
-                + "Deal next card\n4 -- Quit Game\n");
+    public void processInputLine() {
         controller.setStatusLine("-->: ");
         int eingabe = SCANNER.nextInt();
 
@@ -105,14 +99,12 @@ public final class TUI implements IObserver {
                 case FOUR:
                     controller.setStatusLine("END!");
                     System.exit(0);
-                    continu = false;
                     break;
                 default:
             }
             controller.setStatusLine("-->: ");
             eingabe = SCANNER.nextInt();
         }
-        return continu;
     }
 
 }
