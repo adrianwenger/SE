@@ -52,13 +52,7 @@ public final class TUI implements IObserver {
      * @param input String
      * @return boolean
      */
-    public boolean processInputLine(String input) {
-        boolean continu = true;
-        //Auf controller umbauen        
-        controller.setStatusLine("-----------------------MENUE--"
-                + "---------------------");
-        controller.setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
-                + "Deal next card\n4 -- Quit Game\n");
+    public void processInputLine() {
         controller.setStatusLine("-->: ");
         int eingabe = SCANNER.nextInt();
 
@@ -66,19 +60,10 @@ public final class TUI implements IObserver {
         while (eingabe <= FOUR) {
             switch (eingabe) {
                 case ONE:
-                    controller.setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
-                + "Deal next card\n4 -- Quit Game\n");
+                    controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
+                            + "-- Quit Game\n");
                     break;
                 case TWO:
-                    controller.setStatusLine("First two cards are dealt!");
-                    controller.setStatusLine("Player --> ");
-                    controller.setStatusLine(controller.getFirstTwoCardsPlayer());
-                    controller.setStatusLine("Dealer --> ");
-                    controller.setStatusLine(controller.getFirstTwoCardsDealer());
-                    controller.setStatusLine("\n");
-                    controller.checkGameStatus();
-                    break;
-                case THREE:
                     controller.setStatusLine("Do you want one more card? [y/n]");
                     controller.setStatusLine("-->: ");
                     String eingabe2 = SCANNER.next();
@@ -102,17 +87,15 @@ public final class TUI implements IObserver {
                     }
 
                     break;
-                case FOUR:
+                case THREE:
                     controller.setStatusLine("END!");
                     System.exit(0);
-                    continu = false;
                     break;
                 default:
             }
             controller.setStatusLine("-->: ");
             eingabe = SCANNER.nextInt();
         }
-        return continu;
     }
 
 }

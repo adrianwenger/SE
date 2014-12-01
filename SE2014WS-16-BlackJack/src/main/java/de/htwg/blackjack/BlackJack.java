@@ -70,14 +70,9 @@ public final class BlackJack {
      * @param args not used
      */
     public static void main(final String[] args) {
-
+        //Create new BlackJack Object
         BlackJack.getInstance();
-
-        // continue to read user input on the tui until the user decides to quit
-        boolean continu = true;
-        scanner = new Scanner(System.in);
-        while (continu) {
-            continu = tui.processInputLine(scanner.next());
+        //Starts the TextUserInterface
+        tui.processInputLine();
         }
-    }
 }

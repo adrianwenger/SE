@@ -40,18 +40,18 @@ public class BlackJackController extends Observable
 
     public boolean setDeck(int numOfDeck) {
         this.deck = new Deck(numOfDeck);
-        notifyObservers();
+        //notifyObservers();
         return true;
     }
 
     public void setPlayer(String player) {
         this.player = new Player(player);
-        notifyObservers();
+        //notifyObservers();
     }
 
     public void setDealer() {
         this.dealer = new Player("Dealer");
-        notifyObservers();
+        //notifyObservers();
 
     }
 
@@ -83,7 +83,6 @@ public class BlackJackController extends Observable
     public String getFirstTwoCardsPlayer() {
         player.add(deck.dealCard());
         player.add(deck.dealCard());
-        notifyObservers();
 
         return (player.printPlayersHand());
     }
@@ -91,21 +90,18 @@ public class BlackJackController extends Observable
     public String getFirstTwoCardsDealer() {
         dealer.add(deck.dealCard());
         dealer.add(deck.dealCard());
-        notifyObservers();
 
         return (dealer.printPlayersHand());
     }
 
     public String getCardPlayer() {
         player.add(deck.dealCard());
-        notifyObservers();
 
         return (player.printPlayersHand());
     }
 
     public String getCardDealer() {
         dealer.add(deck.dealCard());
-        notifyObservers();
 
         return (dealer.printPlayersHand());
     }
@@ -187,6 +183,20 @@ public class BlackJackController extends Observable
         setStatusLine("How many decks you want for playing BlackJack?");
         setStatusLine("-->: ");
         setDeck(SCANNER.nextInt());
+        
+        //DEAL FIRST TWO CARDS
+        setStatusLine("First two cards are dealt!");
+        setStatusLine("Player --> ");
+        setStatusLine(getFirstTwoCardsPlayer());
+        setStatusLine("Dealer --> ");
+        setStatusLine(getFirstTwoCardsDealer());
+        setStatusLine("\n");
+        checkGameStatus();
+       
+        //MENUE
+        setStatusLine("-----------------------MENUE--"
+                + "---------------------");
+        setStatusLine("1 -- HELP\n2 -- Next card \n3 -- Quit Game \n");
     }
 
     public String output() {
