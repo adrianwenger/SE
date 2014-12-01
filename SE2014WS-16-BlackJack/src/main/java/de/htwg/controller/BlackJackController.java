@@ -161,13 +161,21 @@ public class BlackJackController extends Observable implements IBlackJackControl
         setStatusLine("Player: " + getPlayer().getName());
         setStatusLine("How many decks you want for playing BlackJack?");
         setStatusLine("-->: ");
-
         setDeck(SCANNER.nextInt());
         
+        //DEAL FIRST TWO CARDS
+        setStatusLine("First two cards are dealt!");
+        setStatusLine("Player --> ");
+        setStatusLine(getFirstTwoCardsPlayer());
+        setStatusLine("Dealer --> ");
+        setStatusLine(getFirstTwoCardsDealer());
+        setStatusLine("\n");
+        checkGameStatus();
+       
+        //MENUE
         setStatusLine("-----------------------MENUE--"
                 + "---------------------");
-        setStatusLine("1 -- HELP\n2 -- Play\n3 -- "
-                + "Deal next card\n4 -- Quit Game\n");
+        setStatusLine("1 -- HELP\n2 -- Next card \n3 -- Quit Game \n");
     }
 
     public String output() {
