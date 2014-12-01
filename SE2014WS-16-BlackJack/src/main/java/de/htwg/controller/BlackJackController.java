@@ -13,25 +13,29 @@ import java.util.Scanner;
  * Der Controller muss beide die View und das Model kennen. da dieser für die
  * Kommunikation zwischen den Beiden sorgt
  */
-public class BlackJackController extends Observable implements IBlackJackController {
+public class BlackJackController extends Observable
+        implements IBlackJackController {
 
     private Deck deck;
     private Player player;
     private Player dealer;
-    private final static int BLACKJACK = 21;
+    /**
+     *
+     */
+    private static final int BLACKJACK = 21;
     private String statusLine;
     /**
      * saves current Game state of BlackJack.
      */
     private IGameState currentState;
-    
+
     /**
      * Um den Controller bekannt zu machen müssen hier die Model,View Objekte
      * erzeugt werden
      */
     public BlackJackController() {
         // create a start state
-        currentState = new StateInGame();
+        currentState = new StateInGame(this);
     }
 
     public boolean setDeck(int numOfDeck) {
@@ -50,14 +54,18 @@ public class BlackJackController extends Observable implements IBlackJackControl
         notifyObservers();
 
     }
-    
+
     public void setStatusLine(String statusLine) {
         this.statusLine = statusLine;
         notifyObservers();
     }
-    
-    public void setCurrentState(IGameState currentState) {
-        this.currentState = currentState;
+
+    /**
+     *
+     * @param state GameState
+     */
+    public final void setCurrentState(final IGameState state) {
+        this.currentState = state;
     }
 
     public Deck getDeck() {
@@ -102,6 +110,14 @@ public class BlackJackController extends Observable implements IBlackJackControl
         return (dealer.printPlayersHand());
     }
 
+    /**
+     * 
+     * @return current GameState
+     */
+    public IGameState getCurrentState() {
+        return currentState;
+    }
+
     public void checkIfDealerNeedsCard() {
         if (dealer.getValue() < BLACKJACK) {
             if (dealer.getValue() < player.getValue()) {
@@ -118,12 +134,12 @@ public class BlackJackController extends Observable implements IBlackJackControl
     public boolean hasBlackJack(Player subject) {
         return subject.getValue() == BLACKJACK;
     }
-    
+
     /**
      * Changes the IGameState Object
      */
     public void changeGameState() {
-        currentState.change(this);
+        currentState.change();
     }
 
     public void checkGameStatus() {
@@ -154,20 +170,23 @@ public class BlackJackController extends Observable implements IBlackJackControl
 
     }
 
-    public void create() {
+    /**
+     *
+     */
+    public final void create() {
         Scanner SCANNER = new Scanner(System.in);
-         //Initialize player and dealer
+        //Initialize player and dealer
         setStatusLine("Bitte geben Sie ihren Namen ein: ");
         setStatusLine("-->: ");
         setPlayer(SCANNER.next());
         setDealer();
+        // Set Game State to StateInGame
+        setCurrentState(new StateInGame(this));
         //Initialize the number of decks
         setStatusLine("Player: " + getPlayer().getName());
         setStatusLine("How many decks you want for playing BlackJack?");
         setStatusLine("-->: ");
-
         setDeck(SCANNER.nextInt());
-        notifyObservers();
     }
 
     public String output() {
