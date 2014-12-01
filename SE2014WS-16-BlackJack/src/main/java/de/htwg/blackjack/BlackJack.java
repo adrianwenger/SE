@@ -11,11 +11,27 @@ import java.util.Scanner;
  */
 public final class BlackJack {
 
+    /**
+     *
+     */
     private static Scanner scanner;
+    /**
+     *
+     */
     private final IBlackJackController controller;
+    /**
+     *
+     */
     private static TUI tui;
+    /**
+     *
+     */
     private static BlackJack instance = null;
 
+    /**
+     *
+     * @return instance
+     */
     public static BlackJack getInstance() {
         if (instance == null) {
             instance = new BlackJack();
@@ -24,6 +40,9 @@ public final class BlackJack {
 
     }
 
+    /**
+     *
+     */
     private BlackJack() {
 
         controller = new BlackJackController();
@@ -32,14 +51,26 @@ public final class BlackJack {
         tui.printTui();
     }
 
-//    public IBlackJackController getController() {
-//        return controller;
-//    }
-//
-//    public TUI getTUI() {
-//        return tui;
-//    }
-    public static void main(String[] args) {
+    /**
+     *
+     * @return controller
+     */
+    public IBlackJackController getController() {
+        return controller;
+    }
+
+    /**
+     *
+     * @return tui
+     */
+    public TUI getTUI() {
+        return tui;
+    }
+    /**
+     *
+     * @param args not used
+     */
+    public static void main(final String[] args) {
 
         BlackJack.getInstance();
 
