@@ -3,44 +3,46 @@ package de.htwg.controller;
 import de.htwg.model.Deck;
 import de.htwg.model.Player;
 import de.htwg.util.observer.IObservable;
-import de.htwg.view.TUI;
 
 /**
  *
  * @author Adrian Wenger
  */
 public interface IBlackJackController extends IObservable {
+    /**
+     * create a Deck with a specific number.
+     * @param numOfDeck numbers of decks
+     * @return boolean if successfull
+     */
+    boolean setDeck(int numOfDeck);
 
-    public boolean setDeck(int numOfDeck);
+    void setPlayer(String player);
 
-    public void setPlayer(String player);
+    void setDealer();
 
-    public void setDealer();
+    Deck getDeck();
 
-    public Deck getDeck();
+    Player getPlayer();
 
-    public Player getPlayer();
-
-    public Player getDealer();
+    Player getDealer();
     
-    public void setStatusLine(String text);
+    void setStatusLine(String text);
 
-    public String getFirstTwoCardsPlayer();
+    String getFirstTwoCardsPlayer();
 
-    public String getFirstTwoCardsDealer();
+    String getFirstTwoCardsDealer();
 
-    public String getCardPlayer();
+    String getCardPlayer();
 
-    public String getCardDealer();
+    String getCardDealer();
 
-    public void checkIfDealerNeedsCard();
+    void checkIfDealerNeedsCard();
     
-    public boolean hasBlackJack(Player subject);
+    boolean hasBlackJack(Player subject);
     
-    public void checkGameStatus();
+    void checkGameStatus();
     
-    public void create();
+    void create();
     
-    public String output();
-
+    String output();
 }

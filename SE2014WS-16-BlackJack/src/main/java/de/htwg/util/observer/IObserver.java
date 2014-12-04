@@ -6,6 +6,9 @@ package de.htwg.util.observer;
  */
 public interface IObserver {
 
+    /**
+     * upate the Subscribers after notified from Subject.
+     */
     void update();
 
 }

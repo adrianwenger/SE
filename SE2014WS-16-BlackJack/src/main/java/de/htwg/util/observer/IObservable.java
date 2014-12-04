@@ -1,23 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package de.htwg.util.observer;
 
 /**
  *
- * @author Adi
+ * @author Adrian Wenger
  */
 public interface IObservable {
-    
+    /**
+     * add a subscriber.
+     * @param s subscriber
+     */
     void addObserver(IObserver s);
 
+    /**
+     * remove subscriber.
+     * @param s subscriber
+     */
     void removeObserver(IObserver s);
 
+    /**
+     * remove all subscribers.
+     */
     void removeAllObservers();
 
+    /**
+     * notify the subscribers about change in subject.
+     */
     void notifyObservers();
-
 }

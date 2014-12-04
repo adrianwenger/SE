@@ -14,19 +14,21 @@ import java.util.List;
  *
  * @author Adrian Wenger
  */
-public class Observable implements IObservable{
+public class Observable implements IObservable {
+    /**
+     * List to save Subscriber Objects.
+     */
+    private final List<IObserver> subscribers = new ArrayList<IObserver>();
 
-    private List<IObserver> subscribers = new ArrayList<IObserver>(2);
-
-    public void addObserver(IObserver s) {
+    public final void addObserver(IObserver s) {
         subscribers.add(s);
     }
 
-    public void removeObserver(IObserver s) {
+    public final void removeObserver(IObserver s) {
         subscribers.remove(s);
     }
 
-    public void removeAllObservers() {
+    public final void removeAllObservers() {
         subscribers.clear();
     }
 
@@ -36,5 +38,4 @@ public class Observable implements IObservable{
             observer.update();
         }
     }
-    
 }

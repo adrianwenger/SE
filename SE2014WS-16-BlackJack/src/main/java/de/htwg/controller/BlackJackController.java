@@ -30,7 +30,7 @@ public class BlackJackController extends Observable
     private IGameState currentState;
 
     /**
-     * Um den Controller bekannt zu machen müssen hier die Model,View Objekte
+     * Um den Controller bekannt zu machen müssen hier die Model,View Objekte.
      * erzeugt werden
      */
     public BlackJackController() {
