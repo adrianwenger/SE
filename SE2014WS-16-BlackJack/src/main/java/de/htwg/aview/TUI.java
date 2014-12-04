@@ -61,6 +61,9 @@ public final class TUI implements IObserver {
      */
     private static final int FOUR = 4;
 
+    /**
+     * create the game.
+     */
     public void createGame() {
         //Initialize player and dealer
         this.controller.setStatusLine("Bitte geben Sie ihren Namen ein: ");
@@ -82,15 +85,10 @@ public final class TUI implements IObserver {
         this.controller.setStatusLine(this.controller.getFirstTwoCardsPlayer());
         this.controller.setStatusLine("Dealer --> ");
         this.controller.setStatusLine(this.controller.getFirstTwoCardsDealer());
-        this.controller.setStatusLine("\n");
         this.controller.checkGameState();
 
         //print MENUE
-        this.controller.setStatusLine("-----------------------MENUE--"
-                + "---------------------");
-        this.controller.setStatusLine("1 -- HELP\n2 -- Next card "
-                + "\n3 -- Quit Game \n");
-        processInputLine();
+        printHelpMenu();
     }
 
     /**
@@ -105,8 +103,7 @@ public final class TUI implements IObserver {
         while (eingabe <= FOUR) {
             switch (eingabe) {
                 case ONE:
-                    controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
-                            + "-- Quit Game\n");
+                    printHelpMenu();
                     break;
                 case TWO:
                     controller.setStatusLine("One more card? [y/n]");
@@ -135,15 +132,24 @@ public final class TUI implements IObserver {
                     }
                     break;
                 case THREE:
-                    controller.checkGameState();
+                    controller.endGame();
                     controller.setStatusLine("END!");
                     System.exit(0);
                 default:
-                    controller.setStatusLine("test");
             }
+            printHelpMenu();
             controller.setStatusLine("-->: ");
             eingabe = SCANNER.nextInt();
         }
     }
 
+    /**
+     * print the tui menu.
+     */
+    public void printHelpMenu() {
+        this.controller.setStatusLine("-----------------------MENUE--"
+                + "---------------------");
+        this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
+                + "-- Quit Game\n");
+    }
 }

@@ -1,7 +1,5 @@
 package de.htwg.controller;
 
-import de.htwg.model.Player;
-
 /**
  * this class is used to implement the stateInGame.
  *
@@ -35,65 +33,23 @@ final class StateInGame implements IGameState {
         this.controller = cont;
     }
 
-    /*
-     public void checkGameStatus() {
-     changeGameState();
-        
-     if (hasBlackJack(getDealer())) {
-     statusLine = "You Loose! Dealer got BlackJack! GAME OVER!";
-     notifyObservers();
-     System.exit(0);
-     }
-     if (hasBlackJack(getPlayer())) {
-     statusLine = "BLACKJACK!!!!! You win!";
-     notifyObservers();
-     System.exit(0);
-     }
-     if (player.getValue() > BLACKJACK) {
-     statusLine = "You loose! Value bigger than 21!";
-     notifyObservers();
-     System.exit(0);
-     }
-     if (dealer.getValue() > BLACKJACK) {
-     statusLine = "You win! Dealer get bigger value than 21!";
-     notifyObservers();
-     System.exit(0);
-     }
-     if (player.getValue() < BLACKJACK && dealer.getValue() < BLACKJACK) {
-     statusLine = "Take another card!";
-     notifyObservers();
-     }
-
-     }
-
-     */
     /**
      * change GameState if nessecary.
      */
+    @Override
     public void change() {
-        // Player lost (Dealer got BlackJack)
-        if (this.controller.hasBlackJack(this.controller.getDealer())) {
-            controller.setCurrentState(new StateBlackJack(controller,
-                    controller.getDealer()));
-            // Player won (Player got BlackJack)
-        } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
-            controller.setCurrentState(new StateBlackJack(controller,
-                    controller.getPlayer()));
-        }
-        // Player lost (Player > BlackJack)
-        if (this.controller.getPlayer().getValue() > BLACKJACK) {
-            this.controller.setCurrentState(new StateLost(controller));
-            // Player won (Player < BlackJack && Dealer > BlackJack)
-        } else if ((this.controller.getPlayer().getValue() < BLACKJACK
+        // Player won (Player < BlackJack && Dealer > BlackJack)
+        if ((this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() > BLACKJACK)) {
-            // Player won
             this.controller.setCurrentState(new StateWon(controller));
-            // Player lost (Player && Dealer > BlackJack)
-        } else if (this.controller.getPlayer().getValue() > BLACKJACK
-                && this.controller.getDealer().getValue() > BLACKJACK) {
-            this.controller.setCurrentState(new StateLost(controller));
+        // game will move on (both < 21)
+        } else if (this.controller.getPlayer().getValue() < BLACKJACK
+                && this.controller.getDealer().getValue() < BLACKJACK) {
+            this.controller.setStatusLine("Please take another card (2) or "
+                    + "quit game (3)");
         } else {
-            this.controller.setStatusLine("New Card?");
+            // Player lost
+            this.controller.setCurrentState(new StateLost(controller));
         }
     }
 }
@@ -115,16 +71,21 @@ final class StateLost implements IGameState {
      */
     public StateLost(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
+        change();
     }
 
     /**
      *
      */
+    @Override
     public void change() {
-        this.controller.setStatusLine(this.controller.getPlayer().getName()
-                + " you lost. Your Cards are: "
-                + this.controller.getPlayer().printPlayersHand());
-        System.exit(0);
+        if (this.controller.hasBlackJack(this.controller.getDealer())) {
+            this.controller.setCurrentState(new StateBlackJack(controller));
+        } else {
+            this.controller.setStatusLine("Game Over: --> "
+                    + this.controller.getPlayer().printPlayersHand());
+            System.exit(0);
+        }
     }
 }
 
@@ -146,14 +107,23 @@ final class StateWon implements IGameState {
      */
     public StateWon(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
+        change();
     }
 
     /**
      * GameState not longer changeable.
      */
+    @Override
     public void change() {
-        this.controller.setStatusLine("Player won!");
-        System.exit(0);
+        // Player Won in concerning BlackJack
+        if (this.controller.hasBlackJack(this.controller.getPlayer())) {
+            this.controller.setCurrentState(new StateBlackJack(controller));
+        } else {
+            // Player won concerning better face
+            this.controller.setStatusLine("Player won!!!! --> "
+                    + this.controller.getPlayer().printPlayersHand());
+            System.exit(0);
+        }
     }
 }
 
@@ -167,30 +137,27 @@ final class StateBlackJack implements IGameState {
      * BlackJack Controller.
      */
     private final IBlackJackController controller;
-    /**
-     * Player Object.
-     */
-    private final Player subject;
 
     /**
      * Public Constructor.
      *
      * @param blackJackController controller
-     * @param sub Player object
      */
-    public StateBlackJack(final IBlackJackController blackJackController,
-            final Player sub) {
+    public StateBlackJack(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
-        this.subject = sub;
+        change();
     }
 
     /**
      * now other State available.
      */
+    @Override
     public void change() {
-        this.controller.setStatusLine(subject.getName()
-                + " reached Black Jack. Game Over!");
+        if (this.controller.hasBlackJack(this.controller.getDealer())) {
+            this.controller.setStatusLine("Dealer got BlackJack!");
+        } else {
+            this.controller.setStatusLine("Player got BlackJack!");
+        }
         System.exit(0);
     }
-
 }

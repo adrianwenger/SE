@@ -52,4 +52,6 @@ public interface IBlackJackController extends IObservable {
     void create();
     
     String output();
+    
+    void endGame();
 }

@@ -10,14 +10,43 @@ import java.util.Scanner;
  * @author Adrian Wenger
  */
 public final class BlackJack {
+
     /**
-     *
+     * Scanner input reading.
+     */
+    private static Scanner scanner;
+    /**
+     * IBlackJackController controller.
      */
     private final IBlackJackController controller;
     /**
-     *
+     * tui.
      */
-    private static TUI tui;
+    private TUI tui;
+    /**
+     * static BlackJack instance.
+     */
+    private static BlackJack instance = null;
+
+    /**
+     * Singleton.
+     *
+     * @return instance
+     */
+    public static BlackJack getInstance() {
+        if (instance == null) {
+            instance = new BlackJack();
+        }
+        return instance;
+
+    }
+
+    /**
+     * @return tui
+     */
+    public TUI getTui() {
+        return tui;
+    }
 
     /**
      *
@@ -35,8 +64,9 @@ public final class BlackJack {
      */
     public static void main(final String[] args) {
         //Create new BlackJack Object
-        new BlackJack();
+        BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
-        tui.createGame();
-        }
+        game.getTui().createGame();
+        game.getTui().processInputLine();
+    }
 }
