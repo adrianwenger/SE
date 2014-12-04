@@ -3,7 +3,6 @@ package de.htwg.controller;
 import de.htwg.model.Deck;
 import de.htwg.model.Player;
 import de.htwg.util.observer.Observable;
-import java.util.Scanner;
 
 /**
  *
@@ -13,16 +12,28 @@ import java.util.Scanner;
  * Der Controller muss beide die View und das Model kennen. da dieser für die
  * Kommunikation zwischen den Beiden sorgt
  */
-public class BlackJackController extends Observable
+public final class BlackJackController extends Observable
         implements IBlackJackController {
 
+    /**
+     *
+     */
     private Deck deck;
+    /**
+     *
+     */
     private Player player;
+    /**
+     *
+     */
     private Player dealer;
     /**
      *
      */
     private static final int BLACKJACK = 21;
+    /**
+     *
+     */
     private String statusLine;
     /**
      * saves current Game state of BlackJack.
@@ -30,33 +41,34 @@ public class BlackJackController extends Observable
     private IGameState currentState;
 
     /**
-     * Um den Controller bekannt zu machen müssen hier die Model,View Objekte.
-     * erzeugt werden
+     *
+     * @param numOfDeck number of Decks
      */
-    public BlackJackController() {
-        // create a start state
-        currentState = new State(this);
-    }
-
-    public boolean setDeck(int numOfDeck) {
+    public void setDeck(final int numOfDeck) {
         this.deck = new Deck(numOfDeck);
-        //notifyObservers();
-        return true;
     }
 
-    public void setPlayer(String player) {
-        this.player = new Player(player);
-        //notifyObservers();
+    /**
+     *
+     * @param pla Player
+     */
+    public void setPlayer(final String pla) {
+        this.player = new Player(pla);
     }
 
+    /**
+     * set Dealer.
+     */
     public void setDealer() {
         this.dealer = new Player("Dealer");
-        //notifyObservers();
-
     }
 
-    public void setStatusLine(String statusLine) {
-        this.statusLine = statusLine;
+    /**
+     *
+     * @param status statusLine
+     */
+    public void setStatusLine(final String status) {
+        this.statusLine = status;
         notifyObservers();
     }
 
@@ -65,22 +77,38 @@ public class BlackJackController extends Observable
      *
      * @param state GameState
      */
-    public final void setCurrentState(final IGameState state) {
+    public void setCurrentState(final IGameState state) {
         this.currentState = state;
     }
 
+    /**
+     *
+     * @return deck
+     */
     public Deck getDeck() {
         return deck;
     }
 
+    /**
+     *
+     * @return player
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     *
+     * @return dealer
+     */
     public Player getDealer() {
         return dealer;
     }
 
+    /**
+     *
+     * @return printPlayersHand
+     */
     public String getFirstTwoCardsPlayer() {
         player.add(deck.dealCard());
         player.add(deck.dealCard());
@@ -88,6 +116,10 @@ public class BlackJackController extends Observable
         return (player.printPlayersHand());
     }
 
+    /**
+     *
+     * @return printPlayersHand
+     */
     public String getFirstTwoCardsDealer() {
         dealer.add(deck.dealCard());
         dealer.add(deck.dealCard());
@@ -95,12 +127,20 @@ public class BlackJackController extends Observable
         return (dealer.printPlayersHand());
     }
 
+    /**
+     *
+     * @return printPlayersHand
+     */
     public String getCardPlayer() {
         player.add(deck.dealCard());
 
         return (player.printPlayersHand());
     }
 
+    /**
+     *
+     * @return printPlayersHand
+     */
     public String getCardDealer() {
         dealer.add(deck.dealCard());
 
@@ -108,13 +148,17 @@ public class BlackJackController extends Observable
     }
 
     /**
-     * 
+     *
      * @return current GameState
      */
     public IGameState getCurrentState() {
+        checkGameState();
         return currentState;
     }
 
+    /**
+     * checks if Dealer needs another Card, after Player got his.
+     */
     public void checkIfDealerNeedsCard() {
         if (dealer.getValue() < BLACKJACK) {
             if (dealer.getValue() < player.getValue()) {
@@ -124,84 +168,35 @@ public class BlackJackController extends Observable
     }
 
     /**
-     * Checks BlackJack.
+     * Check BlackJack.
      *
+     * @param subject Player Object
      * @return blackjack?
      */
-    public boolean hasBlackJack(Player subject) {
+    public boolean hasBlackJack(final Player subject) {
         return subject.getValue() == BLACKJACK;
     }
 
     /**
-     * Changes the IGameState Object
+     * Changes the IGameState Object.
      */
-    public void changeGameState() {
+    public void checkGameState() {
         currentState.change();
     }
 
-    public void checkGameStatus() {
-        changeGameState();
-        
-        if (hasBlackJack(getDealer())) {
-            statusLine = "You Loose! Dealer got BlackJack! GAME OVER!";
-            notifyObservers();
-            System.exit(0);
-        }
-        if (hasBlackJack(getPlayer())) {
-            statusLine = "BLACKJACK!!!!! You win!";
-            notifyObservers();
-            System.exit(0);
-        }
-        if (player.getValue() > BLACKJACK) {
-            statusLine = "You loose! Value bigger than 21!";
-            notifyObservers();
-            System.exit(0);
-        }
-        if (dealer.getValue() > BLACKJACK) {
-            statusLine = "You win! Dealer get bigger value than 21!";
-            notifyObservers();
-            System.exit(0);
-        }
-        if (player.getValue() < BLACKJACK && dealer.getValue() < BLACKJACK) {
-            statusLine = "Take another card!";
-            notifyObservers();
-        }
-
+    /**
+     * initialize Game in StateInGame.
+     */
+    public void create() {
+        setCurrentState(new StateInGame(this));
+        statusLine = "Welcome to BlackJack...";
     }
 
     /**
+     * returns stautsLine.
      *
+     * @return statusLine
      */
-    public final void create() {
-        Scanner SCANNER = new Scanner(System.in);
-        //Initialize player and dealer
-        setStatusLine("Bitte geben Sie ihren Namen ein: ");
-        setStatusLine("-->: ");
-        setPlayer(SCANNER.next());
-        setDealer();
-        // Set Game State to State
-        setCurrentState(new State(this));
-        //Initialize the number of decks
-        setStatusLine("Player: " + getPlayer().getName());
-        setStatusLine("How many decks you want for playing BlackJack?");
-        setStatusLine("-->: ");
-        setDeck(SCANNER.nextInt());
-
-        //DEAL FIRST TWO CARDS
-        setStatusLine("First two cards are dealt!");
-        setStatusLine("Player --> ");
-        setStatusLine(getFirstTwoCardsPlayer());
-        setStatusLine("Dealer --> ");
-        setStatusLine(getFirstTwoCardsDealer());
-        setStatusLine("\n");
-        checkGameStatus();
-
-        //MENUE
-        setStatusLine("-----------------------MENUE--"
-                + "---------------------");
-        setStatusLine("1 -- HELP\n2 -- Next card \n3 -- Quit Game \n");
-    }
-
     public String output() {
         return statusLine;
     }

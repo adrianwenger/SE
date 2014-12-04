@@ -12,9 +12,8 @@ public interface IBlackJackController extends IObservable {
     /**
      * create a Deck with a specific number.
      * @param numOfDeck numbers of decks
-     * @return boolean if successfull
      */
-    boolean setDeck(int numOfDeck);
+    void setDeck(int numOfDeck);
 
     /**
      * 
@@ -48,7 +47,7 @@ public interface IBlackJackController extends IObservable {
     
     boolean hasBlackJack(Player subject);
     
-    void checkGameStatus();
+    void checkGameState();
     
     void create();
     
