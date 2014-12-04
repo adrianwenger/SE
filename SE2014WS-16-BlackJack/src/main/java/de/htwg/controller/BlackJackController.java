@@ -35,7 +35,7 @@ public class BlackJackController extends Observable
      */
     public BlackJackController() {
         // create a start state
-        currentState = new StateInGame(this);
+        currentState = new State(this);
     }
 
     public boolean setDeck(int numOfDeck) {
@@ -61,6 +61,7 @@ public class BlackJackController extends Observable
     }
 
     /**
+     * change game state.
      *
      * @param state GameState
      */
@@ -139,6 +140,8 @@ public class BlackJackController extends Observable
     }
 
     public void checkGameStatus() {
+        changeGameState();
+        
         if (hasBlackJack(getDealer())) {
             statusLine = "You Loose! Dealer got BlackJack! GAME OVER!";
             notifyObservers();
@@ -176,14 +179,14 @@ public class BlackJackController extends Observable
         setStatusLine("-->: ");
         setPlayer(SCANNER.next());
         setDealer();
-        // Set Game State to StateInGame
-        setCurrentState(new StateInGame(this));
+        // Set Game State to State
+        setCurrentState(new State(this));
         //Initialize the number of decks
         setStatusLine("Player: " + getPlayer().getName());
         setStatusLine("How many decks you want for playing BlackJack?");
         setStatusLine("-->: ");
         setDeck(SCANNER.nextInt());
-        
+
         //DEAL FIRST TWO CARDS
         setStatusLine("First two cards are dealt!");
         setStatusLine("Player --> ");
@@ -192,7 +195,7 @@ public class BlackJackController extends Observable
         setStatusLine(getFirstTwoCardsDealer());
         setStatusLine("\n");
         checkGameStatus();
-       
+
         //MENUE
         setStatusLine("-----------------------MENUE--"
                 + "---------------------");

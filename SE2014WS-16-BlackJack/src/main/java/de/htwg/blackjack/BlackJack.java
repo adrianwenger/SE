@@ -2,7 +2,7 @@ package de.htwg.blackjack;
 
 import de.htwg.controller.BlackJackController;
 import de.htwg.controller.IBlackJackController;
-import de.htwg.view.TUI;
+import de.htwg.aview.TUI;
 import java.util.Scanner;
 
 /**
@@ -23,31 +23,15 @@ public final class BlackJack {
      *
      */
     private static TUI tui;
-    /**
-     *
-     */
-    private static BlackJack instance = null;
-
-    /**
-     *
-     * @return instance
-     */
-    public static BlackJack getInstance() {
-        if (instance == null) {
-            instance = new BlackJack();
-        }
-        return instance;
-
-    }
-
+   
     /**
      *
      */
     private BlackJack() {
         controller = new BlackJackController();
         tui = new TUI(controller);
-        tui.printTui();
         controller.create();
+        tui.printTui();
     }
 
     /**
@@ -71,7 +55,7 @@ public final class BlackJack {
      */
     public static void main(final String[] args) {
         //Create new BlackJack Object
-        BlackJack.getInstance();
+        new BlackJack();
         //Starts the TextUserInterface
         tui.processInputLine();
         }

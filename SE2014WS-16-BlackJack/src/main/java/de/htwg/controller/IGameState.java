@@ -6,7 +6,7 @@ package de.htwg.controller;
  */
 public interface IGameState {
     /**
-     *
+     * Changes the Game State.
      */
     void change();
 }

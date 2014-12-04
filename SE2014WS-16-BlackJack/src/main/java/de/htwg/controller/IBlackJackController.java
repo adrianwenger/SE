@@ -16,7 +16,13 @@ public interface IBlackJackController extends IObservable {
      */
     boolean setDeck(int numOfDeck);
 
+    /**
+     * 
+     * @param player 
+     */
     void setPlayer(String player);
+    
+    void setCurrentState(IGameState state);
 
     void setDealer();
 
@@ -25,6 +31,8 @@ public interface IBlackJackController extends IObservable {
     Player getPlayer();
 
     Player getDealer();
+    
+    IGameState getCurrentState();
     
     void setStatusLine(String text);
 

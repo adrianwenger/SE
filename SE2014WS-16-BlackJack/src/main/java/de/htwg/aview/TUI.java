@@ -1,4 +1,4 @@
-package de.htwg.view;
+package de.htwg.aview;
 
 import de.htwg.controller.IBlackJackController;
 import de.htwg.util.observer.IObserver;
