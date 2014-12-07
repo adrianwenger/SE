@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package de.htwg.util.observer;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -20,21 +13,34 @@ public class Observable implements IObservable {
      */
     private final List<IObserver> subscribers = new ArrayList<IObserver>();
 
-    public final void addObserver(IObserver s) {
+    /**
+     * add single observer to subscriber list.
+     * @param s Obersver
+     */
+    public final void addObserver(final IObserver s) {
         subscribers.add(s);
     }
 
-    public final void removeObserver(IObserver s) {
+    /**
+     * remove single observer from subscriber list.
+     * @param s Observer
+     */
+    public final void removeObserver(final IObserver s) {
         subscribers.remove(s);
     }
 
+    /**
+     * clear subscriber list.
+     */
     public final void removeAllObservers() {
         subscribers.clear();
     }
 
-    public void notifyObservers() {
-        for (Iterator<IObserver> iter = subscribers.iterator(); iter.hasNext();) {
-            IObserver observer = iter.next();
+    /**
+     * notify each observer in subscriber List.
+     */
+    public final void notifyObservers() {
+        for (IObserver observer : subscribers) {
             observer.update();
         }
     }

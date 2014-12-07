@@ -1,6 +1,5 @@
 package de.htwg.model.impl;
 
-import de.htwg.model.impl.Suit;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -31,7 +30,6 @@ public final class Card {
      *
      */
     private int i = ONE;
-
 
     /**
      * Card constructor.
@@ -77,24 +75,17 @@ public final class Card {
      * creates the Cards the game contains.
      */
     private void createCards() {
-        insertCardValues("Ace");
-        insertCardValues("Two");
-        insertCardValues("Three");
-        insertCardValues("Four");
-        insertCardValues("Five");
-        insertCardValues("Six");
-        insertCardValues("Seven");
-        insertCardValues("Eight");
-        insertCardValues("Nine");
-        insertCardValues("Ten");
-        insertCardValues("Jack");
-        insertCardValues("Queen");
-        insertCardValues("King");
-        insertCardValues("Ace");
+        String[] values = new String[]{"Ace", "Two", "Three", "Four", "Five",
+            "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King",
+            "Ace"};
+        for (String value : values) {
+            insertCardValues(value);
+        }
     }
 
     /**
      * fills the TreeMap cards with keys and values.
+     *
      * @param num value of the card
      */
     private void insertCardValues(final String num) {

@@ -1,13 +1,13 @@
 package de.htwg.model.impl;
 
-import de.htwg.model.impl.Suit;
+import de.htwg.model.IDeck;
 import java.util.Random;
 
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
  */
-public final class Deck {
+public final class Deck implements IDeck {
 
     /**
      *

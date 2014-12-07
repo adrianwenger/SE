@@ -1,10 +1,11 @@
 package de.htwg.model.impl;
+import de.htwg.model.IPlayer;
 
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
  */
-public final class Player {
+public final class Player implements IPlayer {
 
     /**
      *
