@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BlackJack.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SE2014WS-16-BlackJack</a> &gt; <a href="index.source.html" class="el_package">de.htwg.blackjack</a> &gt; <span class="el_source">BlackJack.java</span></div><h1>BlackJack.java</h1><pre class="source lang-java linenums">package de.htwg.blackjack;
+
+import de.htwg.controller.BlackJackController;
+import de.htwg.controller.IBlackJackController;
+import de.htwg.view.TUI;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Adrian Wenger
+ */
+public final class BlackJack {
+
+    private static Scanner scanner;
+    private final IBlackJackController controller;
+    private static TUI tui;
+<span class="nc" id="L17">    private static BlackJack instance = null;</span>
+
+    public static BlackJack getInstance() {
+<span class="nc bnc" id="L20" title="All 2 branches missed.">        if (instance == null) {</span>
+<span class="nc" id="L21">            instance = new BlackJack();</span>
+        }
+<span class="nc" id="L23">        return instance;</span>
+
+    }
+
+<span class="nc" id="L27">    private BlackJack() {</span>
+
+<span class="nc" id="L29">        controller = new BlackJackController();</span>
+<span class="nc" id="L30">        controller.create();</span>
+<span class="nc" id="L31">        tui = new TUI(controller);</span>
+<span class="nc" id="L32">        tui.printTui();</span>
+<span class="nc" id="L33">    }</span>
+
+//    public IBlackJackController getController() {
+//        return controller;
+//    }
+//
+//    public TUI getTUI() {
+//        return tui;
+//    }
+    public static void main(String[] args) {
+
+<span class="nc" id="L44">        BlackJack.getInstance();</span>
+
+        // continue to read user input on the tui until the user decides to quit
+<span class="nc" id="L47">        boolean continu = true;</span>
+<span class="nc" id="L48">        scanner = new Scanner(System.in);</span>
+<span class="nc bnc" id="L49" title="All 2 branches missed.">        while (continu) {</span>
+<span class="nc" id="L50">            continu = tui.processInputLine(scanner.next());</span>
+        }
+<span class="nc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>
