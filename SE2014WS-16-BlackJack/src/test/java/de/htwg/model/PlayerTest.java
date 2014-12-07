@@ -1,5 +1,9 @@
 package de.htwg.model;
 
+import de.htwg.model.impl.Deck;
+import de.htwg.model.impl.Card;
+import de.htwg.model.impl.Suit;
+import de.htwg.model.impl.Player;
 import java.util.LinkedList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;

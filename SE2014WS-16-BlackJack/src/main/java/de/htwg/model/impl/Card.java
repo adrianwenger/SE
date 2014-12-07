@@ -1,5 +1,6 @@
-package de.htwg.model;
+package de.htwg.model.impl;
 
+import de.htwg.model.impl.Suit;
 import java.util.Map;
 import java.util.TreeMap;
 

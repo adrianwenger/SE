@@ -1,4 +1,4 @@
-package de.htwg.model;
+package de.htwg.model.impl;
 
 /**
  *

@@ -10,11 +10,6 @@ import java.util.Scanner;
  * @author Adrian Wenger
  */
 public final class BlackJack {
-
-    /**
-     * Scanner input reading.
-     */
-    private static Scanner scanner;
     /**
      * IBlackJackController controller.
      */
@@ -67,6 +62,6 @@ public final class BlackJack {
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
         game.getTui().createGame();
-        game.getTui().processInputLine();
+        game.getTui().continueGame();
     }
 }

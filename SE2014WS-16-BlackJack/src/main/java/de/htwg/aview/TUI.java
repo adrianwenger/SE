@@ -85,6 +85,7 @@ public final class TUI implements IObserver {
         this.controller.setStatusLine(this.controller.getFirstTwoCardsPlayer());
         this.controller.setStatusLine("Dealer --> ");
         this.controller.setStatusLine(this.controller.getFirstTwoCardsDealer());
+        this.controller.checkIfDealerNeedsCard();
         this.controller.checkGameState();
 
         //print MENUE
@@ -95,7 +96,7 @@ public final class TUI implements IObserver {
      * uses the controller to save data in model layers. prints returned values
      * from controller.
      */
-    public void processInputLine() {
+    public void continueGame() {
         controller.setStatusLine("-->: ");
         int eingabe = SCANNER.nextInt();
 

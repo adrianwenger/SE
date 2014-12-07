@@ -1,7 +1,7 @@
 package de.htwg.controller;
 
-import de.htwg.model.Deck;
-import de.htwg.model.Player;
+import de.htwg.model.impl.Deck;
+import de.htwg.model.impl.Player;
 import de.htwg.util.observer.Observable;
 
 /**

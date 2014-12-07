@@ -46,7 +46,7 @@ final class StateInGame implements IGameState {
         } else if (this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() < BLACKJACK) {
             this.controller.setStatusLine("Please take another card (2) or "
-                    + "quit game (3)");
+                    + "finish game (3)");
         } else {
             // Player lost
             this.controller.setCurrentState(new StateLost(controller));
@@ -82,7 +82,7 @@ final class StateLost implements IGameState {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
             this.controller.setCurrentState(new StateBlackJack(controller));
         } else {
-            this.controller.setStatusLine("Game Over: --> "
+            this.controller.setStatusLine("Game Over! --> "
                     + this.controller.getPlayer().printPlayersHand());
             System.exit(0);
         }
@@ -120,7 +120,8 @@ final class StateWon implements IGameState {
             this.controller.setCurrentState(new StateBlackJack(controller));
         } else {
             // Player won concerning better face
-            this.controller.setStatusLine("Player won!!!! --> "
+            this.controller.setStatusLine(this.controller.getPlayer().getName()
+                    + " ,you won!!!! --> "
                     + this.controller.getPlayer().printPlayersHand());
             System.exit(0);
         }
@@ -156,7 +157,8 @@ final class StateBlackJack implements IGameState {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
             this.controller.setStatusLine("Dealer got BlackJack!");
         } else {
-            this.controller.setStatusLine("Player got BlackJack!");
+            this.controller.setStatusLine(this.controller.getPlayer().getName()
+                    + ", you got BlackJack!");
         }
         System.exit(0);
     }
