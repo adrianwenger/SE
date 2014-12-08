@@ -37,6 +37,7 @@ public final class BlackJackController extends Observable
      * statusLine.
      */
     private String statusLine;
+
     /**
      * saves current Game state of BlackJack.
      */

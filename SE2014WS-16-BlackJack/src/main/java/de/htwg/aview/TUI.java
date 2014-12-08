@@ -64,7 +64,7 @@ public final class TUI implements IObserver {
      * -->.
      */
     private static final String INPUT = "-->:";
-    
+
 
     /**
      * create the game.
