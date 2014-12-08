@@ -49,7 +49,7 @@ public class CardTest {
     public final void testGetSuit() {
         String expResult = "TwoOfHEARTS";
         String result = new Card(Suit.HEARTS, TWO).toString();
-        assertEquals(expResult, result);
+        assert (expResult.equals(result));
     }
 
     /**
