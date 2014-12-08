@@ -1,6 +1,7 @@
 package de.htwg.model.impl;
 
 import de.htwg.model.IDeck;
+import de.htwg.model.ICard;
 import java.util.Random;
 
 /**
@@ -32,7 +33,7 @@ public final class Deck implements IDeck {
     /**
      *
      */
-    private final Card[] deck;
+    private final ICard[] deck;
     /**
      * Number of cards currently in the deck.
      */
@@ -52,22 +53,6 @@ public final class Deck implements IDeck {
     private static Random rmd = new Random();
 
     /**
-     *
-     * @return numOfDecks
-     */
-    public int getNumOfDecks() {
-        return numOfDecks;
-    }
-
-    /**
-     * Returns the deck.
-     * @return deck
-     */
-    public Card[] getDeck() {
-        return deck;
-    }
-
-    /**
      * Default Constructor.
      */
     public Deck() {
@@ -78,6 +63,7 @@ public final class Deck implements IDeck {
 
     /**
      * Constructor which defines the number of decks and shuffle.
+     *
      * @param numDeck number of decks which want to be created
      */
     public Deck(final int numDeck) {
@@ -85,11 +71,21 @@ public final class Deck implements IDeck {
         this.numOfDecks = numDeck;
         this.numOfCards = numDeck * FIFTYTWO;
         //create new Deck Array
-        this.deck = new Card[this.numOfCards];
+        this.deck = new ICard[this.numOfCards];
         //Creates Deck deck
         createDeck();
         //shuffles deck
         shuffleCards(deck);
+    }
+
+    /**
+     * Returns the deck.
+     *
+     * @return deck
+     */
+    @Override
+    public ICard[] getDeck() {
+        return deck;
     }
 
     /**
@@ -113,10 +109,11 @@ public final class Deck implements IDeck {
 
     /**
      * this method shuffles the cards and returns a mixed deck.
-     * @param myCards contains a Card Array
+     *
+     * @param myCards contains a ICard Array
      */
-    private void shuffleCards(final Card[] myCards) {
-        Card tmp;
+    private void shuffleCards(final ICard[] myCards) {
+        ICard tmp;
         int rand;
         for (int i = ZERO; i < myCards.length; i++) {
             rand = rmd.nextInt(myCards.length);
@@ -127,20 +124,14 @@ public final class Deck implements IDeck {
     }
 
     /**
-     * returns Cards left on deck.
-     * @return numOfCards
-     */
-    public int getNumOfCards() {
-        return numOfCards;
-    }
-
-    /**
      * Deal next card from the top of the deck.
+     *
      * @return top Card of the deck
      */
-    public Card dealCard() {
+    @Override
+    public ICard dealCard() {
         //get the first card form top of the deck
-        Card top = this.deck[ZERO];
+        ICard top = this.deck[ZERO];
         //shift cards to the left, because we get the first one
         for (int i = ONE; i < this.numOfCards; i++) {
             this.deck[i - ONE] = this.deck[i];

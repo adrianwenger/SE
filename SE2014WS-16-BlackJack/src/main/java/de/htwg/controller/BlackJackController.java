@@ -1,5 +1,7 @@
 package de.htwg.controller;
 
+import de.htwg.model.IDeck;
+import de.htwg.model.IPlayer;
 import de.htwg.model.impl.Deck;
 import de.htwg.model.impl.Player;
 import de.htwg.util.observer.Observable;
@@ -18,15 +20,15 @@ public final class BlackJackController extends Observable
     /**
      * Deck Object to be created.
      */
-    private Deck deck;
+    private IDeck deck;
     /**
      * Player Object to be created.
      */
-    private Player player;
+    private IPlayer player;
     /**
      * Player Object (Dealer) to be created.
      */
-    private Player dealer;
+    private IPlayer dealer;
     /**
      * BlackJack Value 21.
      */
@@ -93,7 +95,7 @@ public final class BlackJackController extends Observable
      * @return deck
      */
     @Override
-    public Deck getDeck() {
+    public IDeck getDeck() {
         return deck;
     }
 
@@ -102,7 +104,7 @@ public final class BlackJackController extends Observable
      * @return player
      */
     @Override
-    public Player getPlayer() {
+    public IPlayer getPlayer() {
         return player;
     }
 
@@ -111,7 +113,7 @@ public final class BlackJackController extends Observable
      * @return dealer
      */
     @Override
-    public Player getDealer() {
+    public IPlayer getDealer() {
         return dealer;
     }
 
@@ -189,7 +191,7 @@ public final class BlackJackController extends Observable
      * @return blackjack?
      */
     @Override
-    public boolean hasBlackJack(final Player subject) {
+    public boolean hasBlackJack(final IPlayer subject) {
         return subject.getValue() == BLACKJACK;
     }
 

@@ -1,7 +1,5 @@
-package de.htwg.model;
+package de.htwg.model.impl;
 
-import de.htwg.model.impl.Card;
-import de.htwg.model.impl.Suit;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -49,8 +47,8 @@ public class CardTest {
      */
     @Test
     public final void testGetSuit() {
-        Suit expResult = Suit.HEARTS;
-        Suit result = new Card(Suit.HEARTS, TWO).getSuit();
+        String expResult = "TwoOfHEARTS";
+        String result = new Card(Suit.HEARTS, TWO).toString();
         assertEquals(expResult, result);
     }
 

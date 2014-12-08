@@ -1,11 +1,6 @@
-package de.htwg.model;
+package de.htwg.model.impl;
 
-import de.htwg.model.impl.Deck;
-import de.htwg.model.impl.Card;
-import de.htwg.model.impl.Suit;
-import de.htwg.model.impl.Player;
-import java.util.LinkedList;
-import java.util.List;
+import de.htwg.model.ICard;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,6 +10,7 @@ import org.junit.Test;
  * @author Adi
  */
 public final class PlayerTest {
+
     /**
      *
      */
@@ -23,11 +19,11 @@ public final class PlayerTest {
      *
      */
     private static final int ZERO = 0;
-     /**
+    /**
      *
      */
     private static final int TEN = 10;
-     /**
+    /**
      *
      */
     private static final int ACE = 11;
@@ -59,9 +55,14 @@ public final class PlayerTest {
      */
     @Test
     public void testAdd() {
-        Card card = new Card(Suit.CLUBS, FIVE);
-        boolean expResult = true;
-        boolean result = player.add(card);
+        Deck deckMax = new Deck(1);
+        ICard cardMax = null;
+        for (int i = 0; i < TEN; i++) {
+            cardMax = deckMax.dealCard();
+            player.add(cardMax);
+        }
+        boolean expResult = false;
+        boolean result =  player.add(cardMax);
         assertEquals(expResult, result);
     }
 
@@ -71,9 +72,10 @@ public final class PlayerTest {
     @Test
     public void testgetValue() {
         Deck deck = new Deck(1);
-        Card cardTest = deck.dealCard();
-        player.add(cardTest);
-        int expResult = cardTest.getNumber();
+        int card = new Card(Suit.HEARTS, 2).getNumber();
+        Card test = new Card(Suit.HEARTS, 2);
+        player.add(test);
+        int expResult = card;
         int result = player.getValue();
         assertEquals(expResult, result);
     }
@@ -88,29 +90,6 @@ public final class PlayerTest {
         String expResult = "Cards: FiveOfCLUBS Value: 5";
         String result = test.printPlayersHand();
         assertEquals(expResult, result);
-        
-    }
 
-
-    /**
-     *
-     */
-    @Test
-    public void testgetUserCards() {
-        List<Card> userCards = new LinkedList<Card>();
-        userCards.add(new Card(Suit.CLUBS, FIVE));
-
-        Suit resultSuit = null;
-        int resultNumber = ZERO;
-
-        for (Card l : userCards) {
-            resultSuit = l.getSuit();
-            resultNumber = l.getNumber();
-        }
-
-        int expResultNumber = FIVE;
-        assertEquals(expResultNumber, resultNumber);
-        Suit expResultSuit = Suit.CLUBS;
-        assertEquals(expResultSuit, resultSuit);
     }
 }

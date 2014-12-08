@@ -1,4 +1,6 @@
 package de.htwg.model.impl;
+
+import de.htwg.model.ICard;
 import de.htwg.model.IPlayer;
 
 /**
@@ -46,7 +48,7 @@ public final class Player implements IPlayer {
     /**
      * players hand.
      */
-    private final Card[] playerHand = new Card[MAXCARDS];
+    private final ICard[] playerHand = new Card[MAXCARDS];
 
     /**
      *
@@ -61,6 +63,7 @@ public final class Player implements IPlayer {
      *
      * @return name
      */
+    @Override
     public String getName() {
         return name;
     }
@@ -80,7 +83,8 @@ public final class Player implements IPlayer {
      * @return added correctly?
      * @param card Card to be added
      */
-    public boolean add(final Card card) {
+    @Override
+    public boolean add(final ICard card) {
         if (this.numOfCards == MAXCARDS) {
             return false;
         }
@@ -96,6 +100,7 @@ public final class Player implements IPlayer {
      *
      * @return Card Value
      */
+    @Override
     public int getValue() {
         this.playerVal = ZERO;
         int cardNum;
@@ -125,12 +130,13 @@ public final class Player implements IPlayer {
     /**
      * Returns the hand from the player.
      *
-     *@return String Value
+     * @return String Value
      */
+    @Override
     public String printPlayersHand() {
         StringBuilder sb = new StringBuilder();
         sb.append("Cards: ");
-        for (Card card : playerHand) {
+        for (ICard card : playerHand) {
             if (card == null) {
                 break;
             }

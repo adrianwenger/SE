@@ -1,5 +1,6 @@
 package de.htwg.model.impl;
 
+import de.htwg.model.ICard;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -7,7 +8,7 @@ import java.util.TreeMap;
  *
  * @author Adrian Wenger, Philipp Schutltheiß
  */
-public final class Card {
+public final class Card implements ICard {
 
     /**
      *
@@ -44,19 +45,11 @@ public final class Card {
     }
 
     /**
-     * return Suit.
-     *
-     * @return suit
-     */
-    public Suit getSuit() {
-        return suit;
-    }
-
-    /**
      * return the Number of the Card.
      *
      * @return nuber
      */
+    @Override
     public int getNumber() {
         return number;
     }

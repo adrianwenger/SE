@@ -1,7 +1,7 @@
 package de.htwg.controller;
 
-import de.htwg.model.impl.Deck;
-import de.htwg.model.impl.Player;
+import de.htwg.model.IDeck;
+import de.htwg.model.IPlayer;
 import de.htwg.util.observer.IObservable;
 
 /**
@@ -25,11 +25,11 @@ public interface IBlackJackController extends IObservable {
 
     void setDealer();
 
-    Deck getDeck();
+    IDeck getDeck();
 
-    Player getPlayer();
+    IPlayer getPlayer();
 
-    Player getDealer();
+    IPlayer getDealer();
     
     IGameState getCurrentState();
     
@@ -45,7 +45,7 @@ public interface IBlackJackController extends IObservable {
 
     void checkIfDealerNeedsCard();
     
-    boolean hasBlackJack(Player subject);
+    boolean hasBlackJack(IPlayer subject);
     
     void checkGameState();
     
