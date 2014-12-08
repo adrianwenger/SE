@@ -26,10 +26,6 @@ public final class PlayerTest {
     /**
      *
      */
-    private static final int ACE = 11;
-    /**
-     *
-     */
     private Player player;
 
     /**
@@ -71,11 +67,10 @@ public final class PlayerTest {
      */
     @Test
     public void testgetValue() {
-        Deck deck = new Deck(1);
-        int card = new Card(Suit.HEARTS, 2).getNumber();
+        int cardVal = new Card(Suit.HEARTS, 2).getNumber();
         Card test = new Card(Suit.HEARTS, 2);
         player.add(test);
-        int expResult = card;
+        int expResult = cardVal;
         int result = player.getValue();
         assertEquals(expResult, result);
     }

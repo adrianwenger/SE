@@ -43,16 +43,6 @@ public class CardTest {
     }
 
     /**
-     *
-     */
-    @Test
-    public final void testGetSuit() {
-        String expResult = "TwoOfHEARTS";
-        String result = new Card(Suit.HEARTS, TWO).toString();
-        assert (expResult.equals(result));
-    }
-
-    /**
      * Test of toString method, of class Card.
      */
     @Test
