@@ -175,10 +175,10 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void checkIfDealerNeedsCard() {
-        if (dealer.getValue() < BLACKJACK) {
-            if (dealer.getValue() < player.getValue()) {
-                getCardDealer();
-            }
+        if (dealer.getValue() < BLACKJACK
+                && dealer.getValue() < player.getValue()) {
+            getCardDealer();
+
         }
     }
 

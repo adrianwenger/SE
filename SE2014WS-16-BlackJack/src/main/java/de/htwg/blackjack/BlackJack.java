@@ -3,17 +3,12 @@ package de.htwg.blackjack;
 import de.htwg.controller.BlackJackController;
 import de.htwg.controller.IBlackJackController;
 import de.htwg.aview.TUI;
-import java.util.Scanner;
 
 /**
  *
  * @author Adrian Wenger
  */
 public final class BlackJack {
-    /**
-     * IBlackJackController controller.
-     */
-    private final IBlackJackController controller;
     /**
      * tui.
      */
@@ -47,7 +42,7 @@ public final class BlackJack {
      *
      */
     private BlackJack() {
-        controller = new BlackJackController();
+        IBlackJackController controller = new BlackJackController();
         tui = new TUI(controller);
         controller.create();
         tui.printTui();

@@ -2,6 +2,8 @@ package de.htwg.model;
 
 import de.htwg.model.impl.Card;
 
+
+
 /**
  * IDeck to Increase Abstractness.
  * @author Adrian Wenger
