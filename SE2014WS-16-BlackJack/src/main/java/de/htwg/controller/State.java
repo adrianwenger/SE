@@ -5,8 +5,7 @@ package de.htwg.controller;
  *
  * @author Adi
  */
-public final class State {
-}
+public final class State { }
 
 /**
  *
@@ -48,7 +47,7 @@ final class StateInGame implements IGameState {
             this.controller.setStatusLine("Please take another card (2) or "
                     + "finish game (3)");
         } else {
-            // Player lost
+            // Player lost BlackJack reached
             this.controller.setCurrentState(new StateLost(controller));
         }
     }
@@ -157,7 +156,8 @@ final class StateBlackJack implements IGameState {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
             this.controller.setStatusLine("Dealer got BlackJack!");
         } else {
-            this.controller.setStatusLine(this.controller.getPlayer().getName()
+            this.controller.setStatusLine("Congratulations "
+                    + this.controller.getPlayer().getName()
                     + ", you got BlackJack!");
         }
         System.exit(0);

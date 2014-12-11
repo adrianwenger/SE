@@ -71,7 +71,7 @@ public final class Player implements IPlayer {
     /**
      * Reset players hand.
      */
-    private void clearHand() {
+    public void clearHand() {
         for (int i = ZERO; i < MAXCARDS; i++) {
             this.playerHand[i] = null;
         }

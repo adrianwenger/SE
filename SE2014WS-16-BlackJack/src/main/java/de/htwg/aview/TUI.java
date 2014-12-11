@@ -65,7 +65,6 @@ public final class TUI implements IObserver {
      */
     private static final String INPUT = "-->:";
 
-
     /**
      * create the game.
      */
@@ -126,7 +125,6 @@ public final class TUI implements IObserver {
                         controller.checkGameState();
                     } else if (eingabe2.equals("n")) {
                         controller.checkIfDealerNeedsCard();
-
                         controller.setStatusLine(controller.getPlayer()
                                 .printPlayersHand());
                         controller.setStatusLine("Dealer " + INPUT);
