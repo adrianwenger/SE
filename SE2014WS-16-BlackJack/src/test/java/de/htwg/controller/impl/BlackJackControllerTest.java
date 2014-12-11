@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htwg.aview;
 
-import de.htwg.controller.impl.BlackJackController;
+package de.htwg.controller.impl;
+
 import de.htwg.controller.IBlackJackController;
+import de.htwg.controller.IGameState;
+import de.htwg.controller.impl.BlackJackController;
+import de.htwg.model.impl.Card;
 import de.htwg.model.impl.Deck;
-import javax.accessibility.AccessibleRelation;
+import de.htwg.model.impl.Player;
+import de.htwg.model.impl.Suit;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -20,31 +24,31 @@ import static org.junit.Assert.*;
  *
  * @author philippschultheiss
  */
-public class TUITest {
-
+public class BlackJackControllerTest {
     IBlackJackController controller;
-    Deck deck;
-    TUI tui;
-    private static final int TWO = 2;
 
     @Before
     public void setUp() {
         controller = new BlackJackController();
-        tui = new TUI(controller);
-        deck = new Deck();
     }
 
-//    @Test
-//    public void testUpdate() {
-//
-//    }
+    public void testSetStatusLine(){
+        controller.setStatusLine("status");
+        String expResult = "";
+        String result = controller.getStatusLine();
+        assertEquals(expResult, result);
+    }
 
     @Test
-    public void testcreateGame() {
+    public void testSetCurrentState(){
+        controller.setCurrentState(new StateInGame(controller));
+        IGameState result = controller.getCurrentState();
+        assert (result instanceof StateInGame);
     }
-
-    @After
-    public void tearDown() {
+    
+    @Test
+    public void testSetDeck(){
+        
     }
 
     // TODO add test methods here.

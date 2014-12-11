@@ -73,6 +73,12 @@ public final class PlayerTest {
         int expResult = cardVal;
         int result = player.getValue();
         assertEquals(expResult, result);
+
+        test = new Card(Suit.CLUBS, 11);
+        cardVal = test.getNumber();
+        player.add(test);
+        expResult = cardVal;
+        result = player.getValue();
     }
 
     /**
