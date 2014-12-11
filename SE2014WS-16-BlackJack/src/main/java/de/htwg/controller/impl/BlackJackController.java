@@ -1,5 +1,9 @@
-package de.htwg.controller;
+package de.htwg.controller.impl;
 
+import de.htwg.controller.IBlackJackController;
+import de.htwg.controller.IGameState;
+import de.htwg.controller.impl.StateInGame;
+import de.htwg.controller.impl.StateBlackJack;
 import de.htwg.model.IDeck;
 import de.htwg.model.IPlayer;
 import de.htwg.model.impl.Deck;

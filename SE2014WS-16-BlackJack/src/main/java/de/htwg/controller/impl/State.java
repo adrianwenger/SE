@@ -1,4 +1,7 @@
-package de.htwg.controller;
+package de.htwg.controller.impl;
+
+import de.htwg.controller.IBlackJackController;
+import de.htwg.controller.IGameState;
 
 /**
  * this class is used to implement the stateInGame.

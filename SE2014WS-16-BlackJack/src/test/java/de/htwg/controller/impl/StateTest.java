@@ -1,5 +1,6 @@
-package de.htwg.controller;
+package de.htwg.controller.impl;
 
+import de.htwg.controller.impl.State;
 import org.junit.After;
 import org.junit.Before;
 import static org.junit.Assert.*;

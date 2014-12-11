@@ -1,14 +1,26 @@
-package de.htwg.controller;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package de.htwg.controller.impl;
 
+import de.htwg.controller.IBlackJackController;
+import de.htwg.controller.IGameState;
+import de.htwg.controller.impl.BlackJackController;
+import de.htwg.controller.impl.StateInGame;
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Adrian Wenger
  */
-public class StateInGameTest {
+public class StateBlackJackTest {
 
     /**
      * BlackJack Value 21.
@@ -44,22 +56,15 @@ public class StateInGameTest {
         IGameState result;
         IGameState expResult;
 
-        if ((this.controller.getPlayer().getValue() < BLACKJACK
-                && this.controller.getDealer().getValue() > BLACKJACK)) {
-            result = this.controller.getCurrentState();
-            expResult = new StateWon(controller);
-            assertEquals(expResult, result);
-            // game will move on (both < 21)
-        } else if (this.controller.getPlayer().getValue() < BLACKJACK
-                && this.controller.getDealer().getValue() < BLACKJACK) {
+        if (this.controller.hasBlackJack(this.controller.getDealer())) {
             result = this.controller.getCurrentState();
             expResult = state;
             assertEquals(expResult, result);
         } else {
-            // Player lost BlackJack reached
             result = this.controller.getCurrentState();
-            expResult = new StateLost(controller);
+            expResult = state;
             assertEquals(expResult, result);
         }
     }
+
 }

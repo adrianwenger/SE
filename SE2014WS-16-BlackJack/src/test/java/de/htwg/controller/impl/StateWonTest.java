@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package de.htwg.controller;
+package de.htwg.controller.impl;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import de.htwg.controller.IBlackJackController;
+import de.htwg.controller.impl.BlackJackController;
+import de.htwg.controller.impl.StateLost;
+import de.htwg.controller.impl.StateWon;
+import de.htwg.controller.impl.StateBlackJack;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -16,16 +18,11 @@ import static org.junit.Assert.*;
  *
  * @author Adrian Wenger
  */
-public class StateBlackJackTest {
-
-    /**
-     * BlackJack Value 21.
-     */
-    private static final int BLACKJACK = 21;
+public class StateWonTest {
 
     private final IBlackJackController controller = new BlackJackController();
 
-    private final StateInGame state = new StateInGame(controller);
+    private StateWon state = new StateWon(controller);
 
     @Before
     public final void setUp() {
@@ -49,18 +46,12 @@ public class StateBlackJackTest {
         this.controller.getDealer().add(this.controller.getDeck().dealCard());
         this.controller.getDealer().add(this.controller.getDeck().dealCard());
 
-        IGameState result;
-        IGameState expResult;
-
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
-            result = this.controller.getCurrentState();
-            expResult = state;
-            assertEquals(expResult, result);
+            this.controller.setCurrentState(new StateBlackJack(controller));
+            assert (this.controller.getCurrentState() instanceof StateBlackJack);
         } else {
-            result = this.controller.getCurrentState();
-            expResult = state;
-            assertEquals(expResult, result);
+            this.controller.setCurrentState(new StateLost(controller));
+            assert (this.controller.getCurrentState() instanceof StateLost);
         }
     }
-
 }

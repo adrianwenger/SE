@@ -5,7 +5,7 @@
  */
 package de.htwg.aview;
 
-import de.htwg.controller.BlackJackController;
+import de.htwg.controller.impl.BlackJackController;
 import de.htwg.controller.IBlackJackController;
 import de.htwg.model.impl.Deck;
 import javax.accessibility.AccessibleRelation;

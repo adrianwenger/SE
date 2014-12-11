@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package de.htwg.controller;
+package de.htwg.controller.impl;
 
+import de.htwg.controller.IBlackJackController;
+import de.htwg.controller.impl.BlackJackController;
 import de.htwg.model.impl.Card;
 import de.htwg.model.impl.Deck;
 import de.htwg.model.impl.Player;
