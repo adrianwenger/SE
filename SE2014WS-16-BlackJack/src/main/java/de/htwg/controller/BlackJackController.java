@@ -37,7 +37,6 @@ public final class BlackJackController extends Observable
      * statusLine.
      */
     private String statusLine;
-
     /**
      * saves current Game state of BlackJack.
      */
@@ -117,7 +116,13 @@ public final class BlackJackController extends Observable
     public IPlayer getDealer() {
         return dealer;
     }
-
+    /**
+     * 
+     * @return statusLine
+     */
+   public String getStatusLine() {
+        return statusLine;
+    }
     /**
      *
      * @return printPlayersHand

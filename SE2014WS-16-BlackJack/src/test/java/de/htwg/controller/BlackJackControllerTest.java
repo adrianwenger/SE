@@ -23,7 +23,6 @@ import static org.junit.Assert.*;
  */
 public class BlackJackControllerTest {
     IBlackJackController controller;
-    private final String statusLine = "";
 
     @Before
     public void setUp() {
@@ -32,13 +31,22 @@ public class BlackJackControllerTest {
 
     public void testSetStatusLine(){
         controller.setStatusLine("status");
-        //assertEquals(statusLine, controller.s);
+        String expResult = "";
+        String result = controller.getStatusLine();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testSetCurrentState(){
+        controller.setCurrentState(new StateInGame(controller));
+        IGameState result = controller.getCurrentState();
+        assert (result instanceof StateInGame);
     }
     
-//    @Test
-//    public void testSetCurrentState(){
-//        
-//    }
+    @Test
+    public void testSetDeck(){
+        
+    }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
