@@ -121,7 +121,7 @@ public final class BlackJackController extends Observable
     }
 
     /**
-     * 
+     *
      * @return statusLine
      */
    public String getStatusLine() {
