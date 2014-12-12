@@ -5,7 +5,7 @@ import de.htwg.controller.IBlackJackController;
 import de.htwg.aview.TUI;
 
 /**
- *
+ * Copyright (C) 2014 Adrian Wenger, Philipp Schultheiß
  * @author Adrian Wenger
  */
 public final class BlackJack {

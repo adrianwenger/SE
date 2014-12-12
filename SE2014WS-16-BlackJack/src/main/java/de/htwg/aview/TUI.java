@@ -5,7 +5,7 @@ import de.htwg.util.observer.IObserver;
 import java.util.Scanner;
 
 /**
- *
+ * Copyright (C) 2014 Adrian Wenger, Philipp Schultheiß
  * @author Adrian Wenger, Philipp Schultheiß
  */
 public final class TUI implements IObserver {
