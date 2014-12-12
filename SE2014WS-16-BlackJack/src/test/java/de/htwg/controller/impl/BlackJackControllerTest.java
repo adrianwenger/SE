@@ -7,7 +7,8 @@ package de.htwg.controller.impl;
 
 import de.htwg.controller.IBlackJackController;
 import de.htwg.controller.IGameState;
-import de.htwg.model.IPlayer;
+import de.htwg.controller.impl.BlackJackController;
+import de.htwg.model.ICard;
 import de.htwg.model.impl.Card;
 import de.htwg.model.impl.Player;
 import de.htwg.model.impl.Suit;
@@ -24,12 +25,8 @@ public class BlackJackControllerTest {
     static final int BLACKJACK = 21;
 
     IBlackJackController controller;
-
-    IPlayer player;
-
-    IPlayer dealer;
-
-    IGameState currentState;
+    Deck deck;
+    Player player;
 
     @Before
     public void setUp() {
@@ -68,8 +65,28 @@ public class BlackJackControllerTest {
     }
     
     @Test
-    public final void testFirstTwoCardsOfPlayer() {
-        this.controller.getPlayer().add(new Card(Suit.CLUBS, 5));
+    public void testSetDeck(){
+        deck = new Deck();
+        ICard[] result = deck.getDeck();
+        assertEquals(result.length, deck.getDeck().length);
+    }
+    
+    @Test
+    public void testGetStatusLine(){
+        controller.setStatusLine("Hallo");
+        String expResult = "";
+        String result = controller.getStatusLine();
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testGetFirstTwoCardsPlayer(){
+        player = new Player("Philipp");
+        player.add(new Card(Suit.SPADES, 1));
+        player.add(new Card(Suit.CLUBS, 6));
+        String expResult = "Cards: AceOfSPADES SixOfCLUBS Value: 17";
+        assertEquals(expResult, player.printPlayersHand());
+    }
 
         String result = this.controller.getPlayer().printPlayersHand();
         String expResult = "Cards: FiveOfCLUBS Value: 5";
