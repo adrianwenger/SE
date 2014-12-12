@@ -229,8 +229,7 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void create() {
-        setStatusLine("BlackJAck  Copyright (C) 2014 Adrian Wenger,"
-                + "Philipp Schultheiß");
+        setStatusLine("Welcome to BlackJack...");
     }
 
     /**
