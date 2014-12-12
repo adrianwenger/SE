@@ -29,6 +29,12 @@ public interface IPlayer {
     int getValue();
 
     /**
+     * set Player Value for tets.
+     * @param playerVal Player Value
+     */
+    void setPlayerVal(int playerVal);
+
+    /**
      *
      * @return name
      */

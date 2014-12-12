@@ -79,6 +79,7 @@ public final class PlayerTest {
         player.add(test);
         expResult = cardVal;
         result = player.getValue();
+        //assertEquals(expResult, result);
     }
 
     /**

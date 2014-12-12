@@ -25,7 +25,6 @@ public class DeckTest {
     public final void setUp() {
         deck = new Deck(TWO);
         deckDefault = new Deck();
-
     }
 
     /**

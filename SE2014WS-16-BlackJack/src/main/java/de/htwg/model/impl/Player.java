@@ -37,6 +37,7 @@ public final class Player implements IPlayer {
      * Value of players hand.
      */
     private int playerVal;
+
     /**
      * Value of a card.
      */
@@ -66,6 +67,14 @@ public final class Player implements IPlayer {
     @Override
     public String getName() {
         return name;
+    }
+
+    /**
+     * set Player Value for testing routines.
+     */
+    @Override
+    public final void setPlayerVal(int playerVal) {
+        this.playerVal = playerVal;
     }
 
     /**

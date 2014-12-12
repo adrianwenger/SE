@@ -7,12 +7,7 @@ package de.htwg.controller.impl;
 
 import de.htwg.controller.IBlackJackController;
 import de.htwg.controller.IGameState;
-import de.htwg.controller.impl.BlackJackController;
-import de.htwg.controller.impl.StateInGame;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -31,7 +31,7 @@ public interface IBlackJackController extends IObservable {
 
     IPlayer getDealer();
     
-    public String getStatusLine(); 
+    String getStatusLine(); 
     
     IGameState getCurrentState();
     
