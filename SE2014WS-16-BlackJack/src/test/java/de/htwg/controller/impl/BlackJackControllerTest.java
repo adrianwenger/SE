@@ -9,7 +9,10 @@ import de.htwg.controller.IBlackJackController;
 import de.htwg.controller.IGameState;
 import de.htwg.controller.impl.BlackJackController;
 import de.htwg.model.ICard;
+import de.htwg.model.IDeck;
+import de.htwg.model.IPlayer;
 import de.htwg.model.impl.Card;
+import de.htwg.model.impl.Deck;
 import de.htwg.model.impl.Player;
 import de.htwg.model.impl.Suit;
 import org.junit.Before;
@@ -25,8 +28,8 @@ public class BlackJackControllerTest {
     static final int BLACKJACK = 21;
 
     IBlackJackController controller;
-    Deck deck;
-    Player player;
+    IDeck deck;
+    IPlayer player;
 
     @Before
     public void setUp() {
@@ -43,14 +46,6 @@ public class BlackJackControllerTest {
         assertEquals(expResult, result);
     }
     
-    @Test
-    public void testGetStatusLine() {
-        this.controller.setStatusLine("test");
-        String result = controller.getStatusLine();
-        String expResult = "";
-        assertEquals(expResult, result);
-    }
-
     @Test
     public final void testCheckGameState() {
         // Test StateBlackJack
@@ -86,11 +81,5 @@ public class BlackJackControllerTest {
         player.add(new Card(Suit.CLUBS, 6));
         String expResult = "Cards: AceOfSPADES SixOfCLUBS Value: 17";
         assertEquals(expResult, player.printPlayersHand());
-    }
-
-        String result = this.controller.getPlayer().printPlayersHand();
-        String expResult = "Cards: FiveOfCLUBS Value: 5";
-        
-        assertEquals(expResult, result);
     }
 }
