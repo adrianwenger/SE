@@ -70,14 +70,6 @@ public final class Player implements IPlayer {
     }
 
     /**
-     * set Player Value for testing routines.
-     */
-    @Override
-    public final void setPlayerVal(int playerVal) {
-        this.playerVal = playerVal;
-    }
-
-    /**
      * Reset players hand.
      */
     public void clearHand() {

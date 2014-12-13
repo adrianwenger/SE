@@ -26,6 +26,7 @@ public final class StateInGame implements IGameState {
      */
     public StateInGame(final IBlackJackController cont) {
         this.controller = cont;
+        change();
     }
 
     /**
@@ -43,7 +44,7 @@ public final class StateInGame implements IGameState {
             this.controller.setStatusLine("Please take another card (2) or "
                     + "finish game (3)");
         } else {
-            // Player lost BlackJack reached
+            // Player lost Dealer reached BlackJack 
             this.controller.setCurrentState(new StateLost(controller));
         }
     }

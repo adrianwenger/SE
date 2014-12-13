@@ -1,10 +1,9 @@
 package de.htwg.controller.impl;
 
 import de.htwg.controller.IBlackJackController;
-import de.htwg.controller.impl.BlackJackController;
-import de.htwg.controller.impl.StateWon;
-import de.htwg.controller.impl.StateInGame;
-import de.htwg.controller.impl.StateBlackJack;
+import de.htwg.model.impl.Card;
+import de.htwg.model.impl.Suit;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,18 +13,19 @@ import org.junit.Test;
  */
 public class StateLostTest {
 
-    /**
-     * BlackJack Value 21.
-     */
-    private static final int BLACKJACK = 21;
-
-    private final IBlackJackController controller = new BlackJackController();
-
-    private final StateInGame state = new StateInGame(controller);
+    private IBlackJackController controller;
 
     @Before
     public final void setUp() {
-        this.controller.setCurrentState(state);
+        this.controller = new BlackJackController();
+        // Create Player
+        this.controller.setPlayer("Test");
+        // Create Dealer
+        this.controller.setDealer();
+        // Create Deck
+        this.controller.setDeck(1);
+        // set State to StateLost
+        this.controller.setCurrentState(new StateLost(controller));
     }
 
     /**
@@ -33,26 +33,23 @@ public class StateLostTest {
      */
     @Test
     public final void testChange() {
-        // Create Player
-        this.controller.setPlayer("Adrian");
-        // Create Dealer
-        this.controller.setDealer();
-        // Create Deck
-        this.controller.setDeck(1);
-        // Deal first 2 Cards from Deck and add them to Player and Dealer
-        this.controller.getPlayer().add(this.controller.getDeck().dealCard());
-        this.controller.getPlayer().add(this.controller.getDeck().dealCard());
-        this.controller.getDealer().add(this.controller.getDeck().dealCard());
-        this.controller.getDealer().add(this.controller.getDeck().dealCard());
-
-        // Player Won in concerning BlackJack
-        if (this.controller.hasBlackJack(this.controller.getPlayer())) {
-            this.controller.setCurrentState(new StateBlackJack(controller));
-            assert (this.controller.getCurrentState() instanceof StateBlackJack);
-        } else {
-            this.controller.setCurrentState(new StateWon(controller));
-            assert (this.controller.getCurrentState() instanceof StateWon);
+        // Add Cards to Dealer
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+        // no BlackJack Case 
+        if (!this.controller.hasBlackJack(this.controller.getDealer())) {
+            String result = this.controller.getStatusLine();
+            String expResult = "";
+            assertEquals(expResult, result);
         }
-    }
 
+        this.controller.getDealer().add(new Card(Suit.SPADES, 3));
+        // BlackJack Case
+        if (this.controller.hasBlackJack(this.controller.getDealer())) {
+            boolean result = this.controller.getCurrentState() instanceof StateLost;
+            boolean expResult = true;
+            assertEquals(expResult, result);
+        }
+
+    }
 }

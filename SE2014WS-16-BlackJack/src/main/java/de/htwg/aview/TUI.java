@@ -82,7 +82,6 @@ public final class TUI implements IObserver {
                 + "want for playing BlackJack?");
         this.controller.setStatusLine(INPUT);
         this.controller.setDeck(SCANNER.nextInt());
-
         //DEAL FIRST TWO CARDS
         this.controller.setStatusLine("First two cards are dealt!");
         this.controller.setStatusLine("Player " + INPUT);
@@ -91,7 +90,6 @@ public final class TUI implements IObserver {
         this.controller.setStatusLine(this.controller.getFirstTwoCardsDealer());
         this.controller.checkIfDealerNeedsCard();
         this.controller.checkGameState();
-
         //print MENUE
         printHelpMenu();
     }

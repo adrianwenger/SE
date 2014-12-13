@@ -217,7 +217,6 @@ public final class BlackJackController extends Observable
             // new Game. Initialize with StateInGame
         } else if (this.currentState == null) {
             this.setCurrentState(new StateInGame(this));
-            this.currentState.change();
         } else {
             // check if GameState will change
             this.currentState.change();

@@ -34,7 +34,7 @@ public final class StateLost implements IGameState {
         } else {
             this.controller.setStatusLine("Game Over! --> "
                     + this.controller.getPlayer().printPlayersHand());
-            System.exit(0);
+            //System.exit(0);
         }
     }
 }

@@ -1,7 +1,8 @@
 package de.htwg.controller.impl;
 
 import de.htwg.controller.IBlackJackController;
-import de.htwg.controller.IGameState;
+import de.htwg.model.impl.Card;
+import de.htwg.model.impl.Suit;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
@@ -19,13 +20,17 @@ public class StateInGameTest {
 
     private IBlackJackController controller;
 
-    private StateInGame state;
-
     @Before
     public final void setUp() {
         this.controller = new BlackJackController();
-       // state = new StateInGame(controller);
-        //this.controller.setCurrentState(state);
+        // Create Player
+        this.controller.setPlayer("Test");
+        // Create Dealer
+        this.controller.setDealer();
+        // Create Deck
+        this.controller.setDeck(1);
+        // set State to StateInGame
+        this.controller.setCurrentState(new StateInGame(controller));
     }
 
     /**
@@ -33,17 +38,30 @@ public class StateInGameTest {
      */
     @Test
     public final void testChange() {
-        // Create Player
-        this.controller.setPlayer("Adrian");
-        // Create Dealer
-        this.controller.setDealer();
-        // Create Deck
-        this.controller.setDeck(1);
-        // Deal first 2 Cards from Deck and add them to Player and Dealer
-        this.controller.getPlayer().add(this.controller.getDeck().dealCard());
-        this.controller.getPlayer().add(this.controller.getDeck().dealCard());
-        this.controller.getDealer().add(this.controller.getDeck().dealCard());
-        this.controller.getDealer().add(this.controller.getDeck().dealCard());
+        // test BlackJack Case
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
 
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        // Case Player and Dealer < 21)
+        this.controller.setStatusLine("test");
+        String result = this.controller.getStatusLine();
+        String expResult = "";
+        assertEquals(expResult, result);
+
+        // Case Dealer BlackJack
+        this.controller.getDealer().add(new Card(Suit.SPADES, 3));
+        this.controller.setCurrentState(new StateLost(controller));
+        boolean result1 = this.controller.getCurrentState() instanceof StateLost;
+        boolean expResult1 = true;
+        assertEquals(expResult1, result1);
+
+        // Case Dealer > 21 Player < 21
+        this.controller.getDealer().add(new Card(Suit.SPADES, 3));
+        this.controller.setCurrentState(new StateWon(controller));
+        boolean result2 = this.controller.getCurrentState() instanceof StateWon;
+        boolean expResult2 = true;
+        assertEquals(expResult2, result2);
     }
 }

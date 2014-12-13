@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.htwg.controller.impl;
 
 import de.htwg.controller.IBlackJackController;
+import de.htwg.model.impl.Card;
+import de.htwg.model.impl.Suit;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -16,13 +13,19 @@ import static org.junit.Assert.*;
  */
 public class StateWonTest {
 
-    private final IBlackJackController controller = new BlackJackController();
-
-    private StateWon state = new StateWon(controller);
+    private IBlackJackController controller;
 
     @Before
     public final void setUp() {
-        this.controller.setCurrentState(state);
+        this.controller = new BlackJackController();
+        // Create Player
+        this.controller.setPlayer("Test");
+        // Create Dealer
+        this.controller.setDealer();
+        // Create Deck
+        this.controller.setDeck(1);
+        // set State to StateWon
+        this.controller.setCurrentState(new StateWon(controller));
     }
 
     /**
@@ -30,24 +33,23 @@ public class StateWonTest {
      */
     @Test
     public final void testChange() {
-        // Create Player
-        this.controller.setPlayer("Adrian");
-        // Create Dealer
-        this.controller.setDealer();
-        // Create Deck
-        this.controller.setDeck(1);
-        // Deal first 2 Cards from Deck and add them to Player and Dealer
-        this.controller.getPlayer().add(this.controller.getDeck().dealCard());
-        this.controller.getPlayer().add(this.controller.getDeck().dealCard());
-        this.controller.getDealer().add(this.controller.getDeck().dealCard());
-        this.controller.getDealer().add(this.controller.getDeck().dealCard());
-
-        if (this.controller.hasBlackJack(this.controller.getDealer())) {
-            this.controller.setCurrentState(new StateBlackJack(controller));
-            assert (this.controller.getCurrentState() instanceof StateBlackJack);
-        } else {
-            this.controller.setCurrentState(new StateLost(controller));
-            assert (this.controller.getCurrentState() instanceof StateLost);
+        // add Cards to Player and Dealer
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        // no BlackJAck Dealer > 21 && Player < 21
+        if (!this.controller.hasBlackJack(this.controller.getPlayer())) {
+            String result = this.controller.getStatusLine();
+            String expResult = "";
+            assertEquals(expResult, result);
         }
+        
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 3));
+        // Player with BlackJack
+        if (this.controller.hasBlackJack(this.controller.getPlayer())) {
+            boolean result = this.controller.getCurrentState() instanceof StateWon;
+            boolean expResult = true;
+            assertEquals(expResult, result);
+        }
+
     }
 }

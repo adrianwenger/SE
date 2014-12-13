@@ -36,6 +36,6 @@ final class StateBlackJack implements IGameState {
                     + this.controller.getPlayer().getName()
                     + ", you got BlackJack!");
         }
-        System.exit(0);
+        //System.exit(0);
     }
 }
