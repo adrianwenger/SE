@@ -1,8 +1,7 @@
 *.class
 *.txt
-*.html
 *.xml
-
+*.html
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
