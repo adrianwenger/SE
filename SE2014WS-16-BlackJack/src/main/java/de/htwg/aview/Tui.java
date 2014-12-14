@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author Adrian Wenger, Philipp Schultheiß
  */
-public final class TUI implements IObserver {
+public final class Tui implements IObserver {
 
     /**
      * controller.
@@ -20,7 +20,7 @@ public final class TUI implements IObserver {
      *
      * @param cont controller
      */
-    public TUI(final IBlackJackController cont) {
+    public Tui(final IBlackJackController cont) {
         this.controller = cont;
         controller.addObserver(this);
     }

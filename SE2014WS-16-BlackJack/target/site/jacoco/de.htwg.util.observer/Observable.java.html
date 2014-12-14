@@ -1,41 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Observable.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SE2014WS-16-BlackJack</a> &gt; <a href="index.source.html" class="el_package">de.htwg.util.observer</a> &gt; <span class="el_source">Observable.java</span></div><h1>Observable.java</h1><pre class="source lang-java linenums">/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package de.htwg.util.observer;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Observable.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SE2014WS-16-BlackJack</a> &gt; <a href="index.source.html" class="el_package">de.htwg.util.observer</a> &gt; <span class="el_source">Observable.java</span></div><h1>Observable.java</h1><pre class="source lang-java linenums">package de.htwg.util.observer;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
  *
  * @author Adrian Wenger
  */
-<span class="nc" id="L17">public class Observable implements IObservable{</span>
+<span class="fc" id="L10">public class Observable implements IObservable {</span>
 
-<span class="nc" id="L19">    private List&lt;IObserver&gt; subscribers = new ArrayList&lt;IObserver&gt;(2);</span>
+    /**
+     * List to save Subscriber Objects.
+     */
+<span class="fc" id="L15">    private final List&lt;IObserver&gt; subscribers = new ArrayList&lt;IObserver&gt;();</span>
 
-    public void addObserver(IObserver s) {
-<span class="nc" id="L22">        subscribers.add(s);</span>
-<span class="nc" id="L23">    }</span>
+    /**
+     * add single observer to subscriber list.
+     *
+     * @param s Obersver
+     */
+    public final void addObserver(final IObserver s) {
+<span class="fc" id="L23">        subscribers.add(s);</span>
+<span class="fc" id="L24">    }</span>
 
-    public void removeObserver(IObserver s) {
-<span class="nc" id="L26">        subscribers.remove(s);</span>
-<span class="nc" id="L27">    }</span>
-
-    public void removeAllObservers() {
-<span class="nc" id="L30">        subscribers.clear();</span>
-<span class="nc" id="L31">    }</span>
-
-    public void notifyObservers() {
-<span class="nc bnc" id="L34" title="All 2 branches missed.">        for (Iterator&lt;IObserver&gt; iter = subscribers.iterator(); iter.hasNext();) {</span>
-<span class="nc" id="L35">            IObserver observer = iter.next();</span>
-<span class="nc" id="L36">            observer.update();</span>
-<span class="nc" id="L37">        }</span>
-<span class="nc" id="L38">    }</span>
-    
+    /**
+     * notify each observer in subscriber List.
+     */
+    public final void notifyObservers() {
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        for (IObserver observer : subscribers) {</span>
+<span class="fc" id="L31">            observer.update();</span>
+<span class="fc" id="L32">        }</span>
+<span class="fc" id="L33">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

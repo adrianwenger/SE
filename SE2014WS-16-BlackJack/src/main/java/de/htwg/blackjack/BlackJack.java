@@ -2,7 +2,7 @@ package de.htwg.blackjack;
 
 import de.htwg.controller.impl.BlackJackController;
 import de.htwg.controller.IBlackJackController;
-import de.htwg.aview.TUI;
+import de.htwg.aview.Tui;
 
 /**
  *
@@ -12,7 +12,7 @@ public final class BlackJack {
     /**
      * tui.
      */
-    private TUI tui;
+    private final Tui tui;
     /**
      * static BlackJack instance.
      */
@@ -34,7 +34,7 @@ public final class BlackJack {
     /**
      * @return tui
      */
-    public TUI getTui() {
+    public Tui getTui() {
         return tui;
     }
 
@@ -43,7 +43,7 @@ public final class BlackJack {
      */
     private BlackJack() {
         IBlackJackController controller = new BlackJackController();
-        tui = new TUI(controller);
+        tui = new Tui(controller);
         controller.create();
         tui.printTui();
     }

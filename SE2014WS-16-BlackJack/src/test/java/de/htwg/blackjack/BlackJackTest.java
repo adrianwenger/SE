@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package de.htwg.blackjack;
 
-import org.junit.After;
-import org.junit.AfterClass;
+import de.htwg.aview.Tui;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -18,20 +10,39 @@ import static org.junit.Assert.*;
  * @author philippschultheiss
  */
 public class BlackJackTest {
-    
-    
+
+    /**
+     * tui.
+     */
+    private Tui tui;
+    /**
+     * static BlackJack instance.
+     */
+    private BlackJack instance;
+
     @Before
     public void setUp() {
-        
-    }
-    
-    @After
-    public void tearDown() {
+        instance = BlackJack.getInstance();
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void testGetInstance() {
+        boolean expResult = true;
+        boolean result = instance instanceof BlackJack;
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testGetTui() {
+        tui = instance.getTui();
+        boolean expResult = true;
+        boolean result = tui instanceof Tui;
+        assertEquals(expResult, result);
+    }
+    
+    @Test public void testMain() {
+        //?
+        //?
+        //?
+    }
 }
