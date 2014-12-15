@@ -1,8 +1,8 @@
 package de.htwg.blackjack;
 
-import de.htwg.controller.impl.BlackJackController;
-import de.htwg.controller.IBlackJackController;
-import de.htwg.aview.Tui;
+import de.htwg.blackjack.controller.impl.BlackJackController;
+import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.aview.Tui;
 
 /**
  *
