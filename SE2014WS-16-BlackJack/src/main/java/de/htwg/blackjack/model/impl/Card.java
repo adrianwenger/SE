@@ -85,4 +85,9 @@ public final class Card implements ICard {
         cards.put(i, num);
         i++;
     }
+
+    @Override
+    public Suit getSuit() {
+        return this.suit;
+    }
 }

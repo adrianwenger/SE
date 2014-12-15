@@ -29,12 +29,24 @@ public class BlackJackControllerTest {
     IBlackJackController controller;
     IDeck deck;
     IPlayer player;
+    IPlayer dealer;
 
     @Before
     public void setUp() {
         controller = new BlackJackController();
-        this.controller.setPlayer("Test");
+        this.controller.setPlayer("Fritz");
         this.controller.setDealer();
+        controller.setDeck(1);
+        player = controller.getPlayer();
+        dealer = controller.getDealer();
+    }
+
+    @Test
+    public void testGetDeck() {
+        deck = new Deck();
+        boolean expResult = true;
+        boolean result = deck.getDeck() instanceof ICard[];
+        assertEquals(expResult, result);
     }
 
     @Test
@@ -75,22 +87,44 @@ public class BlackJackControllerTest {
 
     @Test
     public void testGetFirstTwoCardsPlayer() {
-        player = new Player("Philipp");
-        player.add(new Card(Suit.SPADES, 1));
-        player.add(new Card(Suit.CLUBS, 6));
-        boolean expResult = true;
-        boolean result = player.printPlayersHand().equals("Cards: AceOfSPADES "
-                + "SixOfCLUBS Value: 17");
-        //String expResult = "Cards: AceOfSPADES SixOfCLUBS Value: 17";
-        String result0 = "Cards: AceOfSPADES SixOfCLUBS Value: 17";
-        String result1 = player.printPlayersHand();
-        boolean test = result0.equals(result1);
-        assertEquals(expResult, test);
+        ICard[] cards = new Deck().getDeck();
+        controller.getFirstTwoCardsPlayer();
+        ICard[] plcards = player.getPlayerHand();
+        boolean first = false;
+        boolean second = false;
+        for (ICard card : cards) {
+            if (plcards[0].getSuit() == card.getSuit() && plcards[0].getNumber() == card.getNumber()) {
+                first = true;
+            }
+            if (plcards[1].getSuit() == card.getSuit() && plcards[1].getNumber() == card.getNumber()) {
+                second = true;
+            }
+        }
+        assert (first);
+        assert (second);
+    }
+    
+    @Test
+    public void testGetFirstTwoCardsDealer() {
+        ICard[] cards = new Deck().getDeck();
+        controller.getFirstTwoCardsDealer();
+        ICard[] plcards = dealer.getPlayerHand();
+        boolean first = false;
+        boolean second = false;
+        for (ICard card : cards) {
+            if (plcards[0].getSuit() == card.getSuit() && plcards[0].getNumber() == card.getNumber()) {
+                first = true;
+            }
+            if (plcards[1].getSuit() == card.getSuit() && plcards[1].getNumber() == card.getNumber()) {
+                second = true;
+            }
+        }
+        assert (first);
+        assert (second);
     }
 
     @Test
     public void testGetCardPlayer() {
-        player = new Player("Philipp");
         player.add(new Card(Suit.CLUBS, 6));
         //String expResult = "Cards: SixOfCLUBS Value: 6";
         int expResult = 6;
@@ -102,5 +136,10 @@ public class BlackJackControllerTest {
         controller.setStatusLine("Welcome to BlackJack...");
         String expResult = "";
         assertEquals(expResult, controller.output());
+    }
+
+    @Test
+    public void testCheckIfDealerNeedsCard() {
+
     }
 }

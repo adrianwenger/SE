@@ -34,4 +34,5 @@ public interface IPlayer {
      */
     String getName();
 
+    ICard[] getPlayerHand();
 }
