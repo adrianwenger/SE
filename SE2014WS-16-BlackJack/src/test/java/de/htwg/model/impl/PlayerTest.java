@@ -94,4 +94,13 @@ public final class PlayerTest {
         assertEquals(expResult, result);
 
     }
+    
+    @Test
+    public void testSetPlayerVal(){
+        player.add(new Card(Suit.CLUBS, FIVE));
+        //player.setPlayerVal(FIVE);
+        int expResult = 5;
+        int result = player.getValue();
+        assertEquals(expResult, result);
+    }
 }

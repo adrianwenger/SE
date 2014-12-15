@@ -58,7 +58,7 @@ public final class Deck implements IDeck {
     public Deck() {
         this.numOfDecks = ONE;
         this.numOfCards = FIFTYTWO;
-        this.deck = new Card[this.numOfCards];
+        this.deck = new ICard[this.numOfCards];
     }
 
     /**
