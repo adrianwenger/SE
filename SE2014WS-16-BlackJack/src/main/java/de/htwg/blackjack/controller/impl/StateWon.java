@@ -36,7 +36,7 @@ final class StateWon implements IGameState {
             // Player won concerning better face
             this.controller.setStatusLine(this.controller.getPlayer().getName()
                     + " ,you won!!!! --> "
-                    + this.controller.getPlayer().printPlayersHand());
+                    + this.controller.getPlayer().printPlayersHand() + "\n");
             //System.exit(0);
         }
     }
