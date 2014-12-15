@@ -49,7 +49,7 @@ public final class Player implements IPlayer {
     /**
      * players hand.
      */
-    private final ICard[] playerHand = new Card[MAXCARDS];
+    private ICard[] playerHand;
 
     /**
      *
@@ -57,6 +57,7 @@ public final class Player implements IPlayer {
      */
     public Player(final String playerName) {
         this.name = playerName;
+        this.playerHand = new Card[MAXCARDS];
     }
 
     /**
@@ -65,15 +66,16 @@ public final class Player implements IPlayer {
      */
     @Override
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
      * Reset players hand.
      */
     public void clearHand() {
-       new Player(name);
-       new Player("Dealer");
+        this.playerHand = new Card[MAXCARDS];
+        this.playerVal = 0;
+        this.numOfCards = 0;
     }
 
     /**

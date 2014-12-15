@@ -3,7 +3,7 @@ package de.htwg.blackjack.controller.impl;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.IGameState;
 
- /**
+/**
  *
  * @author Adrian Wenger
  */
@@ -38,13 +38,16 @@ public final class StateInGame implements IGameState {
         if ((this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() > BLACKJACK)) {
             this.controller.setCurrentState(new StateWon(controller));
-        // game will move on (both < 21)
+            // game will move on (both < 21)
         } else if (this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() < BLACKJACK) {
             this.controller.setStatusLine("Please take another card (2) or "
                     + "finish game (3)");
+            // Player has BlackJack
+        } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
+            this.controller.setCurrentState(new StateBlackJack(controller));
         } else {
-            // Player lost Dealer reached BlackJack 
+            // Player lost Dealer reached BlackJack or just won
             this.controller.setCurrentState(new StateLost(controller));
         }
     }

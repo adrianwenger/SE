@@ -1,9 +1,5 @@
 package de.htwg.blackjack.controller.impl;
 
-import de.htwg.blackjack.controller.impl.StateInGame;
-import de.htwg.blackjack.controller.impl.BlackJackController;
-import de.htwg.blackjack.controller.impl.StateWon;
-import de.htwg.blackjack.controller.impl.StateLost;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.impl.Card;
 import de.htwg.blackjack.model.impl.Suit;
@@ -20,7 +16,6 @@ public class StateInGameTest {
     /**
      * BlackJack Value 21.
      */
-
     private IBlackJackController controller;
 
     @Before
@@ -41,17 +36,15 @@ public class StateInGameTest {
      */
     @Test
     public final void testChange() {
-        // test BlackJack Case
+        // Case Player < 21 && Dealer < 21
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
-
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
-        // Case Player and Dealer < 21)
-        this.controller.setStatusLine("test");
-        String result = this.controller.getStatusLine();
+        this.controller.getCurrentState().change();
+        String result0 = this.controller.getStatusLine();
         String expResult = "";
-        assertEquals(expResult, result);
+        assertEquals(expResult, result0);
 
         // Case Dealer BlackJack
         this.controller.getDealer().add(new Card(Suit.SPADES, 3));
@@ -62,15 +55,11 @@ public class StateInGameTest {
         // Clears the hand to simulate case Dealer > 21 Player < 21
         this.controller.getPlayer().clearHand();
         this.controller.getDealer().clearHand();
-        
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
-
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
         this.controller.setCurrentState(new StateInGame(controller));
-        
-        this.controller.getDealer().add(new Card(Suit.SPADES, 3));
         this.controller.getCurrentState().change();
         boolean result2 = this.controller.getCurrentState() instanceof StateWon;
         assert (result2);
