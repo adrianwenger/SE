@@ -33,6 +33,13 @@ public interface IPlayer {
      * @return name
      */
     String getName();
-
+    /**
+     * reset playerhand
+     */
+    void clearHand();
+    /**
+     * 
+     * @return ICard[]
+     */
     ICard[] getPlayerHand();
 }

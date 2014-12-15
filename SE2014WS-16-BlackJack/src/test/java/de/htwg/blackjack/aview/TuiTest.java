@@ -26,10 +26,13 @@ public class TuiTest {
         deck = new Deck();
     }
 
-//    @Test
-//    public void testUpdate() {
-//
-//    }
+    @Test
+    public void testSetStatusLine() {
+        controller.setStatusLine("status");
+        String expResult = "";
+        String result = controller.getStatusLine();
+        assertEquals(expResult, result);
+    }
 
     @Test
     public void testcreateGame() {
