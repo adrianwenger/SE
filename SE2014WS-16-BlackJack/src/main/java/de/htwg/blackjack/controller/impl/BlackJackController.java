@@ -211,11 +211,8 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void checkGameState() {
-        // dealer or player reached BlackJack
-        if (player.getValue() == BLACKJACK || dealer.getValue() == BLACKJACK) {
-            this.setCurrentState(new StateBlackJack(this));
-            // new Game. Initialize with StateInGame
-        } else if (this.currentState == null) {
+        // new Game. Initialize with StateInGame
+        if (this.currentState == null) {
             this.setCurrentState(new StateInGame(this));
         } else {
             // check if GameState will change
