@@ -20,7 +20,6 @@ public class StateInGameTest {
     /**
      * BlackJack Value 21.
      */
-    private static final int BLACKJACK = 21;
 
     private IBlackJackController controller;
 
@@ -56,16 +55,24 @@ public class StateInGameTest {
 
         // Case Dealer BlackJack
         this.controller.getDealer().add(new Card(Suit.SPADES, 3));
-        this.controller.setCurrentState(new StateLost(controller));
+        this.controller.getCurrentState().change();
         boolean result1 = this.controller.getCurrentState() instanceof StateLost;
-        boolean expResult1 = true;
-        assertEquals(expResult1, result1);
+        assert (result1);
 
-        // Case Dealer > 21 Player < 21
+        // Clears the hand to simulate case Dealer > 21 Player < 21
+        this.controller.getPlayer().clearHand();
+        this.controller.getDealer().clearHand();
+        
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        this.controller.setCurrentState(new StateInGame(controller));
+        
         this.controller.getDealer().add(new Card(Suit.SPADES, 3));
-        this.controller.setCurrentState(new StateWon(controller));
+        this.controller.getCurrentState().change();
         boolean result2 = this.controller.getCurrentState() instanceof StateWon;
-        boolean expResult2 = true;
-        assertEquals(expResult2, result2);
+        assert (result2);
     }
 }
