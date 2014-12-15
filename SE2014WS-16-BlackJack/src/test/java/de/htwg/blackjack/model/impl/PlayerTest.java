@@ -1,9 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
-import de.htwg.blackjack.model.impl.Card;
-import de.htwg.blackjack.model.impl.Player;
 import de.htwg.blackjack.model.Suit;
-import de.htwg.blackjack.model.impl.Deck;
 import de.htwg.blackjack.model.ICard;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
@@ -81,9 +78,9 @@ public final class PlayerTest {
         test = new Card(Suit.CLUBS, 11);
         cardVal = test.getNumber();
         player.add(test);
-        expResult = cardVal;
+        expResult = 12;
         result = player.getValue();
-        //assertEquals(expResult, result);
+        assertEquals(expResult, result);
     }
 
     /**
