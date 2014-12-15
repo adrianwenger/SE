@@ -5,15 +5,13 @@
  */
 package de.htwg.blackjack.controller.impl;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
-import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.IGameState;
 import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.model.impl.Card;
 import de.htwg.blackjack.model.impl.Deck;
-import de.htwg.blackjack.model.impl.Player;
 import de.htwg.blackjack.model.impl.Suit;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,27 +25,26 @@ public class BlackJackControllerTest {
 
     static final int BLACKJACK = 21;
 
-    IBlackJackController controller;
-    IDeck deck;
-    IPlayer player;
-    IPlayer dealer;
+    private IBlackJackController controller;
+    private IDeck deck;
+    private IPlayer player, dealer;
 
     @Before
     public void setUp() {
-        controller = new BlackJackController();
+        this.controller = new BlackJackController();
         this.controller.setPlayer("Fritz");
         this.controller.setDealer();
-        controller.setDeck(1);
-        player = controller.getPlayer();
-        dealer = controller.getDealer();
+        this.controller.setDeck(1);
+        this.player = controller.getPlayer();
+        this.dealer = controller.getDealer();
+        this.deck = this.controller.getDeck();
     }
 
     @Test
     public void testGetDeck() {
         deck = new Deck();
-        boolean expResult = true;
-        boolean result = deck.getDeck() instanceof ICard[];
-        assertEquals(expResult, result);
+        boolean result = this.controller.getDeck() instanceof IDeck;
+        assert (result);
     }
 
     @Test
@@ -58,17 +55,21 @@ public class BlackJackControllerTest {
         assertEquals(expResult, result);
     }
 
+    /**
+     * Test GameState.
+     */
     @Test
     public final void testCheckGameState() {
-        // Test StateBlackJack
-        StateBlackJackTest state = new StateBlackJackTest();
-        boolean result = state instanceof StateBlackJackTest;
-        boolean expResult = true;
-        assertEquals(expResult, result);
+        // Case: new Game
+        this.controller.setCurrentState(null);
+        this.controller.checkGameState();
+        boolean result = this.controller.getCurrentState() instanceof StateInGame;
+        assert (result);
 
-        StateInGameTest state2 = new StateInGameTest();
-        result = state2 instanceof StateInGameTest;
-        assertEquals(expResult, result);
+        // Case: running game
+        this.controller.checkGameState();
+        result = this.controller.getCurrentState() instanceof IGameState;
+        assert (result);
     }
 
     @Test
@@ -104,7 +105,7 @@ public class BlackJackControllerTest {
         assert (first);
         assert (second);
     }
-    
+
     @Test
     public void testGetFirstTwoCardsDealer() {
         ICard[] cards = new Deck().getDeck();
@@ -125,7 +126,7 @@ public class BlackJackControllerTest {
     }
 
     @Test
-     public void getCardPlayer() {
+    public void getCardPlayer() {
         ICard[] cards = new Deck().getDeck();
         controller.getCardPlayer();
         ICard[] plcards = player.getPlayerHand();
@@ -136,10 +137,10 @@ public class BlackJackControllerTest {
             }
         }
         assert (first);
-     }
+    }
 
-     @Test
-     public void getCardDealer() {
+    @Test
+    public void getCardDealer() {
         ICard[] cards = new Deck().getDeck();
         controller.getCardDealer();
         ICard[] plcards = dealer.getPlayerHand();
@@ -150,7 +151,7 @@ public class BlackJackControllerTest {
             }
         }
         assert (first);
-     }
+    }
 
     @Test
     public void testCreate() {
@@ -164,18 +165,30 @@ public class BlackJackControllerTest {
         player.add(new Card(Suit.CLUBS, 4));
         player.add(new Card(Suit.CLUBS, 10));
         player.add(new Card(Suit.CLUBS, 10));
-        
+
         dealer.add(new Card(Suit.CLUBS, 10));
         dealer.add(new Card(Suit.CLUBS, 5));
 
         controller.checkIfDealerNeedsCard();
         int expResult = 3;
         int i;
-        for (i = 0 ; i < dealer.getPlayerHand().length ; i++) {
+        for (i = 0; i < dealer.getPlayerHand().length; i++) {
             if (dealer.getPlayerHand()[i] == null) {
                 break;
             }
         }
         assertEquals(expResult, i);
+    }
+
+    /**
+     * Test endGame.
+     */
+    @Test
+    public void testEndGame() {
+        this.controller.setCurrentState(null);
+        this.controller.endGame();
+        String result = this.controller.getStatusLine();
+        String expResult = "";
+        assertEquals(expResult, result);
     }
 }
