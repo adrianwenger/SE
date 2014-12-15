@@ -162,7 +162,6 @@ public final class BlackJackController extends Observable
 
         return (player.printPlayersHand());
     }
-
     /**
      *
      * @return printPlayersHand

@@ -56,9 +56,7 @@ public final class Deck implements IDeck {
      * Default Constructor.
      */
     public Deck() {
-        this.numOfDecks = ONE;
-        this.numOfCards = FIFTYTWO;
-        this.deck = new Card[this.numOfCards];
+        this(1);
     }
 
     /**

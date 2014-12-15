@@ -145,4 +145,9 @@ public final class Player implements IPlayer {
         }
         return sb.append("Value: ").append(playerVal).toString();
     }
+
+    @Override
+    public ICard[] getPlayerHand() {
+        return this.playerHand;
+    }
 }
