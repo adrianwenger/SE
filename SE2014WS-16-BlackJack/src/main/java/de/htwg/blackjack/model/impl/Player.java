@@ -57,7 +57,6 @@ public final class Player implements IPlayer {
      */
     public Player(final String playerName) {
         this.name = playerName;
-        this.clearHand();
     }
 
     /**
@@ -73,9 +72,8 @@ public final class Player implements IPlayer {
      * Reset players hand.
      */
     public void clearHand() {
-        for (int i = ZERO; i < MAXCARDS; i++) {
-            this.playerHand[i] = null;
-        }
+       new Player(name);
+       new Player("Dealer");
     }
 
     /**
