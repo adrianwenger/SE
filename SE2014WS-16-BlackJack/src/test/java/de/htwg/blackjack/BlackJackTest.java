@@ -1,6 +1,6 @@
 package de.htwg.blackjack;
 
-import de.htwg.aview.Tui;
+import de.htwg.blackjack.aview.Tui;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
