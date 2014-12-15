@@ -3,6 +3,7 @@ package de.htwg.blackjack;
 import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.Tui;
+import de.htwg.blackjack.aview.gui.BlackJackFrame;
 
 /**
  *
@@ -17,6 +18,8 @@ public final class BlackJack {
      * static BlackJack instance.
      */
     private static BlackJack instance = null;
+    
+    private static IBlackJackController controller = new BlackJackController();
 
     /**
      * Singleton.
@@ -42,7 +45,7 @@ public final class BlackJack {
      *
      */
     private BlackJack() {
-        IBlackJackController controller = new BlackJackController();
+        //controller = new BlackJackController();
         tui = new Tui(controller);
         controller.create();
         tui.printTui();
@@ -53,6 +56,8 @@ public final class BlackJack {
      * @param args not used
      */
     public static void main(final String[] args) {
+        //Create new GUI
+        //BlackJackFrame gui = new BlackJackFrame(controller);
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
