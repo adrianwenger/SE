@@ -5,6 +5,7 @@
  */
 package de.htwg.blackjack.controller.impl;
 
+import com.sun.org.apache.xalan.internal.xsltc.compiler.sym;
 import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.ICard;
@@ -124,12 +125,32 @@ public class BlackJackControllerTest {
     }
 
     @Test
-    public void testGetCardPlayer() {
-        player.add(new Card(Suit.CLUBS, 6));
-        //String expResult = "Cards: SixOfCLUBS Value: 6";
-        int expResult = 6;
-        assertEquals(expResult, player.getValue());
-    }
+     public void getCardPlayer() {
+        ICard[] cards = new Deck().getDeck();
+        controller.getCardPlayer();
+        ICard[] plcards = player.getPlayerHand();
+        boolean first = false;
+        for (ICard card : cards) {
+            if (plcards[0].getSuit() == card.getSuit() && plcards[0].getNumber() == card.getNumber()) {
+                first = true;
+            }
+        }
+        assert (first);
+     }
+
+     @Test
+     public void getCardDealer() {
+        ICard[] cards = new Deck().getDeck();
+        controller.getCardDealer();
+        ICard[] plcards = dealer.getPlayerHand();
+        boolean first = false;
+        for (ICard card : cards) {
+            if (plcards[0].getSuit() == card.getSuit() && plcards[0].getNumber() == card.getNumber()) {
+                first = true;
+            }
+        }
+        assert (first);
+     }
 
     @Test
     public void testCreate() {
@@ -139,7 +160,22 @@ public class BlackJackControllerTest {
     }
 
     @Test
-    public void testCheckIfDealerNeedsCard() {
+    public void testDealerLowerPlayer() {
+        player.add(new Card(Suit.CLUBS, 4));
+        player.add(new Card(Suit.CLUBS, 10));
+        player.add(new Card(Suit.CLUBS, 10));
+        
+        dealer.add(new Card(Suit.CLUBS, 10));
+        dealer.add(new Card(Suit.CLUBS, 5));
 
+        controller.checkIfDealerNeedsCard();
+        int expResult = 3;
+        int i;
+        for (i = 0 ; i < dealer.getPlayerHand().length ; i++) {
+            if (dealer.getPlayerHand()[i] == null) {
+                break;
+            }
+        }
+        assertEquals(expResult, i);
     }
 }
