@@ -1,4 +1,4 @@
-package de.htwg.blackjack.model.impl;
+package de.htwg.blackjack.model;
 
 /**
  *
