@@ -6,8 +6,6 @@
 package de.htwg.controller.impl;
 
 import de.htwg.controller.IBlackJackController;
-import de.htwg.controller.IGameState;
-import de.htwg.controller.impl.BlackJackController;
 import de.htwg.model.ICard;
 import de.htwg.model.IDeck;
 import de.htwg.model.IPlayer;
