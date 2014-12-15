@@ -52,6 +52,18 @@ public class StateInGameTest {
         boolean result1 = this.controller.getCurrentState() instanceof StateLost;
         assert (result1);
 
+        // Case Player BlackJack
+        this.controller.getPlayer().clearHand();
+        this.controller.getDealer().clearHand();
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
+        this.controller.getPlayer().add(new Card(Suit.SPADES, 3));
+        this.controller.getDealer().add(new Card(Suit.SPADES, 9));
+        this.controller.setCurrentState(new StateInGame(controller));
+        this.controller.getCurrentState().change();
+        boolean result2 = this.controller.getCurrentState() instanceof StateBlackJack;
+        assert (result2);
+
         // Clears the hand to simulate case Dealer > 21 Player < 21
         this.controller.getPlayer().clearHand();
         this.controller.getDealer().clearHand();
@@ -61,7 +73,7 @@ public class StateInGameTest {
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
         this.controller.setCurrentState(new StateInGame(controller));
         this.controller.getCurrentState().change();
-        boolean result2 = this.controller.getCurrentState() instanceof StateWon;
-        assert (result2);
+        boolean result3 = this.controller.getCurrentState() instanceof StateWon;
+        assert (result3);
     }
 }
