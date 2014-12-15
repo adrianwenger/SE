@@ -1,5 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
+import de.htwg.blackjack.model.Suit;
 import de.htwg.blackjack.model.ICard;
 import java.util.Map;
 import java.util.TreeMap;

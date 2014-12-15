@@ -2,7 +2,7 @@ package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.impl.Card;
-import de.htwg.blackjack.model.impl.Suit;
+import de.htwg.blackjack.model.Suit;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

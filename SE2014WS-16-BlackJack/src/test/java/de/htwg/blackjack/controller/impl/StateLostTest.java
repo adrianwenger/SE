@@ -4,7 +4,7 @@ import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.impl.StateLost;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.impl.Card;
-import de.htwg.blackjack.model.impl.Suit;
+import de.htwg.blackjack.model.Suit;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
