@@ -44,7 +44,7 @@ public final class StateEndGame implements IGameState {
     @Override
     public void change() {
         //
-        //
+        System.out.println("YOur now in SateEndGame");
         //
     }
 }
