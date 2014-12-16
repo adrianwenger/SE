@@ -2,6 +2,7 @@ package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 import java.util.Scanner;
 
@@ -22,13 +23,18 @@ public final class StateEndGame implements IGameState {
      * tui.
      */
     private Tui tui = null;
+    /**
+     * calc controller
+     */
+    private ICalcProfitController calcController;
 
     /**
      * Public Constructor.
      *
      * @param blackJackController controller
      */
-    public StateEndGame(final IBlackJackController blackJackController) {
+    public StateEndGame(final IBlackJackController blackJackController, ICalcProfitController cal) {
+        this.calcController = cal; 
         this.controller = blackJackController;
     }
 
@@ -37,7 +43,7 @@ public final class StateEndGame implements IGameState {
      */
     @Override
     public void change() {
-        this.controller.setStatusLine("Do you want to start a new round?\n");
+        this.controller.setStatusLine("Do you want to start a new round? [y/n]\n");
         this.controller.setStatusLine("\t-->\t");
 
         String eingabe = SCANNER.next();

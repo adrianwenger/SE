@@ -22,7 +22,6 @@ public final class BlackJack {
     private static BlackJack instance = null;
     
     private static IBlackJackController controller = new BlackJackController();
-    private final ICalcProfitController calController = new CalcProfitController(controller);
 
     /**
      * Singleton.
@@ -49,7 +48,7 @@ public final class BlackJack {
      */
     private BlackJack() {
         //controller = new BlackJackController();
-        tui = new Tui(controller, calController);
+        tui = new Tui(controller);
         controller.create();
         tui.printTui();
     }

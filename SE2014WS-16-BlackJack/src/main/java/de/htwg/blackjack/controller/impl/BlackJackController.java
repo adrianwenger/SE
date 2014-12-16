@@ -1,6 +1,7 @@
 package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
@@ -41,6 +42,18 @@ public final class BlackJackController extends Observable
      * saves current Game state of BlackJack.
      */
     private IGameState currentState;
+    /**
+     * 
+     */
+    private ICalcProfitController calcController = new CalcProfitController(this);
+    
+    /**
+     * 
+     * @param calcController 
+     */
+    public void setCalcController(ICalcProfitController calcController) {
+        this.calcController = calcController;
+    }
 
     /**
      *
@@ -89,7 +102,13 @@ public final class BlackJackController extends Observable
         this.currentState = state;
         notifyObservers();
     }
-
+    /**
+     * 
+     * @return calcController
+     */
+    public ICalcProfitController getCalcController() {
+        return calcController;
+    }
     /**
      *
      * @return deck
@@ -219,7 +238,7 @@ public final class BlackJackController extends Observable
     public void checkGameState() {
         // new Game. Initialize with StateInGame
         if (this.currentState == null) {
-            this.setCurrentState(new StateInGame(this));
+            this.setCurrentState(new StateInGame(this, calcController));
         } else {
             // check if GameState will change
             this.currentState.change();

@@ -23,6 +23,7 @@ public class CalcProfitController implements ICalcProfitController {
     private final double MULTICATOR = 1.5;
 
     private final int BLACKJACK = 21;
+    private final double TWO = 2;
 
     public CalcProfitController(IBlackJackController controller) {
         this.controller = controller;
@@ -45,15 +46,39 @@ public class CalcProfitController implements ICalcProfitController {
         this.dealer = new Player("Dealer");
     }
 
+    @Override
     public void calcProfit() {
         if (controller.getCurrentState() instanceof StateWon) {
+            //Round won --> Player asset = stake plus stake * 1.5
             profit = player.getRoundStake() + (player.getRoundStake() * MULTICATOR);
+        } else if (controller.getCurrentState() instanceof StateBlackJack) {
+            //Player got BlackJack = stake * 2
+            profit = player.getRoundStake() + (player.getRoundStake() * TWO);
+        } else if (player.getValue() == BLACKJACK && dealer.getValue() == BLACKJACK) {
+            //Player and Dealer got BlackJack = Player gets stake back
+            profit = player.getRoundStake();
         } else {
-            profit = 0;
+            //Player lost = stake - roundStake
             player.setStake(player.getStake() - player.getRoundStake());
         }
     }
-
+    /**
+     * Checks if player can double his roundstake
+     * If doubled rounstake bigger than roundstake: return false
+     */
+    @Override
+    public boolean checkDouble(){
+        if(player.getStake() <= (player.getStake() * TWO)) {
+            return false;
+        }
+        return true;
+    }
+//    @Override
+//    public void checkStake(){
+//        if(player.getStake() <= 0){
+//            this.controller.setCurrentState(new State);
+//        }
+//    }
     @Override
     public double getProfit() {
         return profit;

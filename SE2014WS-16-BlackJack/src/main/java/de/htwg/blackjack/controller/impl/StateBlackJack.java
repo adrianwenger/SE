@@ -1,6 +1,7 @@
 package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 
 /**
@@ -13,13 +14,15 @@ final class StateBlackJack implements IGameState {
      * BlackJack Controller.
      */
     private final IBlackJackController controller;
+    private ICalcProfitController calcController;
 
     /**
      * Public Constructor.
      *
      * @param blackJackController controller
      */
-    public StateBlackJack(final IBlackJackController blackJackController) {
+    public StateBlackJack(final IBlackJackController blackJackController, ICalcProfitController cal) {
+        this.calcController = cal; 
         this.controller = blackJackController;
     }
 
@@ -36,7 +39,7 @@ final class StateBlackJack implements IGameState {
                     + ", you got BlackJack!\n\n");
         }
         // change state to StateEndGame
-        this.controller.setCurrentState(new StateEndGame(controller));
+        this.controller.setCurrentState(new StateEndGame(controller, calcController));
         this.controller.getCurrentState().change();
     }
 }

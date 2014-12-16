@@ -1,6 +1,7 @@
 package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
 
@@ -14,14 +15,16 @@ public final class StateInGame implements IGameState {
      * IBlackJack Controller.
      */
     private final IBlackJackController controller;
+    private ICalcProfitController calcController;
 
     /**
      * Public Constructor.
      *
      * @param cont IBlackJackController
      */
-    public StateInGame(final IBlackJackController cont) {
-        this.controller = cont;
+   public StateInGame(final IBlackJackController blackJackController, ICalcProfitController cal) {
+        this.calcController = cal; 
+        this.controller = blackJackController;
     }
 
     /**
@@ -32,7 +35,7 @@ public final class StateInGame implements IGameState {
         // Player won (Player < BlackJack && Dealer > BlackJack)
         if ((this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() > BLACKJACK)) {
-            this.controller.setCurrentState(new StateWon(controller));
+            this.controller.setCurrentState(new StateWon(controller, calcController));
             this.controller.getCurrentState().change();
             // game will move on (both < 21)
         } else if (this.controller.getPlayer().getValue() < BLACKJACK
@@ -41,11 +44,11 @@ public final class StateInGame implements IGameState {
                     + "finish game (3)\n");
             // Player has BlackJack
         } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
-            this.controller.setCurrentState(new StateBlackJack(controller));
+            this.controller.setCurrentState(new StateBlackJack(controller, calcController));
             this.controller.getCurrentState().change();
         } else {
             // Player lost Dealer reached BlackJack or just won
-            this.controller.setCurrentState(new StateLost(controller));
+            this.controller.setCurrentState(new StateLost(controller, calcController));
             this.controller.getCurrentState().change();
         }
     }

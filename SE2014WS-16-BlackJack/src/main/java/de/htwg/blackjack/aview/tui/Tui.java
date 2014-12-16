@@ -26,9 +26,9 @@ public final class Tui implements IObserver {
      *
      * @param cont controller
      */
-    public Tui(final IBlackJackController cont, final ICalcProfitController cal) {
+    public Tui(final IBlackJackController cont) {
         this.controller = cont;
-        this.calcController = cal;
+        this.calcController = cont.getCalcController();
         controller.addObserver(this);
     }
 
@@ -78,6 +78,10 @@ public final class Tui implements IObserver {
         this.controller.setStatusLine(INPUT);
         this.controller.setPlayer(SCANNER.next());
         this.controller.setDealer();
+        //Set STAKE
+        this.controller.setStatusLine("With how much effort you want to start?\n");
+        this.controller.setStatusLine(INPUT);
+        this.controller.getPlayer().setStake(SCANNER.nextDouble());
     }
 
     /**
@@ -89,10 +93,10 @@ public final class Tui implements IObserver {
                 + "want for playing BlackJack?\n");
         this.controller.setStatusLine(INPUT);
         this.controller.setDeck(SCANNER.nextInt());
-        //Set STAKE
-        this.controller.setStatusLine("With how much effort you want to start?\n");
+        //ROUND STAKE
+        this.controller.setStatusLine("Your round stake:\n");
         this.controller.setStatusLine(INPUT);
-        this.controller.getPlayer().setStake(SCANNER.nextDouble());
+        this.controller.getPlayer().setRoundStake(SCANNER.nextDouble());
         //DEAL FIRST TWO CARDS
         this.controller.setStatusLine("First two dealt cards:\n\n");
         this.controller.setStatusLine(controller.getPlayer().getName() + ": ");
@@ -154,6 +158,9 @@ public final class Tui implements IObserver {
                     }
                     break;
                 case THREE:
+                    this.controller.getPlayer().doubleStake();
+                    break;
+                case FOUR:
                     controller.endGame();
                     controller.setStatusLine("END!\n");
                     System.exit(0);
@@ -173,6 +180,6 @@ public final class Tui implements IObserver {
         this.controller.setStatusLine("----------------------- MENUE --"
                 + "---------------------\n");
         this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
-                + "-- Quit Game\n");
+                + "-- Double Stake" + "ˇ\n4 -- Quit Game\n");
     }
 }

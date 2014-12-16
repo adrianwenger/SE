@@ -29,7 +29,10 @@ public interface IBlackJackController extends IObservable {
      * @param state state
      */
     void setCurrentState(IGameState state);
-
+    /**
+     * 
+     */
+    void setCalcController(ICalcProfitController calcController);
     /**
      * create Dealer.
      */
@@ -76,7 +79,10 @@ public interface IBlackJackController extends IObservable {
      * @return first Cards with value
      */
     String getFirstTwoCardsPlayer();
-
+    /**
+     * 
+     */
+    ICalcProfitController getCalcController();
     /**
      *
      * @return first Cards with value

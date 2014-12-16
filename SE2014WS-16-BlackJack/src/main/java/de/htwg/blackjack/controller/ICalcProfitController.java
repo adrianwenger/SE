@@ -25,4 +25,13 @@ public interface ICalcProfitController {
      * @return profit
      */
     public double getProfit();
+    /**
+     * calculates the profit
+     */
+    public void calcProfit();
+    /**
+     * Checks if player can double his roundstake
+     * If doubled rounstake bigger than roundstake: return false
+     */
+    public boolean checkDouble();
 }
