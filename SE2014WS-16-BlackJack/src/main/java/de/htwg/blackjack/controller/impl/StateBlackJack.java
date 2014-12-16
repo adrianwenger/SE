@@ -39,7 +39,7 @@ final class StateBlackJack implements IGameState {
                     + ", you got BlackJack!\n\n");
         }
         // change state to StateEndGame
-        this.controller.setCurrentState(new StateEndGame(controller, calcController));
+        this.controller.setCurrentState(new StateEndRound(controller, calcController));
         this.controller.getCurrentState().change();
     }
 }

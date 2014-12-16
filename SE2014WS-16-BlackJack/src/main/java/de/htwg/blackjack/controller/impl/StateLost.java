@@ -35,10 +35,10 @@ public final class StateLost implements IGameState {
             this.controller.setCurrentState(new StateBlackJack(controller, calcController));
             this.controller.getCurrentState().change();
         } else {
-            this.controller.setStatusLine("Game Over!\n"
+            this.controller.setStatusLine("Round Lost!\n"
                     + this.controller.getPlayer().printPlayersHand() + "\n\n");
             // change state to StateEndGame
-            this.controller.setCurrentState(new StateEndGame(controller, calcController));
+            this.controller.setCurrentState(new StateEndRound(controller, calcController));
             this.controller.getCurrentState().change();
         }
     }

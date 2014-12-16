@@ -28,7 +28,7 @@ public class StateInGameTest {
         // Create Deck
         this.controller.setDeck(1);
         // set State to StateInGame
-        this.controller.setCurrentState(new StateInGame(controller));
+        this.controller.setCurrentState(new StateInGame(controller, this.controller.getCalcController()));
     }
 
     /**
@@ -59,7 +59,7 @@ public class StateInGameTest {
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
         this.controller.getPlayer().add(new Card(Suit.SPADES, 3));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
-        this.controller.setCurrentState(new StateInGame(controller));
+        this.controller.setCurrentState(new StateInGame(controller, this.controller.getCalcController()));
         this.controller.getCurrentState().change();
         boolean result2 = this.controller.getCurrentState() instanceof StateBlackJack;
         assert (result2);
@@ -71,7 +71,7 @@ public class StateInGameTest {
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
-        this.controller.setCurrentState(new StateInGame(controller));
+        this.controller.setCurrentState(new StateInGame(controller, this.controller.getCalcController()));
         this.controller.getCurrentState().change();
         boolean result3 = this.controller.getCurrentState() instanceof StateWon;
         assert (result3);

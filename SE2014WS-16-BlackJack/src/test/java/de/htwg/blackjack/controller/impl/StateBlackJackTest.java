@@ -25,7 +25,7 @@ public class StateBlackJackTest {
         // Create Deck
         this.controller.setDeck(1);
 
-        this.controller.setCurrentState(new StateBlackJack(controller));
+        this.controller.setCurrentState(new StateBlackJack(controller, this.controller.getCalcController()));
     }
 
     /**

@@ -274,6 +274,11 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void endGame() {
+         // Game will end
+        if (this.getCurrentState() instanceof StateEndRound) {
+           
+        }
+        
         // Game will end
         if (this.getCurrentState() instanceof StateEndGame) {
             this.setStatusLine("END!\n");

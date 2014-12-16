@@ -27,7 +27,7 @@ public class StateLostTest {
         // Create Deck
         this.controller.setDeck(1);
         // set State to StateLost
-        this.controller.setCurrentState(new StateLost(controller));
+        this.controller.setCurrentState(new StateLost(controller, this.controller.getCalcController()));
     }
 
     /**

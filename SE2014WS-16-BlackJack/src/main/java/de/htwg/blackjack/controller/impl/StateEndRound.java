@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * @author Adrian Wenger
  */
-public final class StateEndGame implements IGameState {
+public final class StateEndRound implements IGameState {
 
     /**
      * define Scanner.
@@ -23,7 +23,8 @@ public final class StateEndGame implements IGameState {
      * tui.
      */
     private Tui tui = null;
-    /**
+
+     /**
      * calc controller
      */
     private ICalcProfitController calcController;
@@ -33,18 +34,29 @@ public final class StateEndGame implements IGameState {
      *
      * @param blackJackController controller
      */
-    public StateEndGame(final IBlackJackController blackJackController, ICalcProfitController cal) {
-        this.calcController = cal;
+    public StateEndRound(final IBlackJackController blackJackController, ICalcProfitController cal) {
+        this.calcController = cal; 
         this.controller = blackJackController;
     }
-
+    
     /**
      *
      */
     @Override
     public void change() {
-        //
-        //
-        //
+        this.controller.setStatusLine("Do you want to start a new round? [y/n]\n");
+        this.controller.setStatusLine("\t-->\t");
+
+        String eingabe = SCANNER.next();
+        if (eingabe.equals("y")) {
+            // start new round
+            this.controller.create();
+            tui = new Tui(controller);
+            tui.printTui();
+            this.tui.createGame();
+            this.tui.continueGame();
+        } else if (eingabe.equals("n")) {
+            this.controller.setCurrentState(new StateEndGame(controller, calcController));
+        }
     }
 }

@@ -27,7 +27,7 @@ public class StateWonTest {
         // Create Deck
         this.controller.setDeck(1);
         // set State to StateWon
-        this.controller.setCurrentState(new StateWon(controller));
+        this.controller.setCurrentState(new StateWon(controller, this.controller.getCalcController()));
     }
 
     /**

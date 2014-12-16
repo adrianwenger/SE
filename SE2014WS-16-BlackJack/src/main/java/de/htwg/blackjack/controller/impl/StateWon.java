@@ -41,7 +41,7 @@ final class StateWon implements IGameState {
                     + " ,you won!!!! --> "
                     + this.controller.getPlayer().printPlayersHand() + "\n\n");
             // change state to StateEndGame
-            this.controller.setCurrentState(new StateEndGame(controller, calcController));
+            this.controller.setCurrentState(new StateEndRound(controller, calcController));
             this.controller.getCurrentState().change();
         }
     }
