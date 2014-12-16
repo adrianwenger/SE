@@ -5,7 +5,6 @@
  */
 package de.htwg.blackjack.aview.gui;
 
-import de.htwg.blackjack.BlackJack;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.util.observer.IObserver;
 import java.awt.BorderLayout;
@@ -20,7 +19,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.event.MenuListener;
 
 /**
  *
@@ -39,7 +37,7 @@ public class BlackJackFrame extends JFrame implements IObserver {
 
         JMenuBar menuBar;
         
-        JMenuItem newMenuItem, newCloseMenuItem;
+        JMenuItem newGameItem, closeGameItem;
 
         JMenu fileMenu;
 
@@ -75,17 +73,17 @@ public class BlackJackFrame extends JFrame implements IObserver {
         /*
          * File Menu
          */
-        fileMenu = new JMenu("File");
+        fileMenu = new JMenu("BackJack");
         fileMenu.setMnemonic(KeyEvent.VK_F);
 
-        newMenuItem = new JMenuItem("New");
-        newMenuItem.addActionListener(new NewListener());
+        newGameItem = new JMenuItem("New");
+        newGameItem.addActionListener(new NewListener());
 
-        newCloseMenuItem = new JMenuItem("Exit");
-        newCloseMenuItem.addActionListener(new CloseListener());
+        closeGameItem = new JMenuItem("Exit");
+        closeGameItem.addActionListener(new CloseListener());
         
-        fileMenu.add(newMenuItem);
-        fileMenu.add(newCloseMenuItem);
+        fileMenu.add(newGameItem);
+        fileMenu.add(closeGameItem);
         menuBar.add(fileMenu);
         
         this.setJMenuBar(menuBar);

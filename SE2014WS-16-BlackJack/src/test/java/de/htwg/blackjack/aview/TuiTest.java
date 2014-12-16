@@ -1,6 +1,6 @@
 package de.htwg.blackjack.aview;
 
-import de.htwg.blackjack.aview.Tui;
+import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.model.impl.Deck;
