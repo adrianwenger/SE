@@ -6,6 +6,7 @@ import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.model.impl.Deck;
 import de.htwg.blackjack.model.impl.Player;
+import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
 import de.htwg.blackjack.util.observer.Observable;
 
 /**
@@ -31,10 +32,6 @@ public final class BlackJackController extends Observable
      * Player Object (Dealer) to be created.
      */
     private IPlayer dealer;
-    /**
-     * BlackJack Value 21.
-     */
-    private static final int BLACKJACK = 21;
     /**
      * statusLine.
      */
@@ -234,12 +231,11 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void create() {
-        setStatusLine("Welcome to BlackJack...");
+        setStatusLine("Welcome to BlackJack...\n");
         if (this.getCurrentState() != null) {
             this.currentState = null;
             this.dealer = null;
             this.deck = null;
-            this.player = null;
             this.statusLine = null;
         }
     }
@@ -259,6 +255,11 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void endGame() {
+        // Game will end
+        if (this.getCurrentState() instanceof StateEndGame) {
+            this.setStatusLine("END!\n");
+            System.exit(0);
+        }
         // maybe Dealer needs another Card
         while (checkIfDealerNeedsCard()) {
             this.setStatusLine("Dealer is taking antoher Card:\n");
@@ -269,11 +270,7 @@ public final class BlackJackController extends Observable
         if (this.getCurrentState() instanceof StateInGame) {
             checkGameState();
         }
-        // Game will end
-        if (this.getCurrentState() instanceof StateEndGame) {
-            this.setStatusLine("END!\n");
-            System.exit(0);
-        }
+        
 
     }
 }

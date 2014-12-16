@@ -64,6 +64,7 @@ public final class BlackJack {
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
+        game.getTui().initialize();
         game.getTui().createGame();
         game.getTui().continueGame();
     }

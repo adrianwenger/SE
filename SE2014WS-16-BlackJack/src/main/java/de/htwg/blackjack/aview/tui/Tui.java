@@ -72,19 +72,19 @@ public final class Tui implements IObserver {
      */
     private static final String INPUT = "\t-->\t";
 
-    /**
-     * create the game.
-     */
-    public void createGame() {
+    public void initialize() {
         //Initialize player and dealer
         this.controller.setStatusLine("\nBitte geben Sie ihren Namen ein:\n");
         this.controller.setStatusLine(INPUT);
         this.controller.setPlayer(SCANNER.next());
         this.controller.setDealer();
+    }
 
+    /**
+     * create the game.
+     */
+    public void createGame() {
         //Initialize the number of decks
-//        this.controller.setStatusLine("Player: "
-//                + this.controller.getPlayer().getName() +"\n");
         this.controller.setStatusLine("How many decks you "
                 + "want for playing BlackJack?\n");
         this.controller.setStatusLine(INPUT);
@@ -96,12 +96,12 @@ public final class Tui implements IObserver {
         //DEAL FIRST TWO CARDS
         this.controller.setStatusLine("First two dealt cards:\n\n");
         this.controller.setStatusLine(controller.getPlayer().getName() + ": ");
-        this.controller.setStatusLine(this.controller.getFirstTwoCardsPlayer() 
+        this.controller.setStatusLine(this.controller.getFirstTwoCardsPlayer()
                 + "\n");
         this.controller.setStatusLine("Dealer: ");
-        this.controller.setStatusLine(this.controller.getFirstTwoCardsDealer() 
+        this.controller.setStatusLine(this.controller.getFirstTwoCardsDealer()
                 + "\n\n");
-        this.controller.checkIfDealerNeedsCard();
+        //this.controller.checkIfDealerNeedsCard();
         this.controller.checkGameState();
         //print MENUE
         printHelpMenu();
@@ -114,7 +114,10 @@ public final class Tui implements IObserver {
     public void continueGame() {
         controller.setStatusLine(INPUT);
         int eingabe = SCANNER.nextInt();
-
+        while (eingabe > 4) {
+            printHelpMenu();
+            eingabe = SCANNER.nextInt();
+        }
         //Game Runner
         while (eingabe <= FOUR) {
             switch (eingabe) {
@@ -127,9 +130,9 @@ public final class Tui implements IObserver {
                     String eingabe2 = SCANNER.next();
 
                     if (eingabe2.equals("y")) {
-                        controller.setStatusLine(controller.getPlayer().getName() 
+                        controller.setStatusLine(controller.getPlayer().getName()
                                 + ": ");
-                        controller.setStatusLine(controller.getCardPlayer() 
+                        controller.setStatusLine(controller.getCardPlayer()
                                 + "\n");
                         controller.checkIfDealerNeedsCard();
                         controller.setStatusLine("Dealer: ");
@@ -138,7 +141,7 @@ public final class Tui implements IObserver {
                         controller.checkGameState();
                     } else if (eingabe2.equals("n")) {
                         controller.checkIfDealerNeedsCard();
-                        controller.setStatusLine(controller.getPlayer().getName() 
+                        controller.setStatusLine(controller.getPlayer().getName()
                                 + ": ");
                         controller.setStatusLine(controller.getPlayer()
                                 .printPlayersHand() + "\n");
@@ -154,12 +157,13 @@ public final class Tui implements IObserver {
                     controller.endGame();
                     controller.setStatusLine("END!\n");
                     System.exit(0);
-                default:
+                    break;
             }
             printHelpMenu();
             controller.setStatusLine(INPUT);
             eingabe = SCANNER.nextInt();
         }
+        
     }
 
     /**

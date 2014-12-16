@@ -1,6 +1,5 @@
 package de.htwg.blackjack.controller.impl;
 
-import de.htwg.blackjack.BlackJack;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.IGameState;
@@ -31,7 +30,6 @@ public final class StateEndGame implements IGameState {
      */
     public StateEndGame(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
-        change();
     }
 
     /**
@@ -44,10 +42,12 @@ public final class StateEndGame implements IGameState {
 
         String eingabe = SCANNER.next();
         if (eingabe.equals("y")) {
-            this.controller.setCurrentState(new StateInGame(controller));
+            // start new round
             this.controller.create();
-//            tui = new Tui(controller);
-//            tui.printTui();
+            tui = new Tui(controller);
+            tui.printTui();
+            this.tui.createGame();
+            this.tui.continueGame();
         } else if (eingabe.equals("n")) {
             this.controller.endGame();
         }

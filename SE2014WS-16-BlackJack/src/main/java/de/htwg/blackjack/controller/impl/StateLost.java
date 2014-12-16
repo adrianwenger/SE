@@ -21,7 +21,6 @@ public final class StateLost implements IGameState {
      */
     public StateLost(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
-        change();
     }
 
     /**
@@ -31,11 +30,13 @@ public final class StateLost implements IGameState {
     public void change() {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
             this.controller.setCurrentState(new StateBlackJack(controller));
+            this.controller.getCurrentState().change();
         } else {
             this.controller.setStatusLine("Game Over!\n"
                     + this.controller.getPlayer().printPlayersHand() + "\n\n");
             // change state to StateEndGame
             this.controller.setCurrentState(new StateEndGame(controller));
+            this.controller.getCurrentState().change();
         }
     }
 }

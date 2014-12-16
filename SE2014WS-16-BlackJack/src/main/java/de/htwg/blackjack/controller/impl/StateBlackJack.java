@@ -21,7 +21,6 @@ final class StateBlackJack implements IGameState {
      */
     public StateBlackJack(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
-        change();
     }
 
     /**
@@ -38,5 +37,6 @@ final class StateBlackJack implements IGameState {
         }
         // change state to StateEndGame
         this.controller.setCurrentState(new StateEndGame(controller));
+        this.controller.getCurrentState().change();
     }
 }
