@@ -21,7 +21,6 @@ final class StateWon implements IGameState {
      */
     public StateWon(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
-        change();
     }
 
     /**
@@ -32,14 +31,15 @@ final class StateWon implements IGameState {
         // Player Won in concerning BlackJack
         if (this.controller.hasBlackJack(this.controller.getPlayer())) {
             this.controller.setCurrentState(new StateBlackJack(controller));
+            this.controller.getCurrentState().change();
         } else {
             // Player won concerning better face
             this.controller.setStatusLine(this.controller.getPlayer().getName()
                     + " ,you won!!!! --> "
                     + this.controller.getPlayer().printPlayersHand() + "\n\n");
-            this.controller.setStatusLine("Do you want to start a new Game?");
             // change state to StateEndGame
             this.controller.setCurrentState(new StateEndGame(controller));
+            this.controller.getCurrentState().change();
         }
     }
 }
