@@ -42,11 +42,11 @@ public final class Player implements IPlayer {
      */
     private int playerVal;
     /**
-     * Players round stake
+     * Players round stake.
      */
     private double roundStake;
     /**
-     * Players stake
+     * Players stake.
      */
     private double stake;
     /**
@@ -80,31 +80,31 @@ public final class Player implements IPlayer {
         return this.name;
     }
     /**
-     * sets the stake
-     * @param stake 
+     * sets the stake.
+     * @param stake  stake
      */
     @Override
-    public void setStake(double stake){
+    public void setStake(final double stake) {
         this.stake = stake;
     }
     /**
-     * 
-     * @return stake
+     *
+     * @return stake stake
      */
     @Override
-    public double getStake(){
+    public double getStake() {
         return stake;
     }
     /**
-     * Sets the round stake
-     * @param stake 
+     * Sets the round stake.
+     * @param round roundStake
      */
     @Override
-    public void setRoundStake(double roundStake) {
-        this.roundStake = roundStake;
+    public void setRoundStake(final double round) {
+        this.roundStake = round;
     }
     /**
-     * Returns the profit from the Player for the actual round
+     * Returns the profit from the Player for the actual round.
      * @return stake
      */
     @Override
@@ -112,10 +112,10 @@ public final class Player implements IPlayer {
         return roundStake;
     }
     /**
-     * double Stake
+     * double Stake.
      */
     @Override
-    public void doubleStake(){
+    public void doubleStake() {
         stake = stake * TWO;
     }
     /**
@@ -199,10 +199,14 @@ public final class Player implements IPlayer {
     public ICard[] getPlayerHand() {
         return this.playerHand;
     }
-    
-    public double calcProfit(double stake){
-        this.stake = stake;
-        
+
+    /**
+     *
+     * @param stak stake
+     * @return stake
+     */
+    public double calcProfit(final double stak) {
+        this.stake = stak;
         return stake;
     }
 }

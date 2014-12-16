@@ -10,16 +10,15 @@ import java.util.Scanner;
  * @author Adrian Wenger, Philipp Schultheiß
  */
 public final class Tui implements IObserver {
-
     /**
      * controller.
      */
     private final IBlackJackController controller;
-    
     /**
-     * StakeController
+     * StakeController.
      */
     private final ICalcProfitController calcController;
+
 
     /**
      * Constructor.
@@ -72,14 +71,18 @@ public final class Tui implements IObserver {
      */
     private static final String INPUT = "\t-->\t";
 
+    /**
+     * initialize the game.
+     */
     public void initialize() {
         //Initialize player and dealer
-        this.controller.setStatusLine("\nBitte geben Sie ihren Namen ein:\n");
+        this.controller.setStatusLine("\nInsert Name\n");
         this.controller.setStatusLine(INPUT);
         this.controller.setPlayer(SCANNER.next());
         this.controller.setDealer();
         //Set STAKE
-        this.controller.setStatusLine("With how much effort you want to start?\n");
+        this.controller.setStatusLine("With how much effort you want to "
+                + "start the game?\n");
         this.controller.setStatusLine(INPUT);
         this.controller.getPlayer().setStake(SCANNER.nextDouble());
     }
@@ -187,6 +190,6 @@ public final class Tui implements IObserver {
         this.controller.setStatusLine("----------------------- MENUE --"
                 + "---------------------\n");
         this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
-                + "-- Double Stake" + "\n4 -- Quit Game\n");
+                + "-- Double Stake" + "\n4 -- Quit and resolve\n");
     }
 }

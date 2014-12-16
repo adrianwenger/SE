@@ -10,6 +10,7 @@ import de.htwg.blackjack.model.impl.Player;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
 import de.htwg.blackjack.util.observer.Observable;
 
+
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
@@ -20,6 +21,7 @@ import de.htwg.blackjack.util.observer.Observable;
  */
 public final class BlackJackController extends Observable
         implements IBlackJackController {
+
 
     /**
      * Deck Object to be created.
@@ -43,16 +45,17 @@ public final class BlackJackController extends Observable
      */
     private IGameState currentState;
     /**
-     * 
+     *
      */
-    private ICalcProfitController calcController = new CalcProfitController(this);
-    
+    private ICalcProfitController calcController
+            = new CalcProfitController(this);
+
     /**
-     * 
-     * @param calcController 
+     *
+     * @param calcCont ICalcProfitController
      */
-    public void setCalcController(ICalcProfitController calcController) {
-        this.calcController = calcController;
+    public void setCalcController(final ICalcProfitController calcCont) {
+        this.calcController = calcCont;
     }
 
     /**
@@ -89,7 +92,7 @@ public final class BlackJackController extends Observable
     public void setStatusLine(final String status) {
         this.statusLine = status;
         notifyObservers();
-        this.statusLine = "";
+        //this.statusLine = "";
     }
 
     /**
@@ -102,6 +105,7 @@ public final class BlackJackController extends Observable
         this.currentState = state;
         notifyObservers();
     }
+
     /**
      *
      * @return calcController
@@ -109,6 +113,7 @@ public final class BlackJackController extends Observable
     public ICalcProfitController getCalcController() {
         return calcController;
     }
+
     /**
      *
      * @return deck
@@ -239,6 +244,7 @@ public final class BlackJackController extends Observable
         // new Game. Initialize with StateInGame
         if (this.currentState == null) {
             this.setCurrentState(new StateInGame(this, calcController));
+            this.currentState.change();
         } else {
             // check if GameState will change
             this.currentState.change();
@@ -274,24 +280,17 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void endGame() {
-//        if (this.getCurrentState() instanceof StateEndRound) {
-//           /////
-//        }
-
-        // Game will end
-        if (this.getCurrentState() instanceof StateEndGame) {
-            this.setStatusLine("END!\n");
-            System.exit(0);
-        }
         // maybe Dealer needs another Card
         while (checkIfDealerNeedsCard()) {
             this.setStatusLine("Dealer is taking antoher Card:\n");
             this.setStatusLine("Dealer: ");
             this.setStatusLine(this.getDealer().printPlayersHand() + "\n");
         }
-        // Dealer has all his Cards. Now check Game State to get result
-        if (this.getCurrentState() instanceof StateInGame) {
-            checkGameState();
+        // Player < Dealer
+        if (this.player.getValue() <  dealer.getValue()) {
+            setCurrentState(new StateLost(this, calcController));
         }
+        checkGameState();
     }
+
 }

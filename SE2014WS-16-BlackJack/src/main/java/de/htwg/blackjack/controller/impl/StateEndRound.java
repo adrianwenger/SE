@@ -54,9 +54,8 @@ public final class StateEndRound implements IGameState {
         // Player want to continue a new round
         if (eingabe.equals("y")) {
             // start new round
-            this.controller.create();
+            //this.controller.create();
             tui = new Tui(controller);
-            tui.printTui();
             this.tui.createGame();
             this.tui.continueGame();
           // Player want to end Game

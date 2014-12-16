@@ -28,11 +28,11 @@ public final class StateEndGame implements IGameState {
      */
     private ICalcProfitController calcController;
 
-        /**
+    /**
      * Public Constructor.
      *
      * @param blackJackController IBlackJackController
-     * @param cal  ICalcProfitController
+     * @param cal ICalcProfitController
      */
     public StateEndGame(final IBlackJackController blackJackController,
             final ICalcProfitController cal) {
@@ -45,8 +45,7 @@ public final class StateEndGame implements IGameState {
      */
     @Override
     public void change() {
-        //
-        System.out.println("YOur now in SateEndGame");
-        //
+        System.out.println("END!");
+        System.exit(0);
     }
 }

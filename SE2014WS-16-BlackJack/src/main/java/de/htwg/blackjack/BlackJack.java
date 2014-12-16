@@ -20,7 +20,9 @@ public final class BlackJack {
      * static BlackJack instance.
      */
     private static BlackJack instance = null;
-    
+    /**
+     * BlackJackController.
+     */
     private static IBlackJackController controller = new BlackJackController();
 
     /**
@@ -50,7 +52,6 @@ public final class BlackJack {
         //controller = new BlackJackController();
         tui = new Tui(controller);
         controller.create();
-        tui.printTui();
     }
 
     /**
