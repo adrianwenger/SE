@@ -1,6 +1,7 @@
 package de.htwg.blackjack.aview.tui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.util.observer.IObserver;
 import java.util.Scanner;
 
@@ -14,14 +15,20 @@ public final class Tui implements IObserver {
      * controller.
      */
     private final IBlackJackController controller;
+    
+    /**
+     * StakeController
+     */
+    private final ICalcProfitController calcController;
 
     /**
      * Constructor.
      *
      * @param cont controller
      */
-    public Tui(final IBlackJackController cont) {
+    public Tui(final IBlackJackController cont, final ICalcProfitController cal) {
         this.controller = cont;
+        this.calcController = cal;
         controller.addObserver(this);
     }
 
@@ -82,6 +89,10 @@ public final class Tui implements IObserver {
                 + "want for playing BlackJack?\n");
         this.controller.setStatusLine(INPUT);
         this.controller.setDeck(SCANNER.nextInt());
+        //Set STAKE
+        this.controller.setStatusLine("With how much effort you want to start?\n");
+        this.controller.setStatusLine(INPUT);
+        this.controller.getPlayer().setStake(SCANNER.nextDouble());
         //DEAL FIRST TWO CARDS
         this.controller.setStatusLine("First two dealt cards:\n\n");
         this.controller.setStatusLine(controller.getPlayer().getName() + ": ");
