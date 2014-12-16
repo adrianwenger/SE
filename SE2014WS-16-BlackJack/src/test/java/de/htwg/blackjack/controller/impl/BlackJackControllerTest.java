@@ -188,7 +188,7 @@ public class BlackJackControllerTest {
         this.controller.setCurrentState(null);
         this.controller.endGame();
         String result = this.controller.getStatusLine();
-        String expResult = "";
+        String expResult = null;
         assertEquals(expResult, result);
     }
 }

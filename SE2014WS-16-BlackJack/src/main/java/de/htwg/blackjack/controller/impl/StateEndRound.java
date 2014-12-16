@@ -33,7 +33,7 @@ public final class StateEndRound implements IGameState {
      * Public Constructor.
      *
      * @param blackJackController IBlackJackController
-     * @param cal  ICalcProfitController
+     * @param cal ICalcProfitController
      */
     public StateEndRound(final IBlackJackController blackJackController,
             final ICalcProfitController cal) {
@@ -42,7 +42,7 @@ public final class StateEndRound implements IGameState {
     }
 
     /**
-     *
+     * ask if Player want to run another round or want to end the game.
      */
     @Override
     public void change() {
@@ -51,6 +51,7 @@ public final class StateEndRound implements IGameState {
         this.controller.setStatusLine("\t-->\t");
 
         String eingabe = SCANNER.next();
+        // Player want to continue a new round
         if (eingabe.equals("y")) {
             // start new round
             this.controller.create();
@@ -58,9 +59,11 @@ public final class StateEndRound implements IGameState {
             tui.printTui();
             this.tui.createGame();
             this.tui.continueGame();
-        } else if (eingabe.equals("n")) {
+          // Player want to end Game
+        } else {
             this.controller.setCurrentState(new StateEndGame(controller,
                     calcController));
+            this.controller.getCurrentState().change();
         }
     }
 }
