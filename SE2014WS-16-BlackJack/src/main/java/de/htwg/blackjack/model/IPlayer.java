@@ -27,7 +27,6 @@ public interface IPlayer {
      * @return Card Value
      */
     int getValue();
-
     /**
      *
      * @return name
@@ -42,4 +41,26 @@ public interface IPlayer {
      * @return ICard[]
      */
     ICard[] getPlayerHand();
+    /**
+     * Sets the stake
+     * @param stake 
+     */
+    public void setStake(double stake);
+    /**
+     * Returns the profit from the Player
+     * @return stake
+     */
+    public double getStake();
+    /**
+     * double Stake
+     */
+    public void doubleStake();
+    /**
+     * 
+     */
+    public double getRoundStake();
+    /**
+     * 
+     */
+    public void setRoundStake(double roundStake);
 }

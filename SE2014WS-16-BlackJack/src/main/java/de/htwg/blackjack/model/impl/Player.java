@@ -14,6 +14,10 @@ public final class Player implements IPlayer {
      */
     private static final int ZERO = 0;
     /**
+     * 
+     */
+    private static final int TWO = 2;
+    /**
      *
      */
     private static final int ELEVEN = 11;
@@ -37,7 +41,14 @@ public final class Player implements IPlayer {
      * Value of players hand.
      */
     private int playerVal;
-
+    /**
+     * Players round stake
+     */
+    private double roundStake;
+    /**
+     * Players stake
+     */
+    private double stake;
     /**
      * Value of a card.
      */
@@ -68,7 +79,45 @@ public final class Player implements IPlayer {
     public String getName() {
         return this.name;
     }
-
+    /**
+     * sets the stake
+     * @param stake 
+     */
+    @Override
+    public void setStake(double stake){
+        this.stake = stake;
+    }
+    /**
+     * 
+     * @return stake
+     */
+    @Override
+    public double getStake(){
+        return stake;
+    }
+    /**
+     * Sets the round stake
+     * @param stake 
+     */
+    @Override
+    public void setRoundStake(double roundStake) {
+        this.roundStake = roundStake;
+    }
+    /**
+     * Returns the profit from the Player for the actual round
+     * @return stake
+     */
+    @Override
+    public double getRoundStake() {
+        return roundStake;
+    }
+    /**
+     * double Stake
+     */
+    @Override
+    public void doubleStake(){
+        stake = stake * TWO;
+    }
     /**
      * Reset players hand.
      */
@@ -149,5 +198,11 @@ public final class Player implements IPlayer {
     @Override
     public ICard[] getPlayerHand() {
         return this.playerHand;
+    }
+    
+    public double calcProfit(double stake){
+        this.stake = stake;
+        
+        return stake;
     }
 }

@@ -43,7 +43,6 @@ public class BlackJackFrame extends JFrame implements IObserver {
         JMenuItem newGameItem, closeGameItem;
 
         JMenu fileMenu;
-
         /**
          * Title
          */
@@ -81,14 +80,17 @@ public class BlackJackFrame extends JFrame implements IObserver {
         fileMenu = new JMenu("BackJack");
         fileMenu.setMnemonic(KeyEvent.VK_F);
 
-        newGameItem = new JMenuItem("New");
+        newGameItem = new JMenuItem("New Game");
         newGameItem.addActionListener(new NewListener());
 
-        closeGameItem = new JMenuItem("Exit");
+        closeGameItem = new JMenuItem("Exit...");
         closeGameItem.addActionListener(new CloseListener());
+        
 
         fileMenu.add(newGameItem);
+        fileMenu.addSeparator();
         fileMenu.add(closeGameItem);
+        
         menuBar.add(fileMenu);
 
         this.setJMenuBar(menuBar);
@@ -125,11 +127,11 @@ public class BlackJackFrame extends JFrame implements IObserver {
     private class NewListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            //New Version------------------------------------------------------------------------------
+            //Create new Panel for JOptionPaneMessageDialog
             JPanel panel = new JPanel();
             // Erstellung Array vom Datentyp Object, Hinzufügen der Komponenten		
             JTextField name = new JTextField();
-            
+
             // Array für unsere JComboBox
             String comboBoxListe[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
@@ -138,7 +140,7 @@ public class BlackJackFrame extends JFrame implements IObserver {
 
             //JComboBox wird Panel hinzugefügt
             panel.add(numOfDecks);
-            
+
             Object[] message = {"Name:", name,
                 "Number of Decks:", numOfDecks};
 
