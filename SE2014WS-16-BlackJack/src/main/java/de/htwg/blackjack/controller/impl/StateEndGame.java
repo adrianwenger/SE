@@ -24,16 +24,18 @@ public final class StateEndGame implements IGameState {
      */
     private Tui tui = null;
     /**
-     * calc controller
+     * calc controller.
      */
     private ICalcProfitController calcController;
 
-    /**
+        /**
      * Public Constructor.
      *
-     * @param blackJackController controller
+     * @param blackJackController IBlackJackController
+     * @param cal  ICalcProfitController
      */
-    public StateEndGame(final IBlackJackController blackJackController, ICalcProfitController cal) {
+    public StateEndGame(final IBlackJackController blackJackController,
+            final ICalcProfitController cal) {
         this.calcController = cal;
         this.controller = blackJackController;
     }

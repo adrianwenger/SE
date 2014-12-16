@@ -14,15 +14,20 @@ final class StateBlackJack implements IGameState {
      * BlackJack Controller.
      */
     private final IBlackJackController controller;
-    private ICalcProfitController calcController;
+    /**
+     * calc controller.
+     */
+    private final ICalcProfitController calcController;
 
     /**
      * Public Constructor.
      *
-     * @param blackJackController controller
+     * @param blackJackController IBlackJackController
+     * @param cal ICalcProfitController
      */
-    public StateBlackJack(final IBlackJackController blackJackController, ICalcProfitController cal) {
-        this.calcController = cal; 
+    public StateBlackJack(final IBlackJackController blackJackController,
+            final ICalcProfitController cal) {
+        this.calcController = cal;
         this.controller = blackJackController;
     }
 
@@ -39,7 +44,8 @@ final class StateBlackJack implements IGameState {
                     + ", you got BlackJack!\n\n");
         }
         // change state to StateEndGame
-        this.controller.setCurrentState(new StateEndRound(controller, calcController));
+        this.controller.setCurrentState(new StateEndRound(controller,
+                calcController));
         this.controller.getCurrentState().change();
     }
 }

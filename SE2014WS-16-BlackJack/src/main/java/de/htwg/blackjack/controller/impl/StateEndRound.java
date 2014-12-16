@@ -24,27 +24,30 @@ public final class StateEndRound implements IGameState {
      */
     private Tui tui = null;
 
-     /**
-     * calc controller
+    /**
+     * calc controller.
      */
-    private ICalcProfitController calcController;
+    private final ICalcProfitController calcController;
 
     /**
      * Public Constructor.
      *
-     * @param blackJackController controller
+     * @param blackJackController IBlackJackController
+     * @param cal  ICalcProfitController
      */
-    public StateEndRound(final IBlackJackController blackJackController, ICalcProfitController cal) {
-        this.calcController = cal; 
+    public StateEndRound(final IBlackJackController blackJackController,
+            final ICalcProfitController cal) {
+        this.calcController = cal;
         this.controller = blackJackController;
     }
-    
+
     /**
      *
      */
     @Override
     public void change() {
-        this.controller.setStatusLine("Do you want to start a new round? [y/n]\n");
+        this.controller.setStatusLine("Do you want to start "
+                + "a new round? [y/n]\n");
         this.controller.setStatusLine("\t-->\t");
 
         String eingabe = SCANNER.next();
@@ -56,7 +59,8 @@ public final class StateEndRound implements IGameState {
             this.tui.createGame();
             this.tui.continueGame();
         } else if (eingabe.equals("n")) {
-            this.controller.setCurrentState(new StateEndGame(controller, calcController));
+            this.controller.setCurrentState(new StateEndGame(controller,
+                    calcController));
         }
     }
 }
