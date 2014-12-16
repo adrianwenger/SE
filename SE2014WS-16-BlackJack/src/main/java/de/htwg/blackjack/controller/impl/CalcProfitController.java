@@ -7,8 +7,6 @@ package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
-import de.htwg.blackjack.model.IPlayer;
-import de.htwg.blackjack.model.impl.Player;
 
 /**
  *
@@ -16,8 +14,6 @@ import de.htwg.blackjack.model.impl.Player;
  */
 public class CalcProfitController implements ICalcProfitController {
 
-    private IPlayer player;
-    private IPlayer dealer;
     private IBlackJackController controller;
     private double profit;
     private final double MULTICATOR = 1.5;
@@ -29,37 +25,20 @@ public class CalcProfitController implements ICalcProfitController {
         this.controller = controller;
     }
 
-    /**
-     *
-     * @param pla Player
-     */
-    @Override
-    public void setPlayer(final String pla) {
-        this.player = new Player(pla);
-    }
-
-    /**
-     * set Dealer.
-     */
-    @Override
-    public void setDealer() {
-        this.dealer = new Player("Dealer");
-    }
-
     @Override
     public void calcProfit() {
         if (controller.getCurrentState() instanceof StateWon) {
             //Round won --> Player asset = stake plus stake * 1.5
-            profit = player.getRoundStake() + (player.getRoundStake() * MULTICATOR);
+            profit = controller.getPlayer().getRoundStake() + (controller.getPlayer().getRoundStake() * MULTICATOR);
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
             //Player got BlackJack = stake * 2
-            profit = player.getRoundStake() + (player.getRoundStake() * TWO);
-        } else if (player.getValue() == BLACKJACK && dealer.getValue() == BLACKJACK) {
+            profit = controller.getPlayer().getRoundStake() + (controller.getPlayer().getRoundStake() * TWO);
+        } else if (controller.getPlayer().getValue() == BLACKJACK && controller.getDealer().getValue() == BLACKJACK) {
             //Player and Dealer got BlackJack = Player gets stake back
-            profit = player.getRoundStake();
+            profit = controller.getPlayer().getRoundStake();
         } else {
             //Player lost = stake - roundStake
-            player.setStake(player.getStake() - player.getRoundStake());
+            controller.getPlayer().setStake(controller.getPlayer().getStake() - controller.getPlayer().getRoundStake());
         }
     }
     /**
@@ -68,17 +47,24 @@ public class CalcProfitController implements ICalcProfitController {
      */
     @Override
     public boolean checkDouble(){
-        if(player.getStake() <= (player.getStake() * TWO)) {
+        if(controller.getPlayer().getStake() <= (controller.getPlayer().getStake() * TWO)) {
             return false;
         }
         return true;
     }
-//    @Override
-//    public void checkStake(){
-//        if(player.getStake() <= 0){
-//            this.controller.setCurrentState(new State);
-//        }
-//    }
+    /**
+     * checks the Stake. Player can't make depts.
+     */
+    @Override
+    public void checkStake(){
+        if(controller.getPlayer().getStake() == 0){
+            this.controller.setCurrentState(new StateEndGame(controller, this));
+        }
+    }
+    /**
+     * 
+     * @return profit
+     */
     @Override
     public double getProfit() {
         return profit;

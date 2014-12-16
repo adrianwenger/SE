@@ -158,7 +158,14 @@ public final class Tui implements IObserver {
                     }
                     break;
                 case THREE:
-                    this.controller.getPlayer().doubleStake();
+                    if(this.calcController.checkDouble()){
+                        this.controller.getPlayer().doubleStake();
+                        this.controller.setStatusLine("Stake doubled!\n");
+                        this.controller.setStatusLine("Round Stake: " + this.controller.getPlayer().getRoundStake() + "\n");
+                    } else {
+                        this.controller.setStatusLine("Round Stake can't be doubled. Not enough money on Stake!\n");
+                        this.controller.setStatusLine("Stake: " + this.controller.getPlayer().getStake() + "\n");
+                    }
                     break;
                 case FOUR:
                     controller.endGame();

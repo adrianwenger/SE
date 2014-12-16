@@ -11,27 +11,22 @@ package de.htwg.blackjack.controller;
  * @author philippschultheiss
  */
 public interface ICalcProfitController {
-     /**
-     *
-     * @param pla Player
-     */
-    public void setPlayer(final String pla);
-    /**
-     * set Dealer.
-     */
-    public void setDealer();
     /**
      * 
      * @return profit
      */
-    public double getProfit();
+    double getProfit();
     /**
      * calculates the profit
      */
-    public void calcProfit();
+    void calcProfit();
     /**
      * Checks if player can double his roundstake
      * If doubled rounstake bigger than roundstake: return false
      */
-    public boolean checkDouble();
+    boolean checkDouble();
+    /**
+     * checks the Stake. Player can't make depts.
+     */
+    void checkStake();
 }
