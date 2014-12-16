@@ -30,12 +30,13 @@ final class StateBlackJack implements IGameState {
     @Override
     public void change() {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
-            this.controller.setStatusLine("Dealer got BlackJack!\n");
+            this.controller.setStatusLine("Dealer got BlackJack!\n\n");
         } else {
             this.controller.setStatusLine("Congratulations "
                     + this.controller.getPlayer().getName()
-                    + ", you got BlackJack!\n");
+                    + ", you got BlackJack!\n\n");
         }
-        //System.exit(0);
+        // change state to StateEndGame
+        this.controller.setCurrentState(new StateEndGame(controller));
     }
 }

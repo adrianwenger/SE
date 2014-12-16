@@ -99,7 +99,7 @@ public interface IBlackJackController extends IObservable {
      *
      * (If Dealer < Player.getVlaue() && < 21 ) getCardDealer().
      */
-    void checkIfDealerNeedsCard();
+    boolean checkIfDealerNeedsCard();
 
     /**
      *

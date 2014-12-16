@@ -162,6 +162,7 @@ public final class BlackJackController extends Observable
 
         return (player.printPlayersHand());
     }
+
     /**
      *
      * @return printPlayersHand
@@ -183,15 +184,24 @@ public final class BlackJackController extends Observable
     }
 
     /**
-     * checks if Dealer needs another Card, after Player got his.
+     * checks if Dealer needs another card, after Player got his card.
+     *
+     * @return true if Dealer took card
      */
     @Override
-    public void checkIfDealerNeedsCard() {
-        if (dealer.getValue() < BLACKJACK
-                && dealer.getValue() < player.getValue()) {
-            getCardDealer();
+    public boolean checkIfDealerNeedsCard() {
+        int valPlayer = this.player.getValue();
+        int valDealer = this.dealer.getValue();
 
+        boolean bol1 = valPlayer <= BLACKJACK;
+        boolean bol2 = valDealer < BLACKJACK;
+        boolean bol3 = valDealer < valPlayer;
+
+        if (bol1 && bol2 && bol3) {
+            getCardDealer();
+            return true;
         }
+        return false;
     }
 
     /**
@@ -225,6 +235,13 @@ public final class BlackJackController extends Observable
     @Override
     public void create() {
         setStatusLine("Welcome to BlackJack...");
+        if (this.getCurrentState() != null) {
+            this.currentState = null;
+            this.dealer = null;
+            this.deck = null;
+            this.player = null;
+            this.statusLine = null;
+        }
     }
 
     /**
@@ -242,10 +259,21 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void endGame() {
-        if (this.getCurrentState() == null) {
-            this.setStatusLine("Endergebins: ");
-            this.setStatusLine("Player:" + this.getPlayer().printPlayersHand());
-            this.setStatusLine("Dealer:" + this.getDealer().printPlayersHand());
+        // maybe Dealer needs another Card
+        while (checkIfDealerNeedsCard()) {
+            this.setStatusLine("Dealer is taking antoher Card:\n");
+            this.setStatusLine("Dealer: ");
+            this.setStatusLine(this.getDealer().printPlayersHand() + "\n");
         }
+        // Dealer has all his Cards. Now check Game State to get result
+        if (this.getCurrentState() instanceof StateInGame) {
+            checkGameState();
+        }
+        // Game will end
+        if (this.getCurrentState() instanceof StateEndGame) {
+            this.setStatusLine("END!\n");
+            System.exit(0);
+        }
+
     }
 }
