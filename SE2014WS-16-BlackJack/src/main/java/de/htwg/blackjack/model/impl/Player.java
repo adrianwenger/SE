@@ -199,14 +199,4 @@ public final class Player implements IPlayer {
     public ICard[] getPlayerHand() {
         return this.playerHand;
     }
-
-    /**
-     *
-     * @param stak stake
-     * @return stake
-     */
-    public double calcProfit(final double stak) {
-        this.stake = stak;
-        return stake;
-    }
 }

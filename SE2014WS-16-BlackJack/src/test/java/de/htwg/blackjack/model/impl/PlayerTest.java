@@ -90,7 +90,7 @@ public final class PlayerTest {
     public void testPrintPlayersHand() {
         Player test = new Player("test");
         test.add(new Card(Suit.CLUBS, FIVE));
-        String expResult = "Cards: FiveOfCLUBS Value: 5";
+        String expResult = "FiveOfCLUBS Value: 5";
         String result = test.printPlayersHand();
         assertEquals(expResult, result);
 

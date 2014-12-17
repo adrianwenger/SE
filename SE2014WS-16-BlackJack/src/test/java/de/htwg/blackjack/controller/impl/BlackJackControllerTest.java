@@ -50,7 +50,7 @@ public class BlackJackControllerTest {
     @Test
     public void testSetStatusLine() {
         controller.setStatusLine("status");
-        String expResult = "";
+        String expResult = "status";
         String result = controller.getStatusLine();
         assertEquals(expResult, result);
     }
@@ -82,7 +82,7 @@ public class BlackJackControllerTest {
     @Test
     public void testGetStatusLine() {
         controller.setStatusLine("Hallo");
-        String expResult = "";
+        String expResult = "Hallo";
         String result = controller.getStatusLine();
         assertEquals(expResult, result);
     }
@@ -156,7 +156,7 @@ public class BlackJackControllerTest {
     @Test
     public void testCreate() {
         controller.setStatusLine("Welcome to BlackJack...");
-        String expResult = "";
+        String expResult = "Welcome to BlackJack...";
         assertEquals(expResult, controller.output());
     }
 
@@ -170,7 +170,7 @@ public class BlackJackControllerTest {
         dealer.add(new Card(Suit.CLUBS, 5));
 
         controller.checkIfDealerNeedsCard();
-        int expResult = 3;
+        int expResult = 2;
         int i;
         for (i = 0; i < dealer.getPlayerHand().length; i++) {
             if (dealer.getPlayerHand()[i] == null) {
