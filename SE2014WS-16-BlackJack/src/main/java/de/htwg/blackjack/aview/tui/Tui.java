@@ -29,6 +29,7 @@ public final class Tui implements IObserver {
         this.controller = cont;
         this.calcController = cont.getCalcController();
         controller.addObserver(this);
+        controller.setTui(this);
     }
 
     /**

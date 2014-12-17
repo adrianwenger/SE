@@ -11,6 +11,7 @@ import de.htwg.blackjack.model.impl.Player;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
 import de.htwg.blackjack.util.observer.Observable;
 
+
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
@@ -54,6 +55,14 @@ public final class BlackJackController extends Observable
      */
     private Tui tui;
 
+
+    /**
+     * set tui reference.
+     * @param tuiRef tui
+     */
+    public void setTui(final Tui tuiRef) {
+        this.tui = tuiRef;
+    }
 
     /**
      *
@@ -269,13 +278,12 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void createNewRound() {
-        if (this.getCurrentState() != null) {
-            this.currentState = null;
-            this.player.clearHand();
-            this.dealer.clearHand();
-            this.deck = null;
-            this.statusLine = null;
-        }
+        this.currentState = null;
+        this.player.clearHand();
+        this.dealer.clearHand();
+        this.deck = null;
+        this.statusLine = null;
+
         super.removeObserver(tui);
         new Tui(this);
         tui.createGame();

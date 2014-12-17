@@ -11,6 +11,12 @@ import de.htwg.blackjack.util.observer.IObservable;
  */
 public interface IBlackJackController extends IObservable {
 
+     /**
+     * set tui reference.
+     * @param tuiRef tui
+     */
+    void setTui(final Tui tuiRef);
+
     /**
      * create a Deck with a specific number.
      *
