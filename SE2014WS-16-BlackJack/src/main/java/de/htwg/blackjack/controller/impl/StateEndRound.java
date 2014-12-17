@@ -49,6 +49,8 @@ public final class StateEndRound implements IGameState {
         if (eingabe.equals("y")) {
             // start new round
             this.controller.createNewRound();
+            //checks if player has enough money --> no depts!
+            this.calcController.checkStake();
         // Player want to end Game
         } else {
             this.controller.setCurrentState(new StateEndGame(controller,
