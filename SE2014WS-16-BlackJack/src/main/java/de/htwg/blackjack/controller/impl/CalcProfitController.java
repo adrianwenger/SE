@@ -46,7 +46,7 @@ public final class CalcProfitController implements ICalcProfitController {
             profit = controller.getPlayer().getRoundStake()
                     + (controller.getPlayer().getRoundStake() * MULTICATOR);
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
-            //Player got BlackJack = stake * 2
+            //Player got BlackJack = roundstake * 2
             profit = controller.getPlayer().getRoundStake()
                     + (controller.getPlayer().getRoundStake() * TWO);
         } else if (controller.getPlayer().getValue() == BLACKJACK
