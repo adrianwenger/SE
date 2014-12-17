@@ -9,10 +9,7 @@ import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.model.impl.Deck;
 import de.htwg.blackjack.model.impl.Player;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
-import de.htwg.blackjack.util.observer.IObserver;
 import de.htwg.blackjack.util.observer.Observable;
-import java.util.List;
-
 
 /**
  *
@@ -57,14 +54,6 @@ public final class BlackJackController extends Observable
      */
     private Tui tui;
 
-
-    /**
-     * set tui Object reference.
-     * @param tuiRef tui object reference
-     */
-    public void setTui(final Tui tuiRef) {
-        this.tui = tuiRef;
-    }
 
     /**
      *

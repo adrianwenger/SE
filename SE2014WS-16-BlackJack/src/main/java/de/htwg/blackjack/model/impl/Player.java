@@ -81,11 +81,11 @@ public final class Player implements IPlayer {
     }
     /**
      * sets the stake.
-     * @param stak  stake
+     * @param stake  stake
      */
     @Override
-    public void setStake(final double stak) {
-        this.stake = stak;
+    public void setStake(final double stake) {
+        this.stake = stake;
     }
     /**
      *

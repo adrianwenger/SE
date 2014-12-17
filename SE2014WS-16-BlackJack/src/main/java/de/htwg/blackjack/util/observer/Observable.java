@@ -23,8 +23,8 @@ public class Observable implements IObservable {
      */
     public final void addObserver(final IObserver s) {
         if (!subscribers.contains(s)) {
-            subscribers.add(s);
-        }
+        subscribers.add(s);
+    }
     }
 
     /**
@@ -40,7 +40,7 @@ public class Observable implements IObservable {
      * remove specific Subscriber.
      * @param s subscriber
      */
-    public void removeObserver(final IObserver s) {
+    public void removeObserver(IObserver s) {
         subscribers.remove(s);
     }
 
@@ -50,6 +50,6 @@ public class Observable implements IObservable {
      */
     public final List<IObserver> getSubscribers() {
         return subscribers;
-    }
+}
 
 }
