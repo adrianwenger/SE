@@ -115,8 +115,8 @@ public final class Player implements IPlayer {
      * double Stake.
      */
     @Override
-    public void doubleStake() {
-        stake = stake * TWO;
+    public void doubleRoundStake() {
+        roundStake = roundStake * TWO;
     }
     /**
      * Reset players hand.

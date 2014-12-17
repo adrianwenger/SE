@@ -103,7 +103,7 @@ public final class BlackJackController extends Observable
     @Override
     public void setCurrentState(final IGameState state) {
         this.currentState = state;
-        notifyObservers();
+        //notifyObservers();
     }
 
     /**

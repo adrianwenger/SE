@@ -54,7 +54,7 @@ public interface IPlayer {
     /**
      * double Stake
      */
-    public void doubleStake();
+    public void doubleRoundStake();
     /**
      * 
      */

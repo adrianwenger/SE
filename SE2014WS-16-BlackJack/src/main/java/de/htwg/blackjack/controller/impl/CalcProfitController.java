@@ -61,14 +61,14 @@ public final class CalcProfitController implements ICalcProfitController {
     }
 
     /**
-     * Checks if player can double his roundstake If doubled rounstake bigger
+     * Checks if player can double his roundstake If doubled roundstake bigger
      * than roundstake: return false.
      * @return  true if double the stake is possible
      */
     @Override
     public boolean checkDouble() {
         return controller.getPlayer().getStake()
-                > (controller.getPlayer().getStake() * TWO);
+                >= (controller.getPlayer().getRoundStake() * TWO);
     }
 
     /**
