@@ -47,6 +47,7 @@ public final class StateEndGame implements IGameState {
     public void change() {
         this.controller.setStatusLine("-----------------------------------"
                 + "---------------------\n");
+        this.calcController.clacStake();
         this.controller.setStatusLine("Your total Stake: " + this.controller.getPlayer().getStake() + "€\n");
          this.controller.setStatusLine("-----------------------------------"
                 + "---------------------\n");

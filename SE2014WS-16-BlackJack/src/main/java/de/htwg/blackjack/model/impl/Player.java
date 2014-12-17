@@ -185,7 +185,7 @@ public final class Player implements IPlayer {
     @Override
     public String printPlayersHand() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Cards: ");
+        sb.append("");
         for (ICard card : playerHand) {
             if (card == null) {
                 break;
