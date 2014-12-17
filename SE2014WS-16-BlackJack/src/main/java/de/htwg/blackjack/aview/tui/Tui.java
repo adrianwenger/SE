@@ -201,6 +201,6 @@ public final class Tui implements IObserver {
         this.controller.setStatusLine("----------------------- MENUE --"
                 + "---------------------\n");
         this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
-                + "-- Double Stake" + "\n4 -- Current Stake" + "\n5 -- Quit and resolve\n");
+                + "-- Double Stake" + "\n4 -- Current Stake" + "\n5 -- Quit and Resolve\n");
     }
 }

@@ -106,7 +106,6 @@ public final class BlackJackController extends Observable
     public void setStatusLine(final String status) {
         this.statusLine = status;
         notifyObservers();
-        //this.statusLine = "";
     }
 
     /**
@@ -117,7 +116,6 @@ public final class BlackJackController extends Observable
     @Override
     public void setCurrentState(final IGameState state) {
         this.currentState = state;
-        //notifyObservers();
     }
 
     /**
@@ -311,8 +309,9 @@ public final class BlackJackController extends Observable
             this.setStatusLine("Dealer: ");
             this.setStatusLine(this.getDealer().printPlayersHand() + "\n");
         }
-        // Player < Dealer
-        if (this.player.getValue() < dealer.getValue()) {
+        // Player < Dealer && Dealer < BLACKJACK
+        if ((this.player.getValue() < dealer.getValue())
+                && dealer.getValue() < BLACKJACK) {
             setCurrentState(new StateLost(this, calcController));
         }
         checkGameState();
