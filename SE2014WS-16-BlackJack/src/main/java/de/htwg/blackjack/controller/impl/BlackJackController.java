@@ -55,9 +55,9 @@ public final class BlackJackController extends Observable
      */
     private Tui tui;
 
-
     /**
      * set tui reference.
+     *
      * @param tuiRef tui
      */
     public void setTui(final Tui tuiRef) {
@@ -261,6 +261,10 @@ public final class BlackJackController extends Observable
             // check if GameState will change
             this.currentState.change();
         }
+
+        if (this.currentState instanceof StateEndRound) {
+            tui.startNewRound();
+        }
     }
 
     /**
@@ -282,8 +286,8 @@ public final class BlackJackController extends Observable
         this.deck = null;
         this.statusLine = null;
 
-        super.removeObserver(tui);
-        new Tui(this);
+//        super.removeObserver(tui);
+//        new Tui(this);
         tui.createGame();
         tui.continueGame();
     }
@@ -314,6 +318,8 @@ public final class BlackJackController extends Observable
                 && dealer.getValue() < BLACKJACK) {
             setCurrentState(new StateLost(this, calcController));
         }
+        this.setCurrentState(new StateEndGame(this, calcController));
+        this.currentState.change();
         checkGameState();
     }
 

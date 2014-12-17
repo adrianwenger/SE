@@ -40,22 +40,9 @@ public final class StateEndRound implements IGameState {
      */
     @Override
     public void change() {
-        this.controller.setStatusLine("Do you want to start "
-                + "a new round? [y/n]\n");
-        this.controller.setStatusLine("\t-->\t");
-
-        String eingabe = SCANNER.next();
-        // Player want to continue a new round
-        if (eingabe.equals("y")) {
-            // start new round
-            this.controller.createNewRound();
             //checks if player has enough money --> no depts!
             this.calcController.checkStake();
-        // Player want to end Game
-        } else {
-            this.controller.setCurrentState(new StateEndGame(controller,
-                    calcController));
-            this.controller.getCurrentState().change();
-        }
+            // start new round
+            //this.controller.createNewRound();
     }
 }

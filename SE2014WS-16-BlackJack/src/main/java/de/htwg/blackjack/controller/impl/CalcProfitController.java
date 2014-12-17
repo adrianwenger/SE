@@ -85,6 +85,7 @@ public final class CalcProfitController implements ICalcProfitController {
     public void checkStake() {
         if (controller.getPlayer().getStake() == 0) {
             this.controller.setCurrentState(new StateEndGame(controller, this));
+            this.controller.getCurrentState().change();
         }
     }
 

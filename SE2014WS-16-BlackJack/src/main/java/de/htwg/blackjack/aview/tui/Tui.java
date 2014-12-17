@@ -223,4 +223,18 @@ public final class Tui implements IObserver {
                 + "\n5 -- Quit and Resolve\n");
     }
 
+    /**
+     * start a new Round.
+     */
+    public void startNewRound() {
+        this.controller.setStatusLine("Do you want to start a new round? [y/n]\n");
+        this.controller.setStatusLine(INPUT);
+        String eingabe = SCANNER.next();
+        if (eingabe.equals("y")) {
+            this.controller.createNewRound();
+        } else {
+            this.controller.endGame();
+        }
+    }
+
 }
