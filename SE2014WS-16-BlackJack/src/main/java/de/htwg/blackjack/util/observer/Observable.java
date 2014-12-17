@@ -3,11 +3,13 @@ package de.htwg.blackjack.util.observer;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  *
  * @author Adrian Wenger
  */
 public class Observable implements IObservable {
+
 
     /**
      * List to save Subscriber Objects.
@@ -20,7 +22,9 @@ public class Observable implements IObservable {
      * @param s Obersver
      */
     public final void addObserver(final IObserver s) {
-        subscribers.add(s);
+        if (!subscribers.contains(s)) {
+            subscribers.add(s);
+        }
     }
 
     /**
@@ -31,4 +35,21 @@ public class Observable implements IObservable {
             observer.update();
         }
     }
+
+    /**
+     * remove specific Subscriber.
+     * @param s subscriber
+     */
+    public void removeObserver(final IObserver s) {
+        subscribers.remove(s);
+    }
+
+    /**
+     *
+     * @return list of subscribers
+     */
+    public final List<IObserver> getSubscribers() {
+        return subscribers;
+    }
+
 }

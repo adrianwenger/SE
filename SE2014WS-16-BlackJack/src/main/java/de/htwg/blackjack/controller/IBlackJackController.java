@@ -1,5 +1,6 @@
 package de.htwg.blackjack.controller;
 
+import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.util.observer.IObservable;
@@ -9,6 +10,12 @@ import de.htwg.blackjack.util.observer.IObservable;
  * @author Adrian Wenger
  */
 public interface IBlackJackController extends IObservable {
+
+    /**
+     * set tui Object reference.
+     * @param tuiRef tui object reference
+     */
+    void setTui(final Tui tuiRef);
 
     /**
      * create a Deck with a specific number.
@@ -134,4 +141,9 @@ public interface IBlackJackController extends IObservable {
      * finish game.
      */
     void endGame();
+    
+    /**
+     * create new ROund.
+     */
+     void createNewRound();
 }

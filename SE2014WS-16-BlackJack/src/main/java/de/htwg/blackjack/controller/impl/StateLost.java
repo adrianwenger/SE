@@ -42,7 +42,9 @@ public final class StateLost implements IGameState {
             this.controller.getCurrentState().change();
         } else {
             this.controller.setStatusLine("Round Lost!\n"
-                    + this.controller.getPlayer().printPlayersHand() + "\n\n");
+                    + "Player " + this.controller.getPlayer().printPlayersHand() + "\n");
+            this.controller.setStatusLine("Dealer " + this.controller.getDealer().
+                    printPlayersHand() + "\n\n");
             // change state to StateEndGame
             this.controller.setCurrentState(new StateEndRound(controller,
                     calcController));
