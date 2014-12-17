@@ -45,7 +45,8 @@ public final class StateEndGame implements IGameState {
      */
     @Override
     public void change() {
-        System.out.println("END!");
+        this.controller.setStatusLine("Your total Stake: " + this.controller.getPlayer().getStake() + "€\n");
+        this.controller.setStatusLine("END!\n");
         System.exit(0);
     }
 }
