@@ -96,6 +96,4 @@ public final class CalcProfitController implements ICalcProfitController {
     public double getProfit() {
         return profit;
     }
-    
-    ///test
 }
