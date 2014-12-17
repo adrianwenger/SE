@@ -70,6 +70,10 @@ public final class Tui implements IObserver {
      */
     private static final int FOUR = 4;
     /**
+     * FIVE.
+     */
+    private static final int FIVE = 5;
+    /**
      * -->.
      */
     private static final String INPUT = "\t-->\t";
@@ -129,7 +133,7 @@ public final class Tui implements IObserver {
             eingabe = SCANNER.nextInt();
         }
         //Game Runner
-        while (eingabe <= FOUR) {
+        while (eingabe <= FIVE) {
             switch (eingabe) {
                 case ONE:
                     printHelpMenu();
@@ -165,6 +169,7 @@ public final class Tui implements IObserver {
                     }
                     break;
                 case THREE:
+<<<<<<< HEAD
                     if (this.calcController.checkDouble()) {
                         this.controller.getPlayer().doubleStake();
                         this.controller.setStatusLine("Stake doubled!\n");
@@ -176,9 +181,22 @@ public final class Tui implements IObserver {
                                 + " doubled. Not enough money on Stake!\n");
                         this.controller.setStatusLine("Stake: " + this.
                                 controller.getPlayer().getStake() + "\n");
+=======
+                    if(this.calcController.checkDouble()){
+                        this.controller.getPlayer().doubleRoundStake();
+                        this.controller.setStatusLine("Stake doubled!\n");
+                        this.controller.setStatusLine("Round Stake: " + this.controller.getPlayer().getRoundStake() + "€\n");
+                    } else {
+                        this.controller.setStatusLine("Round Stake can't be doubled. Not enough money on Stake!\n");
+                        this.controller.setStatusLine("Total Stake: " + (this.controller.getPlayer().getStake() - this.controller.getPlayer().getRoundStake()) + "€\n");
+>>>>>>> dcdf81a7f90719b8ea1b5e3b4015338aacb6394d
                     }
                     break;
                 case FOUR:
+                    this.controller.setStatusLine("Your current Stake:\n");
+                    this.controller.setStatusLine(INPUT + this.controller.getPlayer().getStake() +"€\n");
+                    break;
+                case FIVE:
                     controller.endGame();
                     controller.setStatusLine("END!\n");
                     System.exit(0);
@@ -200,7 +218,7 @@ public final class Tui implements IObserver {
         this.controller.setStatusLine("----------------------- MENUE --"
                 + "---------------------\n");
         this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
-                + "-- Double Stake" + "\n4 -- Quit and resolve\n");
+                + "-- Double Stake" + "\n4 -- Current Stake" + "\n5 -- Quit and resolve\n");
     }
 
 }

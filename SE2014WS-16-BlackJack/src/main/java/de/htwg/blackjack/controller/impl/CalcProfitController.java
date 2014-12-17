@@ -59,16 +59,23 @@ public final class CalcProfitController implements ICalcProfitController {
                     - controller.getPlayer().getRoundStake());
         }
     }
+    /**
+     * Calculates the current stake plus the profit.
+     */
+    @Override
+    public void clacStake(){
+        this.controller.getPlayer().setStake(this.controller.getPlayer().getStake() + profit);
+    }
 
     /**
-     * Checks if player can double his roundstake If doubled rounstake bigger
+     * Checks if player can double his roundstake If doubled roundstake bigger
      * than roundstake: return false.
      * @return  true if double the stake is possible
      */
     @Override
     public boolean checkDouble() {
         return controller.getPlayer().getStake()
-                > (controller.getPlayer().getStake() * TWO);
+                >= (controller.getPlayer().getRoundStake() * TWO);
     }
 
     /**
