@@ -41,7 +41,9 @@ final class StateBlackJack implements IGameState {
             this.calcController.calcProfit();
              this.controller.setStatusLine("-----------------------------------"
                 + "---------------------\n");
-            this.controller.setStatusLine("Your profit: " + this.calcController.getProfit() + "\n");
+            this.controller.setStatusLine("Your profit: " + this.calcController.getProfit() + "€\n");
+            this.calcController.clacStake();
+            this.controller.setStatusLine("Your new Stake: " + this.controller.getPlayer().getStake() + "€\n");
              this.controller.setStatusLine("-----------------------------------"
                 + "---------------------\n");
         } else {
@@ -51,7 +53,9 @@ final class StateBlackJack implements IGameState {
             this.calcController.calcProfit();
              this.controller.setStatusLine("-----------------------------------"
                 + "---------------------\n");
-            this.controller.setStatusLine("Your profit: " + this.calcController.getProfit() + "\n");
+            this.controller.setStatusLine("Your profit: " + this.calcController.getProfit() + "€\n");
+            this.calcController.clacStake();
+            this.controller.setStatusLine("Your new Stake: " + this.controller.getPlayer().getStake() + "€\n");
              this.controller.setStatusLine("-----------------------------------"
                 + "---------------------\n");
         }
