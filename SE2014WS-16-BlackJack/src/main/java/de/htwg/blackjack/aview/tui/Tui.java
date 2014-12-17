@@ -5,11 +5,14 @@ import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.util.observer.IObserver;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
  */
 public final class Tui implements IObserver {
+
+
     /**
      * controller.
      */
@@ -18,7 +21,6 @@ public final class Tui implements IObserver {
      * StakeController.
      */
     private final ICalcProfitController calcController;
-
 
     /**
      * Constructor.
@@ -126,7 +128,7 @@ public final class Tui implements IObserver {
     public void continueGame() {
         controller.setStatusLine(INPUT);
         int eingabe = SCANNER.nextInt();
-        while (eingabe > 4) {
+        while (eingabe > FOUR) {
             printHelpMenu();
             eingabe = SCANNER.nextInt();
         }
@@ -142,18 +144,20 @@ public final class Tui implements IObserver {
                     String eingabe2 = SCANNER.next();
 
                     if (eingabe2.equals("y")) {
-                        controller.setStatusLine(controller.getPlayer().getName()
-                                + ": ");
-                        controller.setStatusLine(controller.getCardPlayer()
-                                + "\n");
+                        controller.setStatusLine(
+                                controller.getPlayer().getName() + ": ");
+                        controller.setStatusLine(
+                                controller.getCardPlayer() + "\n");
                         controller.checkIfDealerNeedsCard();
                         controller.setStatusLine("Dealer: ");
-                        controller.setStatusLine(controller.getDealer()
-                                .printPlayersHand() + "\n\n");
+                        controller.setStatusLine(
+                                controller.getDealer().printPlayersHand()
+                                + "\n\n");
                         controller.checkGameState();
                     } else if (eingabe2.equals("n")) {
                         controller.checkIfDealerNeedsCard();
-                        controller.setStatusLine(controller.getPlayer().getName()
+                        controller.setStatusLine(controller.getPlayer().
+                                getName()
                                 + ": ");
                         controller.setStatusLine(controller.getPlayer()
                                 .printPlayersHand() + "\n");
@@ -161,37 +165,51 @@ public final class Tui implements IObserver {
                         controller.setStatusLine(controller.getDealer()
                                 .printPlayersHand() + "\n\n");
                         controller.checkGameState();
-                    } else if (controller.hasBlackJack(controller.getDealer())) {
+                    } else if (controller.hasBlackJack(
+                            controller.getDealer())) {
                         controller.checkGameState();
                     }
                     break;
                 case THREE:
-                    if(this.calcController.checkDouble()){
+                    if (this.calcController.checkDouble()) {
                         this.controller.getPlayer().doubleRoundStake();
                         this.controller.setStatusLine("Stake doubled!\n");
-                        this.controller.setStatusLine("Round Stake: " + this.controller.getPlayer().getRoundStake() + "€\n");
+                        this.controller.setStatusLine("Round Stake: "
+                                + this.controller.getPlayer().getRoundStake()
+                                + "€\n");
                     } else {
-                        this.controller.setStatusLine("Round Stake can't be doubled. Not enough money on Stake!\n");
-                        this.controller.setStatusLine("Total Stake: " + (this.controller.getPlayer().getStake() - this.controller.getPlayer().getRoundStake()) + "€\n");
+                        this.controller.setStatusLine("Round Stake can't be"
+                                + " doubled. Not enough money on Stake!\n");
+                        this.controller.setStatusLine("Total Stake: "
+                                + (this.controller.getPlayer().getStake()
+                                - this.controller.getPlayer().
+                                getRoundStake()) + "€\n");
                     }
                     break;
                 case FOUR:
                     this.controller.setStatusLine("Your current Stake:\n");
-                    this.controller.setStatusLine(INPUT + (this.controller.getPlayer().getStake() - this.controller.getPlayer().getRoundStake()) +"€\n");
-                    this.controller.setStatusLine("Your current Round Stake:\n");
-                    this.controller.setStatusLine(INPUT + this.controller.getPlayer().getRoundStake() +"€\n");
+                    this.controller.setStatusLine(INPUT
+                            + (this.controller.getPlayer().getStake()
+                            - this.controller.getPlayer().getRoundStake())
+                            + "€\n");
+                    this.controller.setStatusLine("Your current"
+                            + " Round Stake:\n");
+                    this.controller.setStatusLine(INPUT
+                            + this.controller.getPlayer().getRoundStake()
+                            + "€\n");
                     break;
                 case FIVE:
                     controller.endGame();
                     controller.setStatusLine("END!\n");
                     System.exit(0);
                     break;
+                default:
+                    break;
             }
             printHelpMenu();
             controller.setStatusLine(INPUT);
             eingabe = SCANNER.nextInt();
         }
-        
     }
 
     /**
@@ -201,6 +219,8 @@ public final class Tui implements IObserver {
         this.controller.setStatusLine("----------------------- MENUE --"
                 + "---------------------\n");
         this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
-                + "-- Double Stake" + "\n4 -- Current Stake" + "\n5 -- Quit and Resolve\n");
+                + "-- Double Stake" + "\n4 -- Current Stake"
+                + "\n5 -- Quit and Resolve\n");
     }
+
 }
