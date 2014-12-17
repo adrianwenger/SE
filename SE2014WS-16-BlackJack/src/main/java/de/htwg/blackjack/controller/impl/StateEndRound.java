@@ -1,6 +1,5 @@
 package de.htwg.blackjack.controller.impl;
 
-import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
@@ -19,11 +18,6 @@ public final class StateEndRound implements IGameState {
      * BlackJack Controller.
      */
     private final IBlackJackController controller;
-    /**
-     * tui.
-     */
-    private Tui tui = null;
-
     /**
      * calc controller.
      */
@@ -54,11 +48,8 @@ public final class StateEndRound implements IGameState {
         // Player want to continue a new round
         if (eingabe.equals("y")) {
             // start new round
-            //this.controller.create();
-            tui = new Tui(controller);
-            this.tui.createGame();
-            this.tui.continueGame();
-          // Player want to end Game
+            this.controller.createNewRound();
+        // Player want to end Game
         } else {
             this.controller.setCurrentState(new StateEndGame(controller,
                     calcController));
