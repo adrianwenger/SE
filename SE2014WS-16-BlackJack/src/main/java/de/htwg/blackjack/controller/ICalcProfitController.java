@@ -24,4 +24,8 @@ public interface ICalcProfitController {
      * checks the Stake. Player can't make depts.
      */
     void checkStake();
+    /**
+     * Calculates the current stake plus the profit.
+     */
+    void clacStake();
 }

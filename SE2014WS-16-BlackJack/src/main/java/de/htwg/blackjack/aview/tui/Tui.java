@@ -177,6 +177,7 @@ public final class Tui implements IObserver {
                 case FOUR:
                     this.controller.setStatusLine("Your current Stake:\n");
                     this.controller.setStatusLine(INPUT + this.controller.getPlayer().getStake() +"€\n");
+                    break;
                 case FIVE:
                     controller.endGame();
                     controller.setStatusLine("END!\n");
