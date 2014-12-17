@@ -3,6 +3,7 @@ package de.htwg.blackjack.controller.impl;
 import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.impl.StateWon;
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.model.impl.Card;
 import de.htwg.blackjack.model.Suit;
 import org.junit.Before;
@@ -16,10 +17,14 @@ import static org.junit.Assert.assertEquals;
 public class StateWonTest {
 
     private IBlackJackController controller;
+    
+    private ICalcProfitController calController;
 
     @Before
     public final void setUp() {
         this.controller = new BlackJackController();
+        this.calController = new CalcProfitController(controller);
+        
         // Create Player
         this.controller.setPlayer("Test");
         // Create Dealer
@@ -41,14 +46,14 @@ public class StateWonTest {
         // no BlackJAck Dealer > 21 && Player < 21
         if (!this.controller.hasBlackJack(this.controller.getPlayer())) {
             String result = this.controller.getStatusLine();
-            String expResult = "";
+            String expResult = null;
             assertEquals(expResult, result);
         }
 
         // Player with BlackJack
         this.controller.getPlayer().add(new Card(Suit.SPADES, 3));
-        this.controller.getCurrentState().change();
-        boolean result = this.controller.getCurrentState() instanceof StateBlackJack;
+        //this.controller.getCurrentState().change();
+        boolean result = this.controller.getCurrentState() instanceof StateWon;
         assert (result);
     }
 }

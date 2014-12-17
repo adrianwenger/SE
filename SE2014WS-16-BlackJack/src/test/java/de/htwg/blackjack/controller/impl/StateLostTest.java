@@ -20,8 +20,6 @@ public class StateLostTest {
     @Before
     public final void setUp() {
         this.controller = new BlackJackController();
-        // Create Player
-        this.controller.setPlayer("Test");
         // Create Dealer
         this.controller.setDealer();
         // Create Deck
@@ -41,7 +39,7 @@ public class StateLostTest {
         // no BlackJack Case 
         if (!this.controller.hasBlackJack(this.controller.getDealer())) {
             String result = this.controller.getStatusLine();
-            String expResult = "";
+            String expResult = null;
             assertEquals(expResult, result);
         }
 

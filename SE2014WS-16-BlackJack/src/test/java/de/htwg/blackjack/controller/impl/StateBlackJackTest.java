@@ -27,12 +27,4 @@ public class StateBlackJackTest {
 
         this.controller.setCurrentState(new StateBlackJack(controller, this.controller.getCalcController()));
     }
-
-    /**
-     * Test of change method, of class StateInGame.
-     */
-    @Test
-    public final void testChange() {
-    }
-
 }
