@@ -37,10 +37,8 @@ public final class StateInGame implements IGameState {
 
     /**
      * change GameState if nessecary. Different Cases: 1. Player won (Player <
-     * BlackJack && Dealer > BlackJack) 2. Player Lost (Player < Dealer)
-     * 3. Game will move on (both < 21)
-     * 4. Player has BlackJack 5. Player lost
-     * Dealer reached BlackJack or just won
+     * BlackJack && Dealer > BlackJack) 2. Game will move on (both < 21) 3.
+     * Player has BlackJack 4. Player lost Dealer reached BlackJack or just won
      */
     @Override
     public void change() {
@@ -50,17 +48,18 @@ public final class StateInGame implements IGameState {
             this.controller.setCurrentState(new StateWon(controller,
                     calcController));
             this.controller.getCurrentState().change();
+            // 2. Game will move on in StateInGame
         } else if (this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() < BLACKJACK) {
-                //this.controller.getCurrentState().change();
-                this.controller.setStatusLine("Please take another card (2) or "
-                        + "finish game (3)\n");
-        // 4. Player has BlackJack
+            //this.controller.getCurrentState().change();
+            this.controller.setStatusLine("Please take another card (2) or "
+                    + "finish game (5)\n");
+            // 3. Player has BlackJack
         } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
             this.controller.setCurrentState(new StateBlackJack(controller,
                     calcController));
             this.controller.getCurrentState().change();
-        // 5. Player lost Dealer reached BlackJack or just won
+            // 4. Player lost Dealer reached BlackJack or just won
         } else {
             this.controller.setCurrentState(new StateLost(controller,
                     calcController));

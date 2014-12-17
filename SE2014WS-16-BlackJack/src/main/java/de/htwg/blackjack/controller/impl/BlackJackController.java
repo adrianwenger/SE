@@ -228,7 +228,7 @@ public final class BlackJackController extends Observable
 
         boolean bol1 = valPlayer <= BLACKJACK;
         boolean bol2 = valDealer < BLACKJACK;
-        boolean bol3 = valDealer < valPlayer;
+        boolean bol3 = valDealer <= valPlayer;
 
         if (bol1 && bol2 && bol3) {
             getCardDealer();
@@ -309,8 +309,8 @@ public final class BlackJackController extends Observable
             this.setStatusLine("Dealer: ");
             this.setStatusLine(this.getDealer().printPlayersHand() + "\n");
         }
-        // Player < Dealer && Dealer < BLACKJACK
-        if ((this.player.getValue() < dealer.getValue())
+        // Player <= Dealer && Dealer < BLACKJACK
+        if ((this.player.getValue() <= dealer.getValue())
                 && dealer.getValue() < BLACKJACK) {
             setCurrentState(new StateLost(this, calcController));
         }

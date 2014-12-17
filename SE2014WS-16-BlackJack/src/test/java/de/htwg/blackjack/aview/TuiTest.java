@@ -29,7 +29,7 @@ public class TuiTest {
     @Test
     public void testSetStatusLine() {
         controller.setStatusLine("status");
-        String expResult = "";
+        String expResult = "status";
         String result = controller.getStatusLine();
         assertEquals(expResult, result);
     }

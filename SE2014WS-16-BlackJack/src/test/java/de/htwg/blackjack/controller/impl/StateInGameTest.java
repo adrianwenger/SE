@@ -43,7 +43,8 @@ public class StateInGameTest {
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
         this.controller.getCurrentState().change();
         String result0 = this.controller.getStatusLine();
-        String expResult = "";
+        String expResult = "Please take another card (2) or "
+                        + "finish game (5)\n";
         assertEquals(expResult, result0);
 
         // Case Dealer BlackJack
