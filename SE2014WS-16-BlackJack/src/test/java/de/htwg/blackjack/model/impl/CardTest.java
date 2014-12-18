@@ -1,5 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
+import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.impl.Card;
 import de.htwg.blackjack.model.Suit;
 import org.junit.Before;
@@ -49,12 +50,23 @@ public class CardTest {
      */
     @Test
     public final void testToString() {
+        ICard card = new Card(Suit.DIAMONDS, TWO);
+        
         StringBuilder sbExpResult = new StringBuilder();
         sbExpResult.append("TwoOfDIAMONDS");
 
         StringBuilder sbResult = new StringBuilder();
-        sbResult.append(new Card(Suit.DIAMONDS, TWO).toString());
+        sbResult.append(card.toString());
 
         assertEquals(sbResult.toString(), sbExpResult.toString());
     }
+    
+    @Test
+    public final void testGetSuit() {
+        ICard card = new Card(Suit.CLUBS, TEN);
+        Suit expResult = Suit.CLUBS;
+        Suit result = card.getSuit();
+        assertEquals(expResult, result);
+    }
+    
 }
