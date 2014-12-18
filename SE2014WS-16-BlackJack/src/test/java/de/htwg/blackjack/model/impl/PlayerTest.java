@@ -28,7 +28,6 @@ public final class PlayerTest {
      *
      */
     private Player player;
-
     /**
      *
      */
@@ -104,4 +103,21 @@ public final class PlayerTest {
         int result = player.getValue();
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void testSetRoundStake(){
+        player.setRoundStake(5);
+        double expResult = 5;
+        double result = player.getRoundStake();
+        assertEquals(expResult, result, 0.);
+    }
+    
+    @Test
+      public void testDoubleRoundStake() {
+          player.setRoundStake(5);
+          player.doubleRoundStake();
+          double expResult = 10;
+          double result = player.getRoundStake();
+          assertEquals(expResult, result, 0.);
+      }
 }
