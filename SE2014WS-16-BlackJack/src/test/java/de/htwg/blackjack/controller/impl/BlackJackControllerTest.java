@@ -6,6 +6,7 @@
 package de.htwg.blackjack.controller.impl;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IDeck;
@@ -17,15 +18,18 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 /**
  *
  * @author philippschultheiss
  */
 public class BlackJackControllerTest {
 
+
     static final int BLACKJACK = 21;
 
     private IBlackJackController controller;
+    private ICalcProfitController calController;
     private IDeck deck;
     private IPlayer player, dealer;
 
@@ -38,45 +42,15 @@ public class BlackJackControllerTest {
         this.player = controller.getPlayer();
         this.dealer = controller.getDealer();
         this.deck = this.controller.getDeck();
+        this.calController = new CalcProfitController(controller);
     }
 
     @Test
-    public void testGetDeck() {
-        deck = new Deck();
-        boolean result = this.controller.getDeck() instanceof IDeck;
-        assert (result);
-    }
-
-    @Test
-    public void testSetStatusLine() {
-        controller.setStatusLine("status");
-        String expResult = "status";
-        String result = controller.getStatusLine();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test GameState.
-     */
-    @Test
-    public final void testCheckGameState() {
-        // Case: new Game
-        this.controller.setCurrentState(null);
-        this.controller.checkGameState();
-        boolean result = this.controller.getCurrentState() instanceof StateInGame;
-        assert (result);
-
-        // Case: running game
-        this.controller.checkGameState();
-        result = this.controller.getCurrentState() instanceof IGameState;
-        assert (result);
-    }
-
-    @Test
-    public void testSetDeck() {
-        deck = new Deck();
-        ICard[] result = deck.getDeck();
-        assertEquals(result.length, deck.getDeck().length);
+    public void testSetCalcController() {
+        this.controller.setCalcController(calController);
+        ICalcProfitController epxResult = this.calController;
+        ICalcProfitController result = this.controller.getCalcController();
+        assertEquals(epxResult, result);
     }
 
     @Test
@@ -154,30 +128,130 @@ public class BlackJackControllerTest {
     }
 
     @Test
-    public void testCreate() {
-        controller.setStatusLine("Welcome to BlackJack...");
-        String expResult = "Welcome to BlackJack...";
-        assertEquals(expResult, controller.output());
+    public void testGetDeck() {
+        deck = new Deck();
+        boolean result = this.controller.getDeck() instanceof IDeck;
+        assert (result);
     }
 
     @Test
-    public void testDealerLowerPlayer() {
-        player.add(new Card(Suit.CLUBS, 4));
+    public void testSetDeck() {
+        deck = new Deck();
+        ICard[] result = deck.getDeck();
+        assertEquals(result.length, deck.getDeck().length);
+    }
+
+    @Test
+    public void testSetStatusLine() {
+        controller.setStatusLine("status");
+        String expResult = "status";
+        String result = controller.getStatusLine();
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testHasBlackJack() {
+        // Case:  < BlackJAck
         player.add(new Card(Suit.CLUBS, 10));
+        player.add(new Card(Suit.CLUBS, 10));
+        boolean expResult = false;
+        boolean result = this.controller.hasBlackJack(player);
+        assertEquals(expResult, result);
+
+        // Case: BlackJack
+        player.add(new Card(Suit.CLUBS, 1));
+        expResult = true;
+        result = this.controller.hasBlackJack(player);
+        assertEquals(expResult, result);
+    }
+
+    @Test
+    public void testCheckIfDealerNeedsCard() {
+        player.add(new Card(Suit.CLUBS, 4));
         player.add(new Card(Suit.CLUBS, 10));
 
         dealer.add(new Card(Suit.CLUBS, 10));
         dealer.add(new Card(Suit.CLUBS, 5));
 
-        controller.checkIfDealerNeedsCard();
-        int expResult = 2;
-        int i;
-        for (i = 0; i < dealer.getPlayerHand().length; i++) {
-            if (dealer.getPlayerHand()[i] == null) {
-                break;
-            }
-        }
-        assertEquals(expResult, i);
+        boolean expResult = false;
+        boolean result = controller.checkIfDealerNeedsCard();
+        assertEquals(expResult, result);
+
+        player.add(new Card(Suit.CLUBS, 2));
+        expResult = true;
+        result = controller.checkIfDealerNeedsCard();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test GameState.
+     */
+    @Test
+    public final void testCheckGameState() {
+        // Case: new Game
+        this.controller.setCurrentState(null);
+        this.controller.checkGameState();
+        boolean result = this.controller.getCurrentState() instanceof StateInGame;
+        assert (result);
+
+        // Case: running game
+        this.controller.checkGameState();
+        result = this.controller.getCurrentState() instanceof IGameState;
+        assert (result);
+
+        // Case: game in StateEndRound
+        this.controller.setCurrentState(new StateEndRound(controller, calController));
+        this.controller.checkGameState();
+        result = this.controller.getCurrentState() instanceof StateEndRound;
+        assert (result);
+    }
+
+    @Test
+    public void testCreate() {
+        controller.setStatusLine("Welcome to BlackJack...");
+        String expResult = "Welcome to BlackJack...";
+        assertEquals(expResult, controller.output());
+    }
+    
+    @Test
+    public void testCreateNewRound() {
+        this.controller.getPlayer().add(new Card(Suit.CLUBS, 5));
+        this.controller.getDealer().add(new Card(Suit.CLUBS, 5));
+        this.controller.setDeck(1);
+        this.controller.setStatusLine("test");
+        this.controller.getPlayer().setRoundStake(50);
+        
+        this.controller.createNewRound();
+        
+        // Test PlayerVal
+        int expResultPlayerVal = 0;
+        int resultPlayerVal = this.player.getValue();
+        assertEquals(expResultPlayerVal, resultPlayerVal);
+        
+        // Test DealerVal
+        int expResultDealerVal = 0;
+        int resultDealerVal = this.player.getValue();
+        assertEquals(expResultDealerVal, resultDealerVal);
+        
+        // Test state
+        IGameState expResultState = null;
+        IGameState resultState = this.controller.getCurrentState();
+        assertEquals(expResultState, resultState);
+        
+        // Test deck
+        IDeck expResultDeck = null;
+        IDeck resultDeck = this.controller.getDeck();
+        assertEquals(expResultDeck,resultDeck);
+        
+        // Test statusLine
+        String expResultStatusLine = null;
+        String resultStatusLine = this.controller.getStatusLine();
+        assertEquals(expResultStatusLine,resultStatusLine);
+        
+        // Test roundStake
+        double expResultRoundStake = 0;
+        double resultRoundStake = this.player.getRoundStake();
+        assertEquals(expResultRoundStake,resultRoundStake);
     }
 
     /**
@@ -191,4 +265,5 @@ public class BlackJackControllerTest {
 //        String expResult = null;
 //        assertEquals(expResult, result);
     }
+
 }
