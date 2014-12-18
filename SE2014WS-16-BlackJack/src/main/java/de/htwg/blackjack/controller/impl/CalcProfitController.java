@@ -14,6 +14,7 @@ import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
  * @author philippschultheiss
  */
 public final class CalcProfitController implements ICalcProfitController {
+
     /**
      * CalcProfitController.
      */
@@ -30,6 +31,10 @@ public final class CalcProfitController implements ICalcProfitController {
      * TWO constant for 2.
      */
     private static final double TWO = 2;
+    /**
+     * ZERO constant for 0.
+     */
+    private static final double ZERO = 0;
 
     /**
      *
@@ -42,28 +47,33 @@ public final class CalcProfitController implements ICalcProfitController {
     @Override
     public void calcProfit() {
         if (controller.getCurrentState() instanceof StateWon) {
-            //Round won --> Player asset = stake plus stake * 1.5
+            //Round won --> Player asset = roundstake plus roundstake * 1.5
             profit = controller.getPlayer().getRoundStake()
                     + (controller.getPlayer().getRoundStake() * MULTICATOR);
-        } else if (controller.getCurrentState() instanceof StateBlackJack) {
+        } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
             //Player got BlackJack = roundstake * 2
             profit = controller.getPlayer().getRoundStake()
                     + (controller.getPlayer().getRoundStake() * TWO);
+        } else if (this.controller.hasBlackJack(this.controller.getDealer())) {
+            profit = ZERO;
         } else if (controller.getPlayer().getValue() == BLACKJACK
                 && controller.getDealer().getValue() == BLACKJACK) {
-            //Player and Dealer got BlackJack = Player gets stake back
+            //Player and Dealer got BlackJack = Player gets roundstake back
             profit = controller.getPlayer().getRoundStake();
         } else {
+            profit = ZERO;
             //Player lost = stake - roundStake
             controller.getPlayer().setStake(controller.getPlayer().getStake()
                     - controller.getPlayer().getRoundStake());
+            
         }
     }
+
     /**
      * Calculates the current stake plus the profit.
      */
     @Override
-    public void clacStake(){
+    public void clacStake() {
         this.controller.getPlayer().setStake(
                 this.controller.getPlayer().getStake() + profit);
     }
@@ -71,7 +81,8 @@ public final class CalcProfitController implements ICalcProfitController {
     /**
      * Checks if player can double his roundstake If doubled roundstake bigger
      * than roundstake: return false.
-     * @return  true if double the stake is possible
+     *
+     * @return true if double the stake is possible
      */
     @Override
     public boolean checkDouble() {
@@ -97,5 +108,22 @@ public final class CalcProfitController implements ICalcProfitController {
     @Override
     public double getProfit() {
         return profit;
+    }
+
+    /**
+     * Calculates profit and new credit and sets new Statusline.
+     */
+    @Override
+    public void printCurrentCreditState() {
+        calcProfit();
+        this.controller.setStatusLine("-----------------------------------"
+                + "---------------------\n");
+        this.controller.setStatusLine("Your profit: "
+                + getProfit() + "€\n");
+        clacStake();
+        this.controller.setStatusLine("Your new Credit: "
+                + this.controller.getPlayer().getStake() + "€\n");
+        this.controller.setStatusLine("-----------------------------------"
+                + "---------------------\n");
     }
 }

@@ -23,7 +23,7 @@ final class StateWon implements IGameState {
      * Public Constructor.
      *
      * @param blackJackController IBlackJackController
-     * @param cal  ICalcProfitController
+     * @param cal ICalcProfitController
      */
     public StateWon(final IBlackJackController blackJackController,
             final ICalcProfitController cal) {
@@ -46,6 +46,8 @@ final class StateWon implements IGameState {
             this.controller.setStatusLine(this.controller.getPlayer().getName()
                     + " ,you won!!!! --> "
                     + this.controller.getPlayer().printPlayersHand() + "\n\n");
+            //print credit
+            this.calcController.printCurrentCreditState();
             // change state to StateEndGame
             this.controller.setCurrentState(new StateEndRound(controller,
                     calcController));

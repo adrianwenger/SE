@@ -38,30 +38,14 @@ final class StateBlackJack implements IGameState {
     public void change() {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
             this.controller.setStatusLine("Dealer got BlackJack!\n\n");
-            this.calcController.calcProfit();
-             this.controller.setStatusLine("-----------------------------------"
-                + "---------------------\n");
-            this.controller.setStatusLine("Your profit: "
-                    + this.calcController.getProfit() + "€\n");
-            this.calcController.clacStake();
-            this.controller.setStatusLine("Your new Stake: "
-                    + this.controller.getPlayer().getStake() + "€\n");
-             this.controller.setStatusLine("-----------------------------------"
-                + "---------------------\n");
+            //print credit
+             this.calcController.printCurrentCreditState();
         } else {
             this.controller.setStatusLine("Congratulations "
                     + this.controller.getPlayer().getName()
                     + ", you got BlackJack!\n\n");
-            this.calcController.calcProfit();
-             this.controller.setStatusLine("-----------------------------------"
-                + "---------------------\n");
-            this.controller.setStatusLine("Your profit: "
-                    + this.calcController.getProfit() + "€\n");
-            this.calcController.clacStake();
-            this.controller.setStatusLine("Your new Stake: "
-                    + this.controller.getPlayer().getStake() + "€\n");
-             this.controller.setStatusLine("-----------------------------------"
-                + "---------------------\n");
+            //print credit
+             this.calcController.printCurrentCreditState();
         }
         // change state to StateEndGame
         this.controller.setCurrentState(new StateEndRound(controller,
