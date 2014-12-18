@@ -128,7 +128,7 @@ public final class Tui implements IObserver {
     public void continueGame() {
         controller.setStatusLine(INPUT);
         int eingabe = SCANNER.nextInt();
-        while (eingabe > FOUR) {
+        while (eingabe > FIVE) {
             printHelpMenu();
             eingabe = SCANNER.nextInt();
         }
@@ -199,7 +199,7 @@ public final class Tui implements IObserver {
                             + "€\n");
                     break;
                 case FIVE:
-                    controller.endGame();
+                   startNewRound();
                     break;
                 default:
                     break;

@@ -48,7 +48,7 @@ public final class StateInGame implements IGameState {
             this.controller.setCurrentState(new StateWon(controller,
                     calcController));
             this.controller.getCurrentState().change();
-            // 2. Game will move on in StateInGame
+        // 2. Game will move on in StateInGame
         } else if (this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() < BLACKJACK) {
             //this.controller.getCurrentState().change();
