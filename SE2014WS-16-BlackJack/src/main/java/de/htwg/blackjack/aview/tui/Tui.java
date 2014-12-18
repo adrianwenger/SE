@@ -200,8 +200,6 @@ public final class Tui implements IObserver {
                     break;
                 case FIVE:
                     controller.endGame();
-                    controller.setStatusLine("END!\n");
-                    System.exit(0);
                     break;
                 default:
                     break;

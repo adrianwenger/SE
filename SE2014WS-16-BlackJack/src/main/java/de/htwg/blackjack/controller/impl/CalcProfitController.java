@@ -64,7 +64,8 @@ public final class CalcProfitController implements ICalcProfitController {
      */
     @Override
     public void clacStake(){
-        this.controller.getPlayer().setStake(this.controller.getPlayer().getStake() + profit);
+        this.controller.getPlayer().setStake(
+                this.controller.getPlayer().getStake() + profit);
     }
 
     /**
