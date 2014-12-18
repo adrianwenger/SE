@@ -312,7 +312,7 @@ public final class BlackJackController extends Observable
             this.setStatusLine("Dealer: ");
             this.setStatusLine(this.getDealer().printPlayersHand() + "\n");
         }
-        
+
         if (this.currentState instanceof StateInGame) {
             this.currentState.change();
         }
@@ -322,7 +322,7 @@ public final class BlackJackController extends Observable
             setCurrentState(new StateLost(this, calcController));
             this.currentState.change();
         }
-        
+
         this.setCurrentState(new StateEndGame(this, calcController));
         this.currentState.change();
         checkGameState();
