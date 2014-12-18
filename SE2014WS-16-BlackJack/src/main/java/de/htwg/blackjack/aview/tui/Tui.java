@@ -128,7 +128,7 @@ public final class Tui implements IObserver {
     public void continueGame() {
         controller.setStatusLine(INPUT);
         int eingabe = SCANNER.nextInt();
-        while (eingabe > FOUR) {
+        while (eingabe > FIVE) {
             printHelpMenu();
             eingabe = SCANNER.nextInt();
         }
@@ -173,21 +173,21 @@ public final class Tui implements IObserver {
                 case THREE:
                     if (this.calcController.checkDouble()) {
                         this.controller.getPlayer().doubleRoundStake();
-                        this.controller.setStatusLine("Stake doubled!\n");
+                        this.controller.setStatusLine("Round Stake doubled!\n");
                         this.controller.setStatusLine("Round Stake: "
                                 + this.controller.getPlayer().getRoundStake()
                                 + "€\n");
                     } else {
                         this.controller.setStatusLine("Round Stake can't be"
                                 + " doubled. Not enough money on Stake!\n");
-                        this.controller.setStatusLine("Total Stake: "
+                        this.controller.setStatusLine("Credit: "
                                 + (this.controller.getPlayer().getStake()
                                 - this.controller.getPlayer().
                                 getRoundStake()) + "€\n");
                     }
                     break;
                 case FOUR:
-                    this.controller.setStatusLine("Your current Stake:\n");
+                    this.controller.setStatusLine("Your current Credit:\n");
                     this.controller.setStatusLine(INPUT
                             + (this.controller.getPlayer().getStake()
                             - this.controller.getPlayer().getRoundStake())
