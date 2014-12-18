@@ -323,7 +323,7 @@ public final class BlackJackController extends Observable
             this.currentState.change();
         }
 
-        this.setCurrentState(new StateEndGame(this, calcController));
+        this.setCurrentState(new StateEndGame(this));
         this.currentState.change();
         checkGameState();
     }

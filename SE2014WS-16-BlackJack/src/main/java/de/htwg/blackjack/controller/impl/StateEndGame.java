@@ -12,31 +12,16 @@ import java.util.Scanner;
 public final class StateEndGame implements IGameState {
 
     /**
-     * define Scanner.
-     */
-    private static final Scanner SCANNER = new Scanner(System.in);
-    /**
      * BlackJack Controller.
      */
     private final IBlackJackController controller;
-    /**
-     * tui.
-     */
-    private Tui tui = null;
-    /**
-     * calc controller.
-     */
-    private ICalcProfitController calcController;
 
     /**
      * Public Constructor.
      *
      * @param blackJackController IBlackJackController
-     * @param cal ICalcProfitController
      */
-    public StateEndGame(final IBlackJackController blackJackController,
-            final ICalcProfitController cal) {
-        this.calcController = cal;
+    public StateEndGame(final IBlackJackController blackJackController) {
         this.controller = blackJackController;
     }
 
