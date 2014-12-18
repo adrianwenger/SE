@@ -120,4 +120,14 @@ public final class PlayerTest {
           double result = player.getRoundStake();
           assertEquals(expResult, result, 0.);
       }
+
+     @Test
+    public void testClearHand(){
+        player.add(new Card(Suit.CLUBS, 5));
+        player.clearHand();
+        int expResult = 0;
+        int result = player.getValue();
+        assertEquals(expResult, result);
+        
+    }
 }
