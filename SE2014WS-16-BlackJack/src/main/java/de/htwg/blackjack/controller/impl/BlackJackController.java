@@ -287,8 +287,6 @@ public final class BlackJackController extends Observable
         this.statusLine = null;
         this.player.setRoundStake(0);
 
-//        super.removeObserver(tui);
-//        new Tui(this);
         tui.createGame();
         tui.continueGame();
     }
@@ -313,6 +311,10 @@ public final class BlackJackController extends Observable
             this.setStatusLine("Dealer is taking antoher Card:\n");
             this.setStatusLine("Dealer: ");
             this.setStatusLine(this.getDealer().printPlayersHand() + "\n");
+        }
+        
+        if (this.currentState instanceof StateInGame) {
+            this.currentState.change();
         }
         // Player <= Dealer && Dealer < BLACKJACK
         if ((this.player.getValue() <= dealer.getValue())

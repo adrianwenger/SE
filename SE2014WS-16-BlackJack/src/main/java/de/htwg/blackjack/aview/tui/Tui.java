@@ -199,7 +199,7 @@ public final class Tui implements IObserver {
                             + "€\n");
                     break;
                 case FIVE:
-                    controller.endGame();
+                   startNewRound();
                     break;
                 default:
                     break;
