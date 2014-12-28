@@ -50,7 +50,6 @@ public class CalcProfitControllerTest {
     
     @Test
     public void testCalcProfit() {
-//asdasd
     }
 
     @Test
