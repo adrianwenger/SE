@@ -9,19 +9,25 @@ import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.util.observer.IObserver;
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.*;
 
 /**
  *
@@ -41,6 +47,10 @@ public class BlackJackFrame extends JFrame implements IObserver {
         JMenuBar menuBar;
 
         JMenuItem newGameItem, closeGameItem;
+
+        JTextField tfRoundStake;
+
+        JButton buttonSet;
 
         JMenu fileMenu;
         /**
@@ -85,25 +95,28 @@ public class BlackJackFrame extends JFrame implements IObserver {
 
         closeGameItem = new JMenuItem("Exit...");
         closeGameItem.addActionListener(new CloseListener());
-        
 
         fileMenu.add(newGameItem);
         fileMenu.addSeparator();
         fileMenu.add(closeGameItem);
-        
+
         menuBar.add(fileMenu);
 
         this.setJMenuBar(menuBar);
+
+        //---------------------------------------------------------------------
         setVisible(true);
     }
 
     public void update() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     /**
      * Checks if input is a Integer
+     *
      * @param argument
-     * @return 
+     * @return
      */
     private boolean isInt(String argument) {
         try {
@@ -138,11 +151,14 @@ public class BlackJackFrame extends JFrame implements IObserver {
             //JComboBox mit number of decks wird erstellt
             JComboBox numOfDecks = new JComboBox(comboBoxListe);
 
+            //Erstelling JTextField für gesamten Spieleinsatz
+            JTextField stake = new JTextField();
+
             //JComboBox wird Panel hinzugefügt
             panel.add(numOfDecks);
 
             Object[] message = {"Name:", name,
-                "Number of Decks:", numOfDecks};
+                "Number of Decks:", numOfDecks, "Total Stake (in €) :", stake};
 
             JOptionPane pane = new JOptionPane(message,
                     JOptionPane.PLAIN_MESSAGE,
