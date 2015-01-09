@@ -1,6 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
-import de.htwg.blackjack.model.Suit;
+import com.google.inject.Inject;
 import de.htwg.blackjack.model.ICard;
 import java.util.Map;
 import java.util.TreeMap;
@@ -19,11 +19,11 @@ public final class Card implements ICard {
      * One of the four valid suits for this card.
      *
      */
-    private final Suit suit;
+    private Suit suit;
     /**
      * The number of this card.
      */
-    private final int number;
+    private int number;
     /**
      * TreeMap card saves cards.
      */
@@ -32,13 +32,15 @@ public final class Card implements ICard {
      *
      */
     private int i = ONE;
-
+    @Inject
+    public Card() {}
     /**
      * Card constructor.
      *
      * @param aSuit Suit
      * @param aNumber Number
      */
+
     public Card(final Suit aSuit, final int aNumber) {
         this.suit = aSuit;
         this.number = aNumber;

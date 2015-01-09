@@ -1,5 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
+import com.google.inject.Inject;
 import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IPlayer;
 
@@ -66,6 +67,7 @@ public final class Player implements IPlayer {
      *
      * @param playerName Player Name
      */
+    @Inject
     public Player(final String playerName) {
         this.name = playerName;
         this.playerHand = new Card[MAXCARDS];

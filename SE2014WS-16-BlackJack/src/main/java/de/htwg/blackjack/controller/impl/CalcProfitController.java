@@ -5,6 +5,7 @@
  */
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Inject;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
@@ -40,6 +41,7 @@ public final class CalcProfitController implements ICalcProfitController {
      *
      * @param cont IBlackJackCOntroller
      */
+    @Inject
     public CalcProfitController(final IBlackJackController cont) {
         this.controller = cont;
     }

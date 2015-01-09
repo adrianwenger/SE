@@ -1,11 +1,10 @@
 package de.htwg.blackjack;
 
-import de.htwg.blackjack.controller.impl.BlackJackController;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.aview.gui.BlackJackFrame;
-import de.htwg.blackjack.controller.ICalcProfitController;
-import de.htwg.blackjack.controller.impl.CalcProfitController;
 
 /**
  *
@@ -23,7 +22,7 @@ public final class BlackJack {
     /**
      * BlackJackController.
      */
-    private static IBlackJackController controller = new BlackJackController();
+    private IBlackJackController controller;
 
     /**
      * Singleton.
@@ -49,8 +48,13 @@ public final class BlackJack {
      *
      */
     private BlackJack() {
-        //controller = new BlackJackController();
-        tui = new Tui(controller);
+        // Set up Google Guice Dependency Injector
+        Injector injector = Guice.createInjector(new BlackJackModule());
+        // Build up the application, resolving dependencies automatically by
+        // Guice
+        controller = injector.getInstance(IBlackJackController.class);
+        tui = injector.getInstance(Tui.class);
+        
         controller.create();
     }
 

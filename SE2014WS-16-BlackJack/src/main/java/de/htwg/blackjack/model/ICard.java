@@ -1,5 +1,8 @@
 package de.htwg.blackjack.model;
 
+import de.htwg.blackjack.model.impl.Suit;
+
+
 /**
  *
  * @author Adrian Wenger
