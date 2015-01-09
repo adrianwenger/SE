@@ -1,14 +1,17 @@
 package de.htwg.blackjack.model.impl;
 
+import com.google.inject.Inject;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.ICard;
 import java.util.Random;
+
 
 /**
  *
  * @author Adrian Wenger, Philipp Schultheiß
  */
 public final class Deck implements IDeck {
+
 
     /**
      *
@@ -33,7 +36,7 @@ public final class Deck implements IDeck {
     /**
      *
      */
-    private final ICard[] deck;
+    private ICard[] deck;
     /**
      * Number of cards currently in the deck.
      */
@@ -41,8 +44,7 @@ public final class Deck implements IDeck {
     /**
      * Number of Decks.
      */
-    private final int numOfDecks;
-
+    private int numOfDecks;
     /**
      * Card index.
      */
@@ -53,21 +55,21 @@ public final class Deck implements IDeck {
     private static Random rmd = new Random();
 
     /**
-     * Default Constructor.
+     * set amount of decks.
+     *
+     * @param numOfDecks number of decks
      */
-    public Deck() {
-        this(1);
+    public void setNumOfDecks(final int numOfDecks) {
+        this.numOfDecks = numOfDecks;
+        buildDeck();
     }
 
     /**
-     * Constructor which defines the number of decks and shuffle.
-     *
-     * @param numDeck number of decks which want to be created
+     * this method initializes the deck attributes.
      */
-    public Deck(final int numDeck) {
+    private void buildDeck() {
         //Initialise size of deck and number of cards
-        this.numOfDecks = numDeck;
-        this.numOfCards = numDeck * FIFTYTWO;
+        this.numOfCards = this.numOfDecks * FIFTYTWO;
         //create new Deck Array
         this.deck = new ICard[this.numOfCards];
         //Creates Deck deck
@@ -140,4 +142,5 @@ public final class Deck implements IDeck {
 
         return top;
     }
+
 }

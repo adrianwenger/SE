@@ -54,7 +54,7 @@ public final class BlackJack {
         // Guice
         controller = injector.getInstance(IBlackJackController.class);
         tui = injector.getInstance(Tui.class);
-        
+
         controller.create();
     }
 
@@ -64,7 +64,7 @@ public final class BlackJack {
      */
     public static void main(final String[] args) {
         //Create new GUI
-        BlackJackFrame gui = new BlackJackFrame(controller);
+        //BlackJackFrame gui = new BlackJackFrame(controller);
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface

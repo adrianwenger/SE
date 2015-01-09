@@ -10,10 +10,14 @@ public interface IDeck {
      * @return Card[] deck of cards
      */
     ICard[] getDeck();
-
     /**
      * Deal next card from the top of the deck.
      * @return top Card of the deck
      */
     ICard dealCard();
+    /**
+     * setDeck.
+     * @param numOfDecks number of decks
+     */
+    void setNumOfDecks(int numOfDecks);
 }

@@ -57,20 +57,26 @@ public final class Player implements IPlayer {
     /**
      * name from player.
      */
-    private final String name;
+    private String name;
     /**
      * players hand.
      */
     private ICard[] playerHand;
 
     /**
-     *
-     * @param playerName Player Name
+     * Constructor.
      */
     @Inject
-    public Player(final String playerName) {
-        this.name = playerName;
+    public Player() {
         this.playerHand = new Card[MAXCARDS];
+    }
+
+    /**
+     * set PlayerName.
+     * @param nam PlayerName
+     */
+    public void setName(final String nam) {
+        this.name = nam;
     }
 
     /**

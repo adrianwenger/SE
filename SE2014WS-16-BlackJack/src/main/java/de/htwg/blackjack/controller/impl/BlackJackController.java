@@ -1,13 +1,14 @@
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import de.htwg.blackjack.BlackJackModule;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
-import de.htwg.blackjack.model.impl.Deck;
-import de.htwg.blackjack.model.impl.Player;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
 import de.htwg.blackjack.util.observer.Observable;
 
@@ -45,11 +46,19 @@ public final class BlackJackController extends Observable
      * saves current Game state of BlackJack.
      */
     private IGameState currentState;
+
     /**
-     *
+     * Set up Google Guice Dependency Injector. Build up the application,
+     * resolving dependencies automatically by Guice
+     */
+    private final Injector injector
+            = Guice.createInjector(new BlackJackModule());
+    /**
+     * Create CalcProfitController.
      */
     private ICalcProfitController calcController
             = new CalcProfitController(this);
+
     /**
      * Tui for saving tui Object.
      */
@@ -73,12 +82,14 @@ public final class BlackJackController extends Observable
     }
 
     /**
+     * this.deck = new Deck(numOfDeck); before DependencyInjection.
      *
      * @param numOfDeck number of Decks
      */
     @Override
     public void setDeck(final int numOfDeck) {
-        this.deck = new Deck(numOfDeck);
+        this.deck = injector.getInstance(IDeck.class);
+        this.deck.setNumOfDecks(numOfDeck);
     }
 
     /**
@@ -87,7 +98,8 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void setPlayer(final String pla) {
-        this.player = new Player(pla);
+        this.player = injector.getInstance(IPlayer.class);
+        this.player.setName(pla);
     }
 
     /**
@@ -95,7 +107,8 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void setDealer() {
-        this.dealer = new Player("Dealer");
+        this.dealer = injector.getInstance(IPlayer.class);
+        this.dealer.setName("Dealer");
     }
 
     /**
