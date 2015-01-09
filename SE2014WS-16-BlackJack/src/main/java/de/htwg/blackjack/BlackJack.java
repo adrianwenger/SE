@@ -5,6 +5,7 @@ import com.google.inject.Injector;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.aview.gui.BlackJackFrame;
+import org.apache.log4j.PropertyConfigurator;
 
 /**
  *
@@ -56,6 +57,9 @@ public final class BlackJack {
         tui = injector.getInstance(Tui.class);
 
         controller.create();
+
+         // Set up logging through log4j
+        PropertyConfigurator.configure("log4j.properties");
     }
 
     /**

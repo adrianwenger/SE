@@ -1,6 +1,5 @@
 package de.htwg.blackjack.model.impl;
 
-import com.google.inject.Inject;
 import de.htwg.blackjack.model.ICard;
 import java.util.Map;
 import java.util.TreeMap;

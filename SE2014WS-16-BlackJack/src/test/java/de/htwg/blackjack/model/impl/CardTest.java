@@ -49,7 +49,7 @@ public class CardTest {
     @Test
     public final void testToString() {
         ICard card = new Card(Suit.DIAMONDS, TWO);
-        
+
         StringBuilder sbExpResult = new StringBuilder();
         sbExpResult.append("TwoOfDIAMONDS");
 

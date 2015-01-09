@@ -47,5 +47,4 @@ public class DeckTest {
         int result = deckDefault.getDeck().length;
         assertEquals(expResult, result);
     }
-
 }

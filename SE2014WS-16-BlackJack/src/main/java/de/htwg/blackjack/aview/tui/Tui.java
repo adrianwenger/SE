@@ -5,6 +5,8 @@ import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.util.observer.IObserver;
 import java.util.Scanner;
+import org.apache.log4j.Logger;
+import org.apache.log4j.Priority;
 
 
 /**
@@ -14,6 +16,10 @@ import java.util.Scanner;
 public final class Tui implements IObserver {
 
 
+    /**
+     * logger.
+     */
+    private static Logger loggerTui = Logger.getLogger("de.htwg.blackjack.aview.tui");
     /**
      * controller.
      */
@@ -40,7 +46,7 @@ public final class Tui implements IObserver {
      * "refresh" the screen.
      */
     public void printTui() {
-        System.out.print(controller.output());
+        loggerTui.info(controller.getStatusLine());
     }
 
     /**
@@ -201,7 +207,7 @@ public final class Tui implements IObserver {
                             + "€\n");
                     break;
                 case FIVE:
-                   startNewRound();
+                    startNewRound();
                     break;
                 default:
                     break;
