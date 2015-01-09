@@ -32,7 +32,8 @@ public final class PlayerTest {
      */
     @Before
     public void setUp() {
-        player = new Player("John");
+        player = new Player();
+        player.setName("John");
     }
 
     /**
@@ -50,7 +51,8 @@ public final class PlayerTest {
      */
     @Test
     public void testAdd() {
-        Deck deckMax = new Deck(1);
+        Deck deckMax = new Deck();
+        deckMax.setNumOfDecks(1);
         ICard cardMax = null;
         for (int i = 0; i < TEN; i++) {
             cardMax = deckMax.dealCard();
@@ -86,7 +88,8 @@ public final class PlayerTest {
      */
     @Test
     public void testPrintPlayersHand() {
-        Player test = new Player("test");
+        Player test = new Player();
+        test.setName("test");
         test.add(new Card(Suit.CLUBS, FIVE));
         String expResult = "FiveOfCLUBS Value: 5";
         String result = test.printPlayersHand();
