@@ -32,8 +32,7 @@ public final class Card implements ICard {
      *
      */
     private int i = ONE;
-    @Inject
-    public Card() {}
+
     /**
      * Card constructor.
      *

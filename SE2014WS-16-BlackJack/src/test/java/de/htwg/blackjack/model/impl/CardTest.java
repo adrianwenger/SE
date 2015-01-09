@@ -1,7 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
 import de.htwg.blackjack.model.ICard;
-import de.htwg.blackjack.model.impl.Card;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

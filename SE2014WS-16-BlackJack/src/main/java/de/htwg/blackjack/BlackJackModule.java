@@ -27,8 +27,6 @@ public final class BlackJackModule extends AbstractModule {
                 .to(de.htwg.blackjack.controller.impl.BlackJackController.class);
         bind(IPlayer.class)
                 .to(de.htwg.blackjack.model.impl.Player.class);
-        bind(ICard.class)
-                .to(de.htwg.blackjack.model.impl.Card.class);
         bind(IDeck.class).
                 to(de.htwg.blackjack.model.impl.Deck.class);
         bind(ICalcProfitController.class).
