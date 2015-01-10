@@ -327,8 +327,6 @@ public class GUI extends JFrame implements IObserver {
                             JOptionPane.OK_CANCEL_OPTION);
                     pane.createDialog(null, "Welcome to BlackJack...").setVisible(true);
                     break;
-                default:
-                    break;
             }
         }
 
