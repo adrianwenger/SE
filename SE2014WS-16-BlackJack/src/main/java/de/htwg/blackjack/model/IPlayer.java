@@ -63,4 +63,8 @@ public interface IPlayer {
      * 
      */
     public void setRoundStake(double roundStake);
+    /**
+     * 
+     */
+    public void setName(String nam);
 }
