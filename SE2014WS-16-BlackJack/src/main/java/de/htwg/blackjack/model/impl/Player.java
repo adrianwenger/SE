@@ -116,7 +116,7 @@ public final class Player implements IPlayer {
      */
     @Override
     public void doubleRoundStake() {
-        roundStake = roundStake * TWO;
+        this.roundStake = roundStake * TWO;
     }
     /**
      * Reset players hand.
