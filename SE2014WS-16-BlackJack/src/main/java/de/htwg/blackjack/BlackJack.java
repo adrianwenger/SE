@@ -1,12 +1,13 @@
 package de.htwg.blackjack;
 
-import de.htwg.blackjack.controller.impl.BlackJackController;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.tui.Tui;
-import de.htwg.blackjack.aview.gui.GUI;
-import de.htwg.blackjack.aview.gui.GUI;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.impl.CalcProfitController;
+import de.htwg.blackjack.aview.gui.GUI;
+import org.apache.log4j.PropertyConfigurator;
 
 /**
  *
@@ -24,12 +25,12 @@ public final class BlackJack {
     /**
      * BlackJackController.
      */
-    private static IBlackJackController controller = new BlackJackController();
+    private IBlackJackController controller;
 
     /**
      * CalcProfitController
      */
-    private static ICalcProfitController calcController = new CalcProfitController(controller);
+    private ICalcProfitController calcController = new CalcProfitController(controller);
 
     /**
      * Singleton.
@@ -55,9 +56,17 @@ public final class BlackJack {
      *
      */
     private BlackJack() {
-        //controller = new BlackJackController();
-        tui = new Tui(controller);
+        // Set up Google Guice Dependency Injector
+        Injector injector = Guice.createInjector(new BlackJackModule());
+        // Build up the application, resolving dependencies automatically by
+        // Guice
+        controller = injector.getInstance(IBlackJackController.class);
+        tui = injector.getInstance(Tui.class);
+
         controller.create();
+
+         // Set up logging through log4j
+        PropertyConfigurator.configure("log4j.properties");
     }
 
     /**
@@ -68,6 +77,7 @@ public final class BlackJack {
         //Create new GUI
         //BlackJackFrame gui = new BlackJackFrame(controller, calcController);
         GUI gui = new GUI(controller, calcController);
+        //BlackJackFrame gui = new BlackJackFrame(controller);
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
