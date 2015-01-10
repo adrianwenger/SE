@@ -94,7 +94,7 @@ public final class PlayerTest {
         assertEquals(expResult, result);
 
     }
-    
+
     @Test
     public void testSetPlayerVal(){
         player.add(new Card(Suit.CLUBS, FIVE));
@@ -103,7 +103,7 @@ public final class PlayerTest {
         int result = player.getValue();
         assertEquals(expResult, result);
     }
-    
+
     @Test
     public void testSetRoundStake(){
         player.setRoundStake(5);
@@ -111,7 +111,7 @@ public final class PlayerTest {
         double result = player.getRoundStake();
         assertEquals(expResult, result, 0.);
     }
-    
+
     @Test
       public void testDoubleRoundStake() {
           player.setRoundStake(5);
