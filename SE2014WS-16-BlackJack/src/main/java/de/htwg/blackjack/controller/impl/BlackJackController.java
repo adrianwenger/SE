@@ -1,8 +1,6 @@
 package de.htwg.blackjack.controller.impl;
 
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import de.htwg.blackjack.BlackJackModule;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
@@ -51,8 +49,8 @@ public final class BlackJackController extends Observable
      * Set up Google Guice Dependency Injector. Build up the application,
      * resolving dependencies automatically by Guice
      */
-    private final Injector injector
-            = Guice.createInjector(new BlackJackModule());
+    private Injector injector;
+          
     /**
      * Create CalcProfitController.
      */
@@ -64,6 +62,12 @@ public final class BlackJackController extends Observable
      */
     private Tui tui;
 
+    /**
+     * setInjector.
+     */
+    public void setInjector(Injector injector) {
+        this.injector = injector;
+    }
     /**
      * set tui reference.
      *
@@ -299,7 +303,7 @@ public final class BlackJackController extends Observable
         this.deck = null;
         this.statusLine = null;
         this.player.setRoundStake(0);
-
+        notifyObservers();
         tui.createGame();
         tui.continueGame();
     }

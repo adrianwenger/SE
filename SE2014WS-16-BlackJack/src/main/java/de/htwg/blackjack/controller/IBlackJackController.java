@@ -1,5 +1,6 @@
 package de.htwg.blackjack.controller;
 
+import com.google.inject.Injector;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
@@ -11,8 +12,14 @@ import de.htwg.blackjack.util.observer.IObservable;
  */
 public interface IBlackJackController extends IObservable {
 
-     /**
+    /**
+     * setInjector
+     */
+    void setInjector(Injector injector);
+
+    /**
      * set tui reference.
+     *
      * @param tuiRef tui
      */
     void setTui(final Tui tuiRef);
@@ -36,10 +43,12 @@ public interface IBlackJackController extends IObservable {
      * @param state state
      */
     void setCurrentState(IGameState state);
+
     /**
-     * 
+     *
      */
     void setCalcController(ICalcProfitController calcController);
+
     /**
      * create Dealer.
      */
@@ -77,6 +86,7 @@ public interface IBlackJackController extends IObservable {
 
     /**
      * set statuLine Text and notifyObservers.
+     *
      * @param text statusLine value
      */
     void setStatusLine(String text);
@@ -86,10 +96,12 @@ public interface IBlackJackController extends IObservable {
      * @return first Cards with value
      */
     String getFirstTwoCardsPlayer();
+
     /**
-     * 
+     *
      */
     ICalcProfitController getCalcController();
+
     /**
      *
      * @return first Cards with value
@@ -141,9 +153,9 @@ public interface IBlackJackController extends IObservable {
      * finish game.
      */
     void endGame();
-    
+
     /**
      * create new ROund.
      */
-     void createNewRound();
+    void createNewRound();
 }

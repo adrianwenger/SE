@@ -20,4 +20,5 @@ public interface IDeck {
      * @param numOfDecks number of decks
      */
     void setNumOfDecks(int numOfDecks);
+    int getNumOfDecks();
 }

@@ -6,7 +6,6 @@ import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.util.observer.IObserver;
 import java.util.Scanner;
 import org.apache.log4j.Logger;
-import org.apache.log4j.Priority;
 
 
 /**

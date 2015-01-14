@@ -5,7 +5,6 @@ import com.google.inject.Injector;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.ICalcProfitController;
-import de.htwg.blackjack.controller.impl.CalcProfitController;
 import de.htwg.blackjack.aview.gui.GUI;
 import org.apache.log4j.PropertyConfigurator;
 
@@ -14,6 +13,7 @@ import org.apache.log4j.PropertyConfigurator;
  * @author Adrian Wenger
  */
 public final class BlackJack {
+
     /**
      * tui.
      */
@@ -25,12 +25,12 @@ public final class BlackJack {
     /**
      * BlackJackController.
      */
-    private IBlackJackController controller;
+    private static IBlackJackController controller;
 
     /**
      * CalcProfitController
      */
-    private ICalcProfitController calcController = new CalcProfitController(controller);
+    private static ICalcProfitController calcController;
 
     /**
      * Singleton.
@@ -61,11 +61,16 @@ public final class BlackJack {
         // Build up the application, resolving dependencies automatically by
         // Guice
         controller = injector.getInstance(IBlackJackController.class);
+        // forward injector Object to BlackJackController
+        //controller.setInjector(injector);
+        // create Tui
         tui = injector.getInstance(Tui.class);
-
+        
         controller.create();
-
-         // Set up logging through log4j
+        
+        calcController = injector.getInstance(ICalcProfitController.class);
+        GUI gui = injector.getInstance(GUI.class);
+        // Set up logging through log4j
         PropertyConfigurator.configure("log4j.properties");
     }
 
@@ -75,9 +80,7 @@ public final class BlackJack {
      */
     public static void main(final String[] args) {
         //Create new GUI
-        //BlackJackFrame gui = new BlackJackFrame(controller, calcController);
-        GUI gui = new GUI(controller, calcController);
-        //BlackJackFrame gui = new BlackJackFrame(controller);
+//        GUI gui = new GUI(controller, calcController);
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface

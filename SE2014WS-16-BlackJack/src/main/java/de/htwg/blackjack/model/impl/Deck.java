@@ -44,6 +44,7 @@ public final class Deck implements IDeck {
      * Number of Decks.
      */
     private int numOfDecks;
+
     /**
      * Card index.
      */
@@ -62,7 +63,11 @@ public final class Deck implements IDeck {
         this.numOfDecks = numOfDecks;
         buildDeck();
     }
-
+    
+    public int getNumOfDecks() {
+        return numOfDecks;
+    }
+    
     /**
      * this method initializes the deck attributes.
      */
