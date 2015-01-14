@@ -8,7 +8,6 @@ import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
-import de.htwg.blackjack.model.impl.Suit;
 
 
 /**

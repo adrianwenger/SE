@@ -52,8 +52,7 @@ public class ConfigurationPanel implements ActionListener {
         this.frame = frame;
         this.controller = controller;
 
-        frame.setVisible(false);
-        //controller.create();
+        //frame.setVisible(false);
         //Create new Panel for JOptionPaneMessageDialog
         JPanel panel = new JPanel();
         // Erstellung Array vom Datentyp Object, Hinzufügen der Komponenten		
