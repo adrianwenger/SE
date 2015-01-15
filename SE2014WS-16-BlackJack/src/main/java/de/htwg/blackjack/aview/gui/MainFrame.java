@@ -115,7 +115,7 @@ public class MainFrame extends JFrame {
         nextCard = new JButton("Next Card");
         nextCard.addActionListener(new nexCardListener());
 
-        newRound = new JButton("New Round");
+        newRound = new JButton("New Game");
         newRound.addActionListener(new newRoundListener());
 
         //ButtonLabel zusammenbauen
@@ -176,9 +176,8 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.createNewRound();
-            controller.checkGameState();
-
+            gui.activateWelcomeFrame();
+            dispose();
         }
     }
 

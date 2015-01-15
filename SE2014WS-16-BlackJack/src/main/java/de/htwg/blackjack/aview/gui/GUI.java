@@ -53,10 +53,12 @@ public class GUI extends JFrame implements IObserver {
         controller.addObserver(this);
         
         // initialize Player
-        welcomeFrame = new WelcomeFrame(this, controller);
+        welcomeFrame = activateWelcomeFrame();
         
     }
-
+    public WelcomeFrame activateWelcomeFrame() {
+        return new WelcomeFrame(this, controller);
+    }
     public void activateMainFrame() {
         mainFrame = new MainFrame(this, controller, calcController);
     }
