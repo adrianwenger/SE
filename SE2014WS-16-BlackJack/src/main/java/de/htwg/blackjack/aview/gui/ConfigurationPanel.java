@@ -30,11 +30,11 @@ public class ConfigurationPanel implements ActionListener {
     private JButton confirm;
 
     /**
-     * JTextField for game output
+     * JTextField for game output.
      */
     private JTextField name, stake;
     /**
-     * JComboBox
+     * JComboBox.
      */
     private JComboBox numOfDecks;
     /**
@@ -42,8 +42,13 @@ public class ConfigurationPanel implements ActionListener {
      * not in use anymore.
      */
     private JDialog configPanel;
-    
+    /**
+     * JDialog width.
+     */
     private final int width = 200;
+    /**
+     * JDialog height.
+     */
     private final int height = 250;
     /**
      *
@@ -62,13 +67,13 @@ public class ConfigurationPanel implements ActionListener {
         // Erstellung Array vom Datentyp Object, Hinzufügen der Komponenten		
         name = new JTextField();
 
-        // Array für unsere JComboBox
+        // Array for JComboBox
         String comboBoxListe[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
-        //JComboBox mit number of decks wird erstellt
+        //JComboBox with number of decks created
         numOfDecks = new JComboBox(comboBoxListe);
 
-        //Erstelling JTextField für gesamten Spieleinsatz
+        //JTextField for total stake
         stake = new JTextField();
 
         //JComboBox wird Panel hinzugefügt
@@ -87,7 +92,8 @@ public class ConfigurationPanel implements ActionListener {
 
         configPanel = new JDialog();
         configPanel.setLocationRelativeTo(null);
-        configPanel.setLocation(new Point((int) configPanel.getLocation().getX() - (int) width/2, (int) configPanel.getLocation().getY() - (int) height/2));
+        configPanel.setLocation(new Point((int) configPanel.getLocation().getX() 
+                - (int) width/2, (int) configPanel.getLocation().getY() - (int) height/2));
 
         //configPanel.setResizable(false);
         configPanel.add(dialogPanel);
