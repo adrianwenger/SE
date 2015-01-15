@@ -99,14 +99,14 @@ public final class Tui implements IObserver {
             LOGGERTUI.info("Dealer Value --> "
                     + this.controller.getDealer().printPlayersHand() + "\n\n");
             // print Credit
-            printCurrentCredit();
+            this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateLost) {
             LOGGERTUI.info("Round LOST!!! --> \n\n"
                     + this.controller.getPlayer().printPlayersHand() + "\n");
             LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
                     + "\n\n");
             // print credit
-            printCurrentCredit();
+            this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateBlackJack) {
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
                 LOGGERTUI.info("Dealer got BlackJack!\n\n");
@@ -120,7 +120,7 @@ public final class Tui implements IObserver {
                         + "\n\n");
             }
             //print credit
-            printCurrentCredit();
+            this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateEndRound) {
             LOGGERTUI.info("Round ended\n");
             LOGGERTUI.info("Do you want to start a new Round?\n");
@@ -280,26 +280,4 @@ public final class Tui implements IObserver {
         secondOpportunity = false;
         this.controller.createNewRound();
     }
-
-    /**
-     * prints current Credit.
-     */
-    private void printCurrentCredit() {
-        calcController.calcProfit();
-        LOGGERTUI.info("-----------------------------------"
-                + "---------------------\n");
-        LOGGERTUI.info("Your profit: "
-                + calcController.getProfit() + "€\n");
-        calcController.calcStake();
-        LOGGERTUI.info("Your new Credit: "
-                + this.controller.getPlayer().getStake() + "€\n");
-        LOGGERTUI.info("-----------------------------------"
-                + "---------------------\n");
-    }
-
-    private void endGame() {
-        LOGGERTUI.info("Thanks for Playing BlackJack. See you soon...");
-        System.exit(0);
-    }
-
 }
