@@ -87,4 +87,8 @@ public final class Card implements ICard {
         i++;
     }
 
+    @Override
+    public Suit getSuit() {
+        return this.suit;
+}
 }
