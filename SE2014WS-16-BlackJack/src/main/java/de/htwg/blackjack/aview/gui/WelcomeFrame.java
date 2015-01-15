@@ -72,7 +72,6 @@ class WelcomeFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == start) {
-            //controller.createNewRound();
             this.menuFrame.setVisible(false);
             new ConfigurationPanel(gui, this, controller);
             
