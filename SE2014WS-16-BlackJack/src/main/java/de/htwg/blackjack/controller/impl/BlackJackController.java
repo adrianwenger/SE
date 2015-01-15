@@ -275,14 +275,6 @@ public final class BlackJackController extends Observable
     }
 
     /**
-     * initialize Game in StateInGame.
-     */
-    @Override
-    public void create() {
-        //setStatusLine("Welcome to BlackJack...\n");
-    }
-
-    /**
      * creates a new round.
      */
     @Override

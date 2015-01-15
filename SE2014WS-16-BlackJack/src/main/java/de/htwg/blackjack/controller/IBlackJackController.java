@@ -132,11 +132,6 @@ public interface IBlackJackController extends IObservable {
     void checkGameState();
 
     /**
-     * start Game.
-     */
-    void create();
-
-    /**
      *
      * @return statusLine
      */

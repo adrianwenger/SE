@@ -237,7 +237,7 @@ public final class Tui implements IObserver {
             if (nextLine.equals("y")) {
                 startNewRound();
             } else {
-                endGame();
+                this.controller.endGame();
             }
             controller.checkGameState();
         } else {
