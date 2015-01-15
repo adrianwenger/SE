@@ -13,7 +13,7 @@ import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.model.impl.Card;
 import de.htwg.blackjack.model.impl.Deck;
-import de.htwg.blackjack.model.impl.Suit;
+import de.htwg.blackjack.util.Suit;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

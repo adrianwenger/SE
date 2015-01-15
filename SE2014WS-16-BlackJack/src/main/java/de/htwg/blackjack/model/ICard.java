@@ -1,6 +1,6 @@
 package de.htwg.blackjack.model;
 
-import de.htwg.blackjack.model.impl.Suit;
+import de.htwg.blackjack.util.Suit;
 
 
 /**

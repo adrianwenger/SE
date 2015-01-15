@@ -5,7 +5,7 @@ import de.htwg.blackjack.controller.impl.StateWon;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.model.impl.Card;
-import de.htwg.blackjack.model.impl.Suit;
+import de.htwg.blackjack.util.Suit;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;

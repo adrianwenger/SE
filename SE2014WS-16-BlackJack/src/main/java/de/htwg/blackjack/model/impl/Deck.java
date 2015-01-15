@@ -1,5 +1,6 @@
 package de.htwg.blackjack.model.impl;
 
+import de.htwg.blackjack.util.Suit;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.ICard;
 import java.util.Random;

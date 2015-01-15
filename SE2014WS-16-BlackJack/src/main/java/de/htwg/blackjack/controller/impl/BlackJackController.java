@@ -1,7 +1,6 @@
 package de.htwg.blackjack.controller.impl;
 
 import com.google.inject.Injector;
-import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
@@ -57,10 +56,6 @@ public final class BlackJackController extends Observable
     private ICalcProfitController calcController
             = new CalcProfitController(this);
 
-    /**
-     * Tui for saving tui Object.
-     */
-    private Tui tui;
 
     /**
      * setInjector.
@@ -69,15 +64,6 @@ public final class BlackJackController extends Observable
     @Override
     public void setInjector(Injector injector) {
         this.injector = injector;
-    }
-    /**
-     * set tui reference.
-     *
-     * @param tuiRef tui
-     */
-    @Override
-    public void setTui(final Tui tuiRef) {
-        this.tui = tuiRef;
     }
 
     /**

@@ -8,7 +8,7 @@ package de.htwg.blackjack.controller.impl;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.model.IPlayer;
-import de.htwg.blackjack.model.impl.Suit;
+import de.htwg.blackjack.util.Suit;
 import de.htwg.blackjack.model.impl.Card;
 import org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;

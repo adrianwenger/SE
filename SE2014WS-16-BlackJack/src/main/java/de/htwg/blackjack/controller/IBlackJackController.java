@@ -18,13 +18,6 @@ public interface IBlackJackController extends IObservable {
     void setInjector(Injector injector);
 
     /**
-     * set tui reference.
-     *
-     * @param tuiRef tui
-     */
-    void setTui(final Tui tuiRef);
-
-    /**
      * create a Deck with a specific number.
      *
      * @param numOfDeck numbers of decks
