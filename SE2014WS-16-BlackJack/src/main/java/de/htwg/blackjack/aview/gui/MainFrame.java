@@ -238,7 +238,7 @@ public class MainFrame extends JFrame {
             //if (controller.getCalcController().setRoundStake(Double.parseDouble(tfroundStake.getText()))) { 
             //controller.createNewRound();
             taGame.setText("");
-            changeText("----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ---------------- \n");
+            changeText("-----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ----------------- \n");
             tfroundStake.setText("");
             controller.getFirstTwoCardsPlayer();
             controller.getFirstTwoCardsDealer();
