@@ -193,14 +193,14 @@ public final class Player implements IPlayer {
     @Override
     public String printPlayersHand() {
         StringBuilder sb = new StringBuilder();
-        sb.append("");
+        sb.append(getName() + ": ");
         for (ICard card : playerHand) {
             if (card == null) {
                 break;
             }
             sb.append(card).append(" ");
         }
-        return sb.append("Value: ").append(playerVal).toString();
+        return sb.append("[Value: ").append(playerVal).append("]\n").toString();
     }
 
     @Override

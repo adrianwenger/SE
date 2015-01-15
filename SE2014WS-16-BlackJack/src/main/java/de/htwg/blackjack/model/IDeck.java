@@ -21,4 +21,6 @@ public interface IDeck {
      */
     void setNumOfDecks(int numOfDecks);
     int getNumOfDecks();
+    
+    int getNumOfCards();
 }

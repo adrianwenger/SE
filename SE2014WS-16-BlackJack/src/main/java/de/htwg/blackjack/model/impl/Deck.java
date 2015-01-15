@@ -40,6 +40,7 @@ public final class Deck implements IDeck {
      * Number of cards currently in the deck.
      */
     private int numOfCards;
+
     /**
      * Number of Decks.
      */
@@ -66,6 +67,10 @@ public final class Deck implements IDeck {
     
     public int getNumOfDecks() {
         return numOfDecks;
+    }
+    
+     public int getNumOfCards() {
+        return numOfCards;
     }
     
     /**
