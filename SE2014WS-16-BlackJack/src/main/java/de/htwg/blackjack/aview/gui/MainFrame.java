@@ -11,6 +11,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
@@ -61,6 +62,9 @@ public class MainFrame extends JFrame {
         this.setTitle("BlackJack");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setPreferredSize(PLAYING_FRAME);
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
+        this.setLocation(new Point((int) this.getLocation().getX() - (int) PLAYING_FRAME.getWidth() / 2, (int) this.getLocation().getY() - (int) PLAYING_FRAME.getHeight() / 2));
 
         JLabel startContainer = new JLabel(infoBackground);
         startContainer.setLayout(null);
@@ -132,16 +136,17 @@ public class MainFrame extends JFrame {
         field.setLayout(new BorderLayout());
 
         //TextArea Spielfeld
-        taGame = new JTextArea(20, 20);
-        taGame.setPreferredSize(new Dimension(200, 200));
+        taGame = new JTextArea();
         taGame.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setViewportView(taGame);
+        taGame.setLineWrap(false);
         taGame.setEditable(false);
-
+        JScrollPane scrollPane = new JScrollPane(taGame);
+        scrollPane.setPreferredSize(new Dimension(200, 200));
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        
         //Spielfeld zusammenbauen
         field.add(scrollPane, BorderLayout.CENTER);
-        field.add(taGame, BorderLayout.CENTER);
         field.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Output"));
 
         //Hauptfenster zusammenbauen
@@ -149,7 +154,6 @@ public class MainFrame extends JFrame {
         this.add(info, BorderLayout.WEST);
         this.add(buttonGroup, BorderLayout.CENTER);
         this.add(field, BorderLayout.EAST);
-        this.setLocationRelativeTo(null);
 
         //Hauptfenster ausgeben
         this.pack();
@@ -159,17 +163,19 @@ public class MainFrame extends JFrame {
 
     public void changeText(String text) {
         taGame.setText(taGame.getText() + "\n" + text);
-        outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()));
-        outStake.setText(Double.toString(controller.getPlayer().getStake()));
-        outProfit.setText(Double.toString(calcController.getProfit()));
+        outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
+        outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
+        calcController.calcProfit();
+        outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
 
     public void changeText(String player, String dealer) {
         taGame.setText(taGame.getText() + "\n" + player);
         taGame.setText(taGame.getText() + "\n" + dealer);
-        outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()));
-        outStake.setText(Double.toString(controller.getPlayer().getStake()));
-        outProfit.setText(Double.toString(calcController.getProfit()));
+        outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
+        outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
+        calcController.calcProfit();
+        outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
 
     private class newRoundListener implements ActionListener {
@@ -198,6 +204,7 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+                
             controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
             tfroundStake.setText("0");
             controller.getFirstTwoCardsPlayer();
@@ -206,15 +213,22 @@ public class MainFrame extends JFrame {
             String dealerCards = controller.getDealer().printPlayersHand();
             changeText(playerCards, dealerCards);
             controller.checkGameState();
+            }
         }
-    }
+    
 
     private class DoubleStakeListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.getPlayer().doubleRoundStake();
-            controller.checkGameState();
+            if (calcController.checkDouble()) {
+                controller.getPlayer().doubleRoundStake();
+                changeText("Stake was doubled!");
+                controller.checkGameState();
+            } else {
+                changeText("Stake can't be doubled!");
+                controller.checkGameState();
+            }
         }
     }
 }

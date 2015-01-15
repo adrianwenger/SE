@@ -6,7 +6,9 @@
 package de.htwg.blackjack.aview.gui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -39,8 +41,10 @@ public class ConfigurationPanel implements ActionListener {
      * JDialog which has to be saved that the program can dispose them after its
      * not in use anymore.
      */
-    private JDialog notifyframe;
-
+    private JDialog configPanel;
+    
+    private final int width = 200;
+    private final int height = 250;
     /**
      *
      * @param gui
@@ -81,12 +85,14 @@ public class ConfigurationPanel implements ActionListener {
         dialogPanel.add(stake);
         dialogPanel.add(confirm);
 
-        notifyframe = new JDialog();
-        notifyframe.setLocationRelativeTo(null);
-        //notifyframe.setResizable(false);
-        notifyframe.add(dialogPanel);
-        notifyframe.setSize(200, 250);
-        notifyframe.setVisible(true);
+        configPanel = new JDialog();
+        configPanel.setLocationRelativeTo(null);
+        configPanel.setLocation(new Point((int) configPanel.getLocation().getX() - (int) width/2, (int) configPanel.getLocation().getY() - (int) height/2));
+
+        //configPanel.setResizable(false);
+        configPanel.add(dialogPanel);
+        configPanel.setSize(200, 250);
+        configPanel.setVisible(true);
     }
 
     @Override
@@ -94,7 +100,7 @@ public class ConfigurationPanel implements ActionListener {
 
         Object source = e.getSource();
         if (source == confirm) {
-            notifyframe.setVisible(false);
+            configPanel.setVisible(false);
             controller.setPlayer(name.getText());
             controller.setDealer();
             controller.setDeck(Integer.parseInt(numOfDecks.getSelectedItem().toString()));
