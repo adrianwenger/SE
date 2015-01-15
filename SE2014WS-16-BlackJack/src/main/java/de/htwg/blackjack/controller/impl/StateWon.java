@@ -8,7 +8,7 @@ import de.htwg.blackjack.controller.IGameState;
  *
  * @author Adrian Wenger
  */
-final class StateWon implements IGameState {
+    public final class StateWon implements IGameState {
 
     /**
      * BlackJack Controller.

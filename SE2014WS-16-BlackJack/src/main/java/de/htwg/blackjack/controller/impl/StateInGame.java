@@ -51,8 +51,8 @@ public final class StateInGame implements IGameState {
         // 2. Game will move on in StateInGame
         } else if (this.controller.getPlayer().getValue() < BLACKJACK
                 && this.controller.getDealer().getValue() < BLACKJACK) {
-            this.controller.setStatusLine("Please take another card (2) or "
-                    + "finish game (5)\n");
+            this.controller.setStatusLine("Please take another card or "
+                    + "finish game\n");
         // 3. Player has BlackJack
         } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
             this.controller.setCurrentState(new StateBlackJack(controller,

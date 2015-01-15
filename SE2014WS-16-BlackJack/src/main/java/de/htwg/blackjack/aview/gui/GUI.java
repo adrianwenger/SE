@@ -3,9 +3,13 @@ package de.htwg.blackjack.aview.gui;
 import com.google.inject.Inject;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
+import de.htwg.blackjack.controller.impl.StateBlackJack;
+import de.htwg.blackjack.controller.impl.StateEndRound;
 import de.htwg.blackjack.model.ICard;
 import de.htwg.blackjack.util.observer.IObserver;
 import de.htwg.blackjack.controller.impl.StateInGame;
+import de.htwg.blackjack.controller.impl.StateLost;
+import de.htwg.blackjack.controller.impl.StateWon;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -59,11 +63,8 @@ public class GUI extends JFrame implements IObserver {
     
     @Override
     public void update() {
-        if(controller.getCurrentState() instanceof StateInGame) {
-           String playerCards = controller.getPlayer().printPlayersHand();
-           String dealerCards = controller.getDealer().printPlayersHand();
-           mainFrame.changeText(playerCards, dealerCards);
-        }
+             mainFrame.changeText(controller.getStatusLine());        
     }
-
 }
+
+

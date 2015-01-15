@@ -8,7 +8,7 @@ import de.htwg.blackjack.controller.IGameState;
  *
  * @author Adrian Wenger
  */
-final class StateBlackJack implements IGameState {
+    public final class StateBlackJack implements IGameState {
 
     /**
      * BlackJack Controller.
@@ -39,13 +39,13 @@ final class StateBlackJack implements IGameState {
         if (this.controller.hasBlackJack(this.controller.getDealer())) {
             this.controller.setStatusLine("Dealer got BlackJack!\n\n");
             //print credit
-             this.calcController.printCurrentCreditState();
+            this.calcController.printCurrentCreditState();
         } else {
             this.controller.setStatusLine("Congratulations "
                     + this.controller.getPlayer().getName()
                     + ", you got BlackJack!\n\n");
             //print credit
-             this.calcController.printCurrentCreditState();
+            this.calcController.printCurrentCreditState();
         }
         // change state to StateEndGame
         this.controller.setCurrentState(new StateEndRound(controller,

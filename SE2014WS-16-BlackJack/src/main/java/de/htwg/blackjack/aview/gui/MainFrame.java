@@ -49,7 +49,7 @@ public class MainFrame extends JFrame {
     private final ImageIcon infoBackground
             = new ImageIcon(getClass().getResource("info.jpg"));
     JTextField tfroundStake;
-    private final JButton set, doubleStake, nextCard;
+    private final JButton set, doubleStake, nextCard, newRound;
     private JTextArea taGame;
     private JLabel outName, outStake, outProfit, outCurRoundStake;
 
@@ -67,8 +67,8 @@ public class MainFrame extends JFrame {
 
         //Label
         JLabel info = new JLabel(infoBackground);
-        info.setPreferredSize(new Dimension(400, 500));
-        
+        info.setPreferredSize(new Dimension(300, 500));
+
         //JLabels
         JLabel plName = new JLabel("Player: ");
         outName = new JLabel(controller.getPlayer().getName());
@@ -82,9 +82,8 @@ public class MainFrame extends JFrame {
         outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         JLabel roundStake = new JLabel("RoundStake: ");
         tfroundStake = new JTextField();
-        tfroundStake.setBorder(BorderFactory.createLineBorder( Color.BLACK, 2));
+        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
 
-        
         //InfoLabel zusammenbauen
         info.setLayout(new GridLayout(8, 2));
         info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
@@ -100,46 +99,51 @@ public class MainFrame extends JFrame {
         info.add(outCurRoundStake);
         info.add(roundStake);
         info.add(tfroundStake);
-        
+
         //Button Label
         JLabel buttonGroup = new JLabel(infoBackground);
         buttonGroup.setPreferredSize(new Dimension(200, 200));
-        buttonGroup.setLayout(new GridLayout(3, 1));
-        
-         //JButtons
+        buttonGroup.setLayout(new GridLayout(4, 1));
+
+        //JButtons
         set = new JButton("Set");
         set.addActionListener(new SetListener());
-        
+
         doubleStake = new JButton("DoubleStake");
         doubleStake.addActionListener(new DoubleStakeListener());
-        
+
         nextCard = new JButton("Next Card");
-        
+        nextCard.addActionListener(new nexCardListener());
+
+        newRound = new JButton("New Round");
+        newRound.addActionListener(new newRoundListener());
+
         //ButtonLabel zusammenbauen
         buttonGroup.add(set);
         buttonGroup.add(doubleStake);
         buttonGroup.add(nextCard);
+        buttonGroup.add(newRound);
         buttonGroup.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Buttons"));
-        
+
         //Spielfeld Label
         JLabel field = new JLabel(infoBackground);
         field.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        field.setPreferredSize(new Dimension(300, 200));
+        field.setPreferredSize(new Dimension(400, 200));
         field.setLayout(new BorderLayout());
-        
+
         //TextArea Spielfeld
         taGame = new JTextArea(20, 20);
         taGame.setPreferredSize(new Dimension(200, 200));
         taGame.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setViewportView(taGame);
-        taGame.setEditable(true);
-        
+        taGame.setEditable(false);
+
         //Spielfeld zusammenbauen
         field.add(scrollPane, BorderLayout.CENTER);
         field.add(taGame, BorderLayout.CENTER);
         field.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Output"));
-        
+
         //Hauptfenster zusammenbauen
         this.add(startContainer);
         this.add(info, BorderLayout.WEST);
@@ -152,25 +156,57 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
 
     }
-    
-    public void changeText(String player, String dealer){
+
+    public void changeText(String text) {
+        taGame.setText(taGame.getText() + "\n" + text);
+        outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()));
+        outStake.setText(Double.toString(controller.getPlayer().getStake()));
+        outProfit.setText(Double.toString(calcController.getProfit()));
+    }
+
+    public void changeText(String player, String dealer) {
         taGame.setText(taGame.getText() + "\n" + player);
         taGame.setText(taGame.getText() + "\n" + dealer);
         outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()));
         outStake.setText(Double.toString(controller.getPlayer().getStake()));
         outProfit.setText(Double.toString(calcController.getProfit()));
-        
     }
-    
+
+    private class newRoundListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.createNewRound();
+            controller.checkGameState();
+
+        }
+    }
+
+    private class nexCardListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            controller.getCardPlayer();
+            controller.checkIfDealerNeedsCard();
+            String playerCards = controller.getPlayer().printPlayersHand();
+            String dealerCards = controller.getDealer().printPlayersHand();
+            changeText(playerCards, dealerCards);
+            controller.checkGameState();
+        }
+    }
+
     private class SetListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-                controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
-                tfroundStake.setText("0");
-                controller.getFirstTwoCardsPlayer();
-                controller.getFirstTwoCardsDealer();
-                controller.checkGameState();
+            controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
+            tfroundStake.setText("0");
+            controller.getFirstTwoCardsPlayer();
+            controller.getFirstTwoCardsDealer();
+            String playerCards = controller.getPlayer().printPlayersHand();
+            String dealerCards = controller.getDealer().printPlayersHand();
+            changeText(playerCards, dealerCards);
+            controller.checkGameState();
         }
     }
 
@@ -178,7 +214,8 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-                controller.getPlayer().doubleRoundStake();
+            controller.getPlayer().doubleRoundStake();
+            controller.checkGameState();
         }
     }
 }

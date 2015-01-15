@@ -283,7 +283,7 @@ public final class BlackJackController extends Observable
         }
 
         if (this.currentState instanceof StateEndRound) {
-            tui.startNewRound();
+            //tui.startNewRound();
         }
     }
 
