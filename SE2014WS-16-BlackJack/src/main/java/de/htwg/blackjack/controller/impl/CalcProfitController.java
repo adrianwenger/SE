@@ -102,6 +102,21 @@ public final class CalcProfitController implements ICalcProfitController {
             this.controller.getCurrentState().change();
         }
     }
+    @Override
+    public boolean setRoundStake(double stake) {
+        if(this.controller.getCurrentState() instanceof StateEndRound
+            || this.controller.getCurrentState() == null) {
+            if(stake <= this.controller.getPlayer().getStake()) {
+                this.controller.getPlayer().setRoundStake(stake);
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    
 
     /**
      *
