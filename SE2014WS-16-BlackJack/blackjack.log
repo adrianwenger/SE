@@ -63,3 +63,608 @@ INFO main de.htwg.blackjack.aview.tui -
 Insert Name
 
 INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Please take another card (2) or finish game (5)
+
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Please take another card (2) or finish game (5)
+
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Please take another card (2) or finish game (5)
+
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Please take another card (2) or finish game (5)
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round Lost!
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your profit: 0.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Credit: 200.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new round? [y/n]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 	-->	
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new round? [y/n]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - First two dealt cards:
+
+
+INFO main de.htwg.blackjack.aview.tui - Adi: 
+INFO main de.htwg.blackjack.aview.tui - NineOfSPADES ThreeOfCLUBS Value: 12
+
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - FourOfDIAMONDS EightOfDIAMONDS Value: 12
+
+
+INFO main de.htwg.blackjack.aview.tui - Please take another card (2) or finish game (5)
+
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - First two dealt cards:
+
+
+INFO main de.htwg.blackjack.aview.tui - Adi: 
+INFO main de.htwg.blackjack.aview.tui - FourOfCLUBS SixOfCLUBS Value: 10
+
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - SixOfCLUBS SixOfSPADES Value: 12
+
+
+INFO main de.htwg.blackjack.aview.tui - Please take another card (2) or finish game (5)
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - One more card? [y/n]
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Adi: 
+INFO main de.htwg.blackjack.aview.tui - FourOfCLUBS SixOfCLUBS NineOfDIAMONDS Value: 19
+
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - SixOfCLUBS SixOfSPADES QueenOfSPADES Value: 22
+
+
+INFO main de.htwg.blackjack.aview.tui - Adi ,you won!!!! --> FourOfCLUBS SixOfCLUBS NineOfDIAMONDS Value: 19
+
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Your profit: 5.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your new Credit: 205.0€
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Do you want to start a new round? [y/n]
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Your final Credit: 205.0€
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - END!
+
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Please take another card or finish game
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Congratulations ADI, you got BlackJack!
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your profit: 600.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Credit: 800.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 
+Insert Name
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - First two dealt cards:
+
+
+INFO main de.htwg.blackjack.aview.tui - Adi: 
+INFO main de.htwg.blackjack.aview.tui - SevenOfCLUBS EightOfHEARTS Value: 15
+
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - SixOfDIAMONDS JackOfHEARTS Value: 16
+
+
+INFO main de.htwg.blackjack.aview.tui - Please take another card or finish game
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Your current Credit:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	800.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your current Round Stake:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	200.0€
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Round Stake doubled!
+
+INFO main de.htwg.blackjack.aview.tui - Round Stake: 400.0€
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Round Stake doubled!
+
+INFO main de.htwg.blackjack.aview.tui - Round Stake: 800.0€
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Round Stake can't be doubled. Not enough money on Stake!
+
+INFO main de.htwg.blackjack.aview.tui - Credit: 200.0€
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Your current Credit:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	-98.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your current Round Stake:
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	100.0€
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - One more card? [y/n]
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Round Lost!
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Your profit: 0.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your new Credit: -98.0€
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - new Round will be started
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - ----------------------- MENUE -----------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - EightOfCLUBS SixOfSPADES Value: 14
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - SixOfHEARTS SixOfCLUBS Value: 12
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - EightOfCLUBS SixOfSPADES Value: 14
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - SixOfHEARTS SixOfCLUBS Value: 12
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adi: 
+INFO main de.htwg.blackjack.aview.tui - FiveOfSPADES FourOfHEARTS Value: 9
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - EightOfCLUBS NineOfHEARTS Value: 17
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - One more card? [y/n]
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Adi, you won!!!! --> FiveOfSPADES FourOfHEARTS TenOfCLUBS Value: 19
+
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Your profit: 125.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your new Credit: 225.0€
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - new Round will be started
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - EightOfSPADES ThreeOfDIAMONDS Value: 11
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - FourOfSPADES TenOfDIAMONDS Value: 14
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - One more card? [y/n]
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Congratulations Adrian, you got BlackJack!
+
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Your profit: 150.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your new Credit: 250.0€
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Round ended
+
+INFO main de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO main de.htwg.blackjack.aview.tui - How many decks you want for playing BlackJack?
+
+INFO main de.htwg.blackjack.aview.tui - Your round stake:
+
+INFO main de.htwg.blackjack.aview.tui - Adrian: 
+INFO main de.htwg.blackjack.aview.tui - JackOfCLUBS TenOfCLUBS Value: 20
+INFO main de.htwg.blackjack.aview.tui - Dealer: 
+INFO main de.htwg.blackjack.aview.tui - JackOfHEARTS FiveOfHEARTS Value: 15
+INFO main de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO main de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO main de.htwg.blackjack.aview.tui - One more card? [y/n]
+
+INFO main de.htwg.blackjack.aview.tui - 	-->	
+INFO main de.htwg.blackjack.aview.tui - Round LOST!!!
+
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Your profit: 0.0€
+
+INFO main de.htwg.blackjack.aview.tui - Your new Credit: 99.0€
+
+INFO main de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO main de.htwg.blackjack.aview.tui - Round ended
+
+INFO main de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO main de.htwg.blackjack.aview.tui - With how much effort you want to start the game?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Adrian: 
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - SevenOfHEARTS AceOfDIAMONDS Value: 18
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: 
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - NineOfCLUBS SixOfSPADES Value: 15
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!!
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your profit: 0.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Credit: 100.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer got BlackJack!
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your profit: 0.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Credit: 100.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Adrian: 
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Adrian: JackOfCLUBS EightOfHEARTS [Value: 18]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: 
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TenOfCLUBS SixOfDIAMONDS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - "----------------------- MENUE --"
+---------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!!
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your profit: 0.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Credit: -167.0€
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - --------------------------------------------------------
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
