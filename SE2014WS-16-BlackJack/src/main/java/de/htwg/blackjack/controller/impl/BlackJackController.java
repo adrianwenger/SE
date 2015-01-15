@@ -136,6 +136,7 @@ public final class BlackJackController extends Observable
     @Override
     public void setCurrentState(final IGameState state) {
         this.currentState = state;
+        notifyObservers();
     }
 
     /**
@@ -292,7 +293,7 @@ public final class BlackJackController extends Observable
      */
     @Override
     public void create() {
-        setStatusLine("Welcome to BlackJack...\n");
+        //setStatusLine("Welcome to BlackJack...\n");
     }
 
     /**
@@ -307,8 +308,6 @@ public final class BlackJackController extends Observable
         this.statusLine = null;
         this.player.setRoundStake(0);
         notifyObservers();
-        tui.createGame();
-        tui.continueGame();
     }
 
     /**

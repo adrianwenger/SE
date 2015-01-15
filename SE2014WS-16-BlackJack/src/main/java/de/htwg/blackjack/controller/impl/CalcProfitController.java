@@ -117,15 +117,6 @@ public final class CalcProfitController implements ICalcProfitController {
      */
     @Override
     public void printCurrentCreditState() {
-        calcProfit();
-        this.controller.setStatusLine("-----------------------------------"
-                + "---------------------\n");
-        this.controller.setStatusLine("Your profit: "
-                + getProfit() + "€\n");
-        clacStake();
-        this.controller.setStatusLine("Your new Credit: "
-                + this.controller.getPlayer().getStake() + "€\n");
-        this.controller.setStatusLine("-----------------------------------"
-                + "---------------------\n");
+       throw new UnsupportedOperationException();
     }
 }

@@ -42,12 +42,6 @@ import de.htwg.blackjack.controller.IGameState;
                     calcController));
             this.controller.getCurrentState().change();
         } else {
-            // Player won concerning better face
-            this.controller.setStatusLine(this.controller.getPlayer().getName()
-                    + " ,you won!!!! --> "
-                    + this.controller.getPlayer().printPlayersHand() + "\n\n");
-            //print credit
-            this.calcController.printCurrentCreditState();
             // change state to StateEndGame
             this.controller.setCurrentState(new StateEndRound(controller,
                     calcController));

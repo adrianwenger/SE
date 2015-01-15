@@ -3,8 +3,13 @@ package de.htwg.blackjack.aview.tui;
 import com.google.inject.Inject;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
+import de.htwg.blackjack.controller.impl.StateBlackJack;
+import de.htwg.blackjack.controller.impl.StateEndGame;
+import de.htwg.blackjack.controller.impl.StateEndRound;
+import de.htwg.blackjack.controller.impl.StateInGame;
+import de.htwg.blackjack.controller.impl.StateLost;
+import de.htwg.blackjack.controller.impl.StateWon;
 import de.htwg.blackjack.util.observer.IObserver;
-import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 
@@ -15,51 +20,7 @@ import org.apache.log4j.Logger;
 public final class Tui implements IObserver {
 
 
-    /**
-     * logger.
-     */
-    private static Logger loggerTui = Logger.getLogger("de.htwg.blackjack.aview.tui");
-    /**
-     * controller.
-     */
-    private final IBlackJackController controller;
-    /**
-     * StakeController.
-     */
-    private final ICalcProfitController calcController;
 
-    /**
-     * Constructor.
-     *
-     * @param cont controller
-     */
-    @Inject
-    public Tui(final IBlackJackController cont) {
-        this.controller = cont;
-        this.calcController = cont.getCalcController();
-        controller.addObserver(this);
-        controller.setTui(this);
-    }
-
-    /**
-     * "refresh" the screen.
-     */
-    public void printTui() {
-        loggerTui.info(controller.getStatusLine());
-    }
-
-    /**
-     * implement method update from IObserver.
-     */
-    @Override
-    public void update() {
-        printTui();
-    }
-
-    /**
-     * define Scanner.
-     */
-    private static final Scanner SCANNER = new Scanner(System.in);
     /**
      * ONE.
      */
@@ -84,136 +45,208 @@ public final class Tui implements IObserver {
      * -->.
      */
     private static final String INPUT = "\t-->\t";
+    /**
+     * check if game is inGame.
+     */
+    private boolean stakeSet = false, roundStakeSet = false, deckSet = false,
+            secondOpportunity = false;
+    /**
+     * logger.
+     */
+    private static final Logger loggerTui
+            = Logger.getLogger("de.htwg.blackjack.aview.tui");
+    /**
+     * controller.
+     */
+    private final IBlackJackController controller;
+    /**
+     * StakeController.
+     */
+    private final ICalcProfitController calcController;
 
     /**
-     * initialize the game.
+     * Constructor.
+     *
+     * @param cont controller
      */
-    public void initialize() {
-        //Initialize player and dealer
-        this.controller.setStatusLine("\nInsert Name\n");
-        this.controller.setStatusLine(INPUT);
-        this.controller.setPlayer(SCANNER.next());
-        this.controller.setDealer();
-        //Set STAKE
-        this.controller.setStatusLine("With how much effort you want to "
-                + "start the game?\n");
-        this.controller.setStatusLine(INPUT);
-        this.controller.getPlayer().setStake(SCANNER.nextDouble());
+    @Inject
+    public Tui(final IBlackJackController cont) {
+        this.controller = cont;
+        this.calcController = cont.getCalcController();
+        controller.addObserver(this);
+        //controller.setTui(this);
+        loggerTui.info("\nInsert Name\n");
     }
 
     /**
-     * create the game.
+     * "refresh" the screen.
      */
-    public void createGame() {
-        //Initialize the number of decks
-        this.controller.setStatusLine("How many decks you "
-                + "want for playing BlackJack?\n");
-        this.controller.setStatusLine(INPUT);
-        this.controller.setDeck(SCANNER.nextInt());
-        //ROUND STAKE
-        this.controller.setStatusLine("Your round stake:\n");
-        this.controller.setStatusLine(INPUT);
-        this.controller.getPlayer().setRoundStake(SCANNER.nextDouble());
-        //DEAL FIRST TWO CARDS
-        this.controller.setStatusLine("First two dealt cards:\n\n");
-        this.controller.setStatusLine(controller.getPlayer().getName() + ": ");
-        this.controller.setStatusLine(this.controller.getFirstTwoCardsPlayer()
-                + "\n");
-        this.controller.setStatusLine("Dealer: ");
-        this.controller.setStatusLine(this.controller.getFirstTwoCardsDealer()
-                + "\n\n");
-        //this.controller.checkIfDealerNeedsCard();
-        this.controller.checkGameState();
-        //print MENUE
-        printHelpMenu();
+    public void printTui() {
+        loggerTui.info(controller.getStatusLine());
     }
 
     /**
-     * uses the controller to save data in model layers. prints returned values
-     * from controller.
+     * implement method update from IObserver.
      */
-    public void continueGame() {
-        controller.setStatusLine(INPUT);
-        int eingabe = SCANNER.nextInt();
-        while (eingabe > FIVE) {
+    @Override
+    public void update() {
+        if (this.controller.getCurrentState() instanceof StateInGame) {
+            loggerTui.info(controller.getPlayer().getName() + ": ");
+            loggerTui.info(this.controller.getPlayer().printPlayersHand());
+            loggerTui.info("Dealer: ");
+            loggerTui.info(this.controller.getDealer().printPlayersHand());
+            //print MENUE
             printHelpMenu();
-            eingabe = SCANNER.nextInt();
+        } else if (this.controller.getCurrentState() instanceof StateWon) {
+            loggerTui.info("Round WON!!! -->  "
+                    + this.controller.getPlayer().printPlayersHand() + "\n\n");
+             loggerTui.info("Dealer Value --> "
+                    + this.controller.getDealer().printPlayersHand() + "\n\n");
+            // print Credit
+            printCurrentCredit();
+        } else if (this.controller.getCurrentState() instanceof StateLost) {
+            loggerTui.info("Round LOST!!!\n\n");
+            // print credit
+            printCurrentCredit();
+        } else if (this.controller.getCurrentState() instanceof StateBlackJack) {
+            if (this.controller.hasBlackJack(this.controller.getDealer())) {
+                loggerTui.info("Dealer got BlackJack!\n\n");
+            } else {
+                loggerTui.info("Congratulations "
+                        + this.controller.getPlayer().getName()
+                        + ", you got BlackJack!\n\n");
+            }
+            //print credit
+            printCurrentCredit();
+        } else if (this.controller.getCurrentState() instanceof StateEndRound) {
+            loggerTui.info("Round ended\n");
+            loggerTui.info("Do you want to start a new Round?\n");
+        } else if (this.controller.getCurrentState() instanceof StateEndGame) {
+             loggerTui.info("-----------------------------------"
+                    + "---------------------\n");
+            loggerTui.info("Final Credit: "
+                    + this.controller.getPlayer().getStake() + "€\n");
+            loggerTui.info("-----------------------------------"
+                    + "---------------------\n");
+           loggerTui.info("END!\n");
         }
-        //Game Runner
-        while (eingabe <= FIVE) {
-            switch (eingabe) {
-                case ONE:
-                    printHelpMenu();
-                    break;
-                case TWO:
-                    controller.setStatusLine("One more card? [y/n]\n");
-                    controller.setStatusLine(INPUT);
-                    String eingabe2 = SCANNER.next();
+    }
 
-                    if (eingabe2.equals("y")) {
-                        controller.setStatusLine(
-                                controller.getPlayer().getName() + ": ");
-                        controller.setStatusLine(
-                                controller.getCardPlayer() + "\n");
-                        controller.checkIfDealerNeedsCard();
-                        controller.setStatusLine("Dealer: ");
-                        controller.setStatusLine(
-                                controller.getDealer().printPlayersHand()
-                                + "\n\n");
+    public void processInputLine(String nextLine) {
+        // if state null (game just started) setStake or set Player, depending
+        // on input.
+        if (this.controller.getCurrentState() == null) {
+            if (isInt(nextLine)) {
+                if (!stakeSet) {
+                    this.controller.getPlayer().setStake(Integer.parseInt(nextLine));
+                    stakeSet = true;
+                    //Initialize the number of decks
+                    loggerTui.info("How many decks you "
+                            + "want for playing BlackJack?\n");
+                } else if (!deckSet) {
+                    this.controller.setDeck(Integer.parseInt(nextLine));
+                    deckSet = true;
+                    //ROUND STAKE
+                    loggerTui.info("Your round stake:\n");
+                } else {
+                    this.controller.getPlayer().setRoundStake(Integer.parseInt(nextLine));
+                    //DEAL FIRST TWO CARDS
+                    this.controller.getFirstTwoCardsPlayer();
+                    this.controller.getFirstTwoCardsDealer();
+                    this.controller.checkGameState();
+                }
+            } else {
+                this.controller.setPlayer(nextLine);
+                this.controller.setDealer();
+                loggerTui.info("With how much effort you want to "
+                        + "start the game?\n");
+            }
+        } else if (this.controller.getCurrentState() instanceof StateInGame) {
+            if (isInt(nextLine)) {
+                switch (Integer.parseInt(nextLine)) {
+                    case ONE:
+                        printHelpMenu();
+                        break;
+                    case TWO:
+                        loggerTui.info("One more card? [y/n]\n");
+                        loggerTui.info(INPUT);
+                        break;
+                    case THREE:
+                        if (this.calcController.checkDouble()) {
+                            this.controller.getPlayer().doubleRoundStake();
+                            loggerTui.info("Round Stake doubled!\n");
+                            loggerTui.info("Round Stake: "
+                                    + this.controller.getPlayer().getRoundStake()
+                                    + "€\n");
+                        } else {
+                            loggerTui.info("Round Stake can't be"
+                                    + " doubled. Not enough money on Stake!\n");
+                            loggerTui.info("Credit: "
+                                    + (this.controller.getPlayer().getStake()
+                                    - this.controller.getPlayer().
+                                    getRoundStake()) + "€\n");
+                        }
                         controller.checkGameState();
-                    } else if (eingabe2.equals("n")) {
-                        controller.checkIfDealerNeedsCard();
-                        controller.setStatusLine(controller.getPlayer().
-                                getName()
-                                + ": ");
-                        controller.setStatusLine(controller.getPlayer()
-                                .printPlayersHand() + "\n");
-                        controller.setStatusLine("Dealer: ");
-                        controller.setStatusLine(controller.getDealer()
-                                .printPlayersHand() + "\n\n");
-                        controller.checkGameState();
-                    } else if (controller.hasBlackJack(
-                            controller.getDealer())) {
-                        controller.checkGameState();
-                    }
-                    break;
-                case THREE:
-                    if (this.calcController.checkDouble()) {
-                        this.controller.getPlayer().doubleRoundStake();
-                        this.controller.setStatusLine("Round Stake doubled!\n");
-                        this.controller.setStatusLine("Round Stake: "
+                        break;
+                    case FOUR:
+                        loggerTui.info("Your current Credit:\n");
+                        loggerTui.info(INPUT
+                                + (this.controller.getPlayer().getStake()
+                                - this.controller.getPlayer().getRoundStake())
+                                + "€\n");
+                        loggerTui.info("Your current"
+                                + " Round Stake:\n");
+                        loggerTui.info(INPUT
                                 + this.controller.getPlayer().getRoundStake()
                                 + "€\n");
-                    } else {
-                        this.controller.setStatusLine("Round Stake can't be"
-                                + " doubled. Not enough money on Stake!\n");
-                        this.controller.setStatusLine("Credit: "
-                                + (this.controller.getPlayer().getStake()
-                                - this.controller.getPlayer().
-                                getRoundStake()) + "€\n");
-                    }
-                    break;
-                case FOUR:
-                    this.controller.setStatusLine("Your current Credit:\n");
-                    this.controller.setStatusLine(INPUT
-                            + (this.controller.getPlayer().getStake()
-                            - this.controller.getPlayer().getRoundStake())
-                            + "€\n");
-                    this.controller.setStatusLine("Your current"
-                            + " Round Stake:\n");
-                    this.controller.setStatusLine(INPUT
-                            + this.controller.getPlayer().getRoundStake()
-                            + "€\n");
-                    break;
-                case FIVE:
-                    startNewRound();
-                    break;
-                default:
-                    break;
+                        controller.checkGameState();
+                        break;
+                    case FIVE:
+                        startNewRound();
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                if (nextLine.equals("y")) {
+                    controller.getCardPlayer();
+                    controller.checkIfDealerNeedsCard();
+                    controller.checkGameState();
+                } else {
+                    controller.checkIfDealerNeedsCard();
+                    controller.checkGameState();
+                }
             }
-            printHelpMenu();
-            controller.setStatusLine(INPUT);
-            eingabe = SCANNER.nextInt();
+        } else if (controller.getCurrentState() instanceof StateWon) {
+            controller.checkGameState();
+        } else if (controller.getCurrentState() instanceof StateLost) {
+            controller.checkGameState();
+        } else if (controller.getCurrentState() instanceof StateBlackJack) {
+            controller.checkGameState();
+        } else if (controller.getCurrentState() instanceof StateEndRound) {
+            if (nextLine.equals("y")) {
+                //startNewRound();
+                //
+            } 
+            controller.checkGameState();
+        } else {
+           controller.checkGameState();
+        }
+
+    }
+
+    /**
+     * validate if line is numeric or String.
+     *
+     * @param line line
+     * @return boolean
+     */
+    public boolean isInt(final String line) {
+        try {
+            Integer.parseInt(line);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
     }
 
@@ -221,9 +254,9 @@ public final class Tui implements IObserver {
      * print the tui menu.
      */
     public void printHelpMenu() {
-        this.controller.setStatusLine("----------------------- MENUE --"
+        loggerTui.info("\"----------------------- MENUE --\"\n"
                 + "---------------------\n");
-        this.controller.setStatusLine("1 -- HELP\n2 -- Next card \n3 "
+        loggerTui.info("1 -- HELP\n2 -- Next card \n3 "
                 + "-- Double Stake" + "\n4 -- Current Stake"
                 + "\n5 -- Quit and Resolve\n");
     }
@@ -232,15 +265,24 @@ public final class Tui implements IObserver {
      * start a new Round.
      */
     public void startNewRound() {
-        this.controller.setStatusLine("Do you want to start a new round?"
-                + " [y/n]\n");
-        this.controller.setStatusLine(INPUT);
-        String eingabe = SCANNER.next();
-        if (eingabe.equals("y")) {
-            this.controller.createNewRound();
-        } else {
-            this.controller.endGame();
-        }
+        stakeSet = roundStakeSet = deckSet = secondOpportunity = false;
+        this.controller.createNewRound();
+    }
+
+    /**
+     * prints current Credit.
+     */
+    private void printCurrentCredit() {
+        calcController.calcProfit();
+        loggerTui.info("-----------------------------------"
+                + "---------------------\n");
+        loggerTui.info("Your profit: "
+                + calcController.getProfit() + "€\n");
+        calcController.clacStake();
+        loggerTui.info("Your new Credit: "
+                + this.controller.getPlayer().getStake() + "€\n");
+        loggerTui.info("-----------------------------------"
+                + "---------------------\n");
     }
 
 }
