@@ -278,7 +278,7 @@ public final class Tui implements IObserver {
                 + "---------------------\n");
         loggerTui.info("Your profit: "
                 + calcController.getProfit() + "€\n");
-        calcController.clacStake();
+        calcController.calcStake();
         loggerTui.info("Your new Credit: "
                 + this.controller.getPlayer().getStake() + "€\n");
         loggerTui.info("-----------------------------------"

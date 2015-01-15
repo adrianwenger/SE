@@ -32,9 +32,9 @@ public interface ICalcProfitController {
     /**
      * Calculates the current stake plus the profit.
      */
-    void clacStake();
+    void calcStake();
     /**
      * Calculates profit and new credit and sets new Statusline.
      */
-    void printCurrentCreditState();
+    String printCurrentCreditState();
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package de.htwg.blackjack.aview.gui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
@@ -44,9 +39,9 @@ public class MainFrame extends JFrame {
      */
     private final ImageIcon infoBackground
             = new ImageIcon(getClass().getResource("info.jpg"));
-   /**
-    * JTextField for RoundStake.
-    */
+    /**
+     * JTextField for RoundStake.
+     */
     JTextField tfroundStake;
     /**
      * JButtons for ButtonGroup.
@@ -60,18 +55,18 @@ public class MainFrame extends JFrame {
      * JLabels for InfoLabel.
      */
     private JLabel outStake, outProfit, outCurRoundStake;
-    
+
     /**
-     * 
+     *
      * @param gui
      * @param controller
-     * @param calcController 
+     * @param calcController
      */
     public MainFrame(GUI gui, IBlackJackController controller, ICalcProfitController calcController) {
         this.gui = gui;
         this.controller = controller;
         this.calcController = calcController;
-        
+
         //Configurations for MainLabel
         this.setTitle("BlackJack");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -79,7 +74,7 @@ public class MainFrame extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setLocation(new Point((int) this.getLocation().getX() - (int) PLAYING_FRAME.getWidth() / 2, (int) this.getLocation().getY() - (int) PLAYING_FRAME.getHeight() / 2));
-        
+
         //JLabel for background
         JLabel startContainer = new JLabel(infoBackground);
         startContainer.setLayout(null);
@@ -159,7 +154,7 @@ public class MainFrame extends JFrame {
         scrollPane.setPreferredSize(new Dimension(200, 200));
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        
+
         //Spielfeld zusammenbauen
         field.add(scrollPane, BorderLayout.CENTER);
         field.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Output"));
@@ -177,8 +172,10 @@ public class MainFrame extends JFrame {
     }
 
     /**
-     * Method to setText or textchanges in the output textarea and the info label. 
-     * @param text 
+     * Method to setText or textchanges in the output textarea and the info
+     * label.
+     *
+     * @param text
      */
     public void changeText(String text) {
         taGame.setText(taGame.getText() + "\n" + text);
@@ -187,10 +184,12 @@ public class MainFrame extends JFrame {
         calcController.calcProfit();
         outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
-    
+
     /**
-     * Method to setText or textchanges in the output textarea and the info label. 
-     * @param text 
+     * Method to setText or textchanges in the output textarea and the info
+     * label.
+     *
+     * @param text
      */
     public void changeText(String player, String dealer) {
         taGame.setText(taGame.getText() + "\n" + player);
@@ -200,7 +199,7 @@ public class MainFrame extends JFrame {
         calcController.calcProfit();
         outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
-    
+
     /**
      * ActionListener to start a new Game.
      */
@@ -212,9 +211,9 @@ public class MainFrame extends JFrame {
             dispose();
         }
     }
-    
+
     /**
-     * ActionListener to deal next card.
+     * ActionListener to deal next card. 
      */
     private class nexCardListener implements ActionListener {
 
@@ -228,7 +227,7 @@ public class MainFrame extends JFrame {
             controller.checkGameState();
         }
     }
-    
+
     /**
      * ActionListener to set new round stake.
      */
@@ -236,19 +235,21 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (controller.getCalcController().setRoundStake(Double.parseDouble(tfroundStake.getText()))) { 
-                controller.createNewRound();
-                tfroundStake.setText("0");
-                controller.getFirstTwoCardsPlayer();
-                controller.getFirstTwoCardsDealer();
-                String playerCards = controller.getPlayer().printPlayersHand();
-                String dealerCards = controller.getDealer().printPlayersHand();
-                changeText(playerCards, dealerCards);
-                controller.checkGameState();
-            }
+            //if (controller.getCalcController().setRoundStake(Double.parseDouble(tfroundStake.getText()))) { 
+            //controller.createNewRound();
+            taGame.setText("");
+            changeText("----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ---------------- \n");
+            tfroundStake.setText("");
+            controller.getFirstTwoCardsPlayer();
+            controller.getFirstTwoCardsDealer();
+//            String playerCards = controller.getPlayer().printPlayersHand();
+//            String dealerCards = controller.getDealer().printPlayersHand();
+//            changeText(playerCards, dealerCards);
+            controller.checkGameState();
+
         }
     }
-    
+
     /**
      * ActionListener to double round stake.
      */
@@ -258,13 +259,16 @@ public class MainFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if (calcController.checkDouble()) {
                 controller.getPlayer().doubleRoundStake();
+                changeText("-------------------------------------------------------------");
                 changeText("RoundStake was doubled!");
+                changeText("-------------------------------------------------------------");
                 controller.checkGameState();
             } else {
+                changeText("-------------------------------------------------------------");
                 changeText("RoundStake can't be doubled!");
+                changeText("-------------------------------------------------------------");
                 controller.checkGameState();
             }
         }
     }
 }
-

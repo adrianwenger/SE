@@ -75,7 +75,7 @@ public final class CalcProfitController implements ICalcProfitController {
      * Calculates the current stake plus the profit.
      */
     @Override
-    public void clacStake() {
+    public void calcStake() {
         this.controller.getPlayer().setStake(
                 this.controller.getPlayer().getStake() + profit);
     }
@@ -102,6 +102,7 @@ public final class CalcProfitController implements ICalcProfitController {
             this.controller.getCurrentState().change();
         }
     }
+    
     @Override
     public boolean setRoundStake(double stake) {
         if(this.controller.getCurrentState() instanceof StateEndRound
@@ -131,7 +132,15 @@ public final class CalcProfitController implements ICalcProfitController {
      * Calculates profit and new credit and sets new Statusline.
      */
     @Override
-    public void printCurrentCreditState() {
-       throw new UnsupportedOperationException();
+    public String printCurrentCreditState() {
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("Your new Stake: ");
+        calcStake();
+        sb.append(controller.getPlayer().getStake());
+        calcProfit();
+        sb.append("\n").append("Your Profit: ").append(getProfit());
+        
+        return sb.append("\n").toString();
     }
 }
