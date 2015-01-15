@@ -70,15 +70,11 @@ public class GUI extends JFrame implements IObserver {
         } else if (controller.getCurrentState() instanceof StateWon) {
             mainFrame.changeText("-------------------------------------------------------------");
             mainFrame.changeText("Round WON!!!\n");
-            mainFrame.changeText(controller.getPlayer().printPlayersHand(),
-                    controller.getDealer().printPlayersHand());
             mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText("-------------------------------------------------------------");
         } else if (controller.getCurrentState() instanceof StateLost) {
             mainFrame.changeText("-------------------------------------------------------------");
             mainFrame.changeText("Round LOST!!!\n");
-            mainFrame.changeText(controller.getPlayer().printPlayersHand(),
-                    controller.getDealer().printPlayersHand());
             mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText("-------------------------------------------------------------");
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
@@ -86,12 +82,9 @@ public class GUI extends JFrame implements IObserver {
             mainFrame.changeText("Congratulations "
                     + this.controller.getPlayer().getName()
                     + ", you got BlackJack!\n");
-            mainFrame.changeText(controller.getPlayer().printPlayersHand(),
-                    controller.getDealer().printPlayersHand());
             mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText("-------------------------------------------------------------");
         } else if (controller.getCurrentState() instanceof StateEndRound) {
-            mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText("Round ended!");
             mainFrame.changeText("To start a new round set a new RoundStake please!");
         }

@@ -213,7 +213,7 @@ public class MainFrame extends JFrame {
     }
 
     /**
-     * ActionListener to deal next card. 
+     * ActionListener to deal next card.
      */
     private class nexCardListener implements ActionListener {
 
@@ -236,15 +236,22 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             //if (controller.getCalcController().setRoundStake(Double.parseDouble(tfroundStake.getText()))) { 
-            //controller.createNewRound();
+            //Check if Player start new round! If Stake <= 0 --> StateEndRound
+            calcController.checkStake();
+            //Clear TextField
             taGame.setText("");
-            changeText("----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ---------------- \n");
-            tfroundStake.setText("");
+            changeText("-----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ----------------- \n");
+            //Deal first two cards
             controller.getFirstTwoCardsPlayer();
             controller.getFirstTwoCardsDealer();
-//            String playerCards = controller.getPlayer().printPlayersHand();
-//            String dealerCards = controller.getDealer().printPlayersHand();
-//            changeText(playerCards, dealerCards);
+            //Update InfoLabel
+            outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
+            outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
+            //Set TextField RoundStake empty
+            tfroundStake.setText("");
+            calcController.calcProfit();
+            outProfit.setText(Double.toString(calcController.getProfit()) + " €");
+
             controller.checkGameState();
 
         }
