@@ -15,9 +15,5 @@ public interface ICard {
      */
      int getNumber();
      
-     /**
-      *
-      * @return Suit
-      */
      Suit getSuit();
 }

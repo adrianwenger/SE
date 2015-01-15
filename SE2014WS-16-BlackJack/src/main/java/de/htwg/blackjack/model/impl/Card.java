@@ -90,5 +90,5 @@ public final class Card implements ICard {
     @Override
     public Suit getSuit() {
         return this.suit;
-    }
+}
 }

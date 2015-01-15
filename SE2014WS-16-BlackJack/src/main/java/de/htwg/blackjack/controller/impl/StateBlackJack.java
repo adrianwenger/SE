@@ -36,17 +36,6 @@ import de.htwg.blackjack.controller.IGameState;
      */
     @Override
     public void change() {
-        if (this.controller.hasBlackJack(this.controller.getDealer())) {
-            this.controller.setStatusLine("Dealer got BlackJack!\n\n");
-            //print credit
-            this.calcController.printCurrentCreditState();
-        } else {
-            this.controller.setStatusLine("Congratulations "
-                    + this.controller.getPlayer().getName()
-                    + ", you got BlackJack!\n\n");
-            //print credit
-            this.calcController.printCurrentCreditState();
-        }
         // change state to StateEndGame
         this.controller.setCurrentState(new StateEndRound(controller,
                 calcController));

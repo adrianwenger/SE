@@ -43,6 +43,6 @@ public final class StateEndRound implements IGameState {
             //checks if player has enough money --> no depts!
             this.calcController.checkStake();
             // start new round
-            //this.controller.createNewRound();
+            this.controller.createNewRound();
     }
 }

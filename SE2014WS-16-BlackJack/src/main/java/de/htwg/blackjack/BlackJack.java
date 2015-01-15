@@ -6,6 +6,7 @@ import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.aview.gui.GUI;
+import java.util.Scanner;
 import org.apache.log4j.PropertyConfigurator;
 
 
@@ -23,7 +24,7 @@ public final class BlackJack {
     /**
      * gui.
      */
-    private final GUI gui;
+    private GUI gui;
     /**
      * static BlackJack instance.
      */
@@ -32,11 +33,14 @@ public final class BlackJack {
      * BlackJackController.
      */
     private static IBlackJackController controller;
-
     /**
      * CalcProfitController
      */
     private static ICalcProfitController calcController;
+    /**
+     * Scanner
+     */
+    private static final Scanner scanner = new Scanner(System.in);
 
     /**
      * Singleton.
@@ -89,9 +93,9 @@ public final class BlackJack {
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
-        game.getTui().initialize();
-        game.getTui().createGame();
-        game.getTui().continueGame();
+        while (true) {
+            game.getTui().processInputLine(scanner.nextLine());
+        }
     }
 
 }
