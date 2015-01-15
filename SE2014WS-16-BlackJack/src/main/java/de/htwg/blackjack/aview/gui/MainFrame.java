@@ -102,7 +102,7 @@ public class MainFrame extends JFrame {
 
         //Button Label
         JLabel buttonGroup = new JLabel(infoBackground);
-        buttonGroup.setPreferredSize(new Dimension(200, 200));
+        buttonGroup.setPreferredSize(new Dimension(100, 200));
         buttonGroup.setLayout(new GridLayout(4, 1));
 
         //JButtons
@@ -128,7 +128,7 @@ public class MainFrame extends JFrame {
         //Spielfeld Label
         JLabel field = new JLabel(infoBackground);
         field.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        field.setPreferredSize(new Dimension(400, 200));
+        field.setPreferredSize(new Dimension(500, 200));
         field.setLayout(new BorderLayout());
 
         //TextArea Spielfeld
