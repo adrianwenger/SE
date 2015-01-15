@@ -27,7 +27,7 @@ import javax.swing.JTextField;
  *
  * @author philippschultheiss
  */
-public class InfoPanel extends JFrame {
+public class MainFrame extends JFrame {
 
     GUI gui;
     IBlackJackController controller;
@@ -48,10 +48,12 @@ public class InfoPanel extends JFrame {
      */
     private final ImageIcon infoBackground
             = new ImageIcon(getClass().getResource("info.jpg"));
+    JTextField tfroundStake;
+    private final JButton set, doubleStake, nextCard;
+    private JTextArea taGame;
+    private JLabel outName, outStake, outProfit, outCurRoundStake;
 
-    private final JButton set, doubleStake, newCard;
-
-    public InfoPanel(GUI gui, IBlackJackController controller, ICalcProfitController calcController) {
+    public MainFrame(GUI gui, IBlackJackController controller, ICalcProfitController calcController) {
         this.gui = gui;
         this.controller = controller;
         this.calcController = calcController;
@@ -69,38 +71,23 @@ public class InfoPanel extends JFrame {
         
         //JLabels
         JLabel plName = new JLabel("Player: ");
-        JLabel outName = new JLabel(controller.getPlayer().getName());
+        outName = new JLabel(controller.getPlayer().getName());
         JLabel numOfDecks = new JLabel("Number of Decks: ");
         JLabel outDecks = new JLabel(Integer.toString(controller.getDeck().getNumOfDecks()));
         JLabel stake = new JLabel("Your stake:");
-        JLabel outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
+        outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
         JLabel profit = new JLabel("Profit:");
-        JLabel outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
+        outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
         JLabel currentRoundStake = new JLabel("Current RoundStake: ");
-        JLabel outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
+        outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         JLabel roundStake = new JLabel("RoundStake: ");
-        JTextField tfroundStake = new JTextField();
+        tfroundStake = new JTextField();
         tfroundStake.setBorder(BorderFactory.createLineBorder( Color.BLACK, 2));
 
-        //JButtons
-        set = new JButton("Set");
-        set.setBackground(Color.darkGray);
-        //set.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        set.addActionListener(new SetListener());
         
-        doubleStake = new JButton("DoubleStake");
-        doubleStake.setBackground(Color.BLACK);
-        //doubleStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        doubleStake.addActionListener(new DoubleStakeListener());
-        
-        
-        newCard = new JButton("Next Card");
-        newCard.setBackground(Color.BLACK);
-        //newCard.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        
-        //Label zusammenbauen
+        //InfoLabel zusammenbauen
         info.setLayout(new GridLayout(8, 2));
-        info.setBorder(BorderFactory.createLineBorder(Color.BLACK, 3));
+        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
         info.add(plName);
         info.add(outName);
         info.add(numOfDecks);
@@ -113,26 +100,51 @@ public class InfoPanel extends JFrame {
         info.add(outCurRoundStake);
         info.add(roundStake);
         info.add(tfroundStake);
-        info.add(set);
-        info.add(doubleStake);
-        info.add(newCard, BorderLayout.PAGE_END);
         
-        //Spielfeld
+        //Button Label
+        JLabel buttonGroup = new JLabel(infoBackground);
+        buttonGroup.setPreferredSize(new Dimension(200, 200));
+        buttonGroup.setLayout(new GridLayout(3, 1));
+        
+         //JButtons
+        set = new JButton("Set");
+        set.addActionListener(new SetListener());
+        
+        doubleStake = new JButton("DoubleStake");
+        doubleStake.addActionListener(new DoubleStakeListener());
+        
+        nextCard = new JButton("Next Card");
+        
+        //ButtonLabel zusammenbauen
+        buttonGroup.add(set);
+        buttonGroup.add(doubleStake);
+        buttonGroup.add(nextCard);
+        buttonGroup.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Buttons"));
+        
+        //Spielfeld Label
         JLabel field = new JLabel(infoBackground);
-        field.setPreferredSize(new Dimension(500, 400));
+        field.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
+        field.setPreferredSize(new Dimension(300, 200));
+        field.setLayout(new BorderLayout());
         
         //TextArea Spielfeld
-        JTextArea taGame = new JTextArea(600, 500);
-        JScrollPane scrollPane = new JScrollPane(taGame);
-        taGame.setEditable(false);
+        taGame = new JTextArea(20, 20);
+        taGame.setPreferredSize(new Dimension(200, 200));
+        taGame.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setViewportView(taGame);
+        taGame.setEditable(true);
         
         //Spielfeld zusammenbauen
-        field.add(taGame);
+        field.add(scrollPane, BorderLayout.CENTER);
+        field.add(taGame, BorderLayout.CENTER);
+        field.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Output"));
         
         //Hauptfenster zusammenbauen
         this.add(startContainer);
         this.add(info, BorderLayout.WEST);
-        this.add(field, BorderLayout.CENTER);
+        this.add(buttonGroup, BorderLayout.CENTER);
+        this.add(field, BorderLayout.EAST);
         this.setLocationRelativeTo(null);
 
         //Hauptfenster ausgeben
@@ -140,16 +152,25 @@ public class InfoPanel extends JFrame {
         this.setVisible(true);
 
     }
-
+    
+    public void changeText(String player, String dealer){
+        taGame.setText(taGame.getText() + "\n" + player);
+        taGame.setText(taGame.getText() + "\n" + dealer);
+        outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()));
+        outStake.setText(Double.toString(controller.getPlayer().getStake()));
+        outProfit.setText(Double.toString(calcController.getProfit()));
+        
+    }
+    
     private class SetListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Object source = e.getSource();
-            if (source == set) {
-                controller.getPlayer().setRoundStake(Double.parseDouble(set.getText()));
-                set.setText("0");
-            }
+                controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
+                tfroundStake.setText("0");
+                controller.getFirstTwoCardsPlayer();
+                controller.getFirstTwoCardsDealer();
+                controller.checkGameState();
         }
     }
 
@@ -157,10 +178,7 @@ public class InfoPanel extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            Object source = e.getSource();
-            if (source == doubleStake) {
                 controller.getPlayer().doubleRoundStake();
-            }
         }
     }
 }
