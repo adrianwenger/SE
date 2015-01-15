@@ -8,16 +8,22 @@ import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.aview.gui.GUI;
 import org.apache.log4j.PropertyConfigurator;
 
+
 /**
  *
  * @author Adrian Wenger
  */
 public final class BlackJack {
 
+
     /**
      * tui.
      */
     private final Tui tui;
+    /**
+     * gui.
+     */
+    private final GUI gui;
     /**
      * static BlackJack instance.
      */
@@ -65,11 +71,12 @@ public final class BlackJack {
         controller.setInjector(injector);
         // create Tui
         tui = injector.getInstance(Tui.class);
-        
+
         controller.create();
-        
+
         calcController = injector.getInstance(ICalcProfitController.class);
-        GUI gui = injector.getInstance(GUI.class);
+
+        gui = injector.getInstance(GUI.class);
         // Set up logging through log4j
         PropertyConfigurator.configure("log4j.properties");
     }
@@ -79,8 +86,6 @@ public final class BlackJack {
      * @param args not used
      */
     public static void main(final String[] args) {
-        //Create new GUI
-        //GUI gui = new GUI(controller, calcController);
         //Create new BlackJack Object
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
@@ -88,4 +93,5 @@ public final class BlackJack {
         game.getTui().createGame();
         game.getTui().continueGame();
     }
+
 }

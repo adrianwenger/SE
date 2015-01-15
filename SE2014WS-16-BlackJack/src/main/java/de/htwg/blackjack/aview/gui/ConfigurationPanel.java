@@ -99,7 +99,7 @@ public class ConfigurationPanel implements ActionListener {
             controller.setDealer();
             controller.setDeck(Integer.parseInt(numOfDecks.getSelectedItem().toString()));
             controller.getPlayer().setStake(Double.parseDouble(stake.getText()));
-            gui.activateStartFrame();
+            gui.activateMainFrame();
         }
     }
 }

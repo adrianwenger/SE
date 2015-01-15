@@ -53,18 +53,16 @@ public class GUI extends JFrame implements IObserver {
         
     }
 
-    public void activateStartFrame() {
-        new MainFrame(this, controller, calcController);
+    public void activateMainFrame() {
+        mainFrame = new MainFrame(this, controller, calcController);
     }
     
     @Override
     public void update() {
         if(controller.getCurrentState() instanceof StateInGame) {
-            ICard[] playerHand = controller.getPlayer().getPlayerHand();
-            ICard[] dealerHand = controller.getDealer().getPlayerHand();
-            mainFrame.changeText(controller.getPlayer().printPlayersHand(), 
-                    controller.getDealer().printPlayersHand());
-            
+           String playerCards = controller.getPlayer().printPlayersHand();
+           String dealerCards = controller.getDealer().printPlayersHand();
+           mainFrame.changeText(playerCards, dealerCards);
         }
     }
 

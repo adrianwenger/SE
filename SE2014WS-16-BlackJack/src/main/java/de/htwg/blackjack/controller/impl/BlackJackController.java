@@ -64,7 +64,9 @@ public final class BlackJackController extends Observable
 
     /**
      * setInjector.
+     * @param injector injector from BlackJack.java
      */
+    @Override
     public void setInjector(Injector injector) {
         this.injector = injector;
     }
@@ -73,6 +75,7 @@ public final class BlackJackController extends Observable
      *
      * @param tuiRef tui
      */
+    @Override
     public void setTui(final Tui tuiRef) {
         this.tui = tuiRef;
     }
