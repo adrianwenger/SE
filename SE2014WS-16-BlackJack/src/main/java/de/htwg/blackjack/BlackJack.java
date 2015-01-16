@@ -76,8 +76,6 @@ public final class BlackJack {
         // create Tui
         tui = injector.getInstance(Tui.class);
 
-        controller.create();
-
         calcController = injector.getInstance(ICalcProfitController.class);
 
         gui = injector.getInstance(GUI.class);

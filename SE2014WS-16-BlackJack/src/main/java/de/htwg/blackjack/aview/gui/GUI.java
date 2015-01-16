@@ -79,14 +79,21 @@ public class GUI extends JFrame implements IObserver {
             mainFrame.changeText("-------------------------------------------------------------");
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
             mainFrame.changeText("-------------------------------------------------------------");
-            mainFrame.changeText("Congratulations "
-                    + this.controller.getPlayer().getName()
-                    + ", you got BlackJack!\n");
+
+            if (this.controller.hasBlackJack(this.controller.getDealer())) {
+                mainFrame.changeText("Dealer got BlackJack!\n\n");
+            } else {
+                mainFrame.changeText("Congratulations "
+                        + this.controller.getPlayer().getName()
+                        + ", you got BlackJack!\n");
+            }
             mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText("-------------------------------------------------------------");
         } else if (controller.getCurrentState() instanceof StateEndRound) {
             mainFrame.changeText("Round ended!");
             mainFrame.changeText("To start a new round set a new RoundStake please!");
+        } else {
+            mainFrame.changeText("END!");
         }
     }
 }

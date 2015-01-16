@@ -236,8 +236,12 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             //if (controller.getCalcController().setRoundStake(Double.parseDouble(tfroundStake.getText()))) { 
-            //Check if Player start new round! If Stake <= 0 --> StateEndRound
+            
+            //Check if Player can start new round! If Stake <= 0 --> StateEndRound
             calcController.checkStake();
+            //create a new round = clear all variables (Deck, PlayerHand,..)
+            //controller.createNewRound();
+            
             //Clear TextField
             taGame.setText("");
             changeText("-----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ----------------- \n");

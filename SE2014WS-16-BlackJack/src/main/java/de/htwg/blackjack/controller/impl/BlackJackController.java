@@ -283,8 +283,7 @@ public final class BlackJackController extends Observable
         this.player.clearHand();
         this.dealer.clearHand();
         this.deck = null;
-        this.statusLine = null;
-        this.player.setRoundStake(0);
+        //this.player.setRoundStake(0);
         notifyObservers();
     }
 
