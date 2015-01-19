@@ -67,9 +67,6 @@ public final class CalcProfitController implements ICalcProfitController {
                     + (controller.getPlayer().getRoundStake() * TWO);
         } else {
             profit = ZERO;
-            //Player lost = stake - roundStake
-            controller.getPlayer().setStake(controller.getPlayer().getStake()
-                    - controller.getPlayer().getRoundStake());
         }
     }
 
