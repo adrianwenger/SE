@@ -1,7 +1,6 @@
 package de.htwg.blackjack.controller;
 
 import com.google.inject.Injector;
-import de.htwg.blackjack.aview.tui.Tui;
 import de.htwg.blackjack.model.IDeck;
 import de.htwg.blackjack.model.IPlayer;
 import de.htwg.blackjack.util.observer.IObservable;

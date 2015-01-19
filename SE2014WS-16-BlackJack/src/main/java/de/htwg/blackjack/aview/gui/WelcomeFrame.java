@@ -72,7 +72,7 @@ class WelcomeFrame extends JFrame implements ActionListener {
         Object source = e.getSource();
         if (source.equals(start)) {
             this.menuFrame.setVisible(false);
-            new ConfigurationPanel(gui, this, controller);
+            new ConfigurationPanel(gui, controller);
             
         }
     }

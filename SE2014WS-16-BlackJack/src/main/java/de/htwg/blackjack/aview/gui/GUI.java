@@ -8,6 +8,7 @@ import de.htwg.blackjack.controller.impl.StateEndRound;
 import de.htwg.blackjack.controller.impl.StateInGame;
 import de.htwg.blackjack.controller.impl.StateLost;
 import de.htwg.blackjack.controller.impl.StateWon;
+import static de.htwg.blackjack.util.StaticCollections.*;
 import de.htwg.blackjack.util.observer.IObserver;
 import javax.swing.JFrame;
 
@@ -26,7 +27,6 @@ public class GUI extends JFrame implements IObserver {
      */
     private final ICalcProfitController calcController;
 
-    private final WelcomeFrame welcomeFrame;
     private MainFrame mainFrame;
 
     /**
@@ -42,7 +42,7 @@ public class GUI extends JFrame implements IObserver {
         controller.addObserver(this);
 
         // initialize WelcomeFrame
-        welcomeFrame = activateWelcomeFrame();
+        activateWelcomeFrame();
 
     }
 
@@ -68,17 +68,17 @@ public class GUI extends JFrame implements IObserver {
             mainFrame.changeText(controller.getPlayer().printPlayersHand(),
                     controller.getDealer().printPlayersHand());
         } else if (controller.getCurrentState() instanceof StateWon) {
-            mainFrame.changeText("-------------------------------------------------------------");
+            mainFrame.changeText(dividingLine);
             mainFrame.changeText("Round WON!!!\n");
             mainFrame.changeText(calcController.printCurrentCreditState());
-            mainFrame.changeText("-------------------------------------------------------------");
+            mainFrame.changeText(dividingLine);
         } else if (controller.getCurrentState() instanceof StateLost) {
-            mainFrame.changeText("-------------------------------------------------------------");
+            mainFrame.changeText(dividingLine);
             mainFrame.changeText("Round LOST!!!\n");
             mainFrame.changeText(calcController.printCurrentCreditState());
-            mainFrame.changeText("-------------------------------------------------------------");
+            mainFrame.changeText(dividingLine);
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
-            mainFrame.changeText("-------------------------------------------------------------");
+            mainFrame.changeText(dividingLine);
 
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
                 mainFrame.changeText("Dealer got BlackJack!\n\n");
@@ -88,7 +88,7 @@ public class GUI extends JFrame implements IObserver {
                         + ", you got BlackJack!\n");
             }
             mainFrame.changeText(calcController.printCurrentCreditState());
-            mainFrame.changeText("-------------------------------------------------------------");
+            mainFrame.changeText(dividingLine);
         } else if (controller.getCurrentState() instanceof StateEndRound) {
             mainFrame.changeText("Round ended!");
             mainFrame.changeText("To start a new round set a new RoundStake please!");

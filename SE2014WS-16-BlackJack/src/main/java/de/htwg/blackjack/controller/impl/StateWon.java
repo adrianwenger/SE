@@ -43,8 +43,7 @@ import de.htwg.blackjack.controller.IGameState;
             this.controller.getCurrentState().change();
         } else {
             // change state to StateEndGame
-            this.controller.setCurrentState(new StateEndRound(controller,
-                    calcController));
+            this.controller.setCurrentState(new StateEndRound(calcController));
             this.controller.getCurrentState().change();
         }
     }

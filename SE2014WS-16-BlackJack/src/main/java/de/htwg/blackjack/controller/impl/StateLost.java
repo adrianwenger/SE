@@ -42,8 +42,7 @@ public final class StateLost implements IGameState {
                     calcController));
             this.controller.getCurrentState().change();
         } else {
-            this.controller.setCurrentState(new StateEndRound(controller,
-                    calcController));
+            this.controller.setCurrentState(new StateEndRound(calcController));
             this.controller.getCurrentState().change();
         }
     }

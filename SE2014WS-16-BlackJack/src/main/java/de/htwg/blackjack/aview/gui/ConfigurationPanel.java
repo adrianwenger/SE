@@ -26,22 +26,21 @@ public class ConfigurationPanel implements ActionListener {
 
     private final GUI gui;
     private final IBlackJackController controller;
-    private final WelcomeFrame frame;
-    private JButton confirm;
+    private final JButton confirm;
 
     /**
      * JTextField for game output.
      */
-    private JTextField name, stake;
+    private final JTextField name, stake;
     /**
      * JComboBox.
      */
-    private JComboBox numOfDecks;
+    private final JComboBox numOfDecks;
     /**
      * JDialog which has to be saved that the program can dispose them after its
      * not in use anymore.
      */
-    private JDialog configPanel;
+    private final JDialog configPanel;
     /**
      * JDialog width.
      */
@@ -56,9 +55,8 @@ public class ConfigurationPanel implements ActionListener {
      * @param frame
      * @param controller
      */
-    public ConfigurationPanel(GUI gui, WelcomeFrame frame, IBlackJackController controller) {
+    public ConfigurationPanel(GUI gui, IBlackJackController controller) {
         this.gui = gui;
-        this.frame = frame;
         this.controller = controller;
 
         //Create new Panel for JOptionPaneMessageDialog

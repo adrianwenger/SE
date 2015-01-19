@@ -271,18 +271,18 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (calcController.checkDouble()) {
-                changeText("-------------------------------------------------------------");
+                changeText(dividingLine);
                 changeText("RoundStake was doubled!");
-                changeText("-------------------------------------------------------------");
+                changeText(dividingLine);
                 String[] currentRoundStake = outCurRoundStake.getText().split(" ");
                 controller.getPlayer().setStake(controller.getPlayer().getStake() + Double.parseDouble(currentRoundStake[ZERO]));
                 controller.getPlayer().doubleRoundStake();
                 calcController.calcProfit();
                 controller.checkGameState();
             } else {
-                changeText("-------------------------------------------------------------");
+                changeText(dividingLine);
                 changeText("RoundStake can't be doubled!");
-                changeText("-------------------------------------------------------------");
+                changeText(dividingLine);
                 controller.checkGameState();
             }
         }

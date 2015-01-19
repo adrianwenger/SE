@@ -8,11 +8,6 @@ import de.htwg.blackjack.controller.IGameState;
  * @author Adrian Wenger
  */
 public final class StateEndRound implements IGameState {
-
-    /**
-     * BlackJack Controller.
-     */
-    private final IBlackJackController controller;
     /**
      * calc controller.
      */
@@ -23,10 +18,8 @@ public final class StateEndRound implements IGameState {
      * @param controller
      * @param calcController 
      */
-    public StateEndRound(final IBlackJackController controller,
-            final ICalcProfitController calcController) {
+    public StateEndRound(final ICalcProfitController calcController) {
         this.calcController = calcController;
-        this.controller = controller;
     }
 
     /**

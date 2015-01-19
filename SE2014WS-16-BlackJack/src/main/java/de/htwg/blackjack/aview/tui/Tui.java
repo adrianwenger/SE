@@ -49,10 +49,13 @@ public final class Tui implements IObserver {
      */
     private static final String newLine = "\n\n";
     /**
+     * 
+     */
+    private static final String euroSymbol = "€\n";
+    /**
      * check if game is inGame.
      */
-    private boolean stakeSet = false, roundStakeSet = false, deckSet = false,
-            secondOpportunity = false;
+    private boolean stakeSet = false, deckSet = false;
     /**
      * logger.
      */
@@ -132,7 +135,7 @@ public final class Tui implements IObserver {
             LOGGERTUI.info("-----------------------------------"
                     + "---------------------\n");
             LOGGERTUI.info("Final Credit: "
-                    + this.controller.getPlayer().getStake() + "€\n");
+                    + this.controller.getPlayer().getStake() + euroSymbol);
             LOGGERTUI.info("-----------------------------------"
                     + "---------------------\n");
             LOGGERTUI.info("END!\n");
@@ -191,14 +194,14 @@ public final class Tui implements IObserver {
                             LOGGERTUI.info("Round Stake doubled!\n");
                             LOGGERTUI.info("Round Stake: "
                                     + this.controller.getPlayer()
-                                    .getRoundStake() + "€\n");
+                                    .getRoundStake() + euroSymbol);
                         } else {
                             LOGGERTUI.info("Round Stake can't be"
                                     + " doubled. Not enough money on Stake!\n");
                             LOGGERTUI.info("Credit: "
                                     + (this.controller.getPlayer().getStake()
                                     - this.controller.getPlayer().
-                                    getRoundStake()) + "€\n");
+                                    getRoundStake()) + euroSymbol);
                         }
                         controller.checkGameState();
                         break;
@@ -207,12 +210,12 @@ public final class Tui implements IObserver {
                         LOGGERTUI.info(INPUT
                                 + (this.controller.getPlayer().getStake()
                                 - this.controller.getPlayer().getRoundStake())
-                                + "€\n");
+                                + euroSymbol);
                         LOGGERTUI.info("Your current"
                                 + " Round Stake:\n");
                         LOGGERTUI.info(INPUT
                                 + this.controller.getPlayer().getRoundStake()
-                                + "€\n");
+                                + euroSymbol);
                         controller.checkGameState();
                         break;
                     case FIVE:
@@ -279,9 +282,7 @@ public final class Tui implements IObserver {
      */
     public void startNewRound() {
         stakeSet = false;
-        roundStakeSet = false;
         deckSet = false;
-        secondOpportunity = false;
         this.controller.createNewRound();
     }
 }
