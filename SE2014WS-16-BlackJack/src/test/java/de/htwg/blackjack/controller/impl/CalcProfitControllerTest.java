@@ -106,7 +106,7 @@ public class CalcProfitControllerTest {
         expResult = 0.0;
         assertEquals(expResult, result, 0);
         result = this.controller.getPlayer().getStake();
-        expResult = 980;
+        expResult = 1000;
         assertEquals(expResult, result, 0);
 
     }
@@ -157,7 +157,7 @@ public class CalcProfitControllerTest {
         this.calcController.calcProfit();
         this.calcController.calcStake();
         String result = this.calcController.printCurrentCreditState();
-        String expResult = "Your new Stake: 250.0\n" + "Your Profit: 150.0\n"; 
+        String expResult = "Your new Stake: 250.0 €\n" + "Your Profit: 150.0 €\n"; 
         boolean compare = result.equals(expResult);
         assert(compare);
     }
