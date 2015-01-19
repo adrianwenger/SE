@@ -54,7 +54,7 @@ public class MainFrame extends JFrame {
     /**
      * JLabels for InfoLabel.
      */
-    private JLabel outStake, outProfit, outCurRoundStake;
+    private JLabel outStake, outProfit, outCurRoundStake, info;
 
     /**
      *
@@ -79,40 +79,41 @@ public class MainFrame extends JFrame {
         JLabel startContainer = new JLabel(infoBackground);
         startContainer.setLayout(null);
 
+        info = createInfo();
         //Info JLabel
-        JLabel info = new JLabel(infoBackground);
-        info.setPreferredSize(new Dimension(300, 500));
-
-        //Info JLabels
-        JLabel plName = new JLabel("Player: ");
-        JLabel outName = new JLabel(controller.getPlayer().getName());
-        JLabel numOfDecks = new JLabel("Number of Decks: ");
-        JLabel outDecks = new JLabel(Integer.toString(controller.getDeck().getNumOfDecks()));
-        JLabel stake = new JLabel("Your stake:");
-        outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
-        JLabel profit = new JLabel("Profit:");
-        outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
-        JLabel currentRoundStake = new JLabel("Current RoundStake: ");
-        outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
-        JLabel roundStake = new JLabel("RoundStake: ");
-        tfroundStake = new JTextField();
-        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-
-        //Info Label zusammenbauen
-        info.setLayout(new GridLayout(8, 2));
-        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
-        info.add(plName);
-        info.add(outName);
-        info.add(numOfDecks);
-        info.add(outDecks);
-        info.add(stake);
-        info.add(outStake);
-        info.add(profit);
-        info.add(outProfit);
-        info.add(currentRoundStake);
-        info.add(outCurRoundStake);
-        info.add(roundStake);
-        info.add(tfroundStake);
+//        JLabel info = new JLabel(infoBackground);
+//        info.setPreferredSize(new Dimension(300, 500));
+//
+//        //Info JLabels
+//        JLabel plName = new JLabel("Player: ");
+//        JLabel outName = new JLabel(controller.getPlayer().getName());
+//        JLabel numOfDecks = new JLabel("Number of Decks: ");
+//        JLabel outDecks = new JLabel(Integer.toString(controller.getDeck().getNumOfDecks()));
+//        JLabel stake = new JLabel("Your stake:");
+//        outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
+//        JLabel profit = new JLabel("Profit:");
+//        outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
+//        JLabel currentRoundStake = new JLabel("Current RoundStake: ");
+//        outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
+//        JLabel roundStake = new JLabel("RoundStake: ");
+//        tfroundStake = new JTextField();
+//        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+//
+//        //Info Label zusammenbauen
+//        info.setLayout(new GridLayout(8, 2));
+//        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
+//        info.add(plName);
+//        info.add(outName);
+//        info.add(numOfDecks);
+//        info.add(outDecks);
+//        info.add(stake);
+//        info.add(outStake);
+//        info.add(profit);
+//        info.add(outProfit);
+//        info.add(currentRoundStake);
+//        info.add(outCurRoundStake);
+//        info.add(roundStake);
+//        info.add(tfroundStake);
 
         //Button Label
         JLabel buttonGroup = new JLabel(infoBackground);
@@ -170,6 +171,43 @@ public class MainFrame extends JFrame {
         this.setVisible(true);
 
     }
+    
+    private JLabel createInfo() {
+        JLabel info = new JLabel(infoBackground);
+        info.setPreferredSize(new Dimension(300, 500));
+
+        //Info JLabels
+        JLabel plName = new JLabel("Player: ");
+        JLabel outName = new JLabel(controller.getPlayer().getName());
+        JLabel numOfDecks = new JLabel("Number of Decks: ");
+        JLabel outDecks = new JLabel(Integer.toString(controller.getDeck().getNumOfDecks()));
+        JLabel stake = new JLabel("Your stake:");
+        outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
+        JLabel profit = new JLabel("Profit:");
+        outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
+        JLabel currentRoundStake = new JLabel("Current RoundStake: ");
+        outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
+        JLabel roundStake = new JLabel("RoundStake: ");
+        tfroundStake = new JTextField();
+        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+
+        //Info Label zusammenbauen
+        info.setLayout(new GridLayout(8, 2));
+        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
+        info.add(plName);
+        info.add(outName);
+        info.add(numOfDecks);
+        info.add(outDecks);
+        info.add(stake);
+        info.add(outStake);
+        info.add(profit);
+        info.add(outProfit);
+        info.add(currentRoundStake);
+        info.add(outCurRoundStake);
+        info.add(roundStake);
+        info.add(tfroundStake);
+        return info;
+    }
 
     /**
      * Method to setText or textchanges in the output textarea and the info
@@ -181,7 +219,7 @@ public class MainFrame extends JFrame {
         taGame.setText(taGame.getText() + "\n" + text);
         outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
-        calcController.calcProfit();
+//        calcController.calcProfit();
         outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
 
@@ -196,7 +234,7 @@ public class MainFrame extends JFrame {
         taGame.setText(taGame.getText() + "\n" + dealer);
         outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
-        calcController.calcProfit();
+//        calcController.calcProfit();
         outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
 
@@ -221,9 +259,9 @@ public class MainFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
             controller.getCardPlayer();
             controller.checkIfDealerNeedsCard();
-            String playerCards = controller.getPlayer().printPlayersHand();
-            String dealerCards = controller.getDealer().printPlayersHand();
-            changeText(playerCards, dealerCards);
+//            String playerCards = controller.getPlayer().printPlayersHand();
+//            String dealerCards = controller.getDealer().printPlayersHand();
+//            changeText(playerCards, dealerCards);
             controller.checkGameState();
         }
     }
@@ -235,12 +273,11 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            //if (controller.getCalcController().setRoundStake(Double.parseDouble(tfroundStake.getText()))) { 
             
             //Check if Player can start new round! If Stake <= 0 --> StateEndRound
             calcController.checkStake();
-            //create a new round = clear all variables (Deck, PlayerHand,..)
-            //controller.createNewRound();
+
+            controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
             
             //Clear TextField
             taGame.setText("");
@@ -269,10 +306,13 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (calcController.checkDouble()) {
-                controller.getPlayer().doubleRoundStake();
                 changeText("-------------------------------------------------------------");
                 changeText("RoundStake was doubled!");
                 changeText("-------------------------------------------------------------");
+                String[] currentRoundStake = outCurRoundStake.getText().split(" ");
+                controller.getPlayer().setStake(controller.getPlayer().getStake() + Double.parseDouble(currentRoundStake[0]));
+                controller.getPlayer().doubleRoundStake();
+                calcController.calcProfit();
                 controller.checkGameState();
             } else {
                 changeText("-------------------------------------------------------------");
