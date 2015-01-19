@@ -63,7 +63,6 @@ class WelcomeFrame extends JFrame implements ActionListener {
         //Frame setup
         this.menuFrame.add(startContainer);
         this.menuFrame.setSize(MENU_FRAME_SIZE);
-        //this.menuFrame.setResizable(false);
         this.menuFrame.setLocationRelativeTo(null);
         this.menuFrame.setVisible(true);
     }
@@ -71,7 +70,7 @@ class WelcomeFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if (source == start) {
+        if (source.equals(start)) {
             this.menuFrame.setVisible(false);
             new ConfigurationPanel(gui, this, controller);
             

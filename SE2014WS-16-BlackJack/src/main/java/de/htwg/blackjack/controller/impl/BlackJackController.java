@@ -268,10 +268,6 @@ public final class BlackJackController extends Observable
             // check if GameState will change
             this.currentState.change();
         }
-
-        if (this.currentState instanceof StateEndRound) {
-            //tui.startNewRound();
-        }
     }
 
     /**
@@ -283,7 +279,6 @@ public final class BlackJackController extends Observable
         this.player.clearHand();
         this.dealer.clearHand();
         this.deck = null;
-        //this.player.setRoundStake(0);
         notifyObservers();
     }
 

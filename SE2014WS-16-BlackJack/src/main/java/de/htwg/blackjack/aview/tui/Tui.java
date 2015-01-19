@@ -45,6 +45,10 @@ public final class Tui implements IObserver {
      */
     private static final String INPUT = "\t-->\t";
     /**
+     * \n\n.
+     */
+    private static final String newLine = "\n\n";
+    /**
      * check if game is inGame.
      */
     private boolean stakeSet = false, roundStakeSet = false, deckSet = false,
@@ -95,29 +99,29 @@ public final class Tui implements IObserver {
             printHelpMenu();
         } else if (this.controller.getCurrentState() instanceof StateWon) {
             LOGGERTUI.info("Round WON!!! -->  "
-                    + this.controller.getPlayer().printPlayersHand() + "\n\n");
+                    + this.controller.getPlayer().printPlayersHand() + newLine);
             LOGGERTUI.info("Dealer Value --> "
-                    + this.controller.getDealer().printPlayersHand() + "\n\n");
+                    + this.controller.getDealer().printPlayersHand() + newLine);
             // print Credit
             this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateLost) {
-            LOGGERTUI.info("Round LOST!!! --> \n\n"
+            LOGGERTUI.info("Round LOST!!! " + newLine + " --> "
                     + this.controller.getPlayer().printPlayersHand() + "\n");
             LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
-                    + "\n\n");
+                    + newLine);
             // print credit
             this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateBlackJack) {
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
-                LOGGERTUI.info("Dealer got BlackJack!\n\n");
+                LOGGERTUI.info("Dealer got BlackJack!" + newLine);
                 LOGGERTUI.info(this.controller.getPlayer().printPlayersHand()
-                        + "\n\n");
+                        + newLine);
             } else {
                 LOGGERTUI.info("Congratulations "
                         + this.controller.getPlayer().getName()
-                        + ", you got BlackJack!\n\n");
+                        + ", you got BlackJack!" + newLine);
                 LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
-                        + "\n\n");
+                        + newLine);
             }
             //print credit
             this.calcController.printCurrentCreditState();

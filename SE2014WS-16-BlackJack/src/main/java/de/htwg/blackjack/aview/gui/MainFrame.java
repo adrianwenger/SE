@@ -25,9 +25,9 @@ import javax.swing.JTextField;
  */
 public class MainFrame extends JFrame {
 
-    GUI gui;
-    IBlackJackController controller;
-    ICalcProfitController calcController;
+    private final GUI gui;
+    private final IBlackJackController controller;
+    private final ICalcProfitController calcController;
 
     /**
      * Dimension for playing frame.
@@ -42,7 +42,7 @@ public class MainFrame extends JFrame {
     /**
      * JTextField for RoundStake.
      */
-    JTextField tfroundStake;
+    private JTextField tfroundStake;
     /**
      * JButtons for ButtonGroup.
      */
@@ -50,11 +50,12 @@ public class MainFrame extends JFrame {
     /**
      * JTextArea for OutputField.
      */
-    private JTextArea taGame;
+    private final JTextArea taGame;
     /**
      * JLabels for InfoLabel.
      */
-    private JLabel outStake, outProfit, outCurRoundStake, info;
+    private JLabel outStake, outProfit, outCurRoundStake; 
+    private final JLabel info;
 
     /**
      *
@@ -187,7 +188,6 @@ public class MainFrame extends JFrame {
         taGame.setText(taGame.getText() + "\n" + text);
         outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
-//        calcController.calcProfit();
         outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
 
@@ -202,7 +202,6 @@ public class MainFrame extends JFrame {
         taGame.setText(taGame.getText() + "\n" + dealer);
         outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
-//        calcController.calcProfit();
         outProfit.setText(Double.toString(calcController.getProfit()) + " €");
     }
 
@@ -227,9 +226,6 @@ public class MainFrame extends JFrame {
         public void actionPerformed(ActionEvent e) {
             controller.getCardPlayer();
             controller.checkIfDealerNeedsCard();
-//            String playerCards = controller.getPlayer().printPlayersHand();
-//            String dealerCards = controller.getDealer().printPlayersHand();
-//            changeText(playerCards, dealerCards);
             controller.checkGameState();
         }
     }

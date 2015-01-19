@@ -6,7 +6,6 @@
 package de.htwg.blackjack.aview.gui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -61,7 +60,6 @@ public class ConfigurationPanel implements ActionListener {
         this.frame = frame;
         this.controller = controller;
 
-        //frame.setVisible(false);
         //Create new Panel for JOptionPaneMessageDialog
         JPanel panel = new JPanel();
         // Erstellung Array vom Datentyp Object, Hinzufügen der Komponenten		
@@ -95,7 +93,6 @@ public class ConfigurationPanel implements ActionListener {
         configPanel.setLocation(new Point((int) configPanel.getLocation().getX() 
                 - (int) width/2, (int) configPanel.getLocation().getY() - (int) height/2));
 
-        //configPanel.setResizable(false);
         configPanel.add(dialogPanel);
         configPanel.setSize(200, 250);
         configPanel.setVisible(true);
@@ -105,7 +102,7 @@ public class ConfigurationPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         Object source = e.getSource();
-        if (source == confirm) {
+        if (source.equals(confirm)) {
             configPanel.setVisible(false);
             controller.setPlayer(name.getText());
             controller.setDealer();

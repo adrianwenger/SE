@@ -3,17 +3,12 @@ package de.htwg.blackjack.controller.impl;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
-import java.util.Scanner;
 
 /**
  * @author Adrian Wenger
  */
 public final class StateEndRound implements IGameState {
 
-    /**
-     * define Scanner.
-     */
-    private static final Scanner SCANNER = new Scanner(System.in);
     /**
      * BlackJack Controller.
      */
@@ -24,15 +19,14 @@ public final class StateEndRound implements IGameState {
     private final ICalcProfitController calcController;
 
     /**
-     * Public Constructor.
-     *
-     * @param blackJackController IBlackJackController
-     * @param cal ICalcProfitController
+     * Contstructor.
+     * @param controller
+     * @param calcController 
      */
-    public StateEndRound(final IBlackJackController blackJackController,
-            final ICalcProfitController cal) {
-        this.calcController = cal;
-        this.controller = blackJackController;
+    public StateEndRound(final IBlackJackController controller,
+            final ICalcProfitController calcController) {
+        this.calcController = calcController;
+        this.controller = controller;
     }
 
     /**
@@ -43,6 +37,5 @@ public final class StateEndRound implements IGameState {
             //checks if player has enough money --> no depts!
             this.calcController.checkStake();
             // start new round
-            //this.controller.createNewRound();
     }
 }
