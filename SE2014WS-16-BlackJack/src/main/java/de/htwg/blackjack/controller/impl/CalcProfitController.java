@@ -65,9 +65,9 @@ public final class CalcProfitController implements ICalcProfitController {
         } else {
             profit = ZERO;
             //Player lost = stake - roundStake
-            controller.getPlayer().setStake(controller.getPlayer().getStake()
-                    - controller.getPlayer().getRoundStake());
-            
+            //controller.getPlayer().setStake(controller.getPlayer().getStake()
+            //      - controller.getPlayer().getRoundStake());
+
         }
     }
 
@@ -76,8 +76,13 @@ public final class CalcProfitController implements ICalcProfitController {
      */
     @Override
     public void calcStake() {
-        this.controller.getPlayer().setStake(
-                this.controller.getPlayer().getStake() + profit);
+        if (!(controller.getCurrentState() instanceof StateLost)) {
+            this.controller.getPlayer().setStake(
+                    this.controller.getPlayer().getStake() + profit);
+        } else {
+            controller.getPlayer().setStake(controller.getPlayer().getStake()
+                    - controller.getPlayer().getRoundStake());
+        }
     }
 
     /**
@@ -102,12 +107,12 @@ public final class CalcProfitController implements ICalcProfitController {
             this.controller.getCurrentState().change();
         }
     }
-    
+
     @Override
     public boolean setRoundStake(double stake) {
-        if(this.controller.getCurrentState() instanceof StateEndRound
-            || this.controller.getCurrentState() == null) {
-            if(stake <= this.controller.getPlayer().getStake()) {
+        if (this.controller.getCurrentState() instanceof StateEndRound
+                || this.controller.getCurrentState() == null) {
+            if (stake <= this.controller.getPlayer().getStake()) {
                 this.controller.getPlayer().setRoundStake(stake);
                 return true;
             } else {
@@ -117,7 +122,6 @@ public final class CalcProfitController implements ICalcProfitController {
             return false;
         }
     }
-    
 
     /**
      *
@@ -134,13 +138,13 @@ public final class CalcProfitController implements ICalcProfitController {
     @Override
     public String printCurrentCreditState() {
         StringBuilder sb = new StringBuilder();
-        
+
         sb.append("Your new Stake: ");
         calcStake();
-        sb.append(controller.getPlayer().getStake());
+        sb.append(controller.getPlayer().getStake()).append(" €");
         calcProfit();
-        sb.append("\n").append("Your Profit: ").append(getProfit());
-        
+        sb.append("\n").append("Your Profit: ").append(getProfit()).append(" €");
+
         return sb.append("\n").toString();
     }
 }
