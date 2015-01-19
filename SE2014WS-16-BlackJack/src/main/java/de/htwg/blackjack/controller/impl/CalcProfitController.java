@@ -10,11 +10,13 @@ import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import static de.htwg.blackjack.util.StaticCollections.BLACKJACK;
 
+
 /**
  *
  * @author philippschultheiss
  */
 public final class CalcProfitController implements ICalcProfitController {
+
 
     /**
      * CalcProfitController.
@@ -52,22 +54,20 @@ public final class CalcProfitController implements ICalcProfitController {
             //Round won --> Player asset = roundstake plus roundstake * 1.5
             profit = controller.getPlayer().getRoundStake()
                     + (controller.getPlayer().getRoundStake() * MULTICATOR);
-        } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
-            //Player got BlackJack = roundstake * 2
-            profit = controller.getPlayer().getRoundStake()
-                    + (controller.getPlayer().getRoundStake() * TWO);
-        } else if (this.controller.hasBlackJack(this.controller.getDealer())) {
-            profit = ZERO;
         } else if (controller.getPlayer().getValue() == BLACKJACK
                 && controller.getDealer().getValue() == BLACKJACK) {
             //Player and Dealer got BlackJack = Player gets roundstake back
             profit = controller.getPlayer().getRoundStake();
+        } else if (this.controller.hasBlackJack(this.controller.getDealer())) {
+            // Dealer has BlackJack = Profit = 0
+            profit = ZERO;
+        } else if (this.controller.hasBlackJack(this.controller.getPlayer())) {
+            //Player got BlackJack = roundstake + roundstake * 2
+            profit = controller.getPlayer().getRoundStake()
+                    + (controller.getPlayer().getRoundStake() * TWO);
         } else {
             profit = ZERO;
             //Player lost = stake - roundStake
-            //controller.getPlayer().setStake(controller.getPlayer().getStake()
-            //      - controller.getPlayer().getRoundStake());
-
         }
     }
 
@@ -108,21 +108,6 @@ public final class CalcProfitController implements ICalcProfitController {
         }
     }
 
-    @Override
-    public boolean setRoundStake(double stake) {
-        if (this.controller.getCurrentState() instanceof StateEndRound
-                || this.controller.getCurrentState() == null) {
-            if (stake <= this.controller.getPlayer().getStake()) {
-                this.controller.getPlayer().setRoundStake(stake);
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
-
     /**
      *
      * @return profit
@@ -140,11 +125,12 @@ public final class CalcProfitController implements ICalcProfitController {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Your new Stake: ");
-        calcStake();
-        sb.append(controller.getPlayer().getStake()).append(" €");
         calcProfit();
+        sb.append(controller.getPlayer().getStake()).append(" €");
+        calcStake();
         sb.append("\n").append("Your Profit: ").append(getProfit()).append(" €");
-
+        
         return sb.append("\n").toString();
     }
+
 }

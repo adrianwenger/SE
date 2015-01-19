@@ -16,7 +16,7 @@ import javax.swing.JFrame;
  *
  * @author philippschultheiss
  */
-public class GUI extends JFrame implements IObserver {
+public final class GUI extends JFrame implements IObserver {
 
     /**
      * To save the IBlackJackController for all of the several UIs.

@@ -47,7 +47,7 @@ public class MainFrame extends JFrame {
     /**
      * JButtons for ButtonGroup.
      */
-    private final JButton doubleStake, nextCard, newRound;
+    private final JButton nextCard, newRound;
     /**
      * JTextArea for OutputField.
      */
@@ -69,6 +69,7 @@ public class MainFrame extends JFrame {
         this.calcController = calcController;
         JButton set;
         JLabel info;
+        JButton doubleStake;
 
         //Configurations for MainLabel
         this.setTitle("BlackJack");

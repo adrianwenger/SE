@@ -1930,3 +1930,611 @@ INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
 
 INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
 
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfDIAMONDS FiveOfCLUBS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfCLUBS SixOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfDIAMONDS FiveOfCLUBS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfCLUBS SixOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfDIAMONDS FiveOfCLUBS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfCLUBS SixOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Congratulations Philipp, you got BlackJack!
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfCLUBS SixOfSPADES QueenOfHEARTS [Value: 22]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: SixOfSPADES FourOfDIAMONDS [Value: 10]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfDIAMONDS FourOfCLUBS [Value: 14]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: SixOfSPADES FourOfDIAMONDS [Value: 10]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfDIAMONDS FourOfCLUBS [Value: 14]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: SixOfSPADES FourOfDIAMONDS [Value: 10]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfDIAMONDS FourOfCLUBS [Value: 14]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: SixOfSPADES FourOfDIAMONDS SixOfCLUBS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfDIAMONDS FourOfCLUBS TwoOfCLUBS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: SixOfSPADES FourOfDIAMONDS SixOfCLUBS FourOfHEARTS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfDIAMONDS FourOfCLUBS TwoOfCLUBS ThreeOfSPADES [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> Philipp: SixOfSPADES FourOfDIAMONDS SixOfCLUBS FourOfHEARTS SevenOfHEARTS [Value: 27]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfDIAMONDS FourOfCLUBS TwoOfCLUBS ThreeOfSPADES [Value: 19]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: QueenOfHEARTS ThreeOfDIAMONDS [Value: 13]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfHEARTS ThreeOfSPADES [Value: 10]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: QueenOfHEARTS ThreeOfDIAMONDS [Value: 13]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfHEARTS ThreeOfSPADES [Value: 10]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: QueenOfHEARTS ThreeOfDIAMONDS FourOfSPADES [Value: 17]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfHEARTS ThreeOfSPADES NineOfCLUBS [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> Philipp: QueenOfHEARTS ThreeOfDIAMONDS FourOfSPADES QueenOfCLUBS [Value: 27]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfHEARTS ThreeOfSPADES NineOfCLUBS [Value: 19]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Stake: 0.0 €
+Your Profit: 0.0 €
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - END!
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfCLUBS SixOfDIAMONDS [Value: 17]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfCLUBS KingOfCLUBS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfCLUBS SixOfDIAMONDS [Value: 17]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfCLUBS KingOfCLUBS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfCLUBS SixOfDIAMONDS QueenOfSPADES [Value: 17]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfCLUBS KingOfCLUBS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfCLUBS SixOfDIAMONDS QueenOfSPADES AceOfHEARTS [Value: 18]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfCLUBS KingOfCLUBS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: AceOfCLUBS SixOfDIAMONDS QueenOfSPADES AceOfHEARTS AceOfDIAMONDS [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfCLUBS KingOfCLUBS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> Philipp: AceOfCLUBS SixOfDIAMONDS QueenOfSPADES AceOfHEARTS AceOfDIAMONDS SixOfSPADES [Value: 25]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: QueenOfCLUBS KingOfCLUBS [Value: 20]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: TenOfCLUBS TenOfDIAMONDS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfHEARTS TenOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: TenOfCLUBS TenOfDIAMONDS [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfHEARTS TenOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> Philipp: TenOfCLUBS TenOfDIAMONDS FourOfDIAMONDS [Value: 24]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfHEARTS TenOfSPADES [Value: 12]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: KingOfDIAMONDS FiveOfSPADES [Value: 15]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: JackOfHEARTS TwoOfDIAMONDS [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Philipp: KingOfDIAMONDS FiveOfSPADES [Value: 15]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: JackOfHEARTS TwoOfDIAMONDS [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> Philipp: KingOfDIAMONDS FiveOfSPADES QueenOfCLUBS [Value: 25]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: JackOfHEARTS TwoOfDIAMONDS [Value: 12]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Stake: 0.0 €
+Your Profit: 0.0 €
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - END!
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: NineOfCLUBS ThreeOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfDIAMONDS TwoOfCLUBS [Value: 9]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: NineOfCLUBS ThreeOfSPADES [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfDIAMONDS TwoOfCLUBS [Value: 9]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: NineOfCLUBS ThreeOfSPADES EightOfSPADES [Value: 20]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfDIAMONDS TwoOfCLUBS JackOfHEARTS [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> asdf: NineOfCLUBS ThreeOfSPADES EightOfSPADES EightOfHEARTS [Value: 28]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SevenOfDIAMONDS TwoOfCLUBS JackOfHEARTS [Value: 19]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sadf: AceOfDIAMONDS KingOfSPADES [Value: 21]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: AceOfHEARTS FiveOfDIAMONDS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Congratulations sadf, you got BlackJack!
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: AceOfHEARTS FiveOfDIAMONDS [Value: 16]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sadf: TenOfSPADES FiveOfDIAMONDS [Value: 15]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS FourOfHEARTS [Value: 6]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sadf: TenOfSPADES FiveOfDIAMONDS [Value: 15]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS FourOfHEARTS [Value: 6]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> sadf: TenOfSPADES FiveOfDIAMONDS KingOfDIAMONDS [Value: 25]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS FourOfHEARTS [Value: 6]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round ended
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Do you want to start a new Round?
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Your new Stake: 0.0 €
+Your Profit: 0.0 €
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - END!
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: AceOfHEARTS FiveOfDIAMONDS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS SixOfDIAMONDS [Value: 8]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: AceOfHEARTS FiveOfDIAMONDS [Value: 16]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS SixOfDIAMONDS [Value: 8]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: AceOfHEARTS FiveOfDIAMONDS ThreeOfDIAMONDS [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS SixOfDIAMONDS JackOfCLUBS [Value: 18]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: AceOfHEARTS FiveOfDIAMONDS ThreeOfDIAMONDS FourOfDIAMONDS [Value: 13]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS SixOfDIAMONDS JackOfCLUBS [Value: 18]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> asdf: AceOfHEARTS FiveOfDIAMONDS ThreeOfDIAMONDS FourOfDIAMONDS JackOfHEARTS [Value: 23]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: TwoOfCLUBS SixOfDIAMONDS JackOfCLUBS [Value: 18]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sdf: QueenOfCLUBS NineOfHEARTS [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: FourOfDIAMONDS TwoOfCLUBS [Value: 6]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sdf: QueenOfCLUBS NineOfHEARTS [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: FourOfDIAMONDS TwoOfCLUBS [Value: 6]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> sdf: QueenOfCLUBS NineOfHEARTS SevenOfSPADES [Value: 26]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: FourOfDIAMONDS TwoOfCLUBS [Value: 6]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: JackOfSPADES SevenOfCLUBS [Value: 17]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: NineOfSPADES TenOfSPADES [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - asdf: JackOfSPADES SevenOfCLUBS [Value: 17]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: NineOfSPADES TenOfSPADES [Value: 19]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> asdf: JackOfSPADES SevenOfCLUBS QueenOfHEARTS [Value: 27]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: NineOfSPADES TenOfSPADES [Value: 19]
+
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sdf: FourOfSPADES EightOfCLUBS [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfDIAMONDS FiveOfCLUBS [Value: 11]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sdf: FourOfSPADES EightOfCLUBS [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfDIAMONDS FiveOfCLUBS [Value: 11]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - sdf: FourOfSPADES EightOfCLUBS SixOfCLUBS [Value: 18]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfDIAMONDS FiveOfCLUBS AceOfDIAMONDS [Value: 12]
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - 
+"------- MENUE -------"
+1 -- HELP
+2 -- Next card 
+3 -- Double Stake
+4 -- Current Stake
+5 -- Quit and Resolve
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Round LOST!!! 
+
+ --> sdf: FourOfSPADES EightOfCLUBS SixOfCLUBS SevenOfDIAMONDS [Value: 25]
+
+
+INFO AWT-EventQueue-0 de.htwg.blackjack.aview.tui - Dealer: SixOfDIAMONDS FiveOfCLUBS AceOfDIAMONDS [Value: 12]
+
+
+
