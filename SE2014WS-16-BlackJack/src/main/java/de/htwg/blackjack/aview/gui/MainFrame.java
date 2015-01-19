@@ -73,47 +73,15 @@ public class MainFrame extends JFrame {
         this.setPreferredSize(PLAYING_FRAME);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
-        this.setLocation(new Point((int) this.getLocation().getX() - (int) PLAYING_FRAME.getWidth() / 2, (int) this.getLocation().getY() - (int) PLAYING_FRAME.getHeight() / 2));
+        this.setLocation(new Point((int) this.getLocation().getX() 
+                - (int) PLAYING_FRAME.getWidth() / 2, (int) this.getLocation().getY() - (int) PLAYING_FRAME.getHeight() / 2));
 
         //JLabel for background
         JLabel startContainer = new JLabel(infoBackground);
         startContainer.setLayout(null);
-
+        
+        //Creates the InfoLabel with the current credit state
         info = createInfo();
-        //Info JLabel
-//        JLabel info = new JLabel(infoBackground);
-//        info.setPreferredSize(new Dimension(300, 500));
-//
-//        //Info JLabels
-//        JLabel plName = new JLabel("Player: ");
-//        JLabel outName = new JLabel(controller.getPlayer().getName());
-//        JLabel numOfDecks = new JLabel("Number of Decks: ");
-//        JLabel outDecks = new JLabel(Integer.toString(controller.getDeck().getNumOfDecks()));
-//        JLabel stake = new JLabel("Your stake:");
-//        outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
-//        JLabel profit = new JLabel("Profit:");
-//        outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
-//        JLabel currentRoundStake = new JLabel("Current RoundStake: ");
-//        outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
-//        JLabel roundStake = new JLabel("RoundStake: ");
-//        tfroundStake = new JTextField();
-//        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-//
-//        //Info Label zusammenbauen
-//        info.setLayout(new GridLayout(8, 2));
-//        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
-//        info.add(plName);
-//        info.add(outName);
-//        info.add(numOfDecks);
-//        info.add(outDecks);
-//        info.add(stake);
-//        info.add(outStake);
-//        info.add(profit);
-//        info.add(outProfit);
-//        info.add(currentRoundStake);
-//        info.add(outCurRoundStake);
-//        info.add(roundStake);
-//        info.add(tfroundStake);
 
         //Button Label
         JLabel buttonGroup = new JLabel(infoBackground);
