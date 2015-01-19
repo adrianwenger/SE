@@ -106,14 +106,14 @@ public final class Tui implements IObserver {
             LOGGERTUI.info("Dealer Value --> "
                     + this.controller.getDealer().printPlayersHand() + NEWLINE);
             // print Credit
-            this.calcController.printCurrentCreditState();
+            LOGGERTUI.info(this.calcController.printCurrentCreditState());
         } else if (this.controller.getCurrentState() instanceof StateLost) {
             LOGGERTUI.info("Round LOST!!! " + NEWLINE + " --> "
                     + this.controller.getPlayer().printPlayersHand() + "\n");
             LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
                     + NEWLINE);
             // print credit
-            this.calcController.printCurrentCreditState();
+            LOGGERTUI.info(this.calcController.printCurrentCreditState());
         } else if (this.controller.getCurrentState() instanceof StateBlackJack) {
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
                 LOGGERTUI.info("Dealer got BlackJack!" + NEWLINE);
@@ -127,17 +127,12 @@ public final class Tui implements IObserver {
                         + NEWLINE);
             }
             //print credit
-            this.calcController.printCurrentCreditState();
+            LOGGERTUI.info(this.calcController.printCurrentCreditState());
         } else if (this.controller.getCurrentState() instanceof StateEndRound) {
             LOGGERTUI.info("Round ended\n");
             LOGGERTUI.info("Do you want to start a new Round?\n");
         } else if (this.controller.getCurrentState() instanceof StateEndGame) {
-            LOGGERTUI.info("-----------------------------------"
-                    + "---------------------\n");
-            LOGGERTUI.info("Final Credit: "
-                    + this.controller.getPlayer().getStake() + EURO);
-            LOGGERTUI.info("-----------------------------------"
-                    + "---------------------\n");
+            LOGGERTUI.info(calcController.printCurrentCreditState());
             LOGGERTUI.info("END!\n");
         }
     }
@@ -199,9 +194,7 @@ public final class Tui implements IObserver {
                             LOGGERTUI.info("Round Stake can't be"
                                     + " doubled. Not enough money on Stake!\n");
                             LOGGERTUI.info("Credit: "
-                                    + (this.controller.getPlayer().getStake()
-                                    - this.controller.getPlayer().
-                                    getRoundStake()) + EURO);
+                                    + calcController.printCurrentCreditState());
                         }
                         controller.checkGameState();
                         break;
