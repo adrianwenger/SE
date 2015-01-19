@@ -30,6 +30,6 @@ public final class StateEndGame implements IGameState {
      */
     @Override
     public void change() {
-        System.exit(0);
+       // System.exit(0);
     }
 }

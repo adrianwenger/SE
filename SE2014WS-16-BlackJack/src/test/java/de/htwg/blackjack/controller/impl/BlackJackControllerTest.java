@@ -5,6 +5,8 @@
  */
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Guice;
+import de.htwg.blackjack.BlackJackModule;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
@@ -36,13 +38,15 @@ public class BlackJackControllerTest {
     @Before
     public void setUp() {
         this.controller = new BlackJackController();
+        this.controller.setCalcController(new CalcProfitController(controller));
+        this.controller.setInjector(Guice.createInjector(new BlackJackModule()));
         this.controller.setPlayer("Fritz");
         this.controller.setDealer();
         this.controller.setDeck(1);
         this.player = controller.getPlayer();
         this.dealer = controller.getDealer();
-        this.deck = this.controller.getDeck();
-        this.calController = new CalcProfitController(controller);
+        this.deck = controller.getDeck();
+        this.calController = controller.getCalcController();
     }
 
     @Test
@@ -63,7 +67,9 @@ public class BlackJackControllerTest {
 
     @Test
     public void testGetFirstTwoCardsPlayer() {
-        ICard[] cards = new Deck().getDeck();
+        Deck tmp = new Deck();
+        tmp.setNumOfDecks(1);
+        ICard[] cards = tmp.getDeck();
         controller.getFirstTwoCardsPlayer();
         ICard[] plcards = player.getPlayerHand();
         boolean first = false;
@@ -82,7 +88,9 @@ public class BlackJackControllerTest {
 
     @Test
     public void testGetFirstTwoCardsDealer() {
-        ICard[] cards = new Deck().getDeck();
+        Deck tmp = new Deck();
+        tmp.setNumOfDecks(1);
+        ICard[] cards = tmp.getDeck();
         controller.getFirstTwoCardsDealer();
         ICard[] plcards = dealer.getPlayerHand();
         boolean first = false;
@@ -101,12 +109,14 @@ public class BlackJackControllerTest {
 
     @Test
     public void getCardPlayer() {
-        ICard[] cards = new Deck().getDeck();
+        Deck tmp = new Deck();
+        tmp.setNumOfDecks(1);
+        ICard[] cards = tmp.getDeck();
         controller.getCardPlayer();
         ICard[] plcards = player.getPlayerHand();
         boolean first = false;
-        for (ICard card : cards) {
-            if (plcards[0].getSuit() == card.getSuit() && plcards[0].getNumber() == card.getNumber()) {
+        for (int i = 0; i < cards.length; i++ ) {
+            if (plcards[0].getSuit() == cards[i].getSuit() && plcards[0].getNumber() == cards[i].getNumber()) {
                 first = true;
             }
         }
@@ -115,7 +125,9 @@ public class BlackJackControllerTest {
 
     @Test
     public void getCardDealer() {
-        ICard[] cards = new Deck().getDeck();
+        Deck tmp = new Deck();
+        tmp.setNumOfDecks(1);
+        ICard[] cards = tmp.getDeck();
         controller.getCardDealer();
         ICard[] plcards = dealer.getPlayerHand();
         boolean first = false;
@@ -129,14 +141,12 @@ public class BlackJackControllerTest {
 
     @Test
     public void testGetDeck() {
-        deck = new Deck();
         boolean result = this.controller.getDeck() instanceof IDeck;
         assert (result);
     }
 
     @Test
     public void testSetDeck() {
-        deck = new Deck();
         ICard[] result = deck.getDeck();
         assertEquals(result.length, deck.getDeck().length);
     }
@@ -280,8 +290,6 @@ public class BlackJackControllerTest {
 //        testEndGame();
 //        this.controller.setCurrentState(new StateEndGame(controller, calController));
 //        IGameState expResult = StateEndGame;
-        
-        
 //        if (this.currentState instanceof StateInGame) {
 //            this.currentState.change();
 //        }

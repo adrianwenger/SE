@@ -92,7 +92,7 @@ public final class PlayerTest {
         Player test = new Player();
         test.setName("test");
         test.add(new Card(Suit.CLUBS, FIVE));
-        String expResult = "FiveOfCLUBS Value: 5";
+        String expResult = "test: FiveOfCLUBS [Value: 5]\n";
         String result = test.printPlayersHand();
         assertEquals(expResult, result);
 

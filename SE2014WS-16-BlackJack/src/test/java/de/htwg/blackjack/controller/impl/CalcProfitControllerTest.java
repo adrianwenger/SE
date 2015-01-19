@@ -5,6 +5,8 @@
  */
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Guice;
+import de.htwg.blackjack.BlackJackModule;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.model.IPlayer;
@@ -29,6 +31,7 @@ public class CalcProfitControllerTest {
     @Before
     public void setUp() {
         this.controller = new BlackJackController();
+        this.controller.setInjector(Guice.createInjector(new BlackJackModule()));
         this.controller.setPlayer("Fritz");
         this.controller.setDealer();
         this.calcController = new CalcProfitController(controller);
@@ -60,7 +63,7 @@ public class CalcProfitControllerTest {
         player.add(new Card(Suit.CLUBS, 10));
         dealer.add(new Card(Suit.CLUBS, 11));
         calcController.calcProfit();
-        int expResult = 1980;
+        int expResult = 980;
         double result = player.getStake();
         assertEquals(expResult, result, 0);
     }
