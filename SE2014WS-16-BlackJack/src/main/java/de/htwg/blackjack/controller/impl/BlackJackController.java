@@ -268,6 +268,7 @@ public final class BlackJackController extends Observable
             // check if GameState will change
             this.currentState.change();
         }
+        calcController.calcProfit();
     }
 
     /**

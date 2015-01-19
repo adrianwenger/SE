@@ -106,7 +106,8 @@ public class ConfigurationPanel implements ActionListener {
             controller.setPlayer(name.getText());
             controller.setDealer();
             controller.setDeck(Integer.parseInt(numOfDecks.getSelectedItem().toString()));
-            controller.getPlayer().setStake(Double.parseDouble(stake.getText()));
+            controller.getCalcController().setStake(Double.parseDouble(stake.getText()));
+            //controller.getPlayer().setStake(Double.parseDouble(stake.getText()));
             gui.activateMainFrame();
         }
     }

@@ -70,16 +70,19 @@ public final class GUI extends JFrame implements IObserver {
         } else if (controller.getCurrentState() instanceof StateWon) {
             mainFrame.changeText(DIVIDINGLINE);
             mainFrame.changeText("Round WON!!!\n");
+            mainFrame.changeText(controller.getPlayer().printPlayersHand(),
+                    controller.getDealer().printPlayersHand());
             mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText(DIVIDINGLINE);
         } else if (controller.getCurrentState() instanceof StateLost) {
             mainFrame.changeText(DIVIDINGLINE);
             mainFrame.changeText("Round LOST!!!\n");
+            mainFrame.changeText(controller.getPlayer().printPlayersHand(),
+                    controller.getDealer().printPlayersHand());
             mainFrame.changeText(calcController.printCurrentCreditState());
             mainFrame.changeText(DIVIDINGLINE);
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
             mainFrame.changeText(DIVIDINGLINE);
-
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
                 mainFrame.changeText("Dealer got BlackJack!\n\n");
             } else {

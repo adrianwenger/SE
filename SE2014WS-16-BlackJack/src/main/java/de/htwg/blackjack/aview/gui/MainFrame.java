@@ -68,7 +68,6 @@ public class MainFrame extends JFrame {
         this.controller = controller;
         this.calcController = calcController;
         JButton set;
-        JLabel info;
         JButton doubleStake;
 
         //Configurations for MainLabel
@@ -85,7 +84,7 @@ public class MainFrame extends JFrame {
         startContainer.setLayout(null);
         
         //Creates the InfoLabel with the current credit state
-        info = createInfo();
+        JLabel info = createInfo();
 
         //Button Label
         JLabel buttonGroup = new JLabel(infoBackground);
@@ -154,7 +153,7 @@ public class MainFrame extends JFrame {
         JLabel numOfDecks = new JLabel("Number of Decks: ");
         JLabel outDecks = new JLabel(Integer.toString(controller.getDeck().getNumOfDecks()));
         JLabel stake = new JLabel("Your stake:");
-        outStake = new JLabel(Double.toString(controller.getPlayer().getStake()) + " €");
+        outStake = new JLabel(Double.toString(controller.getPlayer().getStake() - controller.getPlayer().getRoundStake()) + " €");
         JLabel profit = new JLabel("Profit:");
         outProfit = new JLabel(Double.toString(calcController.getProfit()) + " €");
         JLabel currentRoundStake = new JLabel("Current RoundStake: ");
@@ -240,26 +239,31 @@ public class MainFrame extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
             //Check if Player can start new round! If Stake <= 0 --> StateEndRound
             calcController.checkStake();
 
-            controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
-            
+            //controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
+            calcController.setRoundStake(Double.parseDouble(tfroundStake.getText()));
             //Clear TextField
             taGame.setText("");
             changeText("-----------------  Welcome to BlackJack... " + controller.getPlayer().getName() + "  ----------------- \n");
+
             //Deal first two cards
             controller.getFirstTwoCardsPlayer();
             controller.getFirstTwoCardsDealer();
             //Update InfoLabel
             outCurRoundStake.setText(Double.toString(controller.getPlayer().getRoundStake()) + " €");
-            outStake.setText(Double.toString(controller.getPlayer().getStake()) + " €");
+            calcController.calcProfit();
+            calcController.calcStake();
+            double stake = controller.getPlayer().getStake();
+            double rstake = controller.getPlayer().getRoundStake();
+            stake -= rstake;
+            outStake.setText(stake + " €");
+//            outStake.setText(Double.toString(stake) + " €");
             //Set TextField RoundStake empty
             tfroundStake.setText("");
-            calcController.calcProfit();
             outProfit.setText(Double.toString(calcController.getProfit()) + " €");
-
             controller.checkGameState();
 
         }
@@ -276,10 +280,11 @@ public class MainFrame extends JFrame {
                 changeText(DIVIDINGLINE);
                 changeText("RoundStake was doubled!");
                 changeText(DIVIDINGLINE);
-                String[] currentRoundStake = outCurRoundStake.getText().split(" ");
-                controller.getPlayer().setStake(controller.getPlayer().getStake() + Double.parseDouble(currentRoundStake[ZERO]));
-                controller.getPlayer().doubleRoundStake();
-                calcController.calcProfit();
+                calcController.doubleRoundStake();
+                
+//                String[] currentRoundStake = outCurRoundStake.getText().split(" ");
+//                controller.getPlayer().setStake(controller.getPlayer().getStake()/* + Double.parseDouble(currentRoundStake[ZERO])*/);
+//                controller.getPlayer().doubleRoundStake();
                 controller.checkGameState();
             } else {
                 changeText(DIVIDINGLINE);

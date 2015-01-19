@@ -148,8 +148,9 @@ public final class Tui implements IObserver {
         if (this.controller.getCurrentState() == null) {
             if (isInt(nextLine)) {
                 if (!stakeSet) {
-                    this.controller.getPlayer()
-                            .setStake(Integer.parseInt(nextLine));
+                    calcController.setStake(Integer.parseInt(nextLine));
+//                    this.controller.getPlayer()
+//                            .setStake(Integer.parseInt(nextLine));
                     stakeSet = true;
                     //Initialize the number of decks
                     LOGGERTUI.info("How many decks you "
@@ -160,8 +161,9 @@ public final class Tui implements IObserver {
                     //ROUND STAKE
                     LOGGERTUI.info("Your round stake:\n");
                 } else {
-                    this.controller.getPlayer()
-                            .setRoundStake(Integer.parseInt(nextLine));
+                    calcController.setRoundStake(Integer.parseInt(nextLine));
+//                    this.controller.getPlayer()
+//                            .setRoundStake(Integer.parseInt(nextLine));
                     LOGGERTUI.info("First two Cards are dealt -->  \n");
                     //DEAL FIRST TWO CARDS
                     this.controller.getFirstTwoCardsPlayer();
@@ -185,7 +187,8 @@ public final class Tui implements IObserver {
                         break;
                     case THREE:
                         if (this.calcController.checkDouble()) {
-                            this.controller.getPlayer().doubleRoundStake();
+                            calcController.doubleRoundStake();
+//                            this.controller.getPlayer().doubleRoundStake();
                             LOGGERTUI.info("Round Stake doubled!\n");
                             LOGGERTUI.info("Round Stake: "
                                     + this.controller.getPlayer()
@@ -201,8 +204,8 @@ public final class Tui implements IObserver {
                     case FOUR:
                         LOGGERTUI.info("Your current Credit:\n");
                         LOGGERTUI.info(INPUT
-                                + (this.controller.getPlayer().getStake()
-                                - this.controller.getPlayer().getRoundStake())
+                                + this.controller.getPlayer().getStake()
+//                                - this.controller.getPlayer().getRoundStake())
                                 + EURO);
                         LOGGERTUI.info("Your current"
                                 + " Round Stake:\n");
