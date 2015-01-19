@@ -68,6 +68,8 @@ public final class CalcProfitController implements ICalcProfitController {
         } else {
             profit = ZERO;
             //Player lost = stake - roundStake
+            controller.getPlayer().setStake(controller.getPlayer().getStake()
+                    - controller.getPlayer().getRoundStake());
         }
     }
 
@@ -129,7 +131,7 @@ public final class CalcProfitController implements ICalcProfitController {
         sb.append(controller.getPlayer().getStake()).append(" €");
         calcStake();
         sb.append("\n").append("Your Profit: ").append(getProfit()).append(" €");
-        
+
         return sb.append("\n").toString();
     }
 
