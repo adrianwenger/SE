@@ -6,6 +6,7 @@
 package de.htwg.blackjack.aview.gui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
+import static de.htwg.blackjack.util.StaticCollections.*;
 import java.awt.GridLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -44,11 +45,11 @@ public class ConfigurationPanel implements ActionListener {
     /**
      * JDialog width.
      */
-    private final int width = 200;
+    private static final int width = 200;
     /**
      * JDialog height.
      */
-    private final int height = 250;
+    private static final int height = 250;
     /**
      *
      * @param gui
@@ -79,7 +80,7 @@ public class ConfigurationPanel implements ActionListener {
 
         confirm = new JButton("Confirm");
         confirm.addActionListener(this);
-        JPanel dialogPanel = new JPanel(new GridLayout(7, 1));
+        JPanel dialogPanel = new JPanel(new GridLayout(CONFIGURE_ROWS, CONFIGURE_COLS));
         dialogPanel.add(new JLabel("Name:"));
         dialogPanel.add(name);
         dialogPanel.add(new JLabel("Number of Decks:"));
@@ -91,10 +92,10 @@ public class ConfigurationPanel implements ActionListener {
         configPanel = new JDialog();
         configPanel.setLocationRelativeTo(null);
         configPanel.setLocation(new Point((int) configPanel.getLocation().getX() 
-                - (int) width/2, (int) configPanel.getLocation().getY() - (int) height/2));
+                - (int) width/TWO, (int) configPanel.getLocation().getY() - (int) height/TWO));
 
         configPanel.add(dialogPanel);
-        configPanel.setSize(200, 250);
+        configPanel.setSize(CONFIGURE_LABEL_WIDTH, CONFIGURE_LABEL_HEIGTH);
         configPanel.setVisible(true);
     }
 

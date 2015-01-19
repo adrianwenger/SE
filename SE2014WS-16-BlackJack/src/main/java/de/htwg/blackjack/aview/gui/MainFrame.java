@@ -2,6 +2,7 @@ package de.htwg.blackjack.aview.gui;
 
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
+import static de.htwg.blackjack.util.StaticCollections.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -32,7 +33,7 @@ public class MainFrame extends JFrame {
     /**
      * Dimension for playing frame.
      */
-    private static final Dimension PLAYING_FRAME = new Dimension(1000, 500);
+    private static final Dimension PLAYING_FRAME = new Dimension(PLAYING_FRAME_WIDTH, PLAYING_FRAME_HEIGHT);
 
     /**
      * default Background for info.
@@ -86,8 +87,8 @@ public class MainFrame extends JFrame {
 
         //Button Label
         JLabel buttonGroup = new JLabel(infoBackground);
-        buttonGroup.setPreferredSize(new Dimension(100, 200));
-        buttonGroup.setLayout(new GridLayout(4, 1));
+        buttonGroup.setPreferredSize(new Dimension(BUTTON_GROUP_WIDTH, BUTTON_GROUP_HEIGHT));
+        buttonGroup.setLayout(new GridLayout(BUTTON_GROUPGRID_ROWS, BUTTON_GROUGRIDP_COLS));
 
         //JButtons
         set = new JButton("Set");
@@ -107,27 +108,27 @@ public class MainFrame extends JFrame {
         buttonGroup.add(doubleStake);
         buttonGroup.add(nextCard);
         buttonGroup.add(newRound);
-        buttonGroup.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Buttons"));
+        buttonGroup.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, THREE), "Buttons"));
 
         //Spielfeld Label
         JLabel field = new JLabel(infoBackground);
-        field.setBorder(BorderFactory.createEmptyBorder(100, 100, 100, 100));
-        field.setPreferredSize(new Dimension(500, 200));
+        field.setBorder(BorderFactory.createEmptyBorder(HUNDRED, HUNDRED, HUNDRED, HUNDRED));
+        field.setPreferredSize(new Dimension(FIELD_LABEL_WIDTH, FIELD_LABEL_HEIGHT));
         field.setLayout(new BorderLayout());
 
         //TextArea Spielfeld
         taGame = new JTextArea();
-        taGame.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        taGame.setBorder(BorderFactory.createEmptyBorder(TEN, TEN, TEN, TEN));
         taGame.setLineWrap(false);
         taGame.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(taGame);
-        scrollPane.setPreferredSize(new Dimension(200, 200));
+        scrollPane.setPreferredSize(new Dimension(SCROLL_PANE_WIDTH, SCROLL_PANE_HEIGHT));
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         //Spielfeld zusammenbauen
         field.add(scrollPane, BorderLayout.CENTER);
-        field.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Output"));
+        field.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, THREE), "Output"));
 
         //Hauptfenster zusammenbauen
         this.add(startContainer);
@@ -143,7 +144,7 @@ public class MainFrame extends JFrame {
     
     private JLabel createInfo() {
         JLabel info = new JLabel(infoBackground);
-        info.setPreferredSize(new Dimension(300, 500));
+        info.setPreferredSize(new Dimension(INFO_LABEL_WIDTH, INFO_LABEL_HEIGHT));
 
         //Info JLabels
         JLabel plName = new JLabel("Player: ");
@@ -158,11 +159,11 @@ public class MainFrame extends JFrame {
         outCurRoundStake = new JLabel(Double.toString(controller.getPlayer().getRoundStake()) + " €");
         JLabel roundStake = new JLabel("RoundStake: ");
         tfroundStake = new JTextField();
-        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        tfroundStake.setBorder(BorderFactory.createLineBorder(Color.BLACK, TWO));
 
         //Info Label zusammenbauen
-        info.setLayout(new GridLayout(8, 2));
-        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, 3), "Info"));
+        info.setLayout(new GridLayout(INFO_LABEL_ROWS, INFO_LABEL_COLS));
+        info.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK, THREE), "Info"));
         info.add(plName);
         info.add(outName);
         info.add(numOfDecks);
@@ -274,7 +275,7 @@ public class MainFrame extends JFrame {
                 changeText("RoundStake was doubled!");
                 changeText("-------------------------------------------------------------");
                 String[] currentRoundStake = outCurRoundStake.getText().split(" ");
-                controller.getPlayer().setStake(controller.getPlayer().getStake() + Double.parseDouble(currentRoundStake[0]));
+                controller.getPlayer().setStake(controller.getPlayer().getStake() + Double.parseDouble(currentRoundStake[ZERO]));
                 controller.getPlayer().doubleRoundStake();
                 calcController.calcProfit();
                 controller.checkGameState();

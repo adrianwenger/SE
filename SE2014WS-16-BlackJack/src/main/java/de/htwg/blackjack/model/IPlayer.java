@@ -27,44 +27,55 @@ public interface IPlayer {
      * @return Card Value
      */
     int getValue();
+
     /**
      *
      * @return name
      */
     String getName();
+
     /**
      * reset playerhand
      */
     void clearHand();
+
     /**
-     * 
+     *
      * @return ICard[]
      */
     ICard[] getPlayerHand();
+
     /**
      * Sets the stake
-     * @param stake 
+     *
+     * @param stake
      */
-    public void setStake(double stake);
+    void setStake(double stake);
+
     /**
      * Returns the profit from the Player
+     *
      * @return stake
      */
-    public double getStake();
+    double getStake();
+
     /**
      * double Stake
      */
-    public void doubleRoundStake();
+    void doubleRoundStake();
+
     /**
-     * 
+     *
      */
-    public double getRoundStake();
+    double getRoundStake();
+
     /**
-     * 
+     *
      */
-    public void setRoundStake(double roundStake);
+    void setRoundStake(double roundStake);
+
     /**
-     * 
+     *
      */
-    public void setName(String nam);
+    void setName(String nam);
 }
