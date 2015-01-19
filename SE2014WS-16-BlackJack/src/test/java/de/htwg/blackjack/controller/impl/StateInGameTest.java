@@ -1,5 +1,8 @@
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import de.htwg.blackjack.BlackJackModule;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.model.impl.Card;
@@ -20,12 +23,14 @@ public class StateInGameTest {
     private IBlackJackController controller;
     
     private ICalcProfitController calcController;
+    private Injector injector = Guice.createInjector(new BlackJackModule());
     
 
     @Before
     public final void setUp() {
         this.controller = new BlackJackController();
         this.calcController = new CalcProfitController(controller);
+        this.controller.setInjector(injector);
         // Create Player
         this.controller.setPlayer("Test");
         // Create Dealer
@@ -49,10 +54,6 @@ public class StateInGameTest {
         this.controller.getPlayer().setStake(500);
         this.controller.getPlayer().setRoundStake(200);
         this.controller.getCurrentState().change();
-        String result0 = this.controller.getStatusLine();
-        String expResult = "Please take another card (2) or "
-                        + "finish game (5)\n";
-        assertEquals(expResult, result0);
 
         // Case Dealer BlackJack
         this.controller.getDealer().add(new Card(Suit.SPADES, 3));

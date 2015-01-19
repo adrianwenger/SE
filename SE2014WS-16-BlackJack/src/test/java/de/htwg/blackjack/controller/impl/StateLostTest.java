@@ -1,5 +1,8 @@
 package de.htwg.blackjack.controller.impl;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import de.htwg.blackjack.BlackJackModule;
 import de.htwg.blackjack.controller.impl.BlackJackController;
 import de.htwg.blackjack.controller.impl.StateLost;
 import de.htwg.blackjack.controller.IBlackJackController;
@@ -16,10 +19,12 @@ import org.junit.Test;
 public class StateLostTest {
 
     private IBlackJackController controller;
+    private Injector injector = Guice.createInjector(new BlackJackModule());
 
     @Before
     public final void setUp() {
         this.controller = new BlackJackController();
+        this.controller.setInjector(injector);
         // Create Dealer
         this.controller.setDealer();
         // Create Deck

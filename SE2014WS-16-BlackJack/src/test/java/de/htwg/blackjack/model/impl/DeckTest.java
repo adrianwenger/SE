@@ -4,17 +4,19 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
+
 /**
  *
  * @author Adi
  */
 public class DeckTest {
 
+
     private static final int TWO = 2;
     private static final int ONE = 1;
     private static final int SIZEOF2DECKS = 104;
     private static final int SIZEOF1DECK = 52;
-    
+
     Deck deck;
     Deck deckDefault;
 
@@ -26,6 +28,7 @@ public class DeckTest {
         deck = new Deck();
         deck.setNumOfDecks(TWO);
         deckDefault = new Deck();
+        deckDefault.setNumOfDecks(ONE);
     }
 
     /**
@@ -47,4 +50,33 @@ public class DeckTest {
         int result = deckDefault.getDeck().length;
         assertEquals(expResult, result);
     }
+
+    /**
+     * Test getNumOfCards()
+     */
+    @Test
+    public final void testGetNumOfCards() {
+        Deck cards = new Deck();
+        cards.setNumOfDecks(1);
+
+        int expResult = 52;
+        int result = cards.getNumOfCards();
+
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test getNumOfDecks()
+     */
+    @Test
+    public final void testGetNumOfDecks() {
+        Deck cards = new Deck();
+        cards.setNumOfDecks(1);
+
+        int expResult = 1;
+        int result = cards.getNumOfDecks();
+
+        assertEquals(expResult, result);
+    }
+
 }
