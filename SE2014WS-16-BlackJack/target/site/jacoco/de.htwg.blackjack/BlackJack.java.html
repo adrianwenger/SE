@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BlackJack.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">SE2014WS-16-BlackJack</a> &gt; <a href="index.source.html" class="el_package">de.htwg.blackjack</a> &gt; <span class="el_source">BlackJack.java</span></div><h1>BlackJack.java</h1><pre class="source lang-java linenums">package de.htwg.blackjack;
 
-import de.htwg.blackjack.controller.impl.BlackJackController;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import de.htwg.blackjack.controller.IBlackJackController;
-import de.htwg.blackjack.aview.Tui;
+import de.htwg.blackjack.aview.tui.Tui;
+import de.htwg.blackjack.controller.ICalcProfitController;
+import de.htwg.blackjack.aview.gui.GUI;
+import java.util.Scanner;
+import org.apache.log4j.PropertyConfigurator;
+
 
 /**
  *
  * @author Adrian Wenger
  */
 public final class BlackJack {
+
+
     /**
      * tui.
      */
     private final Tui tui;
     /**
+     * gui.
+     */
+    private final GUI gui;
+    /**
      * static BlackJack instance.
      */
-<span class="fc" id="L19">    private static BlackJack instance = null;</span>
+<span class="nc" id="L31">    private static BlackJack instance = null;</span>
+    /**
+     * BlackJackController.
+     */
+    private static IBlackJackController controller;
+    /**
+     * Scanner
+     */
+<span class="nc" id="L39">    private static final Scanner scanner = new Scanner(System.in);</span>
 
     /**
      * Singleton.
@@ -24,10 +44,10 @@ public final class BlackJack {
      * @return instance
      */
     public static BlackJack getInstance() {
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (instance == null) {</span>
-<span class="fc" id="L28">            instance = new BlackJack();</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        if (instance == null) {</span>
+<span class="nc" id="L48">            instance = new BlackJack();</span>
         }
-<span class="fc" id="L30">        return instance;</span>
+<span class="nc" id="L50">        return instance;</span>
 
     }
 
@@ -35,18 +55,27 @@ public final class BlackJack {
      * @return tui
      */
     public Tui getTui() {
-<span class="fc" id="L38">        return tui;</span>
+<span class="nc" id="L58">        return tui;</span>
     }
 
     /**
      *
      */
-<span class="fc" id="L44">    private BlackJack() {</span>
-<span class="fc" id="L45">        IBlackJackController controller = new BlackJackController();</span>
-<span class="fc" id="L46">        tui = new Tui(controller);</span>
-<span class="fc" id="L47">        controller.create();</span>
-<span class="fc" id="L48">        tui.printTui();</span>
-<span class="fc" id="L49">    }</span>
+<span class="nc" id="L64">    private BlackJack() {</span>
+        // Set up Google Guice Dependency Injector
+<span class="nc" id="L66">        Injector injector = Guice.createInjector(new BlackJackModule());</span>
+        // Build up the application, resolving dependencies automatically by
+        // Guice
+<span class="nc" id="L69">        controller = injector.getInstance(IBlackJackController.class);</span>
+        // forward injector Object to BlackJackController
+<span class="nc" id="L71">        controller.setInjector(injector);</span>
+        // create Tui
+<span class="nc" id="L73">        tui = injector.getInstance(Tui.class);</span>
+
+<span class="nc" id="L75">        gui = injector.getInstance(GUI.class);</span>
+        // Set up logging through log4j
+<span class="nc" id="L77">        PropertyConfigurator.configure(&quot;log4j.properties&quot;);</span>
+<span class="nc" id="L78">    }</span>
 
     /**
      *
@@ -54,10 +83,12 @@ public final class BlackJack {
      */
     public static void main(final String[] args) {
         //Create new BlackJack Object
-<span class="nc" id="L57">        BlackJack game = BlackJack.getInstance();</span>
+<span class="nc" id="L86">        BlackJack game = BlackJack.getInstance();</span>
         //Starts the TextUserInterface
-<span class="nc" id="L59">        game.getTui().createGame();</span>
-<span class="nc" id="L60">        game.getTui().continueGame();</span>
-<span class="nc" id="L61">    }</span>
+        while (true) {
+<span class="nc" id="L89">            game.getTui().processInputLine(scanner.nextLine());</span>
+        }
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

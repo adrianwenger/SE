@@ -118,6 +118,7 @@ public final class CalcProfitController implements ICalcProfitController {
 
     /**
      * Calculates profit and new credit and sets new Statusline.
+     * @return profit
      */
     @Override
     public String printCurrentCreditState() {
