@@ -243,7 +243,7 @@ public class BlackJackControllerTest {
         assertEquals(expResultState, resultState);
 
         // Test roundStake
-        double expResultRoundStake = 50;
+        double expResultRoundStake = 0;
         double resultRoundStake = this.controller.getPlayer().getRoundStake();
         assertEquals(expResultRoundStake, resultRoundStake, .0);
     }

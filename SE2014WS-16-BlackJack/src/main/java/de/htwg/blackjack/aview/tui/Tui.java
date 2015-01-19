@@ -49,7 +49,7 @@ public final class Tui implements IObserver {
      */
     private static final String NEWLINE = "\n\n";
     /**
-     * 
+     *
      */
     private static final String EURO = "€\n";
     /**
@@ -126,8 +126,8 @@ public final class Tui implements IObserver {
                 LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
                         + NEWLINE);
             }
-            //print credit
-            LOGGERTUI.info(this.calcController.printCurrentCreditState());
+//            //print credit
+//            LOGGERTUI.info(this.calcController.printCurrentCreditState());
         } else if (this.controller.getCurrentState() instanceof StateEndRound) {
             LOGGERTUI.info("Round ended\n");
             LOGGERTUI.info("Do you want to start a new Round?\n");
@@ -209,10 +209,12 @@ public final class Tui implements IObserver {
                         LOGGERTUI.info(INPUT
                                 + this.controller.getPlayer().getRoundStake()
                                 + EURO);
-                        controller.checkGameState();
+                        printHelpMenu();
                         break;
                     case FIVE:
-                        startNewRound();
+                        this.controller.setCurrentState(new StateEndGame(controller));
+                        this.controller.getCurrentState().change();
+                        System.exit(0);
                         break;
                     default:
                         break;
@@ -222,9 +224,16 @@ public final class Tui implements IObserver {
                     controller.getCardPlayer();
                     controller.checkIfDealerNeedsCard();
                     controller.checkGameState();
+                    if (this.controller.getCurrentState()
+                            instanceof StateInGame) {
+                        this.controller.notifyObservers();
+                    }
                 } else if (nextLine.equals("n")) {
                     controller.checkIfDealerNeedsCard();
-                    controller.checkGameState();
+                    //controller.checkGameState();
+                    controller.setCurrentState(new StateEndGame(controller));
+                    controller.getCurrentState().change();
+                    System.exit(0);
                 }
             }
         } else if (controller.getCurrentState() instanceof StateWon) {
@@ -236,10 +245,13 @@ public final class Tui implements IObserver {
         } else if (controller.getCurrentState() instanceof StateEndRound) {
             if (nextLine.equals("y")) {
                 startNewRound();
+                LOGGERTUI.info("a new round is created");
+                printHelpMenu();
             } else {
-                this.controller.endGame();
+                this.controller.setCurrentState(new StateEndGame(controller));
+                this.controller.getCurrentState().change();
+                System.exit(0);
             }
-            controller.checkGameState();
         } else {
             controller.checkGameState();
         }
@@ -278,4 +290,5 @@ public final class Tui implements IObserver {
         deckSet = false;
         this.controller.createNewRound();
     }
+
 }

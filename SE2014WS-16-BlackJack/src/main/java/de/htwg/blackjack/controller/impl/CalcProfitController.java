@@ -126,8 +126,8 @@ public final class CalcProfitController implements ICalcProfitController {
 
         sb.append("Your new Stake: ");
         calcProfit();
-        sb.append(controller.getPlayer().getStake()).append(" €");
         calcStake();
+        sb.append(controller.getPlayer().getStake()).append(" €");
         sb.append("\n").append("Your Profit: ").append(getProfit()).append(" €");
 
         return sb.append("\n").toString();

@@ -159,8 +159,6 @@ public class CalcProfitControllerTest {
         this.player.add(new Card(Suit.CLUBS, 10));
         this.player.add(new Card(Suit.CLUBS, 1));
         this.player.add(new Card(Suit.CLUBS, 10));
-        this.calcController.calcProfit();
-        this.calcController.calcStake();
         String result = this.calcController.printCurrentCreditState();
         String expResult = "Your new Stake: 250.0 €\n" + "Your Profit: 150.0 €\n";
         boolean compare = result.equals(expResult);
