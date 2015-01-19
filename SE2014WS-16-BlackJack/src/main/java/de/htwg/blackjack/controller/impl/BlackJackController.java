@@ -307,16 +307,13 @@ public final class BlackJackController extends Observable
         if (this.currentState instanceof StateInGame) {
             this.currentState.change();
         }
-        // Player <= Dealer && Dealer < BLACKJACK
-        if ((this.player.getValue() <= dealer.getValue())
-                && dealer.getValue() < BLACKJACK) {
-            setCurrentState(new StateLost(this, calcController));
-            this.currentState.change();
-        }
-
-        this.setCurrentState(new StateEndGame(this));
-        this.currentState.change();
-        checkGameState();
+//        // Player <= Dealer && Dealer < BLACKJACK
+//        if ((this.player.getValue() <= dealer.getValue())
+//                && dealer.getValue() < BLACKJACK) {
+//            //setCurrentState(new StateLost(this, calcController));
+//            //this.currentState.change();
+//        }
+        //checkGameState();
     }
 
 }

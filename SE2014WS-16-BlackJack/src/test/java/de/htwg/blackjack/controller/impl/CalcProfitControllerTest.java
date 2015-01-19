@@ -36,9 +36,12 @@ public class CalcProfitControllerTest {
         this.controller.setInjector(Guice.createInjector(new BlackJackModule()));
         this.controller.setPlayer("Fritz");
         this.controller.setDealer();
+        this.controller.setDeck(1);
         this.calcController = new CalcProfitController(controller);
         this.player = controller.getPlayer();
         this.dealer = controller.getDealer();
+        this.player.add(new Card(Suit.CLUBS, 10));
+        this.dealer.add(new Card(Suit.CLUBS, 10));
     }
 
     @Test
@@ -60,6 +63,8 @@ public class CalcProfitControllerTest {
 
     @Test
     public void testCalcProfit() {
+        this.player.clearHand();
+        this.dealer.clearHand();
         //Round won --> Player asset = roundstake + roundstake * 1.5
         this.controller.setCurrentState(new StateWon(controller, this.controller.getCalcController()));
         player.setStake(1000);
@@ -122,6 +127,7 @@ public class CalcProfitControllerTest {
 
     @Test
     public void testCalcStake() {
+        this.player.clearHand();
         this.controller.getPlayer().setStake(100);
         this.controller.getPlayer().setRoundStake(50);
         player.add(new Card(Suit.CLUBS, 10));
@@ -134,21 +140,20 @@ public class CalcProfitControllerTest {
         // new Stake = 100 + 150; 
         double expResult = 250;
         assertEquals(expResult, result, 0);
+
+        this.controller.setCurrentState(new StateLost(controller, calcController));
+        ICalcProfitController tmp = new CalcProfitController(controller);
+        this.controller.getPlayer().setStake(100);
+        this.controller.getPlayer().setRoundStake(50);
+        tmp.calcStake();
+        expResult = 50;
+        result = this.controller.getPlayer().getStake();
+        assertEquals(expResult, result, 0);
     }
-    
+
     @Test
     public void testPrintCurrentCreditState() {
-        /**
-         *  StringBuilder sb = new StringBuilder();
-
-        sb.append("Your new Stake: ");
-        calcStake();
-        sb.append(controller.getPlayer().getStake());
-        calcProfit();
-        sb.append("\n").append("Your Profit: ").append(getProfit());
-
-        return sb.append("\n").toString();
-         */
+        this.player.clearHand();
         this.player.setStake(100);
         this.player.setRoundStake(50);
         this.player.add(new Card(Suit.CLUBS, 10));
@@ -157,8 +162,9 @@ public class CalcProfitControllerTest {
         this.calcController.calcProfit();
         this.calcController.calcStake();
         String result = this.calcController.printCurrentCreditState();
-        String expResult = "Your new Stake: 250.0 €\n" + "Your Profit: 150.0 €\n"; 
+        String expResult = "Your new Stake: 250.0 €\n" + "Your Profit: 150.0 €\n";
         boolean compare = result.equals(expResult);
-        assert(compare);
+        assert (compare);
     }
+
 }
