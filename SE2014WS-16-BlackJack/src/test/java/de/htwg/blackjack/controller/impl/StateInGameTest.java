@@ -46,7 +46,7 @@ public class StateInGameTest {
      */
     @Test
     public final void testChange() {
-        // Case Player < 21 && Dealer < 21
+        // Case Player  < 21 && Dealer < 21
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
@@ -84,7 +84,7 @@ public class StateInGameTest {
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getDealer().add(new Card(Suit.SPADES, 9));
         this.controller.getPlayer().add(new Card(Suit.SPADES, 9));
-        this.controller.setCurrentState(new StateWon(controller, calcController));
+        this.controller.setCurrentState(new StateInGame(controller, calcController));
         this.controller.getCurrentState().change();
         boolean result3 = this.controller.getCurrentState() instanceof StateEndRound;
         assert (result3);

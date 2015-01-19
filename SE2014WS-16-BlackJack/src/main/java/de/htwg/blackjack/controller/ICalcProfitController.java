@@ -23,12 +23,7 @@ public interface ICalcProfitController {
     /**
      * checks the Stake. Player can't make depts.
      */
-    void checkStake();
-    
-    /**
-     * 
-     */
-    boolean setRoundStake(final double stake);
+    void checkStake();    
     /**
      * Calculates the current stake plus the profit.
      */

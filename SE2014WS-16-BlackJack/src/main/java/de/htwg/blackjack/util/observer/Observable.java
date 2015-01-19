@@ -1,6 +1,7 @@
 package de.htwg.blackjack.util.observer;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -14,13 +15,14 @@ public class Observable implements IObservable {
     /**
      * List to save Subscriber Objects.
      */
-    private final List<IObserver> subscribers = new ArrayList<IObserver>();
+    private final List<IObserver> subscribers = new ArrayList<>();
 
     /**
      * add single observer to subscriber list.
      *
      * @param s Obersver
      */
+    @Override
     public final void addObserver(final IObserver s) {
         if (!subscribers.contains(s)) {
         subscribers.add(s);
@@ -30,6 +32,7 @@ public class Observable implements IObservable {
     /**
      * notify each observer in subscriber List.
      */
+    @Override
     public final void notifyObservers() {
         for (IObserver observer : subscribers) {
             observer.update();
@@ -40,7 +43,8 @@ public class Observable implements IObservable {
      * remove specific Subscriber.
      * @param s subscriber
      */
-    public void removeObserver(IObserver s) {
+    @Override
+    public void removeObserver(final IObserver s) {
         subscribers.remove(s);
     }
 
@@ -48,8 +52,9 @@ public class Observable implements IObservable {
      *
      * @return list of subscribers
      */
+    @Override
     public final List<IObserver> getSubscribers() {
-        return subscribers;
+        return Collections.unmodifiableList(subscribers);
 }
 
 }
