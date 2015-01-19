@@ -68,17 +68,17 @@ public class GUI extends JFrame implements IObserver {
             mainFrame.changeText(controller.getPlayer().printPlayersHand(),
                     controller.getDealer().printPlayersHand());
         } else if (controller.getCurrentState() instanceof StateWon) {
-            mainFrame.changeText(dividingLine);
+            mainFrame.changeText(DIVIDINGLINE);
             mainFrame.changeText("Round WON!!!\n");
             mainFrame.changeText(calcController.printCurrentCreditState());
-            mainFrame.changeText(dividingLine);
+            mainFrame.changeText(DIVIDINGLINE);
         } else if (controller.getCurrentState() instanceof StateLost) {
-            mainFrame.changeText(dividingLine);
+            mainFrame.changeText(DIVIDINGLINE);
             mainFrame.changeText("Round LOST!!!\n");
             mainFrame.changeText(calcController.printCurrentCreditState());
-            mainFrame.changeText(dividingLine);
+            mainFrame.changeText(DIVIDINGLINE);
         } else if (controller.getCurrentState() instanceof StateBlackJack) {
-            mainFrame.changeText(dividingLine);
+            mainFrame.changeText(DIVIDINGLINE);
 
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
                 mainFrame.changeText("Dealer got BlackJack!\n\n");
@@ -88,7 +88,7 @@ public class GUI extends JFrame implements IObserver {
                         + ", you got BlackJack!\n");
             }
             mainFrame.changeText(calcController.printCurrentCreditState());
-            mainFrame.changeText(dividingLine);
+            mainFrame.changeText(DIVIDINGLINE);
         } else if (controller.getCurrentState() instanceof StateEndRound) {
             mainFrame.changeText("Round ended!");
             mainFrame.changeText("To start a new round set a new RoundStake please!");

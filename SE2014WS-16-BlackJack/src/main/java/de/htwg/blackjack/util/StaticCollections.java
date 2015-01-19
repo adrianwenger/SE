@@ -1,5 +1,7 @@
 package de.htwg.blackjack.util;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Adrian Wenger
@@ -35,6 +37,7 @@ public final class StaticCollections {
     public static final int HUNDRED = 100;
     public static final int TEN = 10;
     public static final int ZERO = 0;
-    public static final String dividingLine = "-------------------------------------------------------------";
+    public static final String DIVIDINGLINE = "-------------------------------------------------------------";
+    public static final Scanner SCANNER = new Scanner(System.in);
 
 }

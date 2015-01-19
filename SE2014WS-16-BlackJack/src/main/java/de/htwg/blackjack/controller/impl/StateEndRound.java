@@ -1,6 +1,5 @@
 package de.htwg.blackjack.controller.impl;
 
-import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.controller.IGameState;
 

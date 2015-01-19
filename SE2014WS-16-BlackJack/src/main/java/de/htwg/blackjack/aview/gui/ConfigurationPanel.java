@@ -42,13 +42,13 @@ public class ConfigurationPanel implements ActionListener {
      */
     private final JDialog configPanel;
     /**
-     * JDialog width.
+     * JDialog WIDTH.
      */
-    private static final int width = 200;
+    private static final int WIDTH = 200;
     /**
-     * JDialog height.
+     * JDialog HEIGHT.
      */
-    private static final int height = 250;
+    private static final int HEIGHT = 250;
     /**
      *
      * @param gui
@@ -90,7 +90,7 @@ public class ConfigurationPanel implements ActionListener {
         configPanel = new JDialog();
         configPanel.setLocationRelativeTo(null);
         configPanel.setLocation(new Point((int) configPanel.getLocation().getX() 
-                - (int) width/TWO, (int) configPanel.getLocation().getY() - (int) height/TWO));
+                - (int) WIDTH/TWO, (int) configPanel.getLocation().getY() - (int) HEIGHT/TWO));
 
         configPanel.add(dialogPanel);
         configPanel.setSize(CONFIGURE_LABEL_WIDTH, CONFIGURE_LABEL_HEIGTH);

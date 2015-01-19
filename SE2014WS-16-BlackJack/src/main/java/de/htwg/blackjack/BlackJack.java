@@ -4,10 +4,9 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import de.htwg.blackjack.controller.IBlackJackController;
 import de.htwg.blackjack.aview.tui.Tui;
-import de.htwg.blackjack.controller.ICalcProfitController;
 import de.htwg.blackjack.aview.gui.GUI;
-import java.util.Scanner;
 import org.apache.log4j.PropertyConfigurator;
+import static de.htwg.blackjack.util.StaticCollections.*;
 
 
 /**
@@ -22,10 +21,6 @@ public final class BlackJack {
      */
     private final Tui tui;
     /**
-     * gui.
-     */
-    private GUI gui;
-    /**
      * static BlackJack instance.
      */
     private static BlackJack instance = null;
@@ -33,15 +28,6 @@ public final class BlackJack {
      * BlackJackController.
      */
     private static IBlackJackController controller;
-    /**
-     * CalcProfitController
-     */
-    private static ICalcProfitController calcController;
-    /**
-     * Scanner
-     */
-    private static final Scanner scanner = new Scanner(System.in);
-
     /**
      * Singleton.
      *
@@ -76,9 +62,7 @@ public final class BlackJack {
         // create Tui
         tui = injector.getInstance(Tui.class);
 
-        calcController = injector.getInstance(ICalcProfitController.class);
-
-        gui = injector.getInstance(GUI.class);
+        injector.getInstance(GUI.class);
         // Set up logging through log4j
         PropertyConfigurator.configure("log4j.properties");
     }
@@ -92,7 +76,7 @@ public final class BlackJack {
         BlackJack game = BlackJack.getInstance();
         //Starts the TextUserInterface
         while (true) {
-            game.getTui().processInputLine(scanner.nextLine());
+            game.getTui().processInputLine(SCANNER.nextLine());
         }
     }
 

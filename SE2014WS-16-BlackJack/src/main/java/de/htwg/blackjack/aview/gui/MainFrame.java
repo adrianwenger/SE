@@ -47,7 +47,7 @@ public class MainFrame extends JFrame {
     /**
      * JButtons for ButtonGroup.
      */
-    private final JButton set, doubleStake, nextCard, newRound;
+    private final JButton doubleStake, nextCard, newRound;
     /**
      * JTextArea for OutputField.
      */
@@ -56,7 +56,6 @@ public class MainFrame extends JFrame {
      * JLabels for InfoLabel.
      */
     private JLabel outStake, outProfit, outCurRoundStake; 
-    private final JLabel info;
 
     /**
      *
@@ -68,6 +67,8 @@ public class MainFrame extends JFrame {
         this.gui = gui;
         this.controller = controller;
         this.calcController = calcController;
+        JButton set;
+        JLabel info;
 
         //Configurations for MainLabel
         this.setTitle("BlackJack");
@@ -271,18 +272,18 @@ public class MainFrame extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (calcController.checkDouble()) {
-                changeText(dividingLine);
+                changeText(DIVIDINGLINE);
                 changeText("RoundStake was doubled!");
-                changeText(dividingLine);
+                changeText(DIVIDINGLINE);
                 String[] currentRoundStake = outCurRoundStake.getText().split(" ");
                 controller.getPlayer().setStake(controller.getPlayer().getStake() + Double.parseDouble(currentRoundStake[ZERO]));
                 controller.getPlayer().doubleRoundStake();
                 calcController.calcProfit();
                 controller.checkGameState();
             } else {
-                changeText(dividingLine);
+                changeText(DIVIDINGLINE);
                 changeText("RoundStake can't be doubled!");
-                changeText(dividingLine);
+                changeText(DIVIDINGLINE);
                 controller.checkGameState();
             }
         }

@@ -47,11 +47,11 @@ public final class Tui implements IObserver {
     /**
      * \n\n.
      */
-    private static final String newLine = "\n\n";
+    private static final String NEWLINE = "\n\n";
     /**
      * 
      */
-    private static final String euroSymbol = "€\n";
+    private static final String EURO = "€\n";
     /**
      * check if game is inGame.
      */
@@ -102,29 +102,29 @@ public final class Tui implements IObserver {
             printHelpMenu();
         } else if (this.controller.getCurrentState() instanceof StateWon) {
             LOGGERTUI.info("Round WON!!! -->  "
-                    + this.controller.getPlayer().printPlayersHand() + newLine);
+                    + this.controller.getPlayer().printPlayersHand() + NEWLINE);
             LOGGERTUI.info("Dealer Value --> "
-                    + this.controller.getDealer().printPlayersHand() + newLine);
+                    + this.controller.getDealer().printPlayersHand() + NEWLINE);
             // print Credit
             this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateLost) {
-            LOGGERTUI.info("Round LOST!!! " + newLine + " --> "
+            LOGGERTUI.info("Round LOST!!! " + NEWLINE + " --> "
                     + this.controller.getPlayer().printPlayersHand() + "\n");
             LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
-                    + newLine);
+                    + NEWLINE);
             // print credit
             this.calcController.printCurrentCreditState();
         } else if (this.controller.getCurrentState() instanceof StateBlackJack) {
             if (this.controller.hasBlackJack(this.controller.getDealer())) {
-                LOGGERTUI.info("Dealer got BlackJack!" + newLine);
+                LOGGERTUI.info("Dealer got BlackJack!" + NEWLINE);
                 LOGGERTUI.info(this.controller.getPlayer().printPlayersHand()
-                        + newLine);
+                        + NEWLINE);
             } else {
                 LOGGERTUI.info("Congratulations "
                         + this.controller.getPlayer().getName()
-                        + ", you got BlackJack!" + newLine);
+                        + ", you got BlackJack!" + NEWLINE);
                 LOGGERTUI.info(this.controller.getDealer().printPlayersHand()
-                        + newLine);
+                        + NEWLINE);
             }
             //print credit
             this.calcController.printCurrentCreditState();
@@ -135,7 +135,7 @@ public final class Tui implements IObserver {
             LOGGERTUI.info("-----------------------------------"
                     + "---------------------\n");
             LOGGERTUI.info("Final Credit: "
-                    + this.controller.getPlayer().getStake() + euroSymbol);
+                    + this.controller.getPlayer().getStake() + EURO);
             LOGGERTUI.info("-----------------------------------"
                     + "---------------------\n");
             LOGGERTUI.info("END!\n");
@@ -194,14 +194,14 @@ public final class Tui implements IObserver {
                             LOGGERTUI.info("Round Stake doubled!\n");
                             LOGGERTUI.info("Round Stake: "
                                     + this.controller.getPlayer()
-                                    .getRoundStake() + euroSymbol);
+                                    .getRoundStake() + EURO);
                         } else {
                             LOGGERTUI.info("Round Stake can't be"
                                     + " doubled. Not enough money on Stake!\n");
                             LOGGERTUI.info("Credit: "
                                     + (this.controller.getPlayer().getStake()
                                     - this.controller.getPlayer().
-                                    getRoundStake()) + euroSymbol);
+                                    getRoundStake()) + EURO);
                         }
                         controller.checkGameState();
                         break;
@@ -210,12 +210,12 @@ public final class Tui implements IObserver {
                         LOGGERTUI.info(INPUT
                                 + (this.controller.getPlayer().getStake()
                                 - this.controller.getPlayer().getRoundStake())
-                                + euroSymbol);
+                                + EURO);
                         LOGGERTUI.info("Your current"
                                 + " Round Stake:\n");
                         LOGGERTUI.info(INPUT
                                 + this.controller.getPlayer().getRoundStake()
-                                + euroSymbol);
+                                + EURO);
                         controller.checkGameState();
                         break;
                     case FIVE:
