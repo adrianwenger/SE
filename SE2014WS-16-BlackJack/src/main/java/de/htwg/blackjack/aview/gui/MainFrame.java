@@ -33,7 +33,8 @@ public class MainFrame extends JFrame {
     /**
      * Dimension for playing frame.
      */
-    private static final Dimension PLAYING_FRAME = new Dimension(PLAYING_FRAME_WIDTH, PLAYING_FRAME_HEIGHT);
+    private static final Dimension PLAYING_FRAME =
+            new Dimension(PLAYING_FRAME_WIDTH, PLAYING_FRAME_HEIGHT);
 
     /**
      * default Background for info.
