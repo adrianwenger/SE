@@ -111,7 +111,7 @@ public class CalcProfitControllerTest {
         expResult = 0.0;
         assertEquals(expResult, result, 0);
         result = this.controller.getPlayer().getStake();
-        expResult = 1000;
+        expResult = 1130;
         assertEquals(expResult, result, 0);
 
     }
@@ -134,7 +134,6 @@ public class CalcProfitControllerTest {
         player.add(new Card(Suit.CLUBS, 1));
         player.add(new Card(Suit.CLUBS, 10));
         this.calcController.calcProfit();
-        this.calcController.calcStake();
         double result = this.controller.getPlayer().getStake();
         // Player got BlackJack. With RoundStake of 50 he wins 150€
         // new Stake = 100 + 150; 
@@ -145,8 +144,8 @@ public class CalcProfitControllerTest {
         ICalcProfitController tmp = new CalcProfitController(controller);
         this.controller.getPlayer().setStake(100);
         this.controller.getPlayer().setRoundStake(50);
-        tmp.calcStake();
-        expResult = 50;
+        tmp.calcProfit();
+        expResult = 100;
         result = this.controller.getPlayer().getStake();
         assertEquals(expResult, result, 0);
     }
@@ -159,10 +158,52 @@ public class CalcProfitControllerTest {
         this.player.add(new Card(Suit.CLUBS, 10));
         this.player.add(new Card(Suit.CLUBS, 1));
         this.player.add(new Card(Suit.CLUBS, 10));
+        this.calcController.calcProfit();
         String result = this.calcController.printCurrentCreditState();
         String expResult = "Your new Stake: 250.0 €\n" + "Your Profit: 150.0 €\n";
         boolean compare = result.equals(expResult);
         assert (compare);
+    }
+
+    @Test
+    public void testSetStake() {
+        //         controller.getPlayer().setStake(stake);
+        this.calcController.setStake(100);
+        double result = this.controller.getPlayer().getStake();
+        double expResult = 100;
+        assertEquals(expResult, result, 0);
+    }
+
+    @Test          
+    public void testSetRoundStake() {
+//        controller.getPlayer().setRoundStake(roundStake);
+//        controller.getPlayer().setStake(controller.getPlayer().getStake() - roundStake);
+//        controller.notifyObservers();
+        this.player.setStake(100);
+        this.calcController.setRoundStake(50);
+        double resultStake = this.controller.getPlayer().getStake();
+        double expResultStake = 50;
+        assertEquals(resultStake, expResultStake, 0);
+        
+        resultStake = this.controller.getPlayer().getRoundStake();
+        expResultStake = 50;
+        assertEquals(resultStake, expResultStake, 0);
+    }
+
+    @Test
+    public void doubleRoundStake() {
+//        double oldRStake = controller.getPlayer().getRoundStake();
+//        controller.getPlayer().setStake(controller.getPlayer().getStake() - oldRStake);
+//        oldRStake *= 2;
+//        controller.getPlayer().setRoundStake(oldRStake);
+//        controller.notifyObservers();
+        this.player.setStake(160);
+        this.player.setRoundStake(40);
+        this.calcController.doubleRoundStake();
+        double result = this.controller.getPlayer().getStake();
+        double expResult = 120;
+        assertEquals(expResult, result, 0);
+        
     }
 
 }
