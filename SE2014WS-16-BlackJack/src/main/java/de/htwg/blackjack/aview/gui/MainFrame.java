@@ -243,7 +243,6 @@ public class MainFrame extends JFrame {
             //Check if Player can start new round! If Stake <= 0 --> StateEndRound
             calcController.checkStake();
 
-            //controller.getPlayer().setRoundStake(Double.parseDouble(tfroundStake.getText()));
             calcController.setRoundStake(Double.parseDouble(tfroundStake.getText()));
             //Clear TextField
             taGame.setText("");
@@ -260,8 +259,6 @@ public class MainFrame extends JFrame {
             double rstake = controller.getPlayer().getRoundStake();
             stake -= rstake;
             outStake.setText(stake + " €");
-//            outStake.setText(Double.toString(stake) + " €");
-            //Set TextField RoundStake empty
             tfroundStake.setText("");
             outProfit.setText(Double.toString(calcController.getProfit()) + " €");
             controller.checkGameState();
@@ -281,10 +278,6 @@ public class MainFrame extends JFrame {
                 changeText("RoundStake was doubled!");
                 changeText(DIVIDINGLINE);
                 calcController.doubleRoundStake();
-                
-//                String[] currentRoundStake = outCurRoundStake.getText().split(" ");
-//                controller.getPlayer().setStake(controller.getPlayer().getStake()/* + Double.parseDouble(currentRoundStake[ZERO])*/);
-//                controller.getPlayer().doubleRoundStake();
                 controller.checkGameState();
             } else {
                 changeText(DIVIDINGLINE);

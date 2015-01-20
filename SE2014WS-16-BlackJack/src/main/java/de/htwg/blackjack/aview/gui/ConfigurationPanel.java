@@ -78,7 +78,8 @@ public class ConfigurationPanel implements ActionListener {
 
         confirm = new JButton("Confirm");
         confirm.addActionListener(this);
-        JPanel dialogPanel = new JPanel(new GridLayout(CONFIGURE_ROWS, CONFIGURE_COLS));
+        JPanel dialogPanel = 
+                new JPanel(new GridLayout(CONFIGURE_ROWS, CONFIGURE_COLS));
         dialogPanel.add(new JLabel("Name:"));
         dialogPanel.add(name);
         dialogPanel.add(new JLabel("Number of Decks:"));
@@ -107,7 +108,6 @@ public class ConfigurationPanel implements ActionListener {
             controller.setDealer();
             controller.setDeck(Integer.parseInt(numOfDecks.getSelectedItem().toString()));
             controller.getCalcController().setStake(Double.parseDouble(stake.getText()));
-            //controller.getPlayer().setStake(Double.parseDouble(stake.getText()));
             gui.activateMainFrame();
         }
     }

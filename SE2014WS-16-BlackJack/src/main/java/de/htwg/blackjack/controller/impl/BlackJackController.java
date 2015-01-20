@@ -49,16 +49,16 @@ public final class BlackJackController extends Observable
      * resolving dependencies automatically by Guice
      */
     private Injector injector;
-          
+
     /**
      * Create CalcProfitController.
      */
     private ICalcProfitController calcController
             = new CalcProfitController(this);
 
-
     /**
      * setInjector.
+     *
      * @param injector injector from BlackJack.java
      */
     @Override
@@ -284,7 +284,7 @@ public final class BlackJackController extends Observable
         this.dealer.clearHand();
         this.deck = null;
         notifyObservers();
-        
+
     }
 
     /**
@@ -312,13 +312,6 @@ public final class BlackJackController extends Observable
         if (this.currentState instanceof StateInGame) {
             this.currentState.change();
         }
-//        // Player <= Dealer && Dealer < BLACKJACK
-//        if ((this.player.getValue() <= dealer.getValue())
-//                && dealer.getValue() < BLACKJACK) {
-//            //setCurrentState(new StateLost(this, calcController));
-//            //this.currentState.change();
-//        }
-        //checkGameState();
     }
 
 }
